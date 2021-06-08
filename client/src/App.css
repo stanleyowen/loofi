@@ -1,8 +1,8 @@
+:root {
+  --light-gray: #f7f7f7
+}
 .app {
   margin-left: 200px;
-}
-.navbar {
-  background-color: aqua !important;
 }
 .rounded-corner { border-radius: 5px; }
 .sidebar {
@@ -11,12 +11,9 @@
   position: fixed;
   overflow-x: hidden;
   padding-top: 30px;
+  background: var(--light-gray);
 }
-.sidebar-menu {
-  width: 100%;
-  display: block;
-  background-color: aqua;
-}
+.full-width { width: 100%; }
 .p-10 { padding: 10px; }
 .m-10 { margin: 10px; }
 .mt-10 { margin-top: 10px; }

@@ -5,9 +5,8 @@ const SideBar = () => {
     return (
         <div className="sidebar">
             <div className="m-10">
-                <div className="sidebar-menu rounded-corner p-10">
-                    Home
-                </div>
+                <Button className="full-width rounded-corner p-10" href="/">Home</Button>
+                <Button className="full-width rounded-corner p-10" href="/search">Search</Button>
             </div>
         </div>
     )
