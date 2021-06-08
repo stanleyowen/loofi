@@ -1,11 +1,23 @@
-.flex {
-  display: flex;
+.app {
+  margin-left: 200px;
 }
-.flex-2 {
-  flex: 0.2;
-  flex-direction: column;
+.navbar {
+  background-color: aqua !important;
 }
-.flex-8 {
-  flex: 0.8;
-  flex-direction: column;
+.rounded-corner { border-radius: 5px; }
+.sidebar {
+  width: 200px;
+  height: 100%;
+  position: fixed;
+  overflow-x: hidden;
+  padding-top: 30px;
 }
+.sidebar-menu {
+  width: 100%;
+  display: block;
+  background-color: aqua;
+}
+.p-10 { padding: 10px; }
+.m-10 { margin: 10px; }
+.mt-10 { margin-top: 10px; }
+.mt-30 { margin-top: 30px; }
