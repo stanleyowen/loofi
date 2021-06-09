@@ -1,18 +1,25 @@
 :root {
-  --light-gray: #f7f7f7
+  --white: #fff;
+  --light-gray: #f4f4f4;
+  --gray: #cccccc
 }
 .app {
-  margin-left: 200px;
+  margin-left: 225px;
 }
-.rounded-corner { border-radius: 5px; }
 .sidebar {
-  width: 200px;
+  width: 225px;
   height: 100%;
   position: fixed;
   overflow-x: hidden;
   padding-top: 30px;
-  background: var(--light-gray);
+  background: var(--white);
 }
+.navbar {
+  display: fixed;
+  background-color: transparent;
+  padding: 15px;
+}
+.rounded-corner { border-radius: 5px; }
 .full-width { width: 100%; }
 .p-10 { padding: 10px; }
 .m-10 { margin: 10px; }
