@@ -5,13 +5,9 @@ const SideBar = () => {
     const [active, setActive] = useState('home')
 
     useEffect(() => {
-        const tab = document.getElementById('tab');
-        [tab.childNodes].forEach(a => {
-            // Get the Inner Text inside div tag
-            if(String(a[0].childNodes[0].innerText).toLowerCase() === active) {
-                console.log('truee')
-                a[0].classList.add('active')
-            }
+        [...document.getElementById('tab').childNodes].forEach(a => {
+            if(String(a.childNodes[0].innerText).toLowerCase() === active) a.classList.add('active')
+            else a.classList.remove('active')
         })
     }, [active])
 
