@@ -1,10 +1,12 @@
 :root {
   --white: #fff;
   --light-gray: #f4f4f4;
-  --gray: #cccccc
+  --gray: #cdcdcd
 }
 .app {
   margin-left: 225px;
+  background-color: var(--white);
+  background-image: linear-gradient(0deg, var(--white) 0%, var(--gray) 100%);
 }
 .sidebar {
   width: 225px;
@@ -19,6 +21,7 @@
   background-color: transparent;
   padding: 15px;
 }
+#tab .active { background-color: var(--gray); }
 .rounded-corner { border-radius: 5px; }
 .full-width { width: 100%; }
 .p-10 { padding: 10px; }
