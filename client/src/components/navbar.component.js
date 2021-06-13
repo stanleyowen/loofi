@@ -3,7 +3,7 @@ import { IconButton } from '@material-ui/core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons/'
 
-const Navbar = () => {
+const Navbar = ({ properties }) => {
     return (
         <div className="navbar">
             <IconButton>

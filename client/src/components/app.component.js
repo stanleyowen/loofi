@@ -1,10 +1,10 @@
 import React from 'react'
 import Navbar from './navbar.component'
 
-const App = () => {
+const App = ({ properties }) => {
     return (
         <div className="app">
-            <Navbar />
+            <Navbar properties={properties} />
         </div>
     )
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Button } from '@material-ui/core'
 
-const SideBar = () => {
+const SideBar = ({ properties }) => {
     const [active, setActive] = useState('home')
 
     useEffect(() => {
@@ -16,6 +16,7 @@ const SideBar = () => {
         const target = String(e.target.innerText).toLowerCase()
         if(target !== active) {
             setActive(target)
+            properties.activeTab = target
         }
         else return
     }
