@@ -16,7 +16,7 @@ const SideBar = ({ properties }) => {
         const target = String(e.target.innerText).toLowerCase()
         if(target !== active) {
             setActive(target)
-            properties.activeTab = target
+            properties({activeTab: target})
         }
         else return
     }

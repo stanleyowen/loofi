@@ -5,13 +5,18 @@ import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons
 
 const Navbar = ({ properties }) => {
     return (
-        <div className="navbar">
-            <IconButton>
-                <FontAwesomeIcon icon={faChevronLeft} />
-            </IconButton>
-            <IconButton>
-                <FontAwesomeIcon icon={faChevronRight} />
-            </IconButton>
+        <div>
+            <div className="navbar">
+                <span className="p-10">
+                    <IconButton className="p-10"><FontAwesomeIcon icon={faChevronLeft} /></IconButton>
+                </span>
+                <span className="p-10">
+                    <IconButton className="p-10"><FontAwesomeIcon icon={faChevronRight} /></IconButton>
+                </span>
+            </div>
+            <div>
+                {properties ? properties.activeTab : null}
+            </div>
         </div>
     )
 }
