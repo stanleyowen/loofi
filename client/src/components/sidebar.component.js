@@ -11,11 +11,20 @@ const SideBar = () => {
         })
     }, [active])
 
+    const switchTab = (e) => {
+        e.preventDefault()
+        const target = String(e.target.innerText).toLowerCase()
+        if(target !== active) {
+            setActive(target)
+        }
+        else return
+    }
+
     return (
         <div className="sidebar">
-            <div className="m-10" id="tab">
-                <Button className="full-width rounded-corner p-10" id="home" href="/">Home</Button>
-                <Button className="full-width rounded-corner p-10" id="search" href="/search">Search</Button>
+            <div className="m-10" id="tab" onClick={switchTab}>
+                <Button className="full-width rounded-corner p-10" id="home">Home</Button>
+                <Button className="full-width rounded-corner p-10" id="search">Search</Button>
             </div>
         </div>
     )
