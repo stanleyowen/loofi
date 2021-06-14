@@ -1,7 +1,13 @@
 :root {
   --white: #fff;
+  --gray: #cdcdcd;
   --light-gray: #f4f4f4;
-  --gray: #cdcdcd
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 .app {
   margin-left: 225px;
@@ -12,19 +18,24 @@
   width: 225px;
   height: 100%;
   position: fixed;
-  overflow-x: hidden;
   padding-top: 30px;
+  overflow-x: hidden;
   background: var(--white);
 }
 .navbar {
+  padding: 15px;
   display: fixed;
   background-color: transparent;
-  padding: 15px;
 }
 #tab .active { background-color: var(--gray); }
 .rounded-corner { border-radius: 5px; }
 .full-width { width: 100%; }
-.p-10 { padding: 10px; }
-.m-10 { margin: 10px; }
-.mt-10 { margin-top: 10px; }
-.mt-30 { margin-top: 30px; }
+.left-align { text-align: left; }
+.right { float: right; }
+.w-30 { width: 30% !important; }
+.w-70 { width: 70% !important; }
+.p-10 { padding: 10px !important; }
+.m-10 { margin: 10px !important; }
+.mt-10 { margin-top: 10px !important; }
+.mt-30 { margin-top: 30px !important; }
+.m-auto { margin: auto !important }

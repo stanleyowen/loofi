@@ -7,12 +7,14 @@ import AppUI from './components/app.component'
 
 export default function App() {
   const [properties, setProperties] = useState({
-    activeTab: ''
+    activeTab: 'home'
   })
-  const tabCallback = useCallback(a => setProperties(a), [])
+
+  const handleChange = useCallback(a => setProperties({...properties, [a.id]: a.value}), [])
+
   return (
     <Router>
-      <SideBar properties={tabCallback} />
+      <SideBar properties={handleChange} />
       <AppUI properties={properties} />
     </Router>
   )
