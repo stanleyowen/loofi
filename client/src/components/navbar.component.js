@@ -1,17 +1,14 @@
 import React from 'react'
 import { IconButton } from '@material-ui/core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons/'
+import { ChevronLeft, ChevronRight } from '../lib/icons.component'
 
-const Navbar = () => {
+const Navbar = ({ properties }) => {
     return (
-        <div className="navbar">
-            <IconButton>
-                <FontAwesomeIcon icon={faChevronLeft} />
-            </IconButton>
-            <IconButton>
-                <FontAwesomeIcon icon={faChevronRight} />
-            </IconButton>
+        <div>
+            <div className="navbar">
+                <span className="p-10"><IconButton><ChevronLeft /></IconButton></span>
+                <span className="p-10"><IconButton><ChevronRight /></IconButton></span>
+            </div>
         </div>
     )
 }
