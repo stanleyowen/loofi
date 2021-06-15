@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 import './App.css'
@@ -10,6 +10,11 @@ export default function App() {
     activeTab: 'home'
   })
 
+  useEffect(() => {
+    const backdrop = document.querySelector('.backdrop-overlay')
+    for (let i=0; i<79; i++) backdrop.appendChild(document.createElement('div'))
+  }, [])
+  
   const handleChange = useCallback(a => setProperties({...properties, [a.id]: a.value}), [])
 
   return (

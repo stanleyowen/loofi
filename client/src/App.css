@@ -1,33 +1,101 @@
 :root {
-  --white: #fff;
-  --gray: #cdcdcd;
+  --white: 255 255 255;
+  --gray: 205 205 205;
   --light-gray: #f4f4f4;
 }
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
 }
-.app {
-  margin-left: 225px;
-  background-color: var(--white);
-  background-image: linear-gradient(0deg, var(--white) 0%, var(--gray) 100%);
+
+/* App Background */
+.backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -2;
 }
+.acrylic-material,
+.backdrop-image,
+.backdrop-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.backdrop-overlay {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 200%;
+	height: 250%;
+	-webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	    -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	        transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	z-index: -1;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
+}
+.backdrop-overlay div {
+	width: 10%;
+	height: 10%;
+    opacity: 0.1;
+	margin-bottom: 0.75%;
+	margin-right: 0.75%;
+	border-radius: 1.5vh;
+	border: 1px solid rgba(0, 0, 0, 1);
+}
+.backdrop-image {
+	background: url('https://res.cloudinary.com/stanleyowen/image/upload/v1623730894/lofi/d229bbf31eaeebc7c88897732d8b932d_nepwii.webp') center/cover no-repeat;
+    -webkit-filter: blur(25px);
+            filter: blur(25px);
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1);
+}
+.acrylic-material {
+	z-index: 1;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+.acrylic-material::before {
+	content: '';
+	opacity: .6;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-blend-mode: normal, color, luminosity;
+	background: -o-linear-gradient(bottom, rgba(239, 239, 239, 0.3), rgba(239, 239, 239, 0.3)), rgba(239, 239, 239, 0.95) url('https://res.cloudinary.com/stanleyowen/image/upload/v1623733351/lofi/aaddc3454ccbefbb2d8d8461f8f7f481_eowzuq.webp') center/196px repeat;
+	background: -webkit-gradient(linear, left bottom, left top, from(rgba(239, 239, 239, 0.3)), to(rgba(239, 239, 239, 0.3))), rgba(239, 239, 239, 0.95) url('https://res.cloudinary.com/stanleyowen/image/upload/v1623733351/lofi/aaddc3454ccbefbb2d8d8461f8f7f481_eowzuq.webp') center/196px repeat;
+	background: linear-gradient(0deg, rgba(239, 239, 239, 0.3), rgba(239, 239, 239, 0.3)), rgba(239, 239, 239, 0.95) url('https://res.cloudinary.com/stanleyowen/image/upload/v1623733351/lofi/aaddc3454ccbefbb2d8d8461f8f7f481_eowzuq.webp') center/196px repeat;
+}
+
+/* App UI */
+.app { margin-left: 225px; }
 .sidebar {
   width: 225px;
   height: 100%;
   position: fixed;
   padding-top: 30px;
   overflow-x: hidden;
-  background: var(--white);
+  background: rgb(var(--white)/40%);
 }
 .navbar {
   padding: 15px;
   display: fixed;
   background-color: transparent;
 }
-#tab .active { background-color: var(--gray); }
+#tabs .active { background: rgb(var(--gray)/60%); }
+.flex { display: flex; }
 .rounded-corner { border-radius: 5px; }
 .full-width { width: 100%; }
 .left-align { text-align: left; }
@@ -39,3 +107,7 @@ body {
 .mt-10 { margin-top: 10px !important; }
 .mt-30 { margin-top: 30px !important; }
 .m-auto { margin: auto !important }
+svg {
+  display: block;
+  margin: auto;
+}
