@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createElement } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button } from '@material-ui/core'
 import { HomeOutline, HomeSolid, SearchSolid, SearchOutline } from '../lib/icons.component'
 
@@ -14,7 +14,7 @@ const SideBar = ({ properties }) => {
 
     const switchTab = (e) => {
         e.preventDefault()
-        const target = String(e.target.innerText).toLowerCase()
+        const target = String(e.target.ownerDocument.activeElement.childNodes[0].childNodes[1].innerText).toLowerCase()
         if(target !== active) {
             setActive(target)
             properties({id: 'activeTab', value: target})
