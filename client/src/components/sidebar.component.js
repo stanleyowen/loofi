@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, createElement } from 'react'
 import { Button } from '@material-ui/core'
 import { HomeOutline, HomeSolid, SearchSolid, SearchOutline } from '../lib/icons.component'
 
@@ -24,14 +24,17 @@ const SideBar = ({ properties }) => {
     return (
         <div className="sidebar">
             <div className="m-10" id="tab" onClick={switchTab}>
-                <Button className="full-width rounded-corner p-10" id="home">
-                    <div className="w-30">{active === 'home' ? <HomeSolid /> : <HomeOutline />}</div>
-                    <div className="w-70 left-align">Home</div>
-                </Button>
-                <Button className="full-width rounded-corner p-10" id="search">
-                    <div className="w-30">{active === 'search' ? <SearchSolid /> : <SearchOutline />}</div>
-                    <div className="w-70 left-align">Search</div>
-                </Button>
+                {
+                    ['Home', 'Search'].map(tab => {
+                        const components = { HomeSolid, HomeOutline, SearchSolid, SearchOutline }
+                        const SolidIcon = components[`${tab}Solid`]
+                        const OutlineIcon = components[`${tab}Outline`]
+                        return (<Button className="full-width rounded-corner p-10" id={tab.toLowerCase()} key={tab.toLowerCase()}>
+                            <div className="w-30">{active === tab.toLowerCase() ? <SolidIcon /> : <OutlineIcon />}</div>
+                            <div className="w-70 left-align">{tab.toLowerCase()}</div>
+                        </Button>)
+                    })
+                }
             </div>
         </div>
     )
