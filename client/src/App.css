@@ -101,6 +101,7 @@ body {
 /* Base UI */
 .app { margin-left: 225px; }
 .card {
+	flex-wrap: nowrap !important;
     padding: 15px 10px;
     background-color: #fcfcfc;
     border-radius: 10px;
@@ -142,3 +143,5 @@ svg {
 	display: grid;
     grid-template-columns: 50% 50%;
 }
+
+@media only screen and (max-width: 900px) { .col-6 { grid-template-columns: 100%; } }
