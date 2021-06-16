@@ -1,14 +1,16 @@
 :root {
-  --white: 255 255 255;
-  --gray: 205 205 205;
-  --light-gray: #f4f4f4;
+	--black: 0 0 0;
+	--white: 255 255 255;
+	--gray: 205 205 205;
+	--light-gray: 244 244 244;
+	--dark-gray: 56 56 56;
 }
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
+  	margin: 0;
+  	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
 }
 
 /* App Background */
@@ -48,7 +50,6 @@ body {
 .backdrop-overlay div {
 	width: 10%;
 	height: 10%;
-    opacity: 0.1;
 	margin-bottom: 0.75%;
 	margin-right: 0.75%;
 	border-radius: 1.5vh;
@@ -79,35 +80,65 @@ body {
 	background: linear-gradient(0deg, rgba(239, 239, 239, 0.3), rgba(239, 239, 239, 0.3)), rgba(239, 239, 239, 0.95) url('https://res.cloudinary.com/stanleyowen/image/upload/v1623733351/lofi/aaddc3454ccbefbb2d8d8461f8f7f481_eowzuq.webp') center/196px repeat;
 }
 
-/* App UI */
-.app { margin-left: 225px; }
+/* Sidebar UI */
 .sidebar {
-  width: 225px;
-  height: 100%;
-  position: fixed;
-  padding-top: 30px;
-  overflow-x: hidden;
-  background: rgb(var(--white)/40%);
-}
-.navbar {
-  padding: 15px;
-  display: fixed;
-  background-color: transparent;
+	width: 225px;
+	height: 100%;
+	position: fixed;
+	padding-top: 30px;
+	overflow-x: hidden;
+	background: rgb(var(--white)/40%);
 }
 #tabs .active { background: rgb(var(--gray)/60%); }
-.flex { display: flex; }
+
+/* Navbar */
+.navbar {
+	padding: 15px;
+	display: fixed;
+	background-color: transparent;
+}
+
+/* Base UI */
+.app { margin-left: 225px; }
+.card {
+    padding: 15px 10px;
+    background-color: #fcfcfc;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 8%);
+    transition: all .3s;
+    box-sizing: border-box;
+}
+.card:hover { background-color: rgb(var(--light-gray)) }
+.card .col { width: 20%; }
+.card .col:not(:first-child) { width: 80%; }
+#recent-playlist img {
+    display: block;
+	width: 75px;
+    height: auto;
+}
+
+/* Porperties */
+.flex { display: flex; flex-wrap: wrap; }
 .rounded-corner { border-radius: 5px; }
 .full-width { width: 100%; }
+.center-align { text-align: center; }
 .left-align { text-align: left; }
 .right { float: right; }
 .w-30 { width: 30% !important; }
+.w-40 { width: 40% !important; }
 .w-70 { width: 70% !important; }
 .p-10 { padding: 10px !important; }
+.no-margin { margin: 0 !important; }
 .m-10 { margin: 10px !important; }
 .mt-10 { margin-top: 10px !important; }
 .mt-30 { margin-top: 30px !important; }
+.ml-10 { margin-left: 10px !important; }
 .m-auto { margin: auto !important }
 svg {
-  display: block;
-  margin: auto;
+	display: block;
+	margin: auto;
+}
+.col-6 {
+	display: grid;
+    grid-template-columns: 50% 50%;
 }
