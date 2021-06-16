@@ -2,7 +2,7 @@
 	--black: 0 0 0;
 	--white: 255 255 255;
 	--gray: 205 205 205;
-	--light-gray: #f4f4f4;
+	--light-gray: 244 244 244;
 	--dark-gray: 56 56 56;
 }
 
@@ -80,8 +80,7 @@ body {
 	background: linear-gradient(0deg, rgba(239, 239, 239, 0.3), rgba(239, 239, 239, 0.3)), rgba(239, 239, 239, 0.95) url('https://res.cloudinary.com/stanleyowen/image/upload/v1623733351/lofi/aaddc3454ccbefbb2d8d8461f8f7f481_eowzuq.webp') center/196px repeat;
 }
 
-/* Sidebar and Tabs */
-.app { margin-left: 225px; }
+/* Sidebar UI */
 .sidebar {
 	width: 225px;
 	height: 100%;
@@ -100,6 +99,7 @@ body {
 }
 
 /* Base UI */
+.app { margin-left: 225px; }
 .card {
 	flex-wrap: nowrap !important;
 	width: 100%;
@@ -117,12 +117,14 @@ body {
 .card p { font-weight: 600; }
 .card .play-btn { opacity: 0; }
 .card:hover .play-btn, .play-btn.pause { opacity: 1; }
+#recent-playlist img {
+    display: block;
+	width: 75px;
+    height: auto;
+}
 
 /* Properties */
 .flex { display: flex; flex-wrap: wrap; }
-.center-flex { align-items: center; justify-content: center; }
-.center-vert { margin: auto 0 !important; }
-.mrl-10 { margin: 0 10px; padding: 0; }
 .rounded-corner { border-radius: 5px; }
 .full-width { width: 100%; }
 .center-align { text-align: center; }
@@ -139,47 +141,17 @@ body {
 .mt-30 { margin-top: 30px !important; }
 .ml-10 { margin-left: 10px !important; }
 .m-auto { margin: auto !important }
-.no-dots { list-style: none; padding: 0; }
-.min-180 { min-width: 180px; }
+button { background-color: transparent; }
 svg {
 	display: block;
 	margin: auto;
-}
-button {
-	border: none;
-	cursor: pointer;
-	background-color: transparent;
 }
 .col-3 {
 	display: grid;
     grid-template-columns: 33.3% 33.3% 33.3%;
 }
-.h-80 {
-	height: 83.7vh;
-	overflow: auto;
-}
 
-#recent-playlist img, #footer img {
-    display: block;
-	width: 75px;
-    height: auto;
-}
-
-/* Control Button UI */
-.footer {
-	padding: 10px;	
-	background: transparent;
-	backdrop-filter: blur(50px);
-	color: rgb(var(--black));
-}
-.footer .song-title {
-	font-weight: 450;
-	font-size: 18px;
-}
-.author {
-	font-size: 13px;
-	color: rgb(var(--dark-gray));
-}
+/* PlayBack Button */
 .play-btn {
 	width: 18px;
 	height: 18px;
@@ -194,21 +166,5 @@ button {
 	border-style: double;
     border-width: 0px 0 0px 17px;
 }
-.progress-bar {
-	height: 4px;
-	width: 100%;
-	background-color:rgb(var(--white))
-}
-.playback-bar {
-	display: flex;
-	align-items: center;
-	padding: 10px;
-	width: 100%;
-}
-.progress-time {
-	font-size: 12px;
-	min-width: 40px;
-}
-
 @media only screen and (max-width: 1200px) { .col-3 { grid-template-columns: 50% 50%; } }
 @media only screen and (max-width: 700px) { .col-3 { grid-template-columns: 100%; } }
