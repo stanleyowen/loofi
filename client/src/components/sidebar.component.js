@@ -6,10 +6,9 @@ const SideBar = ({ properties }) => {
     const [active, setActive] = useState('home')
 
     useEffect(() => {
-        [...document.getElementById('tab').childNodes].forEach(a => {
-            if(String(a.childNodes[0].innerText).toLowerCase() === active) a.classList.add('active')
-            else a.classList.remove('active')
-        })
+        [...document.getElementById('tabs').childNodes].forEach(tab =>
+            String(tab.childNodes[0].innerText).toLowerCase() === active ? tab.classList.add('active') : tab.classList.remove('active')
+        )
     }, [active])
 
     const switchTab = (e) => {
@@ -23,7 +22,7 @@ const SideBar = ({ properties }) => {
 
     return (
         <div className="sidebar">
-            <div className="m-10" id="tab" onClick={switchTab}>
+            <div className="m-10" id="tabs" onClick={switchTab}>
                 {
                     ['Home', 'Search'].map(tab => {
                         const components = { HomeSolid, HomeOutline, SearchSolid, SearchOutline }
