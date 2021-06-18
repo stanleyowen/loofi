@@ -103,16 +103,17 @@ body {
 .card {
 	flex-wrap: nowrap !important;
 	width: 100%;
-    padding: 10px;
     background-color: rgb(var(--white)/20%);
     border-radius: 5px;
     box-shadow: 0px 4px 8px rgb(var(--black) / 5%);
     transition: all .3s;
     box-sizing: border-box;
 }
-.card:hover {
-	cursor: pointer;
-	background-color: rgb(var(--white)/50%);
+.card:hover { background-color: rgb(var(--white) / 50%) }
+.card img {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	box-shadow: 2px 0 10px rgb(var(--black) / 20%);
 }
 .card p { font-weight: 600; }
 .card .play-btn { opacity: 0; }
@@ -122,7 +123,6 @@ body {
 	width: 75px;
     height: auto;
 }
-
 /* Properties */
 .flex { display: flex; flex-wrap: wrap; }
 .rounded-corner { border-radius: 5px; }
