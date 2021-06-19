@@ -1,5 +1,10 @@
 import React from 'react'
+import { SkipNext, SkipPrevious } from '../lib/icons.component'
 const Controls = ({ properties }) => {
+    const triggerAudio = (e) => {
+        e.preventDefault()
+        e.target.classList.toggle('pause')
+    }
     return (
         <div className="footer flex" id="footer">
             <div className="w-30 min-180">
@@ -10,6 +15,11 @@ const Controls = ({ properties }) => {
                         <div className="author">Taylor Swift</div>
                     </div>
                 </div>
+            </div>
+            <div className="w-40 flex center-flex">
+                    <button>{SkipPrevious()}</button>
+                    <button className="play-btn mrl-10" onClick={triggerAudio}></button>
+                    <button>{SkipNext()}</button>
             </div>
         </div>
     )
