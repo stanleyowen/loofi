@@ -150,6 +150,19 @@ svg {
 	display: grid;
     grid-template-columns: 33.3% 33.3% 33.3%;
 }
+.h-84 {
+	height: 84vh;
+	overflow: auto;
+}
+.h-16 {
+	height: 16vh;
+	overflow: auto;
+}
+#recent-playlist img, #footer img {
+    display: block;
+	width: 75px;
+    height: 75px;
+}
 
 /* PlayBack Button */
 .play-btn {
