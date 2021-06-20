@@ -17,9 +17,16 @@ const Controls = ({ properties }) => {
                 </div>
             </div>
             <div className="w-40 flex center-flex">
+                <div className="flex center-flex">
                     <button>{SkipPrevious()}</button>
                     <button className="play-btn mrl-10" onClick={triggerAudio}></button>
                     <button>{SkipNext()}</button>
+                </div>
+                <div className="playback-bar">
+                    <div className="progress-time center-align">00:00</div>
+                    <div className="progress-bar rounded-corner"></div>
+                    <div className="progress-time center-align">00:00</div>
+                </div>
             </div>
         </div>
     )

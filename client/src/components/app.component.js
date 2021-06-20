@@ -6,11 +6,11 @@ import Controls from './controls.component'
 const App = ({ properties }) => {
     return (
         <div className="app">
-            <div className="h-84">
+            <div className="app-ui">
                 <Navbar properties={properties} />
                 <Base properties={properties} />
             </div>
-            <div className="h-16"><Controls properties={properties} /></div>
+            <Controls properties={properties} />
         </div>
     )
 }
