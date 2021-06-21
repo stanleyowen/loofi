@@ -19,7 +19,7 @@ export default function App() {
     }
   }, [])
 
-  const handleChange = useCallback(a => setProperties({ ...properties, [a.id]: a.value }), [])
+  const handleChange = useCallback(a => setProperties({ ...properties, [a.id]: a.value }), [properties])
 
   return (
     <Router>
