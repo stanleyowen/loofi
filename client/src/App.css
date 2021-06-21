@@ -15,12 +15,12 @@ body {
 
 /* App Background */
 .backdrop {
-	position: fixed;
 	top: 0;
 	left: 0;
+	z-index: -2;
 	width: 100%;
 	height: 100%;
-	z-index: -2;
+	position: fixed;
 }
 .acrylic-material,
 .backdrop-image,
@@ -53,7 +53,7 @@ body {
 	margin-bottom: 0.75%;
 	margin-right: 0.75%;
 	border-radius: 1.5vh;
-	border: 1px solid rgba(0, 0, 0, 1);
+	border: 1px solid rgb(var(--black));
 }
 .backdrop-image {
 	background: url('https://res.cloudinary.com/stanleyowen/image/upload/v1623730894/lofi/d229bbf31eaeebc7c88897732d8b932d_nepwii.webp') center/cover no-repeat;
@@ -98,20 +98,20 @@ body {
 	background-color: transparent;
 }
 
-/* Base UI */
-.app { margin-left: 225px; }
+/* Base Layout UI */
+.app { margin-left: 225px }
 .app-ui {
 	height: 84vh;
 	overflow: auto;
 }
 .card {
-	flex-wrap: nowrap !important;
 	width: 100%;
-    background-color: rgb(var(--white)/20%);
     border-radius: 5px;
-    box-shadow: 0px 4px 8px rgb(var(--black) / 5%);
     transition: all .3s;
     box-sizing: border-box;
+	flex-wrap: nowrap !important;
+    background-color: rgb(var(--white)/20%);
+    box-shadow: 0px 4px 8px rgb(var(--black) / 5%);
 }
 .card:hover { background-color: rgb(var(--white) / 50%) }
 .card img {
@@ -131,6 +131,7 @@ body {
 	width: 75px;
     height: auto;
 }
+
 /* Properties */
 .flex { display: flex; flex-wrap: wrap; }
 .center-flex { align-items: center; justify-content: center; }
@@ -152,7 +153,6 @@ body {
 .mt-30 { margin-top: 30px !important; }
 .ml-10 { margin-left: 10px !important; }
 .m-auto { margin: auto !important }
-button { background-color: transparent; }
 svg {
 	display: block;
 	margin: auto;
@@ -193,7 +193,7 @@ button {
 	padding: 10px;
 	height: 12.5vh;
 	overflow: auto;
-	background: rgb(var(--white) / 10%);
+	background: rgb(var(--white) / 60%);
 	color: rgb(var(--black));
 }
 .footer .song-title {
