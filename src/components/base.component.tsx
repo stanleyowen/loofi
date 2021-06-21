@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react'
 
-const BaseLayout = ({ properties }) => {
-    const [greeting, setGreeting] = useState()
-    const triggerAudio = (e) => {
+const BaseLayout = ({ properties }: any) => {
+    const [greeting, setGreeting] = useState<string>()
+    const triggerAudio = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
-        e.target.classList.toggle('pause')
+        const target = e.target as Element
+        target.classList.toggle('pause')
     }
 
     useEffect(() => {
         const currentHour = new Date().getHours()
-        if(currentHour < 12) setGreeting('Morning')
-        else if(currentHour < 18) setGreeting('Afternoon')
+        if (currentHour < 12) setGreeting('Morning')
+        else if (currentHour < 18) setGreeting('Afternoon')
         else setGreeting('Evening')
     }, [])
-    
+
     const albumData = [
         {
             title: 'Back to December',
@@ -60,13 +61,13 @@ const BaseLayout = ({ properties }) => {
                 {
                     albumData.map(album => {
                         return (
-                        <div className="m-10" key={album.img}>
-                            <a className="card flex" href={album.link}>
-                                <img src={album.img} />
-                                <p className="m-auto w-50">{album.title}</p>
-                                <button className="play-btn m-auto" onClick={triggerAudio}></button>
-                            </a>
-                        </div>)
+                            <div className="m-10" key={album.img}>
+                                <a className="card flex" href={album.link}>
+                                    <img src={album.img} alt={album.title} />
+                                    <p className="m-auto w-50">{album.title}</p>
+                                    <button className="play-btn m-auto" onClick={triggerAudio}></button>
+                                </a>
+                            </div>)
                     })
                 }
             </div>

@@ -1,17 +1,17 @@
-client/node_modules
-client/.pnp
-client/.pnp.js
-client/coverage
-client/build
-client/.eslintcache
-client/debug.log
-client/.netlify
+.pnp
+.pnp.js
+coverage
+build
+.eslintcache
+debug.log
+.netlify
 
-client/.env
-client/.DS_Store
-client/.env.local
-client/.env.development.local
-client/.env.test.local
-client/.env.production.local
+.env
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
 docs/
+node_modules

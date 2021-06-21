@@ -3,7 +3,7 @@ import Navbar from './navbar.component'
 import Base from './base.component'
 import Controls from './controls.component'
 
-const App = ({ properties }) => {
+const App = ({ properties }: any) => {
     return (
         <div className="app">
             <div className="app-ui">

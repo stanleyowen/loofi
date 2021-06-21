@@ -2,7 +2,7 @@ import React from 'react'
 import { IconButton } from '@material-ui/core'
 import { ChevronLeft, ChevronRight } from '../lib/icons.component'
 
-const Navbar = ({ properties }) => {
+const Navbar = ({ properties }: any) => {
     return (
         <div>
             <div className="navbar">
