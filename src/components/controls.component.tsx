@@ -1,9 +1,10 @@
 import React from 'react'
 import { SkipNext, SkipPrevious } from '../lib/icons.component'
-const Controls = ({ properties }) => {
-    const triggerAudio = (e) => {
+const Controls = ({ properties }: any) => {
+    const triggerAudio = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
-        e.target.classList.toggle('pause')
+        const target = e.target as Element;
+        target.classList.toggle('pause')
     }
     return (
         <div className="footer flex" id="footer">
