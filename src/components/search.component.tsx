@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Search = ({ properties }:any) => {
+const Search = ({ properties }: any) => {
     return (
         <div>Search Component</div>
     )

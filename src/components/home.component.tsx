@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 
-const Home = ({ properties }:any) => {
+const Home = ({ properties }: any) => {
     const [greeting, setGreeting] = useState<string>()
-    const triggerAudio = (e:React.MouseEvent<HTMLButtonElement>) => {
-        e.preventDefault()
-        const target = e.target as Element
-        target.classList.toggle('pause')
+
+    const triggerAudio = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        (e.target as Element).classList.toggle('pause')
     }
 
     useEffect(() => {
@@ -61,13 +61,14 @@ const Home = ({ properties }:any) => {
                 {
                     albumData.map(album => {
                         return (
-                        <div className="m-10" key={album.img}>
-                            <a className="card flex" href={album.link}>
-                                <img src={album.img} />
-                                <p className="m-auto w-50">{album.title}</p>
-                                <button className="play-btn m-auto" onClick={triggerAudio}></button>
-                            </a>
-                        </div>)
+                            <div className="m-10" key={album.img}>
+                                <a className="card flex" href={album.link}>
+                                    <img src={album.img} alt={album.title} />
+                                    <p className="m-auto w-50">{album.title}</p>
+                                    <button className="play-btn m-auto" onClick={triggerAudio}></button>
+                                </a>
+                            </div>
+                        )
                     })
                 }
             </div>

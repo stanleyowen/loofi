@@ -14,7 +14,7 @@ const SideBar = ({ properties }: any) => {
     const switchTab = (e: React.MouseEvent<HTMLElement>) => {
         e.preventDefault()
         const target = String(((e.target as HTMLElement).ownerDocument.activeElement?.childNodes[0].childNodes[1] as HTMLElement).innerText).toLowerCase()
-        if (target !== active) {
+        if(target !== active) {
             setActive(target)
             properties({ id: 'activeTab', value: target })
         } else return
@@ -28,10 +28,12 @@ const SideBar = ({ properties }: any) => {
                         const components: { [key: string]: any } = { HomeSolid, HomeOutline, SearchSolid, SearchOutline }
                         const SolidIcon = components[`${tab}Solid`]
                         const OutlineIcon = components[`${tab}Outline`]
-                        return (<Button className="full-width rounded-corner p-10" id={tab.toLowerCase()} key={tab.toLowerCase()}>
-                            <div className="w-30">{active === tab.toLowerCase() ? <SolidIcon /> : <OutlineIcon />}</div>
-                            <div className="w-70 left-align">{tab.toLowerCase()}</div>
-                        </Button>)
+                        return (
+                            <Button className="full-width rounded-corner p-10" id={tab.toLowerCase()} key={tab.toLowerCase()}>
+                                <div className="w-30">{active === tab.toLowerCase() ? <SolidIcon /> : <OutlineIcon />}</div>
+                                <div className="w-70 left-align">{tab.toLowerCase()}</div>
+                            </Button>
+                        )
                     })
                 }
             </div>

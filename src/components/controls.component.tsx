@@ -1,20 +1,19 @@
 import React from 'react'
 import { SkipNext, SkipPrevious } from '../lib/icons.component'
+
 const Controls = ({ properties }: any) => {
     const triggerAudio = (e: React.MouseEvent<HTMLButtonElement>) => {
-        e.preventDefault()
-        const target = e.target as Element;
-        target.classList.toggle('pause')
+        e.preventDefault();
+        (e.target as Element).classList.toggle('pause')
     }
+    
     return (
         <div className="footer flex" id="footer">
-            <div className="w-30 min-180">
-                <div className="flex">
-                    <img src="https://lh3.googleusercontent.com/_fnSo5pFwGb7QJZL6iOTYkHwSJ9yvA16yKZRHUTDodzKTu3kUFu9apc69J8SlP-Q2HUymWy4TNxK4B9mUhubl01d" alt="Currently playing music" />
-                    <div className="center-vert ml-10">
-                        <div className="song-title">Back to December</div>
-                        <div className="author">Taylor Swift</div>
-                    </div>
+            <div className="w-30 flex">
+                <img src="https://lh3.googleusercontent.com/_fnSo5pFwGb7QJZL6iOTYkHwSJ9yvA16yKZRHUTDodzKTu3kUFu9apc69J8SlP-Q2HUymWy4TNxK4B9mUhubl01d" alt="Currently Playing Music" />
+                <div className="center-vert ml-10">
+                    <div className="song-title">Back to December</div>
+                    <div className="author">Taylor Swift</div>
                 </div>
             </div>
             <div className="w-40 flex center-flex">
