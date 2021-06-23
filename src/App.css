@@ -56,7 +56,7 @@ body {
 	border: 1px solid rgb(var(--black));
 }
 .backdrop-image {
-	background: url('https://res.cloudinary.com/stanleyowen/image/upload/v1623730894/lofi/d229bbf31eaeebc7c88897732d8b932d_nepwii.webp') center/cover no-repeat;
+	background: url('https://raw.githubusercontent.com/stanleyowen/lofi-player/main/src/img/d229bbf31eaeebc7c88897732d8b932d.webp') center/cover no-repeat;
     -webkit-filter: blur(25px);
             filter: blur(25px);
     -webkit-transform: scale(1.1);
@@ -75,9 +75,9 @@ body {
 	height: 100%;
 	position: absolute;
 	background-blend-mode: normal, color, luminosity;
-	background: -o-linear-gradient(bottom, rgba(239, 239, 239, 0.3), rgba(239, 239, 239, 0.3)), rgba(239, 239, 239, 0.95) url('https://res.cloudinary.com/stanleyowen/image/upload/v1623733351/lofi/aaddc3454ccbefbb2d8d8461f8f7f481_eowzuq.webp') center/196px repeat;
-	background: -webkit-gradient(linear, left bottom, left top, from(rgba(239, 239, 239, 0.3)), to(rgba(239, 239, 239, 0.3))), rgba(239, 239, 239, 0.95) url('https://res.cloudinary.com/stanleyowen/image/upload/v1623733351/lofi/aaddc3454ccbefbb2d8d8461f8f7f481_eowzuq.webp') center/196px repeat;
-	background: linear-gradient(0deg, rgba(239, 239, 239, 0.3), rgba(239, 239, 239, 0.3)), rgba(239, 239, 239, 0.95) url('https://res.cloudinary.com/stanleyowen/image/upload/v1623733351/lofi/aaddc3454ccbefbb2d8d8461f8f7f481_eowzuq.webp') center/196px repeat;
+	background: -o-linear-gradient(bottom, rgba(239, 239, 239, 0.3), rgba(239, 239, 239, 0.3)), rgba(239, 239, 239, 0.95) url('https://raw.githubusercontent.com/stanleyowen/lofi-player/main/src/img/aaddc3454ccbefbb2d8d8461f8f7f481.webp') center/196px repeat;
+	background: -webkit-gradient(linear, left bottom, left top, from(rgba(239, 239, 239, 0.3)), to(rgba(239, 239, 239, 0.3))), rgba(239, 239, 239, 0.95) url('https://raw.githubusercontent.com/stanleyowen/lofi-player/main/src/img/aaddc3454ccbefbb2d8d8461f8f7f481.webp') center/196px repeat;
+	background: linear-gradient(0deg, rgba(239, 239, 239, 0.3), rgba(239, 239, 239, 0.3)), rgba(239, 239, 239, 0.95) url('https://raw.githubusercontent.com/stanleyowen/lofi-player/main/src/img/aaddc3454ccbefbb2d8d8461f8f7f481.webp') center/196px repeat;
 }
 
 /* Sidebar UI */
