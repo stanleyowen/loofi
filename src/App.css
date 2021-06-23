@@ -190,7 +190,7 @@ button {
 
 /* Control Button UI */
 .footer {
-	padding: 10px;
+	padding: 10px 20px;
 	height: 12.5vh;
 	overflow: auto;
 	background: rgb(var(--white) / 60%);
