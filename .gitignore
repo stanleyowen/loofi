@@ -13,5 +13,5 @@ debug.log
 .env.test.local
 .env.production.local
 
-docs/
+**/img/*[.png][.jpg]
 node_modules
