@@ -74,7 +74,7 @@ const Home = ({ properties }: any) => {
             </div>
             <div className="mt-30 col-4" id="playlist">
                 <div className="m-10">
-                    <div className="large-card">
+                    <a className="large-card" href="/#link">
                         <img src="https://i.scdn.co/image/ab67616d0000b273caaa456c44f69f10c8b2aa53" />
                         <div className="flex">
                             <div className="m-auto w-70">
@@ -83,10 +83,10 @@ const Home = ({ properties }: any) => {
                             </div>
                             <button className="play-btn m-auto" onClick={triggerAudio}></button>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div className="m-10">
-                    <div className="large-card">
+                    <a className="large-card" href="/#link">
                         <img src="https://i.scdn.co/image/ab67616d0000b273caaa456c44f69f10c8b2aa53" />
                         <div className="flex">
                             <div className="m-auto w-70">
@@ -95,10 +95,10 @@ const Home = ({ properties }: any) => {
                             </div>
                             <button className="play-btn m-auto" onClick={triggerAudio}></button>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div className="m-10">
-                    <div className="large-card">
+                    <a className="large-card" href="/#link">
                         <img src="https://i.scdn.co/image/ab67616d0000b273caaa456c44f69f10c8b2aa53" />
                         <div className="flex">
                             <div className="m-auto w-70">
@@ -107,10 +107,10 @@ const Home = ({ properties }: any) => {
                             </div>
                             <button className="play-btn m-auto" onClick={triggerAudio}></button>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div className="m-10">
-                    <div className="large-card">
+                    <a className="large-card" href="/#link">
                         <img src="https://i.scdn.co/image/ab67616d0000b273caaa456c44f69f10c8b2aa53" />
                         <div className="flex">
                             <div className="m-auto w-70">
@@ -119,7 +119,7 @@ const Home = ({ properties }: any) => {
                             </div>
                             <button className="play-btn m-auto" onClick={triggerAudio}></button>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
