@@ -72,6 +72,16 @@ const Home = ({ properties }: any) => {
                     })
                 }
             </div>
+            <div className="mt-30 col-4" id="playlist">
+                <div>Large Card Component 1</div>
+                <div>Large Card Component 2</div>
+                <div>Large Card Component 3</div>
+                <div>Large Card Component 4</div>
+                <div>Large Card Component 5</div>
+                <div>Large Card Component 6</div>
+                <div>Large Card Component 7</div>
+                <div>Large Card Component 8</div>
+            </div>
         </div>
     )
 }

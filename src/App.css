@@ -166,6 +166,10 @@ button {
 	display: grid;
     grid-template-columns: 33.3% 33.3% 33.3%;
 }
+.col-4 {
+	display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
 #recent-playlist img, #footer img {
     display: block;
 	width: 75px;
@@ -220,5 +224,11 @@ button {
 	min-width: 40px;
 }
 
-@media only screen and (max-width: 1200px) { .col-3 { grid-template-columns: 50% 50%; } }
-@media only screen and (max-width: 700px) { .col-3 { grid-template-columns: 100%; } }
+@media only screen and (max-width: 1200px) {
+	.col-3 { grid-template-columns: 50% 50%; }
+	.col-4 { grid-template-columns: 33.3% 33.3% 33.3%; }
+}
+@media only screen and (max-width: 700px) {
+	.col-3 { grid-template-columns: 100%; }
+	.col-4 { grid-template-columns: 100%; }
+}
