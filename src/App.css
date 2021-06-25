@@ -13,6 +13,8 @@ body {
 	-webkit-font-smoothing: antialiased;
 }
 
+h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
+
 /* App Background */
 .backdrop {
 	top: 0;
@@ -230,10 +232,8 @@ button {
 	font-weight: 450;
 	font-size: 18px;
 }
-.author {
-	font-size: 13px;
-	color: rgb(var(--dark-gray));
-}
+.author { color: rgb(var(--dark-gray)) }
+.footer .author { font-size: 13px }
 .progress-bar {
 	height: 4px;
 	width: 100%;
