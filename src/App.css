@@ -116,6 +116,8 @@ body {
 .large-card {
 	width: 100%;
 	height: 100%;
+	padding: 15px;
+    border-radius: 5px;
     transition: all .3s;
     box-sizing: border-box;
 	flex-wrap: nowrap !important;
@@ -152,6 +154,7 @@ body {
 	height: auto;
 	display: block;
 	max-width: 100%;
+	border-radius: 20px;
 	box-sizing: border-box;
 }
 
@@ -174,7 +177,6 @@ body {
 .m-10 { margin: 10px !important; }
 .mt-10 { margin-top: 10px !important; }
 .mt-30 { margin-top: 30px !important; }
-.mb-10 { margin-bottom: 10px !important; }
 .ml-10 { margin-left: 10px !important; }
 .m-auto { margin: auto !important }
 svg {

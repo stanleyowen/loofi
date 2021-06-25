@@ -112,7 +112,7 @@ const Home = ({ properties }: any) => {
                 <div className="m-10">
                     <div className="large-card">
                         <img src="https://i.scdn.co/image/ab67616d0000b273caaa456c44f69f10c8b2aa53" />
-                        <div className="flex mb-10">
+                        <div className="flex">
                             <div className="m-auto w-70">
                                 <h3 className="mt-10">Back to December</h3>
                                 <p className="author">Bruno Mars</p>
