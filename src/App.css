@@ -110,26 +110,49 @@ body {
     transition: all .3s;
     box-sizing: border-box;
 	flex-wrap: nowrap !important;
-    background-color: rgb(var(--white)/20%);
+    background-color: rgb(var(--white) / 20%);
+    box-shadow: 0px 4px 8px rgb(var(--black) / 5%);
+}
+.large-card {
+	width: 100%;
+	height: 100%;
+    transition: all .3s;
+    box-sizing: border-box;
+	flex-wrap: nowrap !important;
+    background-color: rgb(var(--white) / 20%);
     box-shadow: 0px 4px 8px rgb(var(--black) / 5%);
 }
 .card:hover { background-color: rgb(var(--white) / 50%) }
+.large-card:hover { background-color: rgb(var(--white) / 50%) }
 .card img {
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
 	box-shadow: 2px 0 10px rgb(var(--black) / 20%);
 }
-.card p { font-weight: 600; }
-.card .play-btn { opacity: 0; }
-.card:hover .play-btn, .play-btn.pause { opacity: 1; }
-#recent-playlist a, #playlist a {
+.card p, .large-card h3 { font-weight: 600; }
+.card .play-btn, .large-card .play-btn { opacity: 0; }
+.card:hover .play-btn,
+.large-card:hover .play-btn,
+.play-btn.pause { opacity: 1; }
+#recent-playlist a {
+	color: inherit;
+	text-decoration: none;
+}
+#playlist a {
+	display: block;
 	color: inherit;
 	text-decoration: none;
 }
 #recent-playlist img {
-    display: block;
 	width: 75px;
     height: auto;
+    display: block;
+}
+#playlist img {
+	height: auto;
+	display: block;
+	max-width: 100%;
+	box-sizing: border-box;
 }
 
 /* Properties */
@@ -151,6 +174,7 @@ body {
 .m-10 { margin: 10px !important; }
 .mt-10 { margin-top: 10px !important; }
 .mt-30 { margin-top: 30px !important; }
+.mb-10 { margin-bottom: 10px !important; }
 .ml-10 { margin-left: 10px !important; }
 .m-auto { margin: auto !important }
 svg {
