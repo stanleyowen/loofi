@@ -72,6 +72,25 @@ const Home = ({ properties }: any) => {
                     })
                 }
             </div>
+            <div className="mt-30 col-4" id="playlist">
+                {
+                    albumData.map(album => {
+                        return (
+                        <div className="m-10" key={album.img}>
+                            <a className="large-card" href={album.link}>
+                                <img src={album.img} />
+                                <div className="flex">
+                                    <div className="m-auto w-70">
+                                        <h3 className="mt-10">{album.title}</h3>
+                                        <p className="author">{album.author}</p>
+                                    </div>
+                                    <button className="play-btn m-auto" onClick={triggerAudio}></button>
+                                </div>
+                            </a>
+                        </div>)
+                    })
+                }
+            </div>
         </div>
     )
 }

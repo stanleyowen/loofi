@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Button } from '@material-ui/core'
 import { HomeOutline, HomeSolid, SearchSolid, SearchOutline } from '../lib/icons.component'
 
