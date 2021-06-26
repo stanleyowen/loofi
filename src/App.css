@@ -39,15 +39,15 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 	left: 50%;
 	width: 200%;
 	height: 250%;
-	-webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
-	    -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);
-	        transform: translateX(-50%) translateY(-50%) rotate(45deg);
 	z-index: -1;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
 	-ms-flex-wrap: wrap;
 	    flex-wrap: wrap;
+	-webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	    -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	        transform: translateX(-50%) translateY(-50%) rotate(45deg);
 }
 .backdrop-overlay div {
 	width: 10%;
@@ -77,21 +77,21 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 	height: 100%;
 	position: absolute;
 	background-blend-mode: normal, color, luminosity;
+	background: linear-gradient(0deg, rgba(239, 239, 239, 0.3), rgba(239, 239, 239, 0.3)), rgba(239, 239, 239, 0.95) url('./img/aaddc3454ccbefbb2d8d8461f8f7f481.webp') center/196px repeat;
 	background: -o-linear-gradient(bottom, rgba(239, 239, 239, 0.3), rgba(239, 239, 239, 0.3)), rgba(239, 239, 239, 0.95) url('./img/aaddc3454ccbefbb2d8d8461f8f7f481.webp') center/196px repeat;
 	background: -webkit-gradient(linear, left bottom, left top, from(rgba(239, 239, 239, 0.3)), to(rgba(239, 239, 239, 0.3))), rgba(239, 239, 239, 0.95) url('./img/aaddc3454ccbefbb2d8d8461f8f7f481.webp') center/196px repeat;
-	background: linear-gradient(0deg, rgba(239, 239, 239, 0.3), rgba(239, 239, 239, 0.3)), rgba(239, 239, 239, 0.95) url('./img/aaddc3454ccbefbb2d8d8461f8f7f481.webp') center/196px repeat;
 }
 
-/* Sidebar UI */
+/* Sidebar */
 .sidebar {
 	width: 225px;
 	height: 100%;
 	position: fixed;
 	padding-top: 30px;
 	overflow-x: hidden;
-	background: rgb(var(--white)/40%);
+	background: rgb(var(--white) / 40%);
 }
-#tabs .active { background: rgb(var(--gray)/60%); }
+#tabs .active { background: rgb(var(--gray) / 60%) }
 
 /* Navbar */
 .navbar {
@@ -100,7 +100,7 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 	background-color: transparent;
 }
 
-/* Base Layout UI */
+/* Base Layout */
 .app { margin-left: 225px }
 .app-ui {
 	height: 84vh;

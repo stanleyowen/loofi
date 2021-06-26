@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from './navbar.component'
-import Base from './base.component'
+import BaseLayout from './base.component'
 import Controls from './controls.component'
 
 const App = ({ properties }: any) => {
