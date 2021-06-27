@@ -7,7 +7,9 @@ import AppUI from './components/app.component'
 
 export default function App() {
   const [properties, setProperties] = useState({
-    activeTab: 'home'
+    activeTab: 'home',
+    previousTab: '',
+    nextTab: ''
   })
 
   useEffect(() => {
@@ -17,13 +19,20 @@ export default function App() {
       document.querySelector('.backdrop-overlay')!.appendChild(div)
     }
   }, [])
-
-  const handleChange = useCallback(a => setProperties({ ...properties, [a.id]: a.value }), [properties])
+  
+  const handleChange = useCallback(a =>
+    setProperties({
+      ...properties,
+      previousTab: a.goBackward ? '' : properties.activeTab,
+      nextTab: a.goBackward ? properties.activeTab : '',
+      [a.id]: a.value,
+    })
+  , [properties])
 
   return (
     <Router>
-      <SideBar properties={handleChange} />
-      <AppUI properties={properties} />
+      <SideBar properties={properties} handleChange={handleChange}  />
+      <AppUI properties={properties} handleChange={handleChange} />
     </Router>
   )
 }
