@@ -8,7 +8,7 @@ const App = ({ properties }: any) => {
         <div className="app">
             <div className="app-ui">
                 <Navbar properties={properties} />
-                <Base properties={properties} />
+                <BaseLayout properties={properties} />
             </div>
             <Controls properties={properties} />
         </div>
