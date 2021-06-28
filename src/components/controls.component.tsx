@@ -14,6 +14,8 @@ const Controls = ({ properties }: any) => {
         (e.target as Element).classList.toggle('pause')
     }
 
+    property.audio.onloadeddata = () => document.getElementById('playback-duration')!.innerText = String(property.audio.duration)
+
     return (
         <div className="footer flex" id="footer">
             <div className="w-30 flex">
@@ -32,7 +34,7 @@ const Controls = ({ properties }: any) => {
                 <div className="playback-bar">
                     <div className="progress-time center-align">00:00</div>
                     <div className="progress-bar rounded-corner"></div>
-                    <div className="progress-time center-align">00:00</div>
+                    <div className="progress-time center-align" id="playback-duration">00:00</div>
                 </div>
             </div>
         </div>
