@@ -34,15 +34,15 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 	height: 100%;
 }
 .backdrop-overlay {
-	position: fixed;
 	top: 50%;
 	left: 50%;
 	width: 200%;
 	height: 250%;
 	z-index: -1;
+	display: flex;
+	position: fixed;
 	display: -webkit-box;
 	display: -ms-flexbox;
-	display: flex;
 	-ms-flex-wrap: wrap;
 	    flex-wrap: wrap;
 	-webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
@@ -95,13 +95,20 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 
 /* Navbar */
 .navbar {
+	width: 100%;
+	z-index: 999;
 	padding: 15px;
-	display: fixed;
-	background-color: transparent;
+	position: fixed;
+	background-color: rgb(var(--white) / 50%);
+}
+.navbar:hover {
+	transition: all .3s;
+	background-color: rgb(var(--white) / 80%);
 }
 
 /* Base Layout */
 .app { margin-left: 225px }
+.base { margin-top: 100px; }
 .app-ui {
 	height: 84vh;
 	overflow: auto;
