@@ -11,11 +11,10 @@ const Navbar = ({ properties, handleChange }: any) => {
     const handleProperty = (a: string, b: boolean) => setProperty({...property, [a]: b})
 
     useEffect(() => {
-        console.log(properties.previousTab)
-        if(properties.previousTab) handleProperty('disablePrevious', false)
-        if(properties.nextTab) handleProperty('disableForward', false)
-        else if(!properties.previousTab && !property.disablePrevious) handleProperty('disablePrevious', true)
-        else if(!properties.nextTab && !property.disableForward) handleProperty('disablePrevious', true)
+        setProperty({
+            disablePrevious: properties.previousTab ? false : true,
+            disableForward: properties.nextTab ? false : true
+        })
     }, [properties])
 
     const goBackward = (e: React.MouseEvent<HTMLElement>) => handleChange({ id: 'activeTab', value: properties.previousTab, goBackward: true })
