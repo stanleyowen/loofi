@@ -1,12 +1,19 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { SkipNext, SkipPrevious } from '../lib/icons.component'
 
 const Controls = ({ properties }: any) => {
+    const [property, setProperty] = useState({
+        audio: new Audio("https://www.chosic.com/wp-content/uploads/2021/06/Underwater.mp3")
+    })
+    let isPlaying = false
+
     const triggerAudio = (e: React.MouseEvent<HTMLButtonElement>) => {
-        e.preventDefault();
+        e.preventDefault()
+        isPlaying ? property.audio.pause() : property.audio.play();
+        isPlaying = !isPlaying;
         (e.target as Element).classList.toggle('pause')
     }
-    
+
     return (
         <div className="footer flex" id="footer">
             <div className="w-30 flex">
