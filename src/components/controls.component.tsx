@@ -3,10 +3,15 @@ import { SkipNext, SkipPrevious } from '../lib/icons.component'
 
 const Controls = ({ properties }: any) => {
     const [property, setProperty] = useState({
-        audio: new Audio("https://www.chosic.com/wp-content/uploads/2021/06/Underwater.mp3")
+        audio: new Audio("https://www.chosic.com/wp-content/uploads/2021/06/Underwater.mp3"),
+        isPlaying: false,
     })
-    let isPlaying = false
     const handleChange = (a: string, b: any) => setProperty({...property, [a]: b})
+
+    useEffect(() => {
+        if(property.isPlaying) property.audio.play()
+        else property.audio.pause()
+    }, [property.isPlaying])
 
     const parseTime = (time: number) => {
         const minutes = Math.floor(time / 60)
@@ -16,8 +21,7 @@ const Controls = ({ properties }: any) => {
 
     const triggerAudio = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
-        isPlaying ? property.audio.pause() : property.audio.play();
-        isPlaying = !isPlaying;
+        handleChange('isPlaying', !property.isPlaying);
         (e.target as Element).classList.toggle('pause')
     }
 
