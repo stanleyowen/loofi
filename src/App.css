@@ -242,8 +242,12 @@ button {
 .author { color: rgb(var(--dark-gray)) }
 .footer .author { font-size: 13px }
 .progress-bar {
-	height: 4px;
+	position: relative;
+	-webkit-appearance: none;
+	height: 6px;
 	width: 100%;
+	outline: none;
+	cursor: pointer;
 	background-color:rgb(var(--white))
 }
 .playback-bar {

@@ -3,33 +3,34 @@ import { SkipNext, SkipPrevious } from '../lib/icons.component'
 
 const Controls = ({ properties }: any) => {
     const [property, setProperty] = useState({
-        audio: new Audio("https://www.chosic.com/wp-content/uploads/2021/06/Underwater.mp3"),
-        isPlaying: false,
+        playing: false,
+        duration: 0,
+        audio: new Audio("https://www.chosic.com/wp-content/uploads/2021/06/Underwater.mp3")
     })
     const handleChange = (a: string, b: any) => setProperty({...property, [a]: b})
 
-    useEffect(() => {
-        if(property.isPlaying) property.audio.play()
-        else property.audio.pause()
-    }, [property.isPlaying])
+    property.audio.onloadeddata = () => handleChange('duration', property.audio.duration)
 
     const parseTime = (time: number) => {
         const minutes = Math.floor(time / 60)
         const second = Math.floor(time - (minutes * 60))
         return `${(minutes < 10 ? `0${minutes}` : minutes)}:${(second < 10 ? `0${second}` : second)}`
     }
+    useEffect(() => {
+        if(property.playing) property.audio.play()
+        else property.audio.pause()
+    }, [property.playing])
+
+    property.audio.ontimeupdate = () => {
+        document.getElementById('current-duration')!.innerText = parseTime(property.audio.currentTime)
+        document.getElementById('playback-progress')!.setAttribute('value', String((property.audio.currentTime/property.audio.duration)*100))
+    }
 
     const triggerAudio = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
-        handleChange('isPlaying', !property.isPlaying);
+        handleChange('playing', !property.playing);
         (e.target as Element).classList.toggle('pause')
     }
-
-    property.audio.onloadeddata = () => document.getElementById('playback-duration')!.innerText = String(parseTime(property.audio.duration))
-
-    property.audio.addEventListener("timeupdate", () =>
-        document.getElementById('current-duration')!.innerText = parseTime(property.audio.currentTime)
-    )
 
     return (
         <div className="footer flex" id="footer">
@@ -48,8 +49,8 @@ const Controls = ({ properties }: any) => {
                 </div>
                 <div className="playback-bar">
                     <div className="progress-time center-align" id="current-duration">00:00</div>
-                    <div className="progress-bar rounded-corner"></div>
-                    <div className="progress-time center-align" id="playback-duration">00:00</div>
+                    <input type="range" className="progress-bar rounded-corner" id="playback-progress" max="100" value="0" />
+                    <div className="progress-time center-align">{parseTime(property.duration ? property.duration : 0)}</div>
                 </div>
             </div>
         </div>
