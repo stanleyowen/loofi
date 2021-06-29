@@ -5,6 +5,7 @@ const Controls = ({ properties }: any) => {
     const [property, setProperty] = useState({
         playing: false,
         duration: 0,
+        progress: 0,
         audio: new Audio("https://www.chosic.com/wp-content/uploads/2021/06/Underwater.mp3")
     })
     const handleChange = (a: string, b: any) => setProperty({...property, [a]: b})
@@ -23,7 +24,7 @@ const Controls = ({ properties }: any) => {
 
     property.audio.ontimeupdate = () => {
         document.getElementById('current-duration')!.innerText = parseTime(property.audio.currentTime)
-        document.getElementById('playback-progress')!.setAttribute('value', String((property.audio.currentTime/property.audio.duration)*100))
+        handleChange('progress', (property.audio.currentTime/property.audio.duration)*100)
     }
 
     const triggerAudio = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -49,7 +50,7 @@ const Controls = ({ properties }: any) => {
                 </div>
                 <div className="playback-bar">
                     <div className="progress-time center-align" id="current-duration">00:00</div>
-                    <input type="range" className="progress-bar rounded-corner" id="playback-progress" max="100" value="0" />
+                    <input type="range" className="progress-bar rounded-corner" id="playback-progress" max="100" value={property.progress} />
                     <div className="progress-time center-align">{parseTime(property.duration ? property.duration : 0)}</div>
                 </div>
             </div>
