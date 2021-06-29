@@ -3,8 +3,7 @@ import { SkipNext, SkipPrevious } from '../lib/icons.component'
 
 const Controls = ({ properties }: any) => {
     const [property, setProperty] = useState({
-        audio: new Audio("https://www.chosic.com/wp-content/uploads/2021/06/Underwater.mp3"),
-        currentDuration: ''
+        audio: new Audio("https://www.chosic.com/wp-content/uploads/2021/06/Underwater.mp3")
     })
     let isPlaying = false
     const handleChange = (a: string, b: any) => setProperty({...property, [a]: b})
@@ -19,7 +18,7 @@ const Controls = ({ properties }: any) => {
     property.audio.onloadeddata = () => document.getElementById('playback-duration')!.innerText = String(property.audio.duration)
 
     property.audio.addEventListener("timeupdate", () => {
-        handleChange('currentDuration', property.audio.currentTime)
+        document.getElementById('current-duration')!.innerText = String(property.audio.currentTime)
     })
 
     return (
@@ -38,7 +37,7 @@ const Controls = ({ properties }: any) => {
                     <button>{SkipNext()}</button>
                 </div>
                 <div className="playback-bar">
-                    <div className="progress-time center-align" id="current-duration">{property.audio.currentTime}</div>
+                    <div className="progress-time center-align" id="current-duration">00:00</div>
                     <div className="progress-bar rounded-corner"></div>
                     <div className="progress-time center-align" id="playback-duration">00:00</div>
                 </div>
