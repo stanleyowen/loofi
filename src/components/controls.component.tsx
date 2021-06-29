@@ -8,6 +8,12 @@ const Controls = ({ properties }: any) => {
     let isPlaying = false
     const handleChange = (a: string, b: any) => setProperty({...property, [a]: b})
 
+    const parseTime = (time: number) => {
+        const minutes = Math.floor(time / 60)
+        const second = Math.floor(time - (minutes * 60))
+        return `${(minutes < 10 ? `0${minutes}` : minutes)}:${(second < 10 ? `0${second}` : second)}`
+    }
+
     const triggerAudio = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
         isPlaying ? property.audio.pause() : property.audio.play();
@@ -15,13 +21,11 @@ const Controls = ({ properties }: any) => {
         (e.target as Element).classList.toggle('pause')
     }
 
-    property.audio.onloadeddata = () => document.getElementById('playback-duration')!.innerText = String(property.audio.duration)
+    property.audio.onloadeddata = () => document.getElementById('playback-duration')!.innerText = String(parseTime(property.audio.duration))
 
-    property.audio.addEventListener("timeupdate", () => {
-        const minutes = Math.floor(property.audio.currentTime / 60)
-        const second = Math.floor(property.audio.currentTime - (minutes * 60))
-        document.getElementById('current-duration')!.innerText = String(`${(minutes < 10 ? `0${minutes}` : minutes)}:${(second < 10 ? `0${second}` : second)}`)
-    })
+    property.audio.addEventListener("timeupdate", () =>
+        document.getElementById('current-duration')!.innerText = parseTime(property.audio.currentTime)
+    )
 
     return (
         <div className="footer flex" id="footer">
