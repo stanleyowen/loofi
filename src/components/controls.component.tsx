@@ -18,7 +18,9 @@ const Controls = ({ properties }: any) => {
     property.audio.onloadeddata = () => document.getElementById('playback-duration')!.innerText = String(property.audio.duration)
 
     property.audio.addEventListener("timeupdate", () => {
-        document.getElementById('current-duration')!.innerText = String(property.audio.currentTime)
+        const minutes = Math.floor(property.audio.currentTime / 60)
+        const second = Math.floor(property.audio.currentTime - (minutes * 60))
+        document.getElementById('current-duration')!.innerText = String(`${(minutes < 10 ? `0${minutes}` : minutes)}:${(second < 10 ? `0${second}` : second)}`)
     })
 
     return (
