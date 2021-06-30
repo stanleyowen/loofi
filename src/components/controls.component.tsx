@@ -1,12 +1,38 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { SkipNext, SkipPrevious } from '../lib/icons.component'
 
 const Controls = ({ properties }: any) => {
+    const [property, setProperty] = useState({
+        duration: 0,
+        progress: 0,
+        playing: false,
+        audio: new Audio("https://www.chosic.com/wp-content/uploads/2021/06/Underwater.mp3")
+    })
+    const handleChange = (a: string, b: any) => setProperty({...property, [a]: b})
+
+    useEffect(() => {
+        property.playing ? property.audio.play() : property.audio.pause()
+    }, [property.playing])
+
+    const parseTime = (time: number) => {
+        const minutes = Math.floor(time / 60)
+        const second = Math.floor(time - (minutes * 60))
+        return `${(minutes < 10 ? `0${minutes}` : minutes)}:${(second < 10 ? `0${second}` : second)}`
+    }
+
+    property.audio.onloadeddata = () => handleChange('duration', property.audio.duration)
+
+    property.audio.ontimeupdate = () => {
+        handleChange('progress', (property.audio.currentTime/property.audio.duration)*100)
+        document.getElementById('current-duration')!.innerText = parseTime(property.audio.currentTime)
+    }
+
     const triggerAudio = (e: React.MouseEvent<HTMLButtonElement>) => {
-        e.preventDefault();
+        e.preventDefault()
+        handleChange('playing', !property.playing);
         (e.target as Element).classList.toggle('pause')
     }
-    
+
     return (
         <div className="footer flex" id="footer">
             <div className="w-30 flex">
@@ -23,9 +49,9 @@ const Controls = ({ properties }: any) => {
                     <button>{SkipNext()}</button>
                 </div>
                 <div className="playback-bar">
-                    <div className="progress-time center-align">00:00</div>
-                    <div className="progress-bar rounded-corner"></div>
-                    <div className="progress-time center-align">00:00</div>
+                    <div className="progress-time center-align" id="current-duration">00:00</div>
+                    <input type="range" className="progress-bar rounded-corner" max="100" value={property.progress} readOnly />
+                    <div className="progress-time center-align">{parseTime(property.duration ? property.duration : 0)}</div>
                 </div>
             </div>
         </div>
