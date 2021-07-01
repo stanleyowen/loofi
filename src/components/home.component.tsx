@@ -59,9 +59,9 @@ const Home = ({ properties }: any) => {
             <h2 className="m-10">Good {greeting}</h2>
             <div className="col-3" id="recent-playlist">
                 {
-                    albumData.map(album => {
+                    albumData.map((album, index) => {
                         return (
-                            <div className="m-10" key={album.img}>
+                            <div className="m-10" key={index}>
                                 <a className="card flex" href={album.link}>
                                     <img src={album.img} alt={album.title} />
                                     <p className="m-auto w-50">{album.title}</p>
@@ -74,20 +74,21 @@ const Home = ({ properties }: any) => {
             </div>
             <div className="mt-30 col-4" id="playlist">
                 {
-                    albumData.map(album => {
+                    albumData.map((album, index) => {
                         return (
-                        <div className="m-10" key={album.img}>
-                            <a className="large-card" href={album.link}>
-                                <img src={album.img} />
-                                <div className="flex">
-                                    <div className="m-auto w-70">
-                                        <h3 className="mt-10">{album.title}</h3>
-                                        <p className="author">{album.author}</p>
+                            <div className="m-10" key={index}>
+                                <a className="large-card" href={album.link}>
+                                    <img src={album.img} />
+                                    <div className="flex">
+                                        <div className="m-auto w-70">
+                                            <h3 className="mt-10">{album.title}</h3>
+                                            <p className="author">{album.author}</p>
+                                        </div>
+                                        <button className="play-btn m-auto" onClick={triggerAudio}></button>
                                     </div>
-                                    <button className="play-btn m-auto" onClick={triggerAudio}></button>
-                                </div>
-                            </a>
-                        </div>)
+                                </a>
+                            </div>
+                        )
                     })
                 }
             </div>
