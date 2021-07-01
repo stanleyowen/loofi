@@ -159,7 +159,8 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 	color: inherit;
 	text-decoration: none;
 }
-#playlist img {
+#playlist img,
+#playlist .MuiSkeleton-root {
 	height: auto;
 	display: block;
 	max-width: 100%;
@@ -259,11 +260,16 @@ button {
 	min-width: 40px;
 }
 
+/* Search */
+.search { width: 50%; }
+
 @media only screen and (max-width: 1200px) {
 	.col-3 { grid-template-columns: 50% 50% }
 	.col-4 { grid-template-columns: 33.3% 33.3% 33.3% }
+	.search { width: 60%; }
 }
 @media only screen and (max-width: 700px) {
 	.col-3 { grid-template-columns: 100% }
 	.col-4 { grid-template-columns: 100% }
+	.search { width: 100%; }
 }
