@@ -5,7 +5,7 @@ const Home = ({ properties }: any) => {
 
     const triggerAudio = (e: React.MouseEvent<HTMLButtonElement>, data: object) => {
         e.preventDefault()
-        console.log(data);
+        handleSong(data);
         (e.target as Element).classList.toggle('pause')
     }
 
