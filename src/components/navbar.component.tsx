@@ -8,8 +8,6 @@ const Navbar = ({ properties, handleChange }: any) => {
         disableForward: true
     })
 
-    const handleProperty = (a: string, b: boolean) => setProperty({...property, [a]: b})
-
     useEffect(() => {
         setProperty({
             disablePrevious: properties.previousTab ? false : true,

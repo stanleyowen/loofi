@@ -79,7 +79,7 @@ const Home = ({ properties, handleSong }: any) => {
                         return (
                             <div className="m-10" key={index}>
                                 <a className="large-card" href={album.link}>
-                                    <img src={album.image} />
+                                    <img src={album.image} alt={album.title} />
                                     <div className="flex">
                                         <div className="m-auto w-70">
                                             <h3 className="mt-10">{album.title}</h3>

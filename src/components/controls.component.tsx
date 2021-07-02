@@ -11,7 +11,7 @@ const Controls = ({ properties, song, handleSong }: any) => {
 
     useEffect(() => {
         song.playing ? property.audio.play() : property.audio.pause()
-    }, [song.playing])
+    }, [song.playing, property])
 
     const parseTime = (time: number) => {
         const minutes = Math.floor(time / 60)

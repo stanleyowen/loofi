@@ -4,7 +4,7 @@ import { TextField } from '@material-ui/core'
 
 const Search = ({ properties }: any) => {
     const items:any = []
-    const [data, setData] = useState<string>()
+    // const [data, setData] = useState<string>()
     const [keyword, setKeyword] = useState<string>('')
     
     useEffect(() => {
@@ -14,13 +14,13 @@ const Search = ({ properties }: any) => {
     if(keyword)
         for (let i=0; i<4; i++){
             items.push(<div className="m-10" key={i}>
-                    <a className="large-card">
+                    <div className="large-card">
                         <Skeleton variant="circle" height={200} animation="wave" />
                         <div className="flex">
                             <span className="mt-10 w-70"><Skeleton variant="text" animation="wave" /></span>
                             <span className="w-40"><Skeleton variant="text" animation="wave" /></span>
                         </div>
-                    </a>
+                    </div>
                 </div>)
         }
 

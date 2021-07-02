@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useCallback } from 'react'
 import Navbar from './navbar.component'
 import BaseLayout from './base.component'
 import Controls from './controls.component'
