@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { SkipNext, SkipPrevious } from '../lib/icons.component'
 
-const Controls = ({ properties, song }: any) => {
+const Controls = ({ properties, song, handleSong }: any) => {
     const [property, setProperty] = useState({
         duration: 0,
         progress: 0,
@@ -27,7 +27,8 @@ const Controls = ({ properties, song }: any) => {
     }
 
     const triggerAudio = (e: React.MouseEvent<HTMLButtonElement>) => {
-        e.preventDefault();
+        e.preventDefault()
+        handleSong({id: 'playing', value: !song.playing});
         (e.target as Element).classList.toggle('pause')
     }
 

@@ -20,7 +20,7 @@ const App = ({ properties, handleChange }: any) => {
                 <Navbar properties={properties} handleChange={handleChange} />
                 <BaseLayout properties={properties} handleSong={handleSong} />
             </div>
-            <Controls properties={properties} song={song} />
+            <Controls properties={properties} song={song} handleSong={handleSong} />
         </div>
     )
 }
