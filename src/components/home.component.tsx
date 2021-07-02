@@ -18,10 +18,10 @@ const Home = ({ properties, handleSong }: any) => {
 
     const albumData = [
         {
-            title: 'Back to December',
-            author: 'Taylor Swift',
+            title: 'Coral',
+            author: 'LIQWYD',
             link: '/#link',
-            image: 'https://lh3.googleusercontent.com/_fnSo5pFwGb7QJZL6iOTYkHwSJ9yvA16yKZRHUTDodzKTu3kUFu9apc69J8SlP-Q2HUymWy4TNxK4B9mUhubl01d'
+            image: 'https://i1.sndcdn.com/artworks-FoWcUyCslTjVJZe4-XZmlqw-t500x500.jpg'
         },
         {
             title: 'Good Times',

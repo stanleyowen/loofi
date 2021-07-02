@@ -13,7 +13,7 @@ const App = ({ properties, handleChange }: any) => {
     })
 
     const handleSong = useCallback(a => {
-        if(!a.id && !a.value) setSong({...a, playing: true})
+        if(!a.id && !a.value) setSong({...a, playing: a.audio === song.audio ? !song.playing : true})
         else setSong({ ...song, [a.id]: a.value })
     }, [song])
 
