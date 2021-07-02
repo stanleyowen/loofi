@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import Navbar from './navbar.component'
 import BaseLayout from './base.component'
 import Controls from './controls.component'
@@ -12,11 +12,13 @@ const App = ({ properties, handleChange }: any) => {
         image: 'https://lh3.googleusercontent.com/_fnSo5pFwGb7QJZL6iOTYkHwSJ9yvA16yKZRHUTDodzKTu3kUFu9apc69J8SlP-Q2HUymWy4TNxK4B9mUhubl01d'
     })
 
+    const handleSong = useCallback(a => setSong({...a, playing: true}), [song])
+
     return (
         <div className="app">
             <div className="app-ui">
                 <Navbar properties={properties} handleChange={handleChange} />
-                <BaseLayout properties={properties} />
+                <BaseLayout properties={properties} handleSong={handleSong} />
             </div>
             <Controls properties={properties} song={song} />
         </div>
