@@ -6,13 +6,16 @@ import Controls from './controls.component'
 const App = ({ properties, handleChange }: any) => {
     const [song, setSong] = useState({
         playing: false,
-        title: 'Back to December',
-        author: 'Taylor Swift',
+        title: 'Underwater',
+        author: 'LiQWYD',
         audio: 'https://www.chosic.com/wp-content/uploads/2021/06/Underwater.mp3',
-        image: 'https://lh3.googleusercontent.com/_fnSo5pFwGb7QJZL6iOTYkHwSJ9yvA16yKZRHUTDodzKTu3kUFu9apc69J8SlP-Q2HUymWy4TNxK4B9mUhubl01d'
+        image: 'https://i.ytimg.com/vi/6Tnw3Ku-KeM/maxresdefault.jpg'
     })
 
-    const handleSong = useCallback(a => setSong({...a, playing: true}), [song])
+    const handleSong = useCallback(a => {
+        if(!a.id && !a.value) setSong({...a, playing: true})
+        else setSong({ ...song, [a.id]: a.value })
+    }, [song])
 
     return (
         <div className="app">
