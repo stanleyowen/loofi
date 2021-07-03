@@ -4,30 +4,29 @@ import { SkipNext, SkipPrevious } from '../lib/icons.component'
 const Controls = ({ properties, song, handleSong }: any) => {
     const [property, setProperty] = useState({
         duration: 0,
-        progress: 0,
-        audio: new Audio(song.audio)
+        progress: 0
     })
     const handleChange = (a: string, b: any) => setProperty({...property, [a]: b})
 
     useEffect(() => {
-        song.playing ? property.audio.play() : property.audio.pause()
-    }, [song.playing, property])
+        song.playing ? song.audio.play() : song.audio.pause()
+    }, [song.playing])
 
     const parseTime = (time: number) => {
         const minutes = Math.floor(time / 60)
         const second = Math.floor(time - (minutes * 60))
         return `${(minutes < 10 ? `0${minutes}` : minutes)}:${(second < 10 ? `0${second}` : second)}`
     }
+    song.audio.onloadeddata = () => handleChange('duration', song.audio.duration)
 
-    property.audio.onloadeddata = () => handleChange('duration', property.audio.duration)
-
-    property.audio.ontimeupdate = () => {
-        handleChange('progress', (property.audio.currentTime/property.audio.duration)*100)
-        document.getElementById('current-duration')!.innerText = parseTime(property.audio.currentTime)
+    song.audio.ontimeupdate = () => {
+        handleChange('progress', (song.audio.currentTime/song.audio.duration)*100)
+        document.getElementById('current-duration')!.innerText = parseTime(song.audio.currentTime)
     }
 
     const triggerAudio = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
+        console.log(song.audio)
         handleSong({id: 'playing', value: !song.playing});
         (e.target as Element).classList.toggle('pause')
     }

@@ -21,13 +21,15 @@ const Home = ({ properties, handleSong }: any) => {
             title: 'Coral',
             author: 'LIQWYD',
             link: '/#link',
-            image: 'https://i1.sndcdn.com/artworks-FoWcUyCslTjVJZe4-XZmlqw-t500x500.jpg'
+            image: 'https://i1.sndcdn.com/artworks-FoWcUyCslTjVJZe4-XZmlqw-t500x500.jpg',
+            audio: new Audio('https://www.chosic.com/wp-content/uploads/2021/06/liqwyd-coral.mp3')
         },
         {
-            title: 'Good Times',
-            author: 'Anne Marie',
+            title: 'Water Wood & Stone',
+            author: 'Audionautix',
             link: '/#link',
-            image: 'https://i.scdn.co/image/ab67706f000000039ab4dceef9bb6d4f2050f9c6'
+            image: 'https://i1.sndcdn.com/artworks-1Jlkwxr8ggjwyxFq-RKJJiw-t500x500.jpg',
+            audio: new Audio('https://www.chosic.com/wp-content/uploads/2021/05/audionautix-water-wood-and-stone.mp3')
         },
         {
             title: 'Lofi Hip Hop Music',
