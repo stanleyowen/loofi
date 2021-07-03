@@ -4,7 +4,8 @@ import { Audio, SkipNext, SkipPrevious } from '../lib/icons.component'
 const Controls = ({ properties, song, handleSong }: any) => {
     const [property, setProperty] = useState({
         duration: 0,
-        progress: 0
+        progress: 0,
+        volume: 50
     })
     const handleChange = (a: string, b: any) => setProperty({...property, [a]: b})
 
@@ -54,7 +55,7 @@ const Controls = ({ properties, song, handleSong }: any) => {
             <div className="w-20 flex center-flex">
                 <div className="audio">
                     <div>{Audio()}</div>
-                    <input type="range" className="progress-bar rounded-corner m-10" max="100" value={property.progress} readOnly />
+                    <input type="range" className="progress-bar rounded-corner m-10" max="100" value={property.volume} onChange={e => handleChange('volume', e.target.value)} />
                 </div>
             </div>
         </div>
