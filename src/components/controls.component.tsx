@@ -3,15 +3,14 @@ import { Audio, SkipNext, SkipPrevious } from '../lib/icons.component'
 
 const Controls = ({ properties, song, handleSong }: any) => {
     const [property, setProperty] = useState({
+        volume: 50,
         duration: 0,
         progress: 0,
-        volume: 50
     })
     const handleChange = (a: string, b: any) => setProperty({...property, [a]: b})
 
-    useEffect(() => {
-        song.playing ? song.audio.play() : song.audio.pause()
-    }, [song])
+    useEffect(() => { song.audio.volume = property.volume / 100 }, [song.audio, property.volume])
+    useEffect(() => { song.playing ? song.audio.play() : song.audio.pause() }, [song])
 
     const parseTime = (time: number) => {
         const minutes = Math.floor(time / 60)
