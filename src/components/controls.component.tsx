@@ -10,7 +10,7 @@ const Controls = ({ properties, song, handleSong }: any) => {
 
     useEffect(() => {
         song.playing ? song.audio.play() : song.audio.pause()
-    }, [song.playing])
+    }, [song])
 
     const parseTime = (time: number) => {
         const minutes = Math.floor(time / 60)
@@ -26,7 +26,6 @@ const Controls = ({ properties, song, handleSong }: any) => {
 
     const triggerAudio = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
-        console.log(song.audio)
         handleSong({id: 'playing', value: !song.playing});
         (e.target as Element).classList.toggle('pause')
     }
