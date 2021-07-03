@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { SkipNext, SkipPrevious } from '../lib/icons.component'
+import { Audio, SkipNext, SkipPrevious } from '../lib/icons.component'
 
 const Controls = ({ properties, song, handleSong }: any) => {
     const [property, setProperty] = useState({
@@ -39,7 +39,7 @@ const Controls = ({ properties, song, handleSong }: any) => {
                     <div className="author">{song.author}</div>
                 </div>
             </div>
-            <div className="w-40 flex center-flex">
+            <div className="w-50 flex center-flex">
                 <div className="flex center-flex">
                     <button>{SkipPrevious()}</button>
                     <button className={(song.playing ? "pause" : "")+" play-btn mrl-10"} onClick={triggerAudio}></button>
@@ -49,6 +49,12 @@ const Controls = ({ properties, song, handleSong }: any) => {
                     <div className="progress-time center-align" id="current-duration">00:00</div>
                     <input type="range" className="progress-bar rounded-corner" max="100" value={property.progress} readOnly />
                     <div className="progress-time center-align">{parseTime(property.duration ? property.duration : 0)}</div>
+                </div>
+            </div>
+            <div className="w-20 flex center-flex">
+                <div className="audio">
+                    <div>{Audio()}</div>
+                    <input type="range" className="progress-bar rounded-corner m-10" max="100" value={property.progress} readOnly />
                 </div>
             </div>
         </div>
