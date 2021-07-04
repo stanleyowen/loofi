@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import { Close } from '../lib/icons.component'
 import { Skeleton } from '@material-ui/lab'
-import { TextField } from '@material-ui/core'
+import { TextField, IconButton } from '@material-ui/core'
 
 const Search = ({ properties }: any) => {
     const items:any = []
@@ -26,7 +27,10 @@ const Search = ({ properties }: any) => {
 
     return (
         <div className="m-10">
-            <TextField label="Search" variant="outlined" className="search" value={keyword} onChange={e => setKeyword(e.target.value)} />
+            <div className="flex">
+                <TextField label="Search" variant="outlined" className="search" value={keyword} onChange={e => setKeyword(e.target.value)} id="search-query" />
+                <IconButton className="close-btn" style={{padding: '10px'}}>{Close()}</IconButton>
+            </div>
             <div className="mt-30 col-4" id="playlist">{items}</div>
         </div>
     )

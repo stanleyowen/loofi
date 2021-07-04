@@ -172,6 +172,10 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 .flex { display: flex; flex-wrap: wrap; }
 .mrl-10 { margin: 0 10px; padding: 0; }
 .rounded-corner { border-radius: 5px }
+.close-btn {
+	float: right;
+	right: 60px;
+}
 .left-align { text-align: left }
 .center-align { text-align: center }
 .center-vert { margin: auto 0 !important; }
