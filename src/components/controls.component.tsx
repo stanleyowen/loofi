@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Audio, SkipNext, SkipPrevious } from '../lib/icons.component'
+import { Audio, MutedAudio, SkipNext, SkipPrevious } from '../lib/icons.component'
 
 const Controls = ({ properties, song, handleSong }: any) => {
     const [property, setProperty] = useState({
@@ -54,7 +54,7 @@ const Controls = ({ properties, song, handleSong }: any) => {
             </div>
             <div className="w-20 flex center-flex">
                 <div className="audio">
-                    <button onClick={() => handleChange('muted', !property.muted)}>{Audio()}</button>
+                    <button onClick={() => handleChange('muted', !property.muted)}>{property.muted || property.volume === 0 ? MutedAudio() : Audio()}</button>
                     <input type="range" className="progress-bar rounded-corner m-10" max="100" value={property.volume} onChange={e => handleChange('volume', Number(e.target.value))} />
                 </div>
             </div>
