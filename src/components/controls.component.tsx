@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import { SkipNext, SkipPrevious } from '../lib/icons.component'
+import { Audio, MutedAudio, SkipNext, SkipPrevious } from '../lib/icons.component'
 
 const Controls = ({ properties, song, handleSong }: any) => {
     const [property, setProperty] = useState({
+        muted: false,
+        volume: 50,
         duration: 0,
-        progress: 0
+        progress: 0,
     })
     const handleChange = (a: string, b: any) => setProperty({...property, [a]: b})
 
-    useEffect(() => {
-        song.playing ? song.audio.play() : song.audio.pause()
-    }, [song])
+    useEffect(() => { song.audio.volume = property.muted ? 0 : property.volume / 100 }, [song.audio, property.volume, property.muted])
+    useEffect(() => { song.playing ? song.audio.play() : song.audio.pause() }, [song])
 
     const parseTime = (time: number) => {
         const minutes = Math.floor(time / 60)
@@ -39,7 +40,7 @@ const Controls = ({ properties, song, handleSong }: any) => {
                     <div className="author">{song.author}</div>
                 </div>
             </div>
-            <div className="w-40 flex center-flex">
+            <div className="w-50 flex center-flex">
                 <div className="flex center-flex">
                     <button>{SkipPrevious()}</button>
                     <button className={(song.playing ? "pause" : "")+" play-btn mrl-10"} onClick={triggerAudio}></button>
@@ -49,6 +50,12 @@ const Controls = ({ properties, song, handleSong }: any) => {
                     <div className="progress-time center-align" id="current-duration">00:00</div>
                     <input type="range" className="progress-bar rounded-corner" max="100" value={property.progress} readOnly />
                     <div className="progress-time center-align">{parseTime(property.duration ? property.duration : 0)}</div>
+                </div>
+            </div>
+            <div className="w-20 flex center-flex">
+                <div className="audio">
+                    <button onClick={() => handleChange('muted', !property.muted)}>{property.muted || property.volume === 0 ? MutedAudio() : Audio()}</button>
+                    <input type="range" className="progress-bar rounded-corner m-10" max="100" value={property.volume} onChange={e => handleChange('volume', Number(e.target.value))} />
                 </div>
             </div>
         </div>
