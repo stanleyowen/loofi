@@ -25,11 +25,17 @@ const Search = ({ properties }: any) => {
                 </div>)
         }
 
+    const ClearQuery = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault()
+        setKeyword('')
+        document.getElementById('search-query')?.focus()
+    }
+
     return (
         <div className="m-10">
             <div className="flex">
                 <TextField label="Search" variant="outlined" className="search" value={keyword} onChange={e => setKeyword(e.target.value)} id="search-query" />
-                <IconButton className="close-btn" style={{padding: '10px'}}>{Close()}</IconButton>
+                <IconButton className={(keyword ? null : 'none') + " close-btn"} style={{padding: '10px'}} onClick={ClearQuery}>{Close()}</IconButton>
             </div>
             <div className="mt-30 col-4" id="playlist">{items}</div>
         </div>
