@@ -3,13 +3,14 @@ import { Audio, SkipNext, SkipPrevious } from '../lib/icons.component'
 
 const Controls = ({ properties, song, handleSong }: any) => {
     const [property, setProperty] = useState({
+        muted: false,
         volume: 50,
         duration: 0,
         progress: 0,
     })
     const handleChange = (a: string, b: any) => setProperty({...property, [a]: b})
 
-    useEffect(() => { song.audio.volume = property.volume / 100 }, [song.audio, property.volume])
+    useEffect(() => { song.audio.volume = property.muted ? 0 : property.volume / 100 }, [song.audio, property.volume, property.muted])
     useEffect(() => { song.playing ? song.audio.play() : song.audio.pause() }, [song])
 
     const parseTime = (time: number) => {
@@ -53,8 +54,8 @@ const Controls = ({ properties, song, handleSong }: any) => {
             </div>
             <div className="w-20 flex center-flex">
                 <div className="audio">
-                    <div>{Audio()}</div>
-                    <input type="range" className="progress-bar rounded-corner m-10" max="100" value={property.volume} onChange={e => handleChange('volume', e.target.value)} />
+                    <button onClick={() => handleChange('muted', !property.muted)}>{Audio()}</button>
+                    <input type="range" className="progress-bar rounded-corner m-10" max="100" value={property.volume} onChange={e => handleChange('volume', Number(e.target.value))} />
                 </div>
             </div>
         </div>
