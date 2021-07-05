@@ -5,12 +5,13 @@ const Controls = ({ song, handleSong }: any) => {
     const [property, setProperty] = useState({
         duration: 0,
         progress: 0,
-        muted: false,
+        muted: localStorage.getItem('muted') ? Boolean(localStorage.getItem('muted')) : false,
         volume: localStorage.getItem('volume') ? Number(localStorage.getItem('volume')) : 50
     })
     const handleChange = (a: string, b: any) => setProperty({...property, [a]: b})
 
     useEffect(() => {
+        localStorage.setItem('muted', String(property.muted))
         localStorage.setItem('volume', String(property.volume))
         song.audio.volume = property.muted ? 0 : property.volume / 100
     }, [song.audio, property.volume, property.muted])
@@ -22,7 +23,6 @@ const Controls = ({ song, handleSong }: any) => {
         const second = Math.floor(time - (minutes * 60))
         return `${(minutes < 10 ? `0${minutes}` : minutes)}:${(second < 10 ? `0${second}` : second)}`
     }
-    song.audio.onloadeddata = () => handleChange('duration', song.audio.duration)
 
     song.audio.ontimeupdate = () => {
         handleChange('progress', (song.audio.currentTime/song.audio.duration)*100)
