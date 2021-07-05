@@ -5,7 +5,7 @@ const Controls = ({ song, handleSong }: any) => {
     const [property, setProperty] = useState({
         duration: 0,
         progress: 0,
-        muted: localStorage.getItem('muted') ? Boolean(localStorage.getItem('muted')) : false,
+        muted: localStorage.getItem('muted') ? JSON.parse(String(localStorage.getItem('muted'))) : false,
         volume: localStorage.getItem('volume') ? Number(localStorage.getItem('volume')) : 50
     })
     const handleChange = (a: string, b: any) => setProperty({...property, [a]: b})
@@ -24,8 +24,9 @@ const Controls = ({ song, handleSong }: any) => {
         return `${(minutes < 10 ? `0${minutes}` : minutes)}:${(second < 10 ? `0${second}` : second)}`
     }
 
+    song.audio.onloadeddata = () => handleChange('duration', song.audio.duration)
     song.audio.ontimeupdate = () => {
-        handleChange('progress', (song.audio.currentTime/song.audio.duration)*100)
+        handleChange('progress', (song.audio.currentTime / song.audio.duration) * 100)
         document.getElementById('current-duration')!.innerText = parseTime(song.audio.currentTime)
     }
 
