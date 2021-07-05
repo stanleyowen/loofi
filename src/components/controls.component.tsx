@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import { Audio, MutedAudio, SkipNext, SkipPrevious } from '../lib/icons.component'
 
-const Controls = ({ properties, song, handleSong }: any) => {
+const Controls = ({ song, handleSong }: any) => {
     const [property, setProperty] = useState({
-        muted: false,
-        volume: 50,
         duration: 0,
         progress: 0,
+        muted: false,
+        volume: localStorage.getItem('volume') ? Number(localStorage.getItem('volume')) : 50
     })
     const handleChange = (a: string, b: any) => setProperty({...property, [a]: b})
 
-    useEffect(() => { song.audio.volume = property.muted ? 0 : property.volume / 100 }, [song.audio, property.volume, property.muted])
+    useEffect(() => {
+        localStorage.setItem('volume', String(property.volume))
+        song.audio.volume = property.muted ? 0 : property.volume / 100
+    }, [song.audio, property.volume, property.muted])
+
     useEffect(() => { song.playing ? song.audio.play() : song.audio.pause() }, [song])
 
     const parseTime = (time: number) => {
