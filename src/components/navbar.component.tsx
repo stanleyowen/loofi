@@ -21,11 +21,9 @@ const Navbar = ({ properties, handleChange }: any) => {
     return (
         <div className="navbar">
             <div className="flex">
-                <div className="mrl-10"><IconButton onClick={goBackward} disabled={property.disablePrevious}><ChevronLeft /></IconButton></div>
-                <div className="mrl-10"><IconButton onClick={goForward} disabled={property.disableForward}><ChevronRight /></IconButton></div>
-                <div className="navbar-icon"><IconButton onClick={goForward} className="" disabled={property.disableForward}><ChevronRight /></IconButton></div>
+                <span className="p-10"><IconButton onClick={goBackward} disabled={property.disablePrevious}><ChevronLeft /></IconButton></span>
+                <span className="p-10"><IconButton onClick={goForward} disabled={property.disableForward}><ChevronRight /></IconButton></span>
             </div>
-            
         </div>
     )
 }

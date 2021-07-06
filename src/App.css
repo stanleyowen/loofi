@@ -92,6 +92,11 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 	background: rgb(var(--white) / 40%);
 }
 #tabs .active { background: rgb(var(--gray) / 60%) }
+.tab {
+	font-weight: 525;
+	color: rgb(var(--black) / 70%) !important;
+}
+.tab:hover, .active { color: rgb(var(--black)) !important }
 
 /* Navbar */
 .navbar {
