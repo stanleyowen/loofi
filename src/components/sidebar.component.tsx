@@ -15,19 +15,18 @@ const SideBar = ({ handleChange, properties }: any) => {
         e.preventDefault()
         const target = ((e.target as HTMLElement).ownerDocument.activeElement?.childNodes[0].childNodes[1] as HTMLElement).innerText.toLowerCase()
         if(target !== properties.activeTab) handleChange({ id: 'activeTab', value: target })
-        else return
     }
 
     return (
         <div className="sidebar">
             <div className="m-10" id="tabs" onClick={switchTab}>
                 {
-                    ['Home', 'Search'].map(tab => {
+                    ['Home', 'Search'].map((tab, index) => {
                         const components: { [key: string]: any } = { HomeSolid, HomeOutline, SearchSolid, SearchOutline }
                         const SolidIcon = components[`${tab}Solid`]
                         const OutlineIcon = components[`${tab}Outline`]
                         return (
-                            <Button className="w-100 rounded-corner p-10" id={tab.toLowerCase()} key={tab.toLowerCase()}>
+                            <Button className="w-100 rounded-corner p-10" id={tab.toLowerCase()} key={index}>
                                 <div className="w-30">{properties.activeTab === tab.toLowerCase() ? <SolidIcon /> : <OutlineIcon />}</div>
                                 <div className="w-70 left-align">{tab.toLowerCase()}</div>
                             </Button>

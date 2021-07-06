@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-const Home = ({ properties, handleSong }: any) => {
+const Home = ({ handleSong }: any) => {
     const [greeting, setGreeting] = useState<string>()
 
     const triggerAudio = (e: React.MouseEvent<HTMLButtonElement>, data: object) => {
