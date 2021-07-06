@@ -5,13 +5,15 @@ import { HomeOutline, HomeSolid, SearchSolid, SearchOutline } from '../lib/icons
 const SideBar = ({ handleChange, properties }: any) => {
     useEffect(() => {
         document.getElementById('tabs')?.childNodes.forEach(tab =>
-            String((tab.childNodes[0] as HTMLElement).innerText).toLowerCase() === properties.activeTab ? (tab as HTMLElement).classList.add('active') : (tab as HTMLElement).classList.remove('active')
+            (tab.childNodes[0] as HTMLElement).innerText.toLowerCase() === properties.activeTab ?
+                (tab as HTMLElement).classList.add('active') :
+                (tab as HTMLElement).classList.remove('active')
         )
     }, [properties])
 
     const switchTab = (e: React.MouseEvent<HTMLElement>) => {
         e.preventDefault()
-        const target = String(((e.target as HTMLElement).ownerDocument.activeElement?.childNodes[0].childNodes[1] as HTMLElement).innerText).toLowerCase()
+        const target = ((e.target as HTMLElement).ownerDocument.activeElement?.childNodes[0].childNodes[1] as HTMLElement).innerText.toLowerCase()
         if(target !== properties.activeTab) handleChange({ id: 'activeTab', value: target })
         else return
     }

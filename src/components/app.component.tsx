@@ -8,8 +8,8 @@ const App = ({ properties, handleChange }: any) => {
         playing: false,
         title: 'Underwater',
         author: 'LiQWYD',
-        audio: new Audio('https://www.chosic.com/wp-content/uploads/2021/06/Underwater.mp3'),
         image: 'https://i.ytimg.com/vi/6Tnw3Ku-KeM/maxresdefault.jpg',
+        audio: new Audio('https://www.chosic.com/wp-content/uploads/2021/06/Underwater.mp3')
     })
 
     const handleSong = useCallback(a => {

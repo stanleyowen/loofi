@@ -5,8 +5,8 @@ const Controls = ({ song, handleSong }: any) => {
     const [property, setProperty] = useState({
         duration: 0,
         progress: 0,
-        muted: localStorage.getItem('muted') ? JSON.parse(String(localStorage.getItem('muted'))) : false,
-        volume: localStorage.getItem('volume') ? Number(localStorage.getItem('volume')) : 50
+        volume: localStorage.getItem('volume') ? Number(localStorage.getItem('volume')) : 50,
+        muted: localStorage.getItem('muted') ? JSON.parse(String(localStorage.getItem('muted'))) : false
     })
     const handleChange = (a: string, b: any) => setProperty({...property, [a]: b})
 
