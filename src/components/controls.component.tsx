@@ -39,13 +39,13 @@ const Controls = ({ song, handleSong }: any) => {
     return (
         <div className="footer flex" id="footer">
             <div className="w-30 flex">
-                <img src={song.image} alt="Currently Playing Music" />
+                <img src={song.image} alt={song.title} />
                 <div className="center-vert ml-10">
                     <div className="song-title">{song.title}</div>
                     <div className="author">{song.author}</div>
                 </div>
             </div>
-            <div className="w-50 flex center-flex">
+            <div className="w-40 flex center-flex">
                 <div className="flex center-flex">
                     <button>{SkipPrevious()}</button>
                     <button className={(song.playing ? "pause" : "")+" play-btn mrl-10"} onClick={triggerAudio}></button>
@@ -57,8 +57,8 @@ const Controls = ({ song, handleSong }: any) => {
                     <div className="progress-time center-align">{parseTime(property.duration ? property.duration : 0)}</div>
                 </div>
             </div>
-            <div className="w-20 flex center-flex">
-                <div className="audio">
+            <div className="w-30 flex center-flex">
+                <div className="w-50 audio">
                     <button onClick={() => handleChange('muted', !property.muted)}>{property.muted || property.volume === 0 ? MutedAudio() : Audio()}</button>
                     <input type="range" className="progress-bar rounded-corner m-10" max="100" value={property.volume} onChange={e => handleChange('volume', Number(e.target.value))} />
                 </div>
