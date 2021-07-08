@@ -2,8 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 import './App.css'
+import AppLayout from './components/app.component'
 import SideBar from './components/sidebar.component'
-import AppUI from './components/app.component'
 
 export default function App() {
   const [properties, setProperties] = useState({
@@ -32,7 +32,7 @@ export default function App() {
   return (
     <Router>
       <SideBar properties={properties} handleChange={handleChange}  />
-      <AppUI properties={properties} handleChange={handleChange} />
+      <AppLayout properties={properties} handleChange={handleChange} />
     </Router>
   )
 }

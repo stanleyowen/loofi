@@ -20,8 +20,10 @@ const Navbar = ({ properties, handleChange }: any) => {
 
     return (
         <div className="navbar">
-            <span className="p-10"><IconButton onClick={goBackward} disabled={property.disablePrevious}><ChevronLeft /></IconButton></span>
-            <span className="p-10"><IconButton onClick={goForward} disabled={property.disableForward}><ChevronRight /></IconButton></span>
+            <div className="flex">
+                <span className="p-10"><IconButton onClick={goBackward} disabled={property.disablePrevious}><ChevronLeft /></IconButton></span>
+                <span className="p-10"><IconButton onClick={goForward} disabled={property.disableForward}><ChevronRight /></IconButton></span>
+            </div>
         </div>
     )
 }

@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import { Audio, MutedAudio, SkipNext, SkipPrevious } from '../lib/icons.component'
 
-const Controls = ({ properties, song, handleSong }: any) => {
+const Controls = ({ song, handleSong }: any) => {
     const [property, setProperty] = useState({
-        muted: false,
-        volume: 50,
         duration: 0,
         progress: 0,
+        volume: localStorage.getItem('volume') ? Number(localStorage.getItem('volume')) : 50,
+        muted: localStorage.getItem('muted') ? JSON.parse(String(localStorage.getItem('muted'))) : false
     })
     const handleChange = (a: string, b: any) => setProperty({...property, [a]: b})
 
-    useEffect(() => { song.audio.volume = property.muted ? 0 : property.volume / 100 }, [song.audio, property.volume, property.muted])
+    useEffect(() => {
+        localStorage.setItem('muted', String(property.muted))
+        localStorage.setItem('volume', String(property.volume))
+        song.audio.volume = property.muted ? 0 : property.volume / 100
+    }, [song.audio, property.volume, property.muted])
+
     useEffect(() => { song.playing ? song.audio.play() : song.audio.pause() }, [song])
 
     const parseTime = (time: number) => {
@@ -18,10 +23,10 @@ const Controls = ({ properties, song, handleSong }: any) => {
         const second = Math.floor(time - (minutes * 60))
         return `${(minutes < 10 ? `0${minutes}` : minutes)}:${(second < 10 ? `0${second}` : second)}`
     }
-    song.audio.onloadeddata = () => handleChange('duration', song.audio.duration)
 
+    song.audio.onloadeddata = () => handleChange('duration', song.audio.duration)
     song.audio.ontimeupdate = () => {
-        handleChange('progress', (song.audio.currentTime/song.audio.duration)*100)
+        handleChange('progress', (song.audio.currentTime / song.audio.duration) * 100)
         document.getElementById('current-duration')!.innerText = parseTime(song.audio.currentTime)
     }
 

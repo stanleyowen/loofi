@@ -92,6 +92,11 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 	background: rgb(var(--white) / 40%);
 }
 #tabs .active { background: rgb(var(--gray) / 60%) }
+.tab {
+	font-weight: 525;
+	color: rgb(var(--black) / 70%) !important;
+}
+.tab:hover, .active { color: rgb(var(--black)) !important }
 
 /* Navbar */
 .navbar {
@@ -169,9 +174,19 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 }
 
 /* Properties */
+.none { display: none !important }
+button:disabled,
+input:disabled {
+	cursor: not-allowed !important;
+	pointer-events: visible !important;
+}
 .flex { display: flex; flex-wrap: wrap; }
 .mrl-10 { margin: 0 10px; padding: 0; }
 .rounded-corner { border-radius: 5px }
+.close-btn {
+	right: 60px;
+	float: right;
+}
 .left-align { text-align: left }
 .center-align { text-align: center }
 .center-vert { margin: auto 0 !important; }
