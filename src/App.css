@@ -100,10 +100,12 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 
 /* Navbar */
 .navbar {
-	width: 100%;
 	z-index: 99;
 	padding: 15px;
+	display: flex;
+	overflow: auto;
 	position: fixed;
+	width: calc(100% - 255px);
 	background-color: rgb(var(--white) / 50%);
 }
 .navbar:hover {
