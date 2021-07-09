@@ -20,40 +20,44 @@ const Home = ({ handleSong }: any) => {
         {
             title: 'Coral',
             author: 'LIQWYD',
-            link: '/#link',
+            link: '#',
             image: 'https://i1.sndcdn.com/artworks-FoWcUyCslTjVJZe4-XZmlqw-t500x500.jpg',
             audio: new Audio('https://www.chosic.com/wp-content/uploads/2021/06/liqwyd-coral.mp3')
         },
         {
             title: 'Water Wood & Stone',
             author: 'Audionautix',
-            link: '/#link',
+            link: '#',
             image: 'https://i1.sndcdn.com/artworks-1Jlkwxr8ggjwyxFq-RKJJiw-t500x500.jpg',
             audio: new Audio('https://www.chosic.com/wp-content/uploads/2021/05/audionautix-water-wood-and-stone.mp3')
         },
         {
-            title: 'Lofi Hip Hop Music',
-            author: 'Lofi',
-            link: '/#link',
-            image: 'https://i1.sndcdn.com/avatars-IWAQUb2WuP9Z5hAv-03A2tA-t500x500.jpg'
+            title: 'Japan',
+            author: 'Uniq',
+            link: '#',
+            image: 'https://i1.sndcdn.com/artworks-000386176995-l0up2a-t500x500.jpg',
+            audio: new Audio('https://www.chosic.com/wp-content/uploads/2021/07/Japan-by-uniq.mp3')
         },
         {
-            title: 'Sicko Mode',
-            author: 'Travis Scott',
-            link: '/#link',
-            image: 'https://images.tokopedia.net/img/cache/700/product-1/2019/10/25/3586085/3586085_ff2f2100-a7c3-4d44-9910-52d6417d565c_1077_1077.jpg'
+            title: 'And So It Begins',
+            author: 'Artificial Music',
+            link: '#',
+            image: 'https://i1.sndcdn.com/artworks-000180319332-ay5ya9-t500x500.jpg',
+            audio: new Audio('https://www.chosic.com/wp-content/uploads/2021/04/And-So-It-Begins-Inspired-By-Crush-Sometimes.mp3')
         },
         {
-            title: 'TED Talks Daily',
-            author: 'TED',
-            link: '/#link',
-            image: 'https://blog.ted.com/wp-content/uploads/sites/2/2020/04/ttd_social_elise-hu_square_v1.png'
+            title: 'Bedtime After a Coffee',
+            author: 'Barradeen',
+            link: '#',
+            image: 'https://i1.sndcdn.com/artworks-qDNdZw6J0bPp-0-t500x500.png',
+            audio: new Audio('https://www.chosic.com/wp-content/uploads/2020/11/barradeen-bedtime-after-a-coffee.mp3')
         },
         {
-            title: 'Talking to The Moon',
-            author: 'Bruno Mars',
-            link: '/#link',
-            image: 'https://i.scdn.co/image/ab67616d0000b273caaa456c44f69f10c8b2aa53'
+            title: 'Herbal Tea',
+            author: 'Artificial Music',
+            link: '#',
+            image: 'https://i1.sndcdn.com/artworks-000226031503-6b5miz-t500x500.jpg',
+            audio: new Audio('https://www.chosic.com/wp-content/uploads/2021/04/herbal-tea.mp3')
         }
     ]
 
