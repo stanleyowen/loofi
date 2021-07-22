@@ -15,15 +15,13 @@ const Navbar = ({ properties, handleChange }: any) => {
         })
     }, [properties])
 
-    const goBackward = (e: React.MouseEvent<HTMLElement>) => handleChange({ id: 'activeTab', value: properties.previousTab, goBackward: true })
-    const goForward = (e: React.MouseEvent<HTMLElement>) => handleChange({ id: 'activeTab', value: properties.nextTab, goForward: true })
+    const goBackward = () => handleChange({ id: 'activeTab', value: properties.previousTab, goBackward: true })
+    const goForward = () => handleChange({ id: 'activeTab', value: properties.nextTab, goForward: true })
 
     return (
         <div className="navbar">
-            <div className="flex">
-                <span className="p-10"><IconButton onClick={goBackward} disabled={property.disablePrevious}><ChevronLeft /></IconButton></span>
-                <span className="p-10"><IconButton onClick={goForward} disabled={property.disableForward}><ChevronRight /></IconButton></span>
-            </div>
+            <div className="mrl-10"><IconButton onClick={goBackward} disabled={property.disablePrevious} title="Go Back"><ChevronLeft /></IconButton></div>
+            <div className="mrl-10"><IconButton onClick={goForward} disabled={property.disableForward} title="Go Forward"><ChevronRight /></IconButton></div>
         </div>
     )
 }
