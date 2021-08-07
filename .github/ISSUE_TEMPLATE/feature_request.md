@@ -7,14 +7,15 @@ assignees: ''
 
 ---
 
-**Is your feature request related to a problem?**
-A clear description of what the problem is.
+**Is your feature request related to a problem? Please describe.**
+A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
 
-**Describe the solution**
-A clear description of what you want.
+**Describe the solution you'd like**
+A clear and concise description of what you want to happen.
 
 **Describe alternatives you've considered**
-A clear description of any alternative solutions or features you've considered.
+A clear and concise description of any alternative solutions or features you've considered.
+
 
 **Scope**
 <!-- Please include a list of what the feature should and shouldn't do by filling in the table below.
@@ -32,6 +33,7 @@ A good rule of thumb is to start your proposal with no more than 7 high-level re
 | This proposal will allow developers to accomplish Y | Could |
 | This proposal will allow end users to accomplish Z | Won't |
 
+
 **Desktop (please complete the following information):**
  - OS: [e.g. iOS]
  - Browser [e.g. chrome, safari]
@@ -43,5 +45,5 @@ A good rule of thumb is to start your proposal with no more than 7 high-level re
  - Browser [e.g. stock browser, safari]
  - Version [e.g. 22]
 
-**Additional comment**
-Add any other context about the problem here.
+**Additional context**
+Add any other context or screenshots about the feature request here.
