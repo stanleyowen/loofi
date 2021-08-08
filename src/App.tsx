@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import firebase from 'firebase'
+import firebase from 'firebase/app'
+import 'firebase/database'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 import './App.css'
@@ -19,22 +20,19 @@ export default function App() {
       div.style.opacity = `${Math.random() * (0.075 - 0.025) + 0.025}`
       document.querySelector('.backdrop-overlay')!.appendChild(div)
     }
-
-    // Firebase Config
-    firebase.initializeApp({
-      apiKey: process.env.REACT_APP_API_KEY,
-      authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-      databaseURL: process.env.REACT_APP_DB_URL,
-      projectId: process.env.REACT_APP_PROJECT_ID,
-      storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-      messagingSenderId: process.env.REACT_APP_SENDER_ID,
-      appId: process.env.REACT_APP_ID,
-      measurementId: process.env.REACT_APP_MEASUREMENT_ID
-    })
-  
-    console.log(firebase.database())
   }, [])
-  
+
+  const config = {
+    apiKey: process.env.REACT_APP_API_KEY,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    databaseURL: process.env.REACT_APP_DB_URL,
+    projectId: process.env.REACT_APP_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_SENDER_ID,
+    appId: process.env.REACT_APP_ID,
+    measurementId: process.env.REACT_APP_MEASUREMENT_ID
+  }
+
   const handleChange = useCallback(a =>
     setProperties({
       ...properties,
@@ -47,7 +45,7 @@ export default function App() {
   return (
     <Router>
       <SideBar properties={properties} handleChange={handleChange}  />
-      <AppLayout properties={properties} handleChange={handleChange} />
+      <AppLayout properties={properties} handleChange={handleChange} config={config} />
     </Router>
   )
 }

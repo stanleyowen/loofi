@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import firebase from 'firebase'
 
-const Home = ({ handleSong }: any) => {
+const Home = ({ handleSong, config }: any) => {
     const [greeting, setGreeting] = useState<string>()
 
     const triggerAudio = (e: React.MouseEvent<HTMLButtonElement>, data: object) => {
@@ -15,6 +16,11 @@ const Home = ({ handleSong }: any) => {
         else if(currentHour < 18) setGreeting('Afternoon')
         else setGreeting('Evening')
     }, [])
+
+    useEffect(() => {
+        firebase.initializeApp(config)
+        console.log(firebase.database())
+    }, [config])
 
     const albumData = [
         {
