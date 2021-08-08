@@ -19,7 +19,10 @@ const Home = ({ handleSong, config }: any) => {
 
     useEffect(() => {
         firebase.initializeApp(config)
-        console.log(firebase.database())
+        firebase.database().ref().child('data').get()
+        .then(data => {
+            console.log(data.exists() ? data.val() : 'nodata')
+        }).catch(err => console.log(err))
     }, [config])
 
     const albumData = [
