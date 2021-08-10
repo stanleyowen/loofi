@@ -3,7 +3,7 @@ import Navbar from './navbar.component'
 import BaseLayout from './base.component'
 import Controls from './controls.component'
 
-const App = ({ properties, handleChange }: any) => {
+const App = ({ properties, handleChange, config }: any) => {
     const [song, setSong] = useState({
         playing: false,
         title: 'Underwater',
@@ -24,7 +24,7 @@ const App = ({ properties, handleChange }: any) => {
         <div className="app">
             <div className="app-ui">
                 <Navbar properties={properties} handleChange={handleChange} />
-                <BaseLayout properties={properties} handleSong={handleSong} />
+                <BaseLayout properties={properties} handleSong={handleSong} config={config} />
             </div>
             <Controls properties={properties} song={song} handleSong={handleSong} />
         </div>
