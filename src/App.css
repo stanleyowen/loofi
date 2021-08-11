@@ -112,6 +112,7 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 	transition: all .3s;
 	background-color: rgb(var(--white) / 80%);
 }
+.navbar div.mrl-10:last-child { margin-left: auto }
 
 /* Base Layout */
 .app { margin-left: 225px }

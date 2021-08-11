@@ -3,11 +3,7 @@ import firebase from 'firebase/app'
 
 const Home = ({ handleSong, config }: any) => {
     const [greeting, setGreeting] = useState<string>()
-    const [data, setData] = useState<any>({
-        album: '',
-        song: ''
-    })
-    const handleData = (a: string, b: any) => setData({...data, [a]: b})
+    const [data, setData] = useState<any>()
 
     const triggerAudio = (e: React.MouseEvent<HTMLButtonElement>, data: object) => {
         e.preventDefault()
@@ -24,14 +20,8 @@ const Home = ({ handleSong, config }: any) => {
 
     useEffect(() => {
         firebase.initializeApp(config)
-        firebase.database().ref().child('album').get()
-        .then(data => {
-            handleData('album', data.val())
-        }).catch(err => console.log(err))
-        firebase.database().ref().child('music').get()
-        .then(data => {
-            handleData('song', data.val())
-        }).catch(err => console.log(err))
+        firebase.database().ref().child('data').get()
+        .then(data => setData(data.val())).catch(err => console.log(err))
     }, [config])
 
     return (
@@ -39,7 +29,7 @@ const Home = ({ handleSong, config }: any) => {
             <h2 className="m-10">Good {greeting}</h2>
             <div className="col-3" id="recent-playlist">
                 {
-                    data.album ? data.album.map((album: any, index: number) => {
+                    data?.music ? data.music.map((album: any, index: number) => {
                         return (
                             <div className="m-10" key={index}>
                                 <a className="card flex" href={album.link}>
@@ -54,7 +44,7 @@ const Home = ({ handleSong, config }: any) => {
             </div>
             <div className="mt-30 col-4" id="playlist">
                 {
-                    data.music ? data.music.map((album: any, index: number) => {
+                    data?.album ? data.album.map((album: any, index: number) => {
                         return (
                             <div className="m-10" key={index}>
                                 <a className="large-card" href={album.link}>
