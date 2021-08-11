@@ -4,7 +4,6 @@ import firebase from 'firebase/app'
 const Home = ({ handleSong, config }: any) => {
     const [greeting, setGreeting] = useState<string>()
     const [data, setData] = useState<any>()
-    const handleData = (a: string, b: any) => setData({...data, [a]: b})
 
     const triggerAudio = (e: React.MouseEvent<HTMLButtonElement>, data: object) => {
         e.preventDefault()
