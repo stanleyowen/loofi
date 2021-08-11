@@ -5,9 +5,9 @@ const Home = ({ handleSong, config }: any) => {
     const [greeting, setGreeting] = useState<string>()
     const [data, setData] = useState<any>()
 
-    const triggerAudio = (e: React.MouseEvent<HTMLButtonElement>, data: object) => {
+    const triggerAudio = (e: React.MouseEvent<HTMLButtonElement>, data: { audio: string }) => {
         e.preventDefault()
-        handleSong(data);
+        handleSong({...data, audio: new Audio(data?.audio) });
         (e.target as Element).classList.toggle('pause')
     }
 
@@ -21,7 +21,8 @@ const Home = ({ handleSong, config }: any) => {
     useEffect(() => {
         firebase.initializeApp(config)
         firebase.database().ref().child('data').get()
-        .then(data => setData(data.val())).catch(err => console.log(err))
+        .then(data => setData(data.val()))
+        .catch(err => console.log(err))
     }, [config])
 
     return (
