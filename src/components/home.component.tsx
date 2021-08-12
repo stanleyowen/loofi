@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import firebase from 'firebase/app'
 
-const Home = ({ handleSong, config }: any) => {
+const Home = ({ song, config, handleSong }: any) => {
     const [greeting, setGreeting] = useState<string>()
     const [data, setData] = useState<any>()
 
@@ -25,6 +25,11 @@ const Home = ({ handleSong, config }: any) => {
         .catch(err => console.log(err))
     }, [config])
 
+    useEffect(() => {
+        const btn = document.getElementById((song.title+song.author).replace(/\s/g, "-"))
+        song.playing ? btn?.classList.add('pause') : btn?.classList.remove('pause')
+    }, [song.playing])
+
     return (
         <div>
             <h2 className="m-10">Good {greeting}</h2>
@@ -36,7 +41,7 @@ const Home = ({ handleSong, config }: any) => {
                                 <a className="card flex" href={album.link}>
                                     <img src={album.image} alt={album.title} />
                                     <p className="m-auto w-50">{album.title}</p>
-                                    <button className="play-btn m-auto" onClick={e => triggerAudio(e, album)}></button>
+                                    <button className="play-btn m-auto" onClick={e => triggerAudio(e, album)} id={(album.title+album.author).replace(/\s/g, "-")}></button>
                                 </a>
                             </div>
                         )
@@ -55,7 +60,7 @@ const Home = ({ handleSong, config }: any) => {
                                             <h3 className="mt-10">{album.title}</h3>
                                             <p className="author">{album.author}</p>
                                         </div>
-                                        <button className="play-btn m-auto" onClick={e => triggerAudio(e, album)}></button>
+                                        <button className="play-btn m-auto" onClick={e => triggerAudio(e, album)} id={(album.title+album.author).replace(/\s/g, "-")}></button>
                                     </div>
                                 </a>
                             </div>
