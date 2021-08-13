@@ -24,7 +24,7 @@ const App = ({ properties, handleChange, config }: any) => {
         <div className="app">
             <div className="app-ui">
                 <Navbar properties={properties} handleChange={handleChange} />
-                <BaseLayout properties={properties} handleSong={handleSong} config={config} />
+                <BaseLayout properties={properties} song={song} config={config} handleSong={handleSong} />
             </div>
             <Controls properties={properties} song={song} handleSong={handleSong} />
         </div>

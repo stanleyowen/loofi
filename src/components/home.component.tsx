@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import firebase from 'firebase/app'
 
-const Home = ({ handleSong, config }: any) => {
+const Home = ({ song, config, handleSong }: any) => {
     const [greeting, setGreeting] = useState<string>()
     const [data, setData] = useState<any>()
 
-    const triggerAudio = (e: React.MouseEvent<HTMLButtonElement>, data: object) => {
+    const triggerAudio = (e: React.MouseEvent<HTMLButtonElement>, data: { audio: string }) => {
         e.preventDefault()
-        handleSong(data);
+        if(song.playing){
+            handleSong({id: 'playing', value: false})
+            setTimeout(() => handleSong({...data, audio: new Audio(data?.audio), playing: true }), 10)
+        }else handleSong({...data, audio: new Audio(data?.audio) });
         (e.target as Element).classList.toggle('pause')
     }
 
@@ -19,10 +22,16 @@ const Home = ({ handleSong, config }: any) => {
     }, [])
 
     useEffect(() => {
-        firebase.initializeApp(config)
+        firebase.apps.length ? firebase.app() : firebase.initializeApp(config)
         firebase.database().ref().child('data').get()
-        .then(data => setData(data.val())).catch(err => console.log(err))
+        .then(data => setData(data.val()))
+        .catch(err => console.log(err))
     }, [config])
+
+    useEffect(() => {
+        const btn = document.getElementById((song.title+song.author).replace(/\s/g, "-"))
+        song.playing ? btn?.classList.add('pause') : btn?.classList.remove('pause')
+    }, [song.playing])
 
     return (
         <div>
@@ -35,7 +44,7 @@ const Home = ({ handleSong, config }: any) => {
                                 <a className="card flex" href={album.link}>
                                     <img src={album.image} alt={album.title} />
                                     <p className="m-auto w-50">{album.title}</p>
-                                    <button className="play-btn m-auto" onClick={e => triggerAudio(e, album)}></button>
+                                    <button className="play-btn m-auto" onClick={e => triggerAudio(e, album)} id={(album.title+album.author).replace(/\s/g, "-")}></button>
                                 </a>
                             </div>
                         )
@@ -54,7 +63,7 @@ const Home = ({ handleSong, config }: any) => {
                                             <h3 className="mt-10">{album.title}</h3>
                                             <p className="author">{album.author}</p>
                                         </div>
-                                        <button className="play-btn m-auto" onClick={e => triggerAudio(e, album)}></button>
+                                        <button className="play-btn m-auto" onClick={e => triggerAudio(e, album)} id={(album.title+album.author).replace(/\s/g, "-")}></button>
                                     </div>
                                 </a>
                             </div>
