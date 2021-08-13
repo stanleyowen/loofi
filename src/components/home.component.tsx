@@ -7,7 +7,10 @@ const Home = ({ song, config, handleSong }: any) => {
 
     const triggerAudio = (e: React.MouseEvent<HTMLButtonElement>, data: { audio: string }) => {
         e.preventDefault()
-        handleSong({...data, audio: new Audio(data?.audio) });
+        if(song.playing){
+            handleSong({id: 'playing', value: false})
+            setTimeout(() => handleSong({...data, audio: new Audio(data?.audio), playing: true }), 10)
+        }else handleSong({...data, audio: new Audio(data?.audio) });
         (e.target as Element).classList.toggle('pause')
     }
 
