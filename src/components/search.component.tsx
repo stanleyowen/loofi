@@ -7,15 +7,20 @@ import algoliasearch from 'algoliasearch'
 const Search = ({ properties }: any) => {
     const items: any = []
     const [data, setData] = useState<any>()
+    const [complete, setComplete] = useState<boolean>(false)
     const [keyword, setKeyword] = useState<string>('')
 
     const client = algoliasearch(String(process.env.REACT_APP_ALGOLIA_ID), String(process.env.REACT_APP_ALGOLIA_API_KEY))
     useEffect(() => {
-        if(keyword) client.initIndex('music').search(keyword).then(({hits}) => setData(hits))
+        setComplete(false)
+        if(keyword) client.initIndex('music').search(keyword).then(({hits}) => {
+            setComplete(true)
+            setData(hits)
+        })
     }, [keyword])
 
     if(keyword)
-        if(!data || data.length === 0)
+        if(!data || data.length === 0 && !complete)
             for(let i=0; i<4; i++) {
                 items.push(
                     <div className="m-10" key={i}>
@@ -46,6 +51,7 @@ const Search = ({ properties }: any) => {
                     </div>
                 )
             })
+        else if(complete && data.length === 0) items.push(<div>No Results Found for <b>{keyword}</b></div>)
 
     const ClearQuery = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
