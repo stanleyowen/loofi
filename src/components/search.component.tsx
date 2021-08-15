@@ -1,26 +1,25 @@
 import React, { useState, useEffect } from 'react'
+import algoliasearch from 'algoliasearch'
 import { Skeleton } from '@material-ui/lab'
 import { Close } from '../lib/icons.component'
 import { TextField, IconButton } from '@material-ui/core'
-import algoliasearch from 'algoliasearch'
 
 const Search = ({ properties }: any) => {
     const items: any = []
-    const [data, setData] = useState<any>()
-    const [complete, setComplete] = useState<boolean>(false)
-    const [keyword, setKeyword] = useState<string>('')
-
+    const [data, setData] = useState<any>({
+        isFetching: false,
+        keyword: '',
+        result: ''
+    })
+    const handleData = (a: string, b: any) => setData({ ...data, [a]: b })
     const client = algoliasearch(String(process.env.REACT_APP_ALGOLIA_ID), String(process.env.REACT_APP_ALGOLIA_API_KEY))
     useEffect(() => {
-        setComplete(false)
-        if(keyword) client.initIndex('music').search(keyword).then(({hits}) => {
-            setComplete(true)
-            setData(hits)
-        })
-    }, [keyword])
+        setData({ ...data, isFetching: true})
+        if(data.keyword) client.initIndex('music').search(data.keyword).then(({hits}) => setData({ ...data, isFetching: false, result: hits }))
+    }, [data.keyword])
 
-    if(keyword)
-        if(!data || data.length === 0 && !complete)
+    if(data.keyword)
+        if(!data || data.length === 0 && !data.isFetching)
             for(let i=0; i<4; i++) {
                 items.push(
                     <div className="m-10" key={i}>
@@ -51,19 +50,19 @@ const Search = ({ properties }: any) => {
                     </div>
                 )
             })
-        else if(complete && data.length === 0) items.push(<div>No Results Found for <b>{keyword}</b></div>)
+        else if(!data.isFetching && data?.result?.length === 0) items.push(<div>No Results Found for <b>{data?.keyword}</b></div>)
 
     const ClearQuery = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
-        setKeyword('')
+        handleData('keyowrd', '')
         document.getElementById('search-query')?.focus()
     }
 
     return (
         <div className="m-10">
             <div className="flex">
-                <TextField label="Search" variant="outlined" className="search" value={keyword} onChange={e => setKeyword(e.target.value)} id="search-query" autoFocus />
-                <IconButton className={(keyword ? null : 'none') + " close-btn"} style={{padding: '10px'}} onClick={ClearQuery}>{Close()}</IconButton>
+                <TextField label="Search" variant="outlined" className="search" value={data.keyword} onChange={e => handleData('keyword', e.target.value)} id="search-query" autoFocus />
+                <IconButton className={(data.keyword ? null : 'none') + " close-btn"} style={{padding: '10px'}} onClick={ClearQuery}>{Close()}</IconButton>
             </div>
             <div className="mt-30 col-4" id="playlist">{items}</div>
         </div>
