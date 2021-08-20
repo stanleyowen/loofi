@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Button } from '@material-ui/core'
-import { HomeOutline, HomeSolid, SearchSolid, SearchOutline } from '../lib/icons.component'
+import { HomeOutline, HomeSolid, SearchSolid, SearchOutline, Beta } from '../lib/icons.component'
 
 const SideBar = ({ handleChange, properties }: any) => {
     useEffect(() => {
@@ -33,6 +33,10 @@ const SideBar = ({ handleChange, properties }: any) => {
                         )
                     })
                 }
+                <Button className="w-100 rounded-corner p-10 tab" id="beta" onClick={() => window.location.href = `${window.location.protocol}//next--${window.location.host}`}>
+                    <div className="w-30"><Beta /></div>
+                    <div className="w-70 left-align">Beta</div>
+                </Button>
             </div>
         </div>
     )
