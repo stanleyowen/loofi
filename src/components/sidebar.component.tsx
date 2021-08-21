@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText } from '@material-ui/core'
-import { Beta, HomeOutline, HomeSolid, SearchSolid, SearchOutline, AboutSolid, AboutOutline } from '../lib/icons.component'
+import { Beta, HomeOutline, HomeSolid, SearchSolid, SearchOutline } from '../lib/icons.component'
 
 const SideBar = ({ handleChange, properties }: any) => {
     const [isOpen, setDialog] = useState<boolean>(false)
@@ -16,7 +16,7 @@ const SideBar = ({ handleChange, properties }: any) => {
     const switchTab = (e: React.MouseEvent<HTMLElement>) => {
         e.preventDefault()
         const target = ((e.target as HTMLElement).ownerDocument.activeElement?.childNodes[0].childNodes[1] as HTMLElement).innerText.toLowerCase()
-        if(target !== properties.activeTab) handleChange({ id: 'activeTab', value: target })
+        if(target !== properties.activeTab && target !== 'beta') handleChange({ id: 'activeTab', value: target })
     }
 
     return (
