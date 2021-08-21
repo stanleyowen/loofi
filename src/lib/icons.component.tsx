@@ -10,6 +10,9 @@ export function SearchOutline() {
 export function SearchSolid() {
     return <svg width="1.5em" height="1.5em" viewBox="0 0 24 24"><path d="M18.031 16.617l4.283 4.282l-1.415 1.415l-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9s9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617z" fill="currentColor"></path></svg>
 }
+export function Beta() {
+    return <svg width="1.5em" height="1.5em" viewBox="0 0 1024 1024"><path d="M512 472a40 40 0 1 0 80 0a40 40 0 1 0-80 0zm367 352.9L696.3 352V178H768v-68H256v68h71.7v174L145 824.9c-2.8 7.4-4.3 15.2-4.3 23.1c0 35.3 28.7 64 64 64h614.6c7.9 0 15.7-1.5 23.1-4.3c33-12.7 49.4-49.8 36.6-82.8zM395.7 364.7V180h232.6v184.7L719.2 600c-20.7-5.3-42.1-8-63.9-8c-61.2 0-119.2 21.5-165.3 60a188.78 188.78 0 0 1-121.3 43.9c-32.7 0-64.1-8.3-91.8-23.7l118.8-307.5zM210.5 844l41.7-107.8c35.7 18.1 75.4 27.8 116.6 27.8c61.2 0 119.2-21.5 165.3-60c33.9-28.2 76.3-43.9 121.3-43.9c35 0 68.4 9.5 97.6 27.1L813.5 844h-603z" fill="currentColor"></path></svg>
+}
 export function ChevronLeft() {
     return <svg width="1em" height="1em" viewBox="0 0 16 16"><path fill="currentColor" d="M2.9 8l8-8l2.2 2.1L7.2 8l5.9 5.9l-2.2 2.1z"></path></svg>
 }
