@@ -50,7 +50,7 @@ const SideBar = ({ handleChange, properties }: any) => {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={() => setDialog(false)}>Cancel</Button>
-                    <Button onClick={() => window.location.href = `${window.location.protocol}//next--${window.location.host}`}>Continue</Button>
+                    <Button color="secondary" onClick={() => window.location.href = `${window.location.protocol}//next--${window.location.host}`}>Continue</Button>
                 </DialogActions>
             </Dialog>
         </div>
