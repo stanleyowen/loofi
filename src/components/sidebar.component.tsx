@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react'
-import { Button } from '@material-ui/core'
-import { HomeOutline, HomeSolid, SearchSolid, SearchOutline, Beta } from '../lib/icons.component'
+import React, { useEffect, useState } from 'react'
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText } from '@material-ui/core'
+import { Beta, HomeOutline, HomeSolid, SearchSolid, SearchOutline, AboutSolid, AboutOutline } from '../lib/icons.component'
 
 const SideBar = ({ handleChange, properties }: any) => {
+    const [isOpen, setDialog] = useState<boolean>(false)
+
     useEffect(() => {
         document.getElementById('tabs')?.childNodes.forEach(tab =>
             (tab.childNodes[0] as HTMLElement).innerText.toLowerCase() === properties.activeTab ?
@@ -33,11 +35,24 @@ const SideBar = ({ handleChange, properties }: any) => {
                         )
                     })
                 }
-                <Button className="w-100 rounded-corner p-10 tab" id="beta" onClick={() => window.location.href = `${window.location.protocol}//next--${window.location.host}`}>
+                <Button className="w-100 rounded-corner p-10 tab" id="beta" onClick={() => setDialog(true)}>
                     <div className="w-30"><Beta /></div>
                     <div className="w-70 left-align">Beta</div>
                 </Button>
             </div>
+
+            <Dialog open={isOpen} onClose={() => setDialog(false)}>
+                <DialogContent>
+                    <DialogContentText>
+                        <p className="warning">Stability: Experimental</p>
+                        <p className="mt-10">This is an experimental feature which is still under active development and subject to non-backward compatible changes or removal in any future version. Use of the feature is not recommended in production environments.</p>
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={() => setDialog(false)}>Cancel</Button>
+                    <Button onClick={() => window.location.href = `${window.location.protocol}//next--${window.location.host}`}>Continue</Button>
+                </DialogActions>
+            </Dialog>
         </div>
     )
 }
