@@ -6,9 +6,9 @@ build
 debug.log
 .netlify
 
-.env
 .DS_Store
 .env.local
+.env.development
 .env.development.local
 .env.test.local
 .env.production.local
