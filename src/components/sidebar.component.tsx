@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react'
-import { Button } from '@material-ui/core'
-import { HomeOutline, HomeSolid, SearchSolid, SearchOutline } from '../lib/icons.component'
+import React, { useEffect, useState } from 'react'
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText } from '@material-ui/core'
+import { Beta, HomeOutline, HomeSolid, SearchSolid, SearchOutline } from '../lib/icons.component'
 
 const SideBar = ({ handleChange, properties }: any) => {
+    const [isOpen, setDialog] = useState<boolean>(false)
+
     useEffect(() => {
         document.getElementById('tabs')?.childNodes.forEach(tab =>
             (tab.childNodes[0] as HTMLElement).innerText.toLowerCase() === properties.activeTab ?
@@ -14,7 +16,7 @@ const SideBar = ({ handleChange, properties }: any) => {
     const switchTab = (e: React.MouseEvent<HTMLElement>) => {
         e.preventDefault()
         const target = ((e.target as HTMLElement).ownerDocument.activeElement?.childNodes[0].childNodes[1] as HTMLElement).innerText.toLowerCase()
-        if(target !== properties.activeTab) handleChange({ id: 'activeTab', value: target })
+        if(target !== properties.activeTab && target !== 'beta') handleChange({ id: 'activeTab', value: target })
     }
 
     return (
@@ -33,7 +35,24 @@ const SideBar = ({ handleChange, properties }: any) => {
                         )
                     })
                 }
+                <Button className="w-100 rounded-corner p-10 tab" id="beta" onClick={() => setDialog(true)}>
+                    <div className="w-30"><Beta /></div>
+                    <div className="w-70 left-align">Beta</div>
+                </Button>
             </div>
+
+            <Dialog open={isOpen} onClose={() => setDialog(false)}>
+                <DialogContent>
+                    <DialogContentText>
+                        <p className="warning">Stability: Experimental</p>
+                        <p className="mt-10">This is an experimental feature which is still under active development and subject to non-backward compatible changes or removal in any future version. Use of the feature is not recommended in production environments.</p>
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={() => setDialog(false)}>Cancel</Button>
+                    <Button color="secondary" onClick={() => window.location.href = `${window.location.protocol}//next--${window.location.host}`}>Continue</Button>
+                </DialogActions>
+            </Dialog>
         </div>
     )
 }

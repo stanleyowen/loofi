@@ -8,8 +8,8 @@ const App = ({ properties, handleChange, config }: any) => {
         playing: false,
         title: 'Underwater',
         author: 'LiQWYD',
-        image: 'https://i.ytimg.com/vi/6Tnw3Ku-KeM/maxresdefault.jpg',
-        audio: new Audio('https://www.chosic.com/wp-content/uploads/2021/06/Underwater.mp3')
+        image: 'https://user-images.githubusercontent.com/69080584/129511233-dd5a0eac-2675-415e-ae4c-6cc530a23629.png',
+        audio: new Audio('https://user-images.githubusercontent.com/69080584/129511300-e88655e9-687f-4d0b-acb4-b32c0fa988cf.mp4')
     })
 
     const handleSong = useCallback(a => {
