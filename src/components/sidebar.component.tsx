@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText } from '@material-ui/core'
-import { Beta, HomeOutline, HomeSolid, SearchSolid, SearchOutline } from '../lib/icons.component'
+import { Beta, HomeOutline, HomeSolid, AboutSolid, AboutOutline, SearchSolid, SearchOutline } from '../lib/icons.component'
 
 const SideBar = ({ handleChange, properties }: any) => {
     const [isOpen, setDialog] = useState<boolean>(false)
@@ -23,8 +23,8 @@ const SideBar = ({ handleChange, properties }: any) => {
         <div className="sidebar">
             <div className="m-10" id="tabs" onClick={switchTab}>
                 {
-                    ['Home', 'Search'].map((tab, index) => {
-                        const components: { [key: string]: any } = { HomeSolid, HomeOutline, SearchSolid, SearchOutline }
+                    ['Home', 'Search', 'About'].map((tab, index) => {
+                        const components: { [key: string]: any } = { HomeSolid, HomeOutline, SearchSolid, SearchOutline, AboutSolid, AboutOutline }
                         const SolidIcon = components[`${tab}Solid`]
                         const OutlineIcon = components[`${tab}Outline`]
                         return (
