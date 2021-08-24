@@ -203,8 +203,10 @@ input:disabled {
 .w-40 { width: 40% !important }
 .w-50 { width: 50% !important }
 .w-70 { width: 70% !important }
+.w-80 { width: 80% !important; }
 .w-100 { width: 100%; }
 .p-10 { padding: 10px !important }
+.p-15 { padding: 15px !important }
 .m-10 { margin: 10px !important }
 .mt-10 { margin-top: 10px !important }
 .mt-30 { margin-top: 30px !important }
@@ -214,6 +216,10 @@ svg {
 	display: block;
 	margin: auto;
 }
+#version svg { margin: auto 0px; }
+#version p { font-weight: normal; }
+#version .MuiIconButton-root { padding: 10px !important; }
+.small { font-size: 12px; font-weight: normal !important; }
 button {
 	border: none;
 	cursor: pointer;
@@ -300,5 +306,6 @@ button {
 @media only screen and (max-width: 700px) {
 	.col-3 { grid-template-columns: 100% }
 	.col-4 { grid-template-columns: 100% }
+	#version .w-50 { width: 100% !important; }
 	.search { width: 100%; }
 }
