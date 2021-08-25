@@ -1,5 +1,5 @@
 import React from 'react'
-import { Accordion, AccordionSummary } from '@material-ui/core'
+import { Button, Accordion, AccordionSummary } from '@material-ui/core'
 import { AboutOutline, PrivacyPolicy, ExpandMoreIcon, License } from '../lib/icons.component'
 import { version } from '../../package.json'
 
@@ -14,6 +14,7 @@ const About = ({ properties }: any) => {
                         <p className="small">Version: {version}</p>
                     </div>
                 </div>
+                <Button variant="outlined" onClick={() => navigator.clipboard.writeText(`Version: ${version}`)}>Copy</Button>
             </div>
             <Accordion className="w-50 card mt-10">
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
