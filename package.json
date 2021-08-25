@@ -13,12 +13,11 @@
     "@types/react-dom": "^17.0.9",
     "@types/react-router-dom": "^5.1.8",
     "algoliasearch": "^4.10.4",
-    "dotenv": "^10.0.0",
     "firebase": "^8.10.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
+    "react-scripts": "^4.0.3",
     "typescript": "^4.3.5",
     "web-vitals": "^2.1.0"
   },
@@ -45,5 +44,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0"
   }
 }
