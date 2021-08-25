@@ -21,7 +21,7 @@ const SideBar = ({ handleChange, properties }: any) => {
 
     return (
         <div className="sidebar">
-            <div className="m-10" id="tabs" onClick={switchTab}>
+            <div id="tabs" onClick={switchTab}>
                 {
                     ['Home', 'Search', 'About'].map((tab, index) => {
                         const components: { [key: string]: any } = { HomeSolid, HomeOutline, SearchSolid, SearchOutline, AboutSolid, AboutOutline }

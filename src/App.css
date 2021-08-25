@@ -86,12 +86,20 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 .sidebar {
 	width: 225px;
 	height: 100%;
+	padding: 10px;
 	position: fixed;
 	padding-top: 30px;
 	overflow-x: hidden;
+	box-sizing: border-box;
 	background: rgb(var(--white) / 40%);
 }
+#tabs {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
 #tabs .active { background: rgb(var(--gray) / 60%) }
+#tabs :nth-child(3) { margin-top: auto }
 .tab {
 	font-weight: 525;
 	color: rgb(var(--black) / 70%) !important;
