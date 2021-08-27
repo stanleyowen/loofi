@@ -31,6 +31,7 @@ const Home = ({ song, config, handleSong }: any) => {
     useEffect(() => {
         const btn = document.getElementById((song.title+song.author).replace(/\s/g, "-"))
         song.playing ? btn?.classList.add('pause') : btn?.classList.remove('pause')
+        // eslint-disable-next-line
     }, [song.playing])
 
     return (

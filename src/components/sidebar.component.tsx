@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText } from '@material-ui/core'
+import { Button, Dialog, Tooltip, DialogActions, DialogContent, DialogContentText } from '@material-ui/core'
 import { Beta, HomeOutline, HomeSolid, AboutSolid, AboutOutline, SearchSolid, SearchOutline } from '../lib/icons.component'
 
 const SideBar = ({ handleChange, properties }: any) => {
@@ -28,17 +28,26 @@ const SideBar = ({ handleChange, properties }: any) => {
                         const SolidIcon = components[`${tab}Solid`]
                         const OutlineIcon = components[`${tab}Outline`]
                         return (
-                            <Button className="w-100 rounded-corner p-10 tab" id={tab.toLowerCase()} key={index}>
-                                <div className="w-30">{properties.activeTab === tab.toLowerCase() ? <SolidIcon /> : <OutlineIcon />}</div>
-                                <div className="w-70 left-align">{tab.toLowerCase()}</div>
-                            </Button>
+                            <Tooltip title={tab} enterDelay={500}>
+                                <Button className="w-100 rounded-corner p-10 tab" id={tab.toLowerCase()} key={index}>
+                                    <div className="w-30">{properties.activeTab === tab.toLowerCase() ? <SolidIcon /> : <OutlineIcon />}</div>
+                                    <div className="w-70 left-align">{tab.toLowerCase()}</div>
+                                </Button>
+                            </Tooltip>
                         )
                     })
                 }
-                <Button className="w-100 rounded-corner p-10 tab" id="beta" onClick={() => setDialog(true)}>
-                    <div className="w-30"><Beta /></div>
-                    <div className="w-70 left-align">Beta</div>
-                </Button>
+                {
+                    process.env.REACT_APP_CONTEXT === 'production' ?
+                        (<Button className="w-100 rounded-corner p-10 tab" id="beta" onClick={() => setDialog(true)}>
+                            <div className="w-30"><Beta /></div>
+                            <div className="w-70 left-align">Beta</div>
+                        </Button>) :
+                        (<Button className="w-100 rounded-corner p-10 tab" id="beta" onClick={() => window.location.href = `${window.location.protocol}//${window.location.host.slice(6)}`}>
+                            <div className="w-30"><Beta /></div>
+                            <div className="w-70 left-align">Stable</div>
+                        </Button>)
+                }
             </div>
 
             <Dialog open={isOpen} onClose={() => setDialog(false)}>

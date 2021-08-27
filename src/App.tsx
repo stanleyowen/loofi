@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import firebase from 'firebase/app'
 import 'firebase/database'
 import { BrowserRouter as Router } from 'react-router-dom'
 
@@ -38,7 +37,7 @@ export default function App() {
       ...properties,
       previousTab: a.goBackward ? '' : properties.activeTab,
       nextTab: a.goBackward ? properties.activeTab : '',
-      [a.id]: a.value,
+      [a.id]: a.value
     })
   , [properties])
 

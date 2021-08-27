@@ -13,10 +13,12 @@ const Search = ({ properties }: any) => {
         result: ''
     })
 
-    const client = algoliasearch(String(process.env.REACT_APP_ALGOLIA_ID), String(process.env.REACT_APP_ALGOLIA_API_KEY))
     useEffect(() => {
         setData({ ...data, isFetching: true})
-        if(keyword) client.initIndex('music').search(keyword).then(({hits}) => setData({ ...data, isFetching: false, result: hits }))
+        if(keyword)
+            algoliasearch(String(process.env.REACT_APP_ALGOLIA_ID), String(process.env.REACT_APP_ALGOLIA_API_KEY)).initIndex('music').search(keyword)
+            .then(({ hits }) => setData({ ...data, isFetching: false, result: hits }))
+            // eslint-disable-next-line
     }, [keyword])
 
     if(keyword)
@@ -36,7 +38,7 @@ const Search = ({ properties }: any) => {
             }
         else if (data.result?.length > 0)
             data.result?.map((music: any, index: any) => {
-                items.push(
+                return items.push(
                     <div className="m-10" key={index}>
                         <a className="large-card" href={music.link}>
                             <img src={music.image} alt={music.title} />
