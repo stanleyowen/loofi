@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText } from '@material-ui/core'
+import { Button, Dialog, Tooltip, DialogActions, DialogContent, DialogContentText } from '@material-ui/core'
 import { Beta, HomeOutline, HomeSolid, AboutSolid, AboutOutline, SearchSolid, SearchOutline } from '../lib/icons.component'
 
 const SideBar = ({ handleChange, properties }: any) => {
@@ -28,10 +28,12 @@ const SideBar = ({ handleChange, properties }: any) => {
                         const SolidIcon = components[`${tab}Solid`]
                         const OutlineIcon = components[`${tab}Outline`]
                         return (
-                            <Button className="w-100 rounded-corner p-10 tab" id={tab.toLowerCase()} key={index}>
-                                <div className="w-30">{properties.activeTab === tab.toLowerCase() ? <SolidIcon /> : <OutlineIcon />}</div>
-                                <div className="w-70 left-align">{tab.toLowerCase()}</div>
-                            </Button>
+                            <Tooltip title={tab} enterDelay={500}>
+                                <Button className="w-100 rounded-corner p-10 tab" id={tab.toLowerCase()} key={index}>
+                                    <div className="w-30">{properties.activeTab === tab.toLowerCase() ? <SolidIcon /> : <OutlineIcon />}</div>
+                                    <div className="w-70 left-align">{tab.toLowerCase()}</div>
+                                </Button>
+                            </Tooltip>
                         )
                     })
                 }

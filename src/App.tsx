@@ -37,7 +37,7 @@ export default function App() {
       ...properties,
       previousTab: a.goBackward ? '' : properties.activeTab,
       nextTab: a.goBackward ? properties.activeTab : '',
-      [a.id]: a.value,
+      [a.id]: a.value
     })
   , [properties])
 
