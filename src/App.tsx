@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import firebase from 'firebase/app'
 import 'firebase/database'
 import { BrowserRouter as Router } from 'react-router-dom'
 
