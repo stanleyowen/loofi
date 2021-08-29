@@ -86,12 +86,20 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 .sidebar {
 	width: 225px;
 	height: 100%;
+	padding: 10px;
 	position: fixed;
 	padding-top: 30px;
 	overflow-x: hidden;
+	box-sizing: border-box;
 	background: rgb(var(--white) / 40%);
 }
+#tabs {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
 #tabs .active { background: rgb(var(--gray) / 60%) }
+#tabs :nth-child(3) { margin-top: auto }
 .tab {
 	font-weight: 525;
 	color: rgb(var(--black) / 70%) !important;
@@ -123,12 +131,12 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 }
 .card {
 	width: 100%;
-    border-radius: 5px;
-    transition: all .3s;
+    border-radius: 5px !important;
+    transition: all .3s !important;
     box-sizing: border-box;
 	flex-wrap: nowrap !important;
-    background-color: rgb(var(--white) / 20%);
-    box-shadow: 0px 4px 8px rgb(var(--black) / 5%);
+    background-color: rgb(var(--white) / 20%) !important;
+    box-shadow: 0px 4px 8px rgb(var(--black) / 5%) !important;
 }
 .large-card {
 	width: 100%;
@@ -141,7 +149,7 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
     background-color: rgb(var(--white) / 20%);
     box-shadow: 0px 4px 8px rgb(var(--black) / 5%);
 }
-.card:hover { background-color: rgb(var(--white) / 50%) }
+.card:hover { background-color: rgb(var(--white) / 50%) !important }
 .large-card:hover { background-color: rgb(var(--white) / 50%) }
 .card img {
 	border-top-left-radius: 5px;
@@ -179,10 +187,7 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 /* Properties */
 .none { display: none !important }
 button:disabled,
-input:disabled {
-	cursor: not-allowed !important;
-	pointer-events: visible !important;
-}
+input:disabled { pointer-events: none !important }
 .flex { display: flex; flex-wrap: wrap; }
 .mrl-10 { margin: 0 10px; padding: 0; }
 .rounded-corner { border-radius: 5px }
@@ -203,8 +208,10 @@ input:disabled {
 .w-40 { width: 40% !important }
 .w-50 { width: 50% !important }
 .w-70 { width: 70% !important }
+.w-80 { width: 80% !important; }
 .w-100 { width: 100%; }
 .p-10 { padding: 10px !important }
+.p-15 { padding: 15px !important }
 .m-10 { margin: 10px !important }
 .mt-10 { margin-top: 10px !important }
 .mt-30 { margin-top: 30px !important }
@@ -214,6 +221,10 @@ svg {
 	display: block;
 	margin: auto;
 }
+#version svg { margin: auto 0px; }
+#version p { font-weight: normal; }
+#version .MuiIconButton-root { padding: 10px !important; }
+.small { font-size: 12px; font-weight: normal !important; }
 button {
 	border: none;
 	cursor: pointer;
@@ -300,5 +311,6 @@ button {
 @media only screen and (max-width: 700px) {
 	.col-3 { grid-template-columns: 100% }
 	.col-4 { grid-template-columns: 100% }
+	#version .w-50 { width: 100% !important; }
 	.search { width: 100%; }
 }
