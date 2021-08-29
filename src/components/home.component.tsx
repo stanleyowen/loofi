@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import firebase from 'firebase/app'
+import { initializeApp } from 'firebase/app'
+import { getDatabase, ref, onValue } from 'firebase/database'
 
 const Home = ({ song, config, handleSong }: any) => {
     const [greeting, setGreeting] = useState<string>()
@@ -22,10 +23,11 @@ const Home = ({ song, config, handleSong }: any) => {
     }, [])
 
     useEffect(() => {
-        firebase.apps.length ? firebase.app() : firebase.initializeApp(config)
-        firebase.database().ref().child('data').get()
-        .then(data => setData(data.val()))
-        .catch(err => console.log(err))
+        initializeApp(config)
+        onValue(ref(getDatabase(), 'data/'), (snapshot) => setData(snapshot.val()))
+        setTimeout(() =>
+            onValue(ref(getDatabase(), '.info/connected'), (snapshot) => snapshot.val() ? null : console.log("Client Disconnected from Server"))
+        , 5000)
     }, [config])
 
     useEffect(() => {
