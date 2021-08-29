@@ -25,6 +25,9 @@ const Home = ({ song, config, handleSong }: any) => {
     useEffect(() => {
         initializeApp(config)
         onValue(ref(getDatabase(), 'data/'), (snapshot) => setData(snapshot.val()))
+        setTimeout(() =>
+            onValue(ref(getDatabase(), '.info/connected'), (snapshot) => snapshot.val() ? null : console.log("Client Disconnected from Server"))
+        , 5000)
     }, [config])
 
     useEffect(() => {
