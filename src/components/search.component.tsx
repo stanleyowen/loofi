@@ -4,6 +4,7 @@ import { Skeleton } from '@material-ui/lab'
 import { initializeApp } from 'firebase/app'
 import { Close } from '../lib/icons.component'
 import { TextField, IconButton } from '@material-ui/core'
+import { getDatabase, ref, onValue } from 'firebase/database'
 
 const Search = ({ properties, config }: any) => {
     const items: any = []
@@ -13,15 +14,27 @@ const Search = ({ properties, config }: any) => {
     const [isFetching, setFetching] = useState<boolean>(false)
 
     useEffect(() => {
-        setData({ ...data, isFetching: true})
-        if(keyword)
-            algoliasearch(String(process.env.REACT_APP_ALGOLIA_ID), String(process.env.REACT_APP_ALGOLIA_API_KEY)).initIndex('music').search(keyword)
-            .then(({ hits }) => setData({ ...data, isFetching: false, result: hits }))
-            // eslint-disable-next-line
-    }, [keyword])
+        onValue(ref(getDatabase(), 'data-dev/'), (snapshot) => setRawData(snapshot.val()))
+    }, [config])
 
+    useEffect(() => {
+        setFetching(true)
+        if(keyword) {
+            var result: any = []
+            for (let i=0; i<rawData.length; i++) {
+                console.log(rawData[i].title.includes(keyword))
+                if(rawData[i].title.includes(keyword)) {
+                     result.push(rawData[i])
+                }
+            }
+            setResult(result)
+        }
+        setFetching(false)
+        // eslint-disable-next-line
+    }, [keyword])
+console.log(results)
     if(keyword)
-        if(data.result?.length === 0 && data.isFetching)
+        if(results?.length === 0 && isFetching)
             for(let i=0; i<4; i++) {
                 items.push(
                     <div className="m-10" key={i}>
