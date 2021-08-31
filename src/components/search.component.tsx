@@ -23,7 +23,7 @@ const Search = ({ properties, config }: any) => {
             var result: any = []
             for (let i=0; i<rawData.length; i++) {
                 console.log(rawData[i].title.includes(keyword))
-                if(rawData[i].title.includes(keyword)) {
+                if(String(rawData[i].title).toLowerCase().includes(keyword)) {
                      result.push(rawData[i])
                 }
             }
