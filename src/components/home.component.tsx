@@ -24,7 +24,15 @@ const Home = ({ song, config, handleSong }: any) => {
 
     useEffect(() => {
         initializeApp(config)
-        onValue(ref(getDatabase(), 'data/'), (snapshot) => setData(snapshot.val()))
+        onValue(ref(getDatabase(), 'data-dev/'), (snapshot) => {
+            var rawData = snapshot.val(), index = rawData.length, randIndex
+            while(index !== 0) {
+                randIndex = Math.floor(Math.random() * index)
+                index--
+                [rawData[index], rawData[randIndex]] = [rawData[randIndex], rawData[index]]
+            }
+            setData(rawData)
+        })
         setTimeout(() =>
             onValue(ref(getDatabase(), '.info/connected'), (snapshot) => snapshot.val() ? null : console.log("Client Disconnected from Server"))
         , 5000)
