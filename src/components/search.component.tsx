@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import algoliasearch from 'algoliasearch'
 import { Skeleton } from '@material-ui/lab'
 import { initializeApp } from 'firebase/app'
 import { Close } from '../lib/icons.component'
