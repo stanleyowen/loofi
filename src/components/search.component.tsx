@@ -1,28 +1,38 @@
 import React, { useState, useEffect } from 'react'
-import algoliasearch from 'algoliasearch'
 import { Skeleton } from '@material-ui/lab'
+import { initializeApp } from 'firebase/app'
 import { Close } from '../lib/icons.component'
 import { TextField, IconButton } from '@material-ui/core'
+import { getDatabase, ref, onValue } from 'firebase/database'
 
-const Search = ({ properties }: any) => {
+const Search = ({ properties, config }: any) => {
     const items: any = []
+    const [results, setResult] = useState<any>()
+    const [rawData, setRawData] = useState<any>()
     const [keyword, setKeyword] = useState<string>('')
-    const [data, setData] = useState<any>({
-        isFetching: false,
-        keyword: '',
-        result: ''
-    })
+    const [isFetching, setFetching] = useState<boolean>(false)
 
     useEffect(() => {
-        setData({ ...data, isFetching: true})
-        if(keyword)
-            algoliasearch(String(process.env.REACT_APP_ALGOLIA_ID), String(process.env.REACT_APP_ALGOLIA_API_KEY)).initIndex('music').search(keyword)
-            .then(({ hits }) => setData({ ...data, isFetching: false, result: hits }))
-            // eslint-disable-next-line
+        onValue(ref(getDatabase(), 'data-dev/'), (snapshot) => setRawData(snapshot.val()))
+    }, [config])
+
+    useEffect(() => {
+        setFetching(true)
+        if(keyword) {
+            var result: any = []
+            for (let i=0; i<rawData.length; i++) {
+                if(String(rawData[i].title).toLowerCase().includes(keyword)) {
+                     result.push(rawData[i])
+                }
+            }
+            setResult(result)
+        }
+        setFetching(false)
+        // eslint-disable-next-line
     }, [keyword])
 
     if(keyword)
-        if(data.result?.length === 0 && data.isFetching)
+        if(results?.length === 0 && isFetching)
             for(let i=0; i<4; i++) {
                 items.push(
                     <div className="m-10" key={i}>
@@ -36,8 +46,8 @@ const Search = ({ properties }: any) => {
                     </div>
                 )
             }
-        else if (data.result?.length > 0)
-            data.result?.map((music: any, index: any) => {
+        else if (results?.length > 0)
+            results.map((music: any, index: any) => {
                 return items.push(
                     <div className="m-10" key={index}>
                         <a className="large-card" href={music.link}>
@@ -53,7 +63,7 @@ const Search = ({ properties }: any) => {
                     </div>
                 )
             })
-        else if(!data.isFetching && data.result?.length === 0) items.push(<div>No Results Found for <b>{keyword}</b></div>)
+        else if(!isFetching && results?.length === 0) items.push(<div>No Results Found for <b>{keyword}</b></div>)
 
     const ClearQuery = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
