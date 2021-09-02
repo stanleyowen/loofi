@@ -22,7 +22,7 @@ const Navbar = ({ properties, handleChange }: any) => {
         <div className="navbar">
             <div className="mrl-10">
                 <Tooltip title="Go Back"><span>
-                        <IconButton onClick={goBackward} disabled={property.disablePrevious}><ChevronLeft /></IconButton>
+                    <IconButton onClick={goBackward} disabled={property.disablePrevious}><ChevronLeft /></IconButton>
                 </span></Tooltip>
             </div>
             <div className="mrl-10">
