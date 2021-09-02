@@ -21,7 +21,6 @@ const Search = ({ properties, config }: any) => {
         if(keyword) {
             var result: any = []
             for (let i=0; i<rawData.length; i++) {
-                console.log(rawData[i].title.includes(keyword))
                 if(String(rawData[i].title).toLowerCase().includes(keyword)) {
                      result.push(rawData[i])
                 }
@@ -31,7 +30,7 @@ const Search = ({ properties, config }: any) => {
         setFetching(false)
         // eslint-disable-next-line
     }, [keyword])
-console.log(results)
+
     if(keyword)
         if(results?.length === 0 && isFetching)
             for(let i=0; i<4; i++) {

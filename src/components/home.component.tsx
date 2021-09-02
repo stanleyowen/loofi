@@ -49,13 +49,14 @@ const Home = ({ song, config, handleSong }: any) => {
             <h2 className="m-10">Good {greeting}</h2>
             <div className="col-3" id="recent-playlist">
                 {
-                    data?.music ? data.music.map((album: any, index: number) => {
+                    data ? data.map((song: any, index: number) => {
+                        if(index > 5) return;
                         return (
                             <div className="m-10" key={index}>
-                                <a className="card flex" href={album.link}>
-                                    <img src={album.image} alt={album.title} />
-                                    <p className="m-auto w-50">{album.title}</p>
-                                    <button className="play-btn m-auto" onClick={e => triggerAudio(e, album)} id={(album.title+album.author).replace(/\s/g, "-")}></button>
+                                <a className="card flex" href={song.link}>
+                                    <img src={song.image} alt={song.title} />
+                                    <p className="m-auto w-50">{song.title}</p>
+                                    <button className="play-btn m-auto" onClick={e => triggerAudio(e, song)} id={(song.title+song.author).replace(/\s/g, "-")}></button>
                                 </a>
                             </div>
                         )
@@ -64,17 +65,18 @@ const Home = ({ song, config, handleSong }: any) => {
             </div>
             <div className="mt-30 col-4" id="playlist">
                 {
-                    data?.album ? data.album.map((album: any, index: number) => {
+                    data ? data.map((song: any, index: number) => {
+                        if(index < 6 || index >= 14) return;
                         return (
                             <div className="m-10" key={index}>
-                                <a className="large-card" href={album.link}>
-                                    <img src={album.image} alt={album.title} />
+                                <a className="large-card" href={song.link}>
+                                    <img src={song.image} alt={song.title} />
                                     <div className="flex">
                                         <div className="m-auto w-70">
-                                            <h3 className="mt-10">{album.title}</h3>
-                                            <p className="author">{album.author}</p>
+                                            <h3 className="mt-10">{song.title}</h3>
+                                            <p className="author">{song.author}</p>
                                         </div>
-                                        <button className="play-btn m-auto" onClick={e => triggerAudio(e, album)} id={(album.title+album.author).replace(/\s/g, "-")}></button>
+                                        <button className="play-btn m-auto" onClick={e => triggerAudio(e, song)} id={(song.title+song.author).replace(/\s/g, "-")}></button>
                                     </div>
                                 </a>
                             </div>
