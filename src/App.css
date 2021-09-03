@@ -123,10 +123,15 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 .navbar div.mrl-10:last-child { margin-left: auto }
 
 /* Base Layout */
-.app { margin-left: 225px }
+.app {
+	display: flex;
+	height: 100vh;
+	flex-direction: column;
+	margin-left: 225px;
+}
 .base { margin-top: 100px }
 .app-ui {
-	height: 84vh;
+	flex: 9;
 	overflow: auto;
 }
 .card {
