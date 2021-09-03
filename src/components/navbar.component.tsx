@@ -27,7 +27,7 @@ const Navbar = ({ properties, handleChange }: any) => {
             </div>
             <div className="mrl-10">
                 <Tooltip title="Go Forward"><span>
-                        <IconButton onClick={goForward} disabled={property.disableForward}><ChevronRight /></IconButton>
+                    <IconButton onClick={goForward} disabled={property.disableForward}><ChevronRight /></IconButton>
                 </span></Tooltip>
             </div>
             <div className="mrl-10">
