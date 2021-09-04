@@ -2,6 +2,7 @@
   "name": "lofi-player",
   "version": "0.2.1",
   "private": true,
+  "author": "Stanley Owen <stanleyowen06@gmail.com>",
   "dependencies": {
     "@material-ui/core": "^4.12.3",
     "@material-ui/lab": "^4.0.0-alpha.60",
@@ -12,6 +13,8 @@
     "@types/react": "^17.0.19",
     "@types/react-dom": "^17.0.9",
     "@types/react-router-dom": "^5.1.8",
+    "cross-env": "^7.0.3",
+    "electron-is-dev": "^2.0.0",
     "firebase": "^9.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -20,11 +23,35 @@
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.0"
   },
+  "main": "public/electron.js",
+  "homepage": "./",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "release": "yarn build && electron-builder --publish=always",
+    "build:electron": "yarn build && electron-builder",
+    "start:electron": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\""
+  },
+  "build": {
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "ia32",
+            "x64"
+          ]
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    }
   },
   "eslintConfig": {
     "extends": [
@@ -45,6 +72,10 @@
     ]
   },
   "devDependencies": {
-    "dotenv": "^10.0.0"
+    "concurrently": "^6.2.1",
+    "dotenv": "^10.0.0",
+    "electron": "^14.0.0",
+    "electron-builder": "^22.11.7",
+    "wait-on": "^6.0.0"
   }
 }

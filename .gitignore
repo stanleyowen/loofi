@@ -12,9 +12,11 @@ debug.log
 .env.development
 .env.development.local
 .env.test.local
+.env.production
 .env.production.local
 
 **/img/*[.png][.jpg]
 dist
 docs
 node_modules
+dist
