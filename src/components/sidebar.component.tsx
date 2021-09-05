@@ -28,8 +28,8 @@ const SideBar = ({ handleChange, properties }: any) => {
                         const SolidIcon = components[`${tab}Solid`]
                         const OutlineIcon = components[`${tab}Outline`]
                         return (
-                            <Tooltip title={tab} enterDelay={500}>
-                                <Button className="w-100 rounded-corner p-10 tab" id={tab.toLowerCase()} key={index}>
+                            <Tooltip title={tab} enterDelay={500} enterNextDelay={500} key={index}>
+                                <Button className="w-100 rounded-corner p-10 tab" id={tab.toLowerCase()}>
                                     <div className="w-30">{properties.activeTab === tab.toLowerCase() ? <SolidIcon /> : <OutlineIcon />}</div>
                                     <div className="w-70 left-align">{tab.toLowerCase()}</div>
                                 </Button>

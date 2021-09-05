@@ -123,10 +123,15 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 .navbar div.mrl-10:last-child { margin-left: auto }
 
 /* Base Layout */
-.app { margin-left: 225px }
+.app {
+	display: flex;
+	height: 100vh;
+	flex-direction: column;
+	margin-left: 225px;
+}
 .base { margin-top: 100px }
 .app-ui {
-	height: 84vh;
+	flex: 9;
 	overflow: auto;
 }
 .card {
@@ -208,7 +213,7 @@ input:disabled { pointer-events: none !important }
 .w-40 { width: 40% !important }
 .w-50 { width: 50% !important }
 .w-70 { width: 70% !important }
-.w-80 { width: 80% !important; }
+.w-80 { width: 80% !important }
 .w-100 { width: 100%; }
 .p-10 { padding: 10px !important }
 .p-15 { padding: 15px !important }
@@ -218,8 +223,8 @@ input:disabled { pointer-events: none !important }
 .ml-10 { margin-left: 10px !important }
 .m-auto { margin: auto !important }
 svg {
-	display: block;
 	margin: auto;
+	display: block;
 }
 #version svg { margin: auto 0px; }
 #version p { font-weight: normal; }
@@ -301,16 +306,24 @@ button {
 }
 
 /* Search */
-.search { width: 50%; }
+.search { width: 50% }
 
 @media only screen and (max-width: 1200px) {
 	.col-3 { grid-template-columns: 50% 50% }
 	.col-4 { grid-template-columns: 33.3% 33.3% 33.3% }
-	.search { width: 60%; }
+	.search { width: 60% }
+}
+@media only screen and (max-width: 800px) {
+	.col-3 { grid-template-columns: 100% }
+	.col-4 { grid-template-columns: 50% 50% }
+	#version .w-50 { width: 90% !important }
 }
 @media only screen and (max-width: 700px) {
-	.col-3 { grid-template-columns: 100% }
+	.search { width: 100% }
+	.navbar div.mrl-10:last-child {
+		display: none;
+		visibility: hidden;
+	}
 	.col-4 { grid-template-columns: 100% }
-	#version .w-50 { width: 100% !important; }
-	.search { width: 100%; }
+	#version .w-50 { width: 100% !important }
 }
