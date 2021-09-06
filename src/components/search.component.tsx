@@ -20,10 +20,8 @@ const Search = ({ properties, config }: any) => {
         setFetching(true)
         if(keyword) {
             var result: any = []
-            for (let i=0; i<rawData.length; i++) {
-                if(String(rawData[i].title).toLowerCase().includes(keyword)) {
-                     result.push(rawData[i])
-                }
+            for (let i=0; i<songData.length; i++) {
+                if(String(songData[i].title).toLowerCase().includes(keyword) || String(songData[i].author).toLowerCase().includes(keyword)) result.push(songData[i])
             }
             setResult(result)
         }
