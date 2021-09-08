@@ -21,7 +21,9 @@ const Search = ({ properties, config }: any) => {
         if(keyword) {
             var result: any = []
             for (let i=0; i<rawData.length; i++) {
-                if(String(rawData[i].title).toLowerCase().includes(keyword) || String(rawData[i].author).toLowerCase().includes(keyword)) result.push(rawData[i])
+                if(String(rawData[i].title).toLowerCase().includes(keyword)) {
+                     result.push(rawData[i])
+                }
             }
             setResult(result)
         }
