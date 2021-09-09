@@ -38,15 +38,17 @@ const SideBar = ({ handleChange, properties }: any) => {
                     })
                 }
                 {
-                    process.env.REACT_APP_CONTEXT === 'production' ?
-                        (<Button className="w-100 rounded-corner p-10 tab" id="beta" onClick={() => setDialog(true)}>
-                            <div className="w-30"><Beta /></div>
-                            <div className="w-70 left-align">Beta</div>
-                        </Button>) :
-                        (<Button className="w-100 rounded-corner p-10 tab" id="beta" onClick={() => window.location.href = String(process.env.REACT_APP_DEFAULT)}>
-                            <div className="w-30"><Beta /></div>
-                            <div className="w-70 left-align">Stable</div>
-                        </Button>)
+                    process.env.REACT_APP_ALLOW_BETA === 'true' ?
+                        process.env.REACT_APP_CONTEXT === 'production' ?
+                            (<Button className="w-100 rounded-corner p-10 tab" id="beta" onClick={() => setDialog(true)}>
+                                <div className="w-30"><Beta /></div>
+                                <div className="w-70 left-align">Beta</div>
+                            </Button>) :
+                            (<Button className="w-100 rounded-corner p-10 tab" id="beta" onClick={() => window.location.href = String(process.env.REACT_APP_STABLE)}>
+                                <div className="w-30"><Beta /></div>
+                                <div className="w-70 left-align">Stable</div>
+                            </Button>)
+                        : null
                 }
             </div>
 
