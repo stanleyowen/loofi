@@ -43,7 +43,7 @@ const SideBar = ({ handleChange, properties }: any) => {
                             <div className="w-30"><Beta /></div>
                             <div className="w-70 left-align">Beta</div>
                         </Button>) :
-                        (<Button className="w-100 rounded-corner p-10 tab" id="beta" onClick={() => window.location.href = `${window.location.protocol}//${window.location.host.slice(6)}`}>
+                        (<Button className="w-100 rounded-corner p-10 tab" id="beta" onClick={() => window.location.href = String(process.env.REACT_APP_DEFAULT)}>
                             <div className="w-30"><Beta /></div>
                             <div className="w-70 left-align">Stable</div>
                         </Button>)
@@ -59,7 +59,7 @@ const SideBar = ({ handleChange, properties }: any) => {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={() => setDialog(false)}>Cancel</Button>
-                    <Button color="secondary" onClick={() => window.location.href = `${window.location.protocol}//next--${window.location.host}`}>Continue</Button>
+                    <Button color="secondary" onClick={() => window.location.href = String(process.env.REACT_APP_BETA)}>Continue</Button>
                 </DialogActions>
             </Dialog>
         </div>
