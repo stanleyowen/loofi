@@ -41,8 +41,35 @@ const Home = ({ song, config, handleSong }: any) => {
     useEffect(() => {
         const btn = document.getElementById((song.title+song.author).replace(/\s/g, "-"))
         song.playing ? btn?.classList.add('pause') : btn?.classList.remove('pause')
-        // eslint-disable-next-line
-    }, [song.playing])
+    }, [song.playing]) // eslint-disable-line
+
+    function SkeletonPreview(count: number, type: 'large' | 'small') {
+        const skeleton = []
+        for (let i=0; i<count; i++) {
+            skeleton.push(
+                type === 'small' ?
+                    (<div className="m-10" key={i}>
+                    <a className="card flex">
+                        <Skeleton variant="rect" width={75} height={75} animation="wave" />
+                        <p className="m-auto w-50">
+                            <Skeleton variant="text" animation="wave" width="50%" />
+                            <Skeleton variant="text" animation="wave" />
+                        </p>
+                    </a>
+                    </div>) :
+                    (<div className="m-10" key={i}>
+                        <div className="large-card">
+                            <Skeleton variant="circle" height={200} animation="wave" />
+                            <div className="flex">
+                                <span className="mt-10 w-70"><Skeleton variant="text" animation="wave" /></span>
+                                <span className="w-40"><Skeleton variant="text" animation="wave" /></span>
+                            </div>
+                        </div>
+                    </div>)
+            )
+        }
+        return skeleton
+    }
 
     return (
         <div>
@@ -60,7 +87,7 @@ const Home = ({ song, config, handleSong }: any) => {
                                 </a>
                             </div>
                         )
-                    }) : null
+                    }) : SkeletonPreview(6, 'small')
                 }
             </div>
             <div className="mt-30 col-4" id="playlist">
@@ -81,7 +108,7 @@ const Home = ({ song, config, handleSong }: any) => {
                                 </a>
                             </div>
                         )
-                    }) : null
+                    }) : SkeletonPreview(8, 'large')
                 }
             </div>
         </div>
