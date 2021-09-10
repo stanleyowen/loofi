@@ -42,8 +42,7 @@ const Home = ({ song, config, handleSong }: any) => {
     useEffect(() => {
         const btn = document.getElementById((song.title+song.author).replace(/\s/g, "-"))
         song.playing ? btn?.classList.add('pause') : btn?.classList.remove('pause')
-        // eslint-disable-next-line
-    }, [song.playing])
+    }, [song.playing]) // eslint-disable-line
 
     function SkeletonPreview(count: number, type: 'large' | 'small') {
         const skeleton = []
@@ -51,13 +50,13 @@ const Home = ({ song, config, handleSong }: any) => {
             skeleton.push(
                 type === 'small' ?
                     (<div className="m-10" key={i}>
-                        <a className="card flex">
-                            <Skeleton variant="rect" width={75} height={75} animation="wave" />
-                            <p className="m-auto w-50">
-                                <Skeleton variant="text" animation="wave" width="50%" />
-                                <Skeleton variant="text" animation="wave" />
-                            </p>
-                        </a>
+                    <a className="card flex">
+                        <Skeleton variant="rect" width={75} height={75} animation="wave" />
+                        <p className="m-auto w-50">
+                            <Skeleton variant="text" animation="wave" width="50%" />
+                            <Skeleton variant="text" animation="wave" />
+                        </p>
+                    </a>
                     </div>) :
                     (<div className="m-10" key={i}>
                         <div className="large-card">
