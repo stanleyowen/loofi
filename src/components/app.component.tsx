@@ -8,7 +8,7 @@ import Navbar from './navbar.component'
 import BaseLayout from './base.component'
 import Controls from './controls.component'
 
-const App = ({ properties, handleChange, config }: any) => {
+const App = ({ properties, handleChange }: any) => {
     const [data, setData] = useState<any>([])
     const [song, setSong] = useState({
         playing: false,
@@ -19,7 +19,16 @@ const App = ({ properties, handleChange, config }: any) => {
     })
 
     useEffect(() => {
-        initializeApp(config)
+        initializeApp({
+            apiKey: process.env.REACT_APP_API_KEY,
+            authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+            databaseURL: process.env.REACT_APP_DB_URL,
+            projectId: process.env.REACT_APP_PROJECT_ID,
+            storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+            messagingSenderId: process.env.REACT_APP_SENDER_ID,
+            appId: process.env.REACT_APP_ID,
+            measurementId: process.env.REACT_APP_MEASUREMENT_ID
+        })
         onValue(ref(getDatabase(), 'data-dev/'), (snapshot) => {
             var rawData = snapshot.val(), index = rawData.length, randIndex
             while(index !== 0) {
@@ -43,7 +52,7 @@ const App = ({ properties, handleChange, config }: any) => {
         <div className="app">
             <div className="app-ui">
                 <Navbar properties={properties} handleChange={handleChange} />
-                <BaseLayout properties={properties} song={song} config={config} songData={data} handleSong={handleSong} />
+                <BaseLayout properties={properties} song={song} songData={data} handleSong={handleSong} />
             </div>
             <Controls properties={properties} song={song} handleSong={handleSong} songData={data} />
         </div>
