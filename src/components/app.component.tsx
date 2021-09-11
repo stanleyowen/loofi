@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react'
+import { initializeApp } from 'firebase/app'
+import { getDatabase, ref, onValue } from 'firebase/database'
+import { Alert } from '@material-ui/lab'
+import { Slide, Snackbar } from '@material-ui/core'
+
 import Navbar from './navbar.component'
 import BaseLayout from './base.component'
 import Controls from './controls.component'
-import { initializeApp } from 'firebase/app'
-import { getDatabase, ref, onValue } from 'firebase/database'
-import { Slide, Snackbar } from '@material-ui/core'
-import { Alert } from '@material-ui/lab'
 
 const App = ({ properties, handleChange, config }: any) => {
     const [data, setData] = useState<any>([])
@@ -45,9 +46,9 @@ const App = ({ properties, handleChange, config }: any) => {
         <div className="app">
             <div className="app-ui">
                 <Navbar properties={properties} handleChange={handleChange} />
-                <BaseLayout properties={properties} song={song} config={config} handleSong={handleSong} />
+                <BaseLayout properties={properties} song={song} config={config} songData={data} handleSong={handleSong} />
             </div>
-            <Controls properties={properties} song={song} handleSong={handleSong} />
+            <Controls properties={properties} song={song} handleSong={handleSong} songData={data} />
         </div>
     )
 }
