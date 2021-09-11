@@ -29,9 +29,6 @@ const App = ({ properties, handleChange, config }: any) => {
             }
             setData(rawData)
         })
-        setTimeout(() =>
-            onValue(ref(getDatabase(), '.info/connected'), (snapshot) => snapshot.val() ? setConnectionState(false) : setConnectionState(true))
-        , 5000)
     }, []) // eslint-disable-line
     
     const handleSong = useCallback(a => {

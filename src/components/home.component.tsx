@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { initializeApp } from 'firebase/app'
-import { getDatabase, ref, onValue } from 'firebase/database'
 import { Skeleton } from '@material-ui/lab'
 
-const Home = ({ song, config, handleSong }: any) => {
+const Home = ({ song, songData, handleSong }: any) => {
     const [greeting, setGreeting] = useState<string>()
-    const [data, setData] = useState<any>()
 
     const triggerAudio = (e: React.MouseEvent<HTMLButtonElement>, data: { audio: string }) => {
         e.preventDefault()
@@ -22,22 +19,6 @@ const Home = ({ song, config, handleSong }: any) => {
         else if(currentHour < 18) setGreeting('Afternoon')
         else setGreeting('Evening')
     }, [])
-
-    useEffect(() => {
-        initializeApp(config)
-        onValue(ref(getDatabase(), 'data-dev/'), (snapshot) => {
-            var rawData = snapshot.val(), index = rawData.length, randIndex
-            while(index !== 0) {
-                randIndex = Math.floor(Math.random() * index)
-                index--
-                [rawData[index], rawData[randIndex]] = [rawData[randIndex], rawData[index]]
-            }
-            setData(rawData)
-        })
-        setTimeout(() =>
-            onValue(ref(getDatabase(), '.info/connected'), (snapshot) => snapshot.val() ? null : console.log("Client Disconnected from Server"))
-        , 5000)
-    }, [config])
 
     useEffect(() => {
         const btn = document.getElementById((song.title+song.author).replace(/\s/g, "-"))
@@ -77,14 +58,14 @@ const Home = ({ song, config, handleSong }: any) => {
             <h2 className="m-10">Good {greeting}</h2>
             <div className="col-3" id="recent-playlist">
                 {
-                    data ? data.map((song: any, index: number) => {
-                        if(index > 5) return;
+                    songData?.length !== 0 ? songData.map((music: any, index: number) => {
+                        if(index > 5) return; // eslint-disable-line
                         return (
                             <div className="m-10" key={index}>
-                                <a className="card flex" href={song.link}>
-                                    <img src={song.image} alt={song.title} />
-                                    <p className="m-auto w-50">{song.title}</p>
-                                    <button className="play-btn m-auto" onClick={e => triggerAudio(e, song)} id={(song.title+song.author).replace(/\s/g, "-")}></button>
+                                <a className="card flex" href={music.link}>
+                                    <img src={music.image} alt={music.title} />
+                                    <p className="m-auto w-50">{music.title}</p>
+                                    <button className="play-btn m-auto" onClick={e => triggerAudio(e, music)} id={(music.title+music.author).replace(/\s/g, "-")}></button>
                                 </a>
                             </div>
                         )
@@ -93,18 +74,18 @@ const Home = ({ song, config, handleSong }: any) => {
             </div>
             <div className="mt-30 col-4" id="playlist">
                 {
-                    data ? data.map((song: any, index: number) => {
-                        if(index < 6 || index >= 14) return;
+                    songData?.length !== 0 ? songData.map((music: any, index: number) => {
+                        if(index < 6 || index >= 14) return; // eslint-disable-line
                         return (
                             <div className="m-10" key={index}>
-                                <a className="large-card" href={song.link}>
-                                    <img src={song.image} alt={song.title} />
+                                <a className="large-card" href={music.link}>
+                                    <img src={music.image} alt={music.title} />
                                     <div className="flex">
                                         <div className="m-auto w-70">
-                                            <h3 className="mt-10">{song.title}</h3>
-                                            <p className="author">{song.author}</p>
+                                            <h3 className="mt-10">{music.title}</h3>
+                                            <p className="author">{music.author}</p>
                                         </div>
-                                        <button className="play-btn m-auto" onClick={e => triggerAudio(e, song)} id={(song.title+song.author).replace(/\s/g, "-")}></button>
+                                        <button className="play-btn m-auto" onClick={e => triggerAudio(e, music)} id={(music.title+music.author).replace(/\s/g, "-")}></button>
                                     </div>
                                 </a>
                             </div>
