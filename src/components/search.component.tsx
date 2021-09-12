@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Skeleton } from '@material-ui/lab'
-import { initializeApp } from 'firebase/app'
 import { Close } from '../lib/icons.component'
 import { TextField, IconButton } from '@material-ui/core'
-import { getDatabase, ref, onValue } from 'firebase/database'
 
 const Search = ({ properties, config }: any) => {
     const items: any = []
@@ -13,21 +11,16 @@ const Search = ({ properties, config }: any) => {
     const [isFetching, setFetching] = useState<boolean>(false)
 
     useEffect(() => {
-        onValue(ref(getDatabase(), 'data-dev/'), (snapshot) => setRawData(snapshot.val()))
-    }, [config])
-
-    useEffect(() => {
-        setFetching(true)
         if(keyword) {
+            setFetching(true)
             var result: any = []
             for (let i=0; i<rawData.length; i++) {
                 if(String(rawData[i].title).toLowerCase().includes(keyword) || String(rawData[i].author).toLowerCase().includes(keyword)) result.push(rawData[i])
             }
             setResult(result)
+            setFetching(false)
         }
-        setFetching(false)
-        // eslint-disable-next-line
-    }, [keyword])
+    }, [keyword]) // eslint-disable-line
 
     if(keyword)
         if(results?.length === 0 && isFetching)
