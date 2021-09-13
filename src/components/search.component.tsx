@@ -3,10 +3,9 @@ import { Skeleton } from '@material-ui/lab'
 import { Close } from '../lib/icons.component'
 import { TextField, IconButton } from '@material-ui/core'
 
-const Search = ({ properties, config }: any) => {
+const Search = ({ songData }: any) => {
     const items: any = []
-    const [results, setResult] = useState<any>()
-    const [rawData, setRawData] = useState<any>()
+    const [results, setResult] = useState<any>([])
     const [keyword, setKeyword] = useState<string>('')
     const [isFetching, setFetching] = useState<boolean>(false)
 
@@ -14,16 +13,16 @@ const Search = ({ properties, config }: any) => {
         if(keyword) {
             setFetching(true)
             var result: any = []
-            for (let i=0; i<rawData.length; i++) {
-                if(String(rawData[i].title).toLowerCase().includes(keyword) || String(rawData[i].author).toLowerCase().includes(keyword)) result.push(rawData[i])
+            for (let i=0; i<songData.length; i++) {
+                if(String(songData[i].title).toLowerCase().includes(keyword) || String(songData[i].author).toLowerCase().includes(keyword)) result.push(songData[i])
             }
             setResult(result)
             setFetching(false)
         }
     }, [keyword]) // eslint-disable-line
 
-    if(keyword)
-        if(results?.length === 0 && isFetching)
+    if(keyword) {
+        if(isFetching)
             for(let i=0; i<4; i++) {
                 items.push(
                     <div className="m-10" key={i}>
@@ -55,6 +54,7 @@ const Search = ({ properties, config }: any) => {
                 )
             })
         else if(!isFetching && results?.length === 0) items.push(<div>No Results Found for <b>{keyword}</b></div>)
+    }
 
     const ClearQuery = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
@@ -66,7 +66,7 @@ const Search = ({ properties, config }: any) => {
         <div className="m-10">
             <div className="flex">
                 <TextField label="Search" variant="outlined" className="search" value={keyword} onChange={e => setKeyword(e.target.value)} id="search-query" autoFocus />
-                <IconButton className={(keyword ? null : 'none') + " close-btn"} style={{padding: '10px'}} onClick={ClearQuery}>{Close()}</IconButton>
+                <IconButton className={(keyword ? null : 'none') + " p-10 close-btn"} onClick={ClearQuery}>{Close()}</IconButton>
             </div>
             <div className="mt-30 col-4" id="playlist">{items}</div>
         </div>
