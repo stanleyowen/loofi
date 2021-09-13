@@ -4,12 +4,12 @@ import { Skeleton } from '@material-ui/lab'
 const Home = ({ song, songData, handleSong }: any) => {
     const [greeting, setGreeting] = useState<string>()
 
-    const triggerAudio = (e: React.MouseEvent<HTMLButtonElement>, data: { audio: string }) => {
+    const triggerAudio = (e: React.MouseEvent<HTMLButtonElement>, data: any) => {
         e.preventDefault()
-        if(song.playing){
-            handleSong({id: 'playing', value: false})
-            setTimeout(() => handleSong({...data, audio: new Audio(data?.audio), playing: true }), 10)
-        }else handleSong({...data, audio: new Audio(data?.audio) });
+        if(song.playing) {
+            handleSong({ id: 'playing', value: false })
+            setTimeout(() => handleSong(data), 10)
+        } else handleSong(data)
         (e.target as Element).classList.toggle('pause')
     }
 
