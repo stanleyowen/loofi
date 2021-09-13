@@ -1,5 +1,5 @@
 # 🎶 LoFi Player
-![LoFi Player](https://user-images.githubusercontent.com/69080584/132081989-964b8988-c167-45e6-bd38-e29890a9106b.png)
+![LoFi Player](https://user-images.githubusercontent.com/69080584/132951327-a22710aa-106a-4699-ab5d-940fbe4b0a3c.png)
 
 <div align="center">
 
