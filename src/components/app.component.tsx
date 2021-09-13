@@ -42,9 +42,9 @@ const App = ({ properties, handleChange }: any) => {
     
     const handleSong = useCallback(a => {
         if(!a.id && !a.value)
-            a.audio.getAttribute('src') === song.audio.getAttribute('src') ?
+            a.audio === song.audio.getAttribute('src') ?
                 setSong({...song, playing: !song.playing}) :
-                setSong({...a, playing: true})
+                setSong({...a, audio: new Audio(a.audio), playing: true})
         else setSong({ ...song, [a.id]: a.value })
     }, [song])
 
