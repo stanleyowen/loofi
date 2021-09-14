@@ -59,6 +59,9 @@ const App = ({ properties, handleChange }: any) => {
                 <BaseLayout properties={properties} song={song} songData={data} handleSong={handleSong} />
             </div>
             <Controls properties={properties} song={song} handleSong={handleSong} songData={data} />
+            <Snackbar anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }} open={isOffline} autoHideDuration={1000} TransitionComponent={props => <Slide {...props} direction="right" />}>
+                <Alert severity="error">You are offline. Some functionality may be unavailable.</Alert>
+            </Snackbar>
         </div>
     )
 }
