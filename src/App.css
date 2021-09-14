@@ -190,9 +190,11 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 }
 
 /* Properties */
+.MuiAlert-root { width: 50vh !important }
 .none { display: none !important }
 button:disabled,
 input:disabled { pointer-events: none !important }
+.flex-nowrap { display: flex; flex-wrap: nowrap; }
 .flex { display: flex; flex-wrap: wrap; }
 .mrl-10 { margin: 0 10px; padding: 0; }
 .rounded-corner { border-radius: 5px }
@@ -227,8 +229,15 @@ svg {
 	display: block;
 }
 #version svg { margin: auto 0px; }
-#version p { font-weight: normal; }
+#version p { font-weight: normal }
+#version code p { font-size: 15px; }
 #version .MuiIconButton-root { padding: 10px !important; }
+#version a {
+	cursor: pointer;
+	color: #3090ff;
+	text-decoration: none;
+}
+#version a:hover { text-decoration: underline }
 .small { font-size: 12px; font-weight: normal !important; }
 button {
 	border: none;
@@ -310,6 +319,7 @@ button {
 
 @media only screen and (max-width: 1200px) {
 	.col-3 { grid-template-columns: 50% 50% }
+	#version .w-50 { width: 70% !important }
 	.col-4 { grid-template-columns: 33.3% 33.3% 33.3% }
 	.search { width: 60% }
 }
@@ -326,4 +336,5 @@ button {
 	}
 	.col-4 { grid-template-columns: 100% }
 	#version .w-50 { width: 100% !important }
+	.MuiAlert-root { width: 100vh !important }
 }

@@ -10,6 +10,7 @@ import Controls from './controls.component'
 
 const App = ({ properties, handleChange }: any) => {
     const [data, setData] = useState<any>([])
+    const [isOffline, setConnectionState] = useState<boolean>(false)
     const [song, setSong] = useState({
         playing: false,
         title: 'Underwater',
@@ -38,6 +39,9 @@ const App = ({ properties, handleChange }: any) => {
             }
             setData(rawData)
         })
+        setTimeout(() =>
+            onValue(ref(getDatabase(), '.info/connected'), (snapshot) => snapshot.val() ? setConnectionState(false) : setConnectionState(true))
+        , 5000)
     }, []) // eslint-disable-line
     
     const handleSong = useCallback(a => {
@@ -55,6 +59,9 @@ const App = ({ properties, handleChange }: any) => {
                 <BaseLayout properties={properties} song={song} songData={data} handleSong={handleSong} />
             </div>
             <Controls properties={properties} song={song} handleSong={handleSong} songData={data} />
+            <Snackbar anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }} open={isOffline} autoHideDuration={1000} TransitionComponent={props => <Slide {...props} direction="right" />}>
+                <Alert severity="error">You are offline. Some functionality may be unavailable.</Alert>
+            </Snackbar>
         </div>
     )
 }
