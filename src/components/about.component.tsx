@@ -23,7 +23,12 @@ const About = ({ properties }: any) => {
                     <p className="ml-10">Privacy Policy</p>
                 </div>
                 </AccordionSummary>
-                <p className="p-10">LoFi Player does not collect, store, share or publish any personal information.</p>
+                <div className="p-10">
+                    <p><i>Personal Information Collection</i></p>
+                    <p>LoFi Player does not collect, store, share or publish any personal information.</p>
+                    <p className="mt-10"><i>Non-Personal Information Collection</i></p>
+                    <p>LoFi Player does not collect, store, share or publish any non-personal information.</p>
+                </div>
             </Accordion>
             <Accordion className="w-50 card mt-10">
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
