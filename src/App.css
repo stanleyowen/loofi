@@ -114,12 +114,9 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 	display: flex;
 	overflow: auto;
 	position: fixed;
-	width: calc(100% - 255px);
+	box-sizing: border-box;
+	width: calc(100% - 225px);
 	background-color: rgb(var(--white) / 50%);
-}
-.navbar:hover {
-	transition: all .3s;
-	background-color: rgb(var(--white) / 80%);
 }
 .navbar div.mrl-10:last-child { margin-left: auto }
 
@@ -279,7 +276,6 @@ button {
 /* Controller */
 .footer {
 	padding: 10px 20px;
-	height: 12.5vh;
 	overflow: auto;
 	background: rgb(var(--white) / 60%);
 	color: rgb(var(--black));
