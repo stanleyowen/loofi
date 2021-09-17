@@ -109,16 +109,14 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 /* Navbar */
 .navbar {
 	z-index: 99;
+	height: 80px;
 	padding: 15px;
 	display: flex;
 	overflow: auto;
 	position: fixed;
-	width: calc(100% - 255px);
+	box-sizing: border-box;
+	width: calc(100% - 225px);
 	background-color: rgb(var(--white) / 50%);
-}
-.navbar:hover {
-	transition: all .3s;
-	background-color: rgb(var(--white) / 80%);
 }
 .navbar div.mrl-10:last-child { margin-left: auto }
 
@@ -129,11 +127,12 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 	flex-direction: column;
 	margin-left: 225px;
 }
-.base { margin-top: 100px }
-.app-ui {
-	flex: 9;
+.base {
 	overflow: auto;
+	margin-top: 80px;
+	height: calc(100% - 80px);
 }
+.app-ui { height: calc(100% - 95px) }
 .card {
 	width: 100%;
     border-radius: 5px !important;
@@ -277,7 +276,6 @@ button {
 /* Controller */
 .footer {
 	padding: 10px 20px;
-	height: 12.5vh;
 	overflow: auto;
 	background: rgb(var(--white) / 60%);
 	color: rgb(var(--black));
