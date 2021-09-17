@@ -109,16 +109,14 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 /* Navbar */
 .navbar {
 	z-index: 99;
+	height: 80px;
 	padding: 15px;
 	display: flex;
 	overflow: auto;
 	position: fixed;
-	width: calc(100% - 255px);
+	box-sizing: border-box;
+	width: calc(100% - 225px);
 	background-color: rgb(var(--white) / 50%);
-}
-.navbar:hover {
-	transition: all .3s;
-	background-color: rgb(var(--white) / 80%);
 }
 .navbar div.mrl-10:last-child { margin-left: auto }
 
@@ -129,11 +127,12 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 	flex-direction: column;
 	margin-left: 225px;
 }
-.base { margin-top: 100px }
-.app-ui {
-	flex: 9;
+.base {
 	overflow: auto;
+	margin-top: 80px;
+	height: calc(100% - 80px);
 }
+.app-ui { height: calc(100% - 95px) }
 .card {
 	width: 100%;
     border-radius: 5px !important;
@@ -190,9 +189,11 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 }
 
 /* Properties */
+.MuiAlert-root { width: 50vh !important }
 .none { display: none !important }
 button:disabled,
 input:disabled { pointer-events: none !important }
+.flex-nowrap { display: flex; flex-wrap: nowrap; }
 .flex { display: flex; flex-wrap: wrap; }
 .mrl-10 { margin: 0 10px; padding: 0; }
 .rounded-corner { border-radius: 5px }
@@ -227,8 +228,15 @@ svg {
 	display: block;
 }
 #version svg { margin: auto 0px; }
-#version p { font-weight: normal; }
+#version p { font-weight: normal }
+#version code p { font-size: 15px; }
 #version .MuiIconButton-root { padding: 10px !important; }
+#version a {
+	cursor: pointer;
+	color: #3090ff;
+	text-decoration: none;
+}
+#version a:hover { text-decoration: underline }
 .small { font-size: 12px; font-weight: normal !important; }
 button {
 	border: none;
@@ -268,7 +276,6 @@ button {
 /* Controller */
 .footer {
 	padding: 10px 20px;
-	height: 12.5vh;
 	overflow: auto;
 	background: rgb(var(--white) / 60%);
 	color: rgb(var(--black));
@@ -310,6 +317,7 @@ button {
 
 @media only screen and (max-width: 1200px) {
 	.col-3 { grid-template-columns: 50% 50% }
+	#version .w-50 { width: 70% !important }
 	.col-4 { grid-template-columns: 33.3% 33.3% 33.3% }
 	.search { width: 60% }
 }
@@ -326,4 +334,5 @@ button {
 	}
 	.col-4 { grid-template-columns: 100% }
 	#version .w-50 { width: 100% !important }
+	.MuiAlert-root { width: 100vh !important }
 }

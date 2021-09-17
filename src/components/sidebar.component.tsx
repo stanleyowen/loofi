@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Dialog, Tooltip, DialogActions, DialogContent, DialogContentText } from '@material-ui/core'
-import { Beta, HomeOutline, HomeSolid, AboutSolid, AboutOutline, SearchSolid, SearchOutline } from '../lib/icons.component'
+import { Beta, HomeSolid, HomeOutline, AboutSolid, AboutOutline, SearchSolid, SearchOutline } from '../lib/icons.component'
 
 const SideBar = ({ handleChange, properties }: any) => {
     const [isOpen, setDialog] = useState<boolean>(false)
@@ -13,22 +13,20 @@ const SideBar = ({ handleChange, properties }: any) => {
         )
     }, [properties])
 
-    const switchTab = (e: React.MouseEvent<HTMLElement>) => {
-        e.preventDefault()
-        const target = ((e.target as HTMLElement).ownerDocument.activeElement?.childNodes[0].childNodes[1] as HTMLElement).innerText.toLowerCase()
-        if(target !== properties.activeTab && target !== 'beta') handleChange({ id: 'activeTab', value: target })
+    const switchTab = (target: string) => {
+        if(target !== properties.activeTab) handleChange({ id: 'activeTab', value: target })
     }
 
     return (
         <div className="sidebar">
-            <div id="tabs" onClick={switchTab}>
+            <div id="tabs">
                 {
                     ['Home', 'Search', 'About'].map((tab, index) => {
                         const components: { [key: string]: any } = { HomeSolid, HomeOutline, SearchSolid, SearchOutline, AboutSolid, AboutOutline }
                         const SolidIcon = components[`${tab}Solid`]
                         const OutlineIcon = components[`${tab}Outline`]
                         return (
-                            <Tooltip title={tab} enterDelay={500} enterNextDelay={500} key={index}>
+                            <Tooltip title={tab} enterDelay={500} enterNextDelay={500} key={index} onClick={() => switchTab(tab.toLowerCase())}>
                                 <Button className="w-100 rounded-corner p-10 tab" id={tab.toLowerCase()}>
                                     <div className="w-30">{properties.activeTab === tab.toLowerCase() ? <SolidIcon /> : <OutlineIcon />}</div>
                                     <div className="w-70 left-align">{tab.toLowerCase()}</div>
