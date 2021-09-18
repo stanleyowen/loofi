@@ -22,17 +22,21 @@ const Navbar = ({ properties, handleChange }: any) => {
         <div className="navbar">
             <div className="mrl-10">
                 <Tooltip title="Go Back"><span>
-                    <IconButton onClick={goBackward} disabled={property.disablePrevious}><ChevronLeft /></IconButton>
+                    <IconButton onClick={goBackward} disabled={property.disablePrevious} size="large"><ChevronLeft /></IconButton>
                 </span></Tooltip>
             </div>
             <div className="mrl-10">
                 <Tooltip title="Go Forward"><span>
-                    <IconButton onClick={goForward} disabled={property.disableForward}><ChevronRight /></IconButton>
+                    <IconButton onClick={goForward} disabled={property.disableForward} size="large"><ChevronRight /></IconButton>
                 </span></Tooltip>
             </div>
             <div className="mrl-10">
                 <Tooltip title="View on GitHub" arrow>
-                    <IconButton href="https://github.com/stanleyowen/lofi-player" className="p-10" target="_blank"><GitHub /></IconButton>
+                    <IconButton
+                        href="https://github.com/stanleyowen/lofi-player"
+                        className="p-10"
+                        target="_blank"
+                        size="large"><GitHub /></IconButton>
                 </Tooltip>
             </div>
         </div>
