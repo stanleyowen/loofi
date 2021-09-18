@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { initializeApp } from 'firebase/app'
 import { getDatabase, ref, onValue } from 'firebase/database'
-import { Alert } from '@material-ui/lab'
-import { Slide, Snackbar } from '@material-ui/core'
+import { Alert } from '@mui/lab'
+import { Slide, Snackbar } from '@mui/material'
 
 import Navbar from './navbar.component'
 import BaseLayout from './base.component'

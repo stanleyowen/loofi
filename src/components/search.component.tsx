@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { Skeleton } from '@material-ui/lab'
+import { Skeleton } from '@mui/lab'
 import { Close } from '../lib/icons.component'
-import { TextField, IconButton } from '@material-ui/core'
+import { TextField, IconButton } from '@mui/material'
 
 const Search = ({ songData }: any) => {
     const items: any = []

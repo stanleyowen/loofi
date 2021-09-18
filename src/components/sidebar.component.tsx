@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Dialog, Tooltip, DialogActions, DialogContent, DialogContentText } from '@material-ui/core'
+import { Button, Dialog, Tooltip, DialogActions, DialogContent, DialogContentText } from '@mui/material'
 import { Beta, HomeSolid, HomeOutline, AboutSolid, AboutOutline, SearchSolid, SearchOutline } from '../lib/icons.component'
 
 const SideBar = ({ handleChange, properties }: any) => {

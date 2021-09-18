@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Skeleton } from '@material-ui/lab'
+import { Skeleton } from '@mui/lab'
 
 const Home = ({ song, songData, handleSong }: any) => {
     const [greeting, setGreeting] = useState<string>()

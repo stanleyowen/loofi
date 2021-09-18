@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Tooltip, IconButton } from '@material-ui/core'
+import { Tooltip, IconButton } from '@mui/material'
 import { ChevronLeft, ChevronRight, GitHub } from '../lib/icons.component'
 
 const Navbar = ({ properties, handleChange }: any) => {
