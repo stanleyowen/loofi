@@ -20,23 +20,19 @@ const Navbar = ({ properties, handleChange }: any) => {
 
     return (
         <div className="navbar">
-            <div className="mrl-10">
+            <div className="m-10-auto">
                 <Tooltip title="Go Back"><span>
-                    <IconButton onClick={goBackward} disabled={property.disablePrevious} size="large"><ChevronLeft /></IconButton>
+                    <IconButton onClick={goBackward} disabled={property.disablePrevious}><ChevronLeft /></IconButton>
                 </span></Tooltip>
             </div>
-            <div className="mrl-10">
+            <div className="m-10-auto">
                 <Tooltip title="Go Forward"><span>
-                    <IconButton onClick={goForward} disabled={property.disableForward} size="large"><ChevronRight /></IconButton>
+                    <IconButton onClick={goForward} disabled={property.disableForward}><ChevronRight /></IconButton>
                 </span></Tooltip>
             </div>
             <div className="mrl-10">
                 <Tooltip title="View on GitHub" arrow>
-                    <IconButton
-                        href="https://github.com/stanleyowen/lofi-player"
-                        className="p-10"
-                        target="_blank"
-                        size="large"><GitHub /></IconButton>
+                    <IconButton href="https://github.com/stanleyowen/lofi-player" className="p-10" target="_blank"><GitHub /></IconButton>
                 </Tooltip>
             </div>
         </div>
