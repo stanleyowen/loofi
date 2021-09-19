@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { Skeleton } from '@material-ui/lab'
+import { Skeleton } from '@mui/lab'
 import { Close } from '../lib/icons.component'
-import { TextField, IconButton } from '@material-ui/core'
+import { TextField, IconButton } from '@mui/material'
 
 const Search = ({ songData }: any) => {
     const items: any = []
@@ -27,7 +27,7 @@ const Search = ({ songData }: any) => {
                 items.push(
                     <div className="m-10" key={i}>
                         <div className="large-card">
-                            <Skeleton variant="circle" height={200} animation="wave" />
+                            <Skeleton variant="circular" height={200} animation="wave" />
                             <div className="flex">
                                 <span className="mt-10 w-70"><Skeleton variant="text" animation="wave" /></span>
                                 <span className="w-40"><Skeleton variant="text" animation="wave" /></span>
@@ -66,7 +66,10 @@ const Search = ({ songData }: any) => {
         <div className="m-10">
             <div className="flex">
                 <TextField label="Search" variant="outlined" className="search" value={keyword} onChange={e => setKeyword(e.target.value)} id="search-query" autoFocus />
-                <IconButton className={(keyword ? null : 'none') + " p-10 close-btn"} onClick={ClearQuery}>{Close()}</IconButton>
+                <IconButton
+                    className={(keyword ? null : 'none') + " p-10 close-btn"}
+                    onClick={ClearQuery}
+                    size="large">{Close()}</IconButton>
             </div>
             <div className="mt-30 col-4" id="playlist">{items}</div>
         </div>

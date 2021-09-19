@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Skeleton } from '@material-ui/lab'
+import { Skeleton } from '@mui/lab'
 
 const Home = ({ song, songData, handleSong }: any) => {
     const [greeting, setGreeting] = useState<string>()
@@ -31,17 +31,17 @@ const Home = ({ song, songData, handleSong }: any) => {
             skeleton.push(
                 type === 'small' ?
                     (<div className="m-10" key={i}>
-                    <a className="card flex">
-                        <Skeleton variant="rect" width={75} height={75} animation="wave" />
-                        <p className="m-auto w-50">
-                            <Skeleton variant="text" animation="wave" width="50%" />
-                            <Skeleton variant="text" animation="wave" />
-                        </p>
-                    </a>
+                        <div className="card flex">
+                            <Skeleton variant="rectangular" width={75} height={75} animation="wave" />
+                            <p className="m-auto w-50">
+                                <Skeleton variant="text" animation="wave" width="50%" />
+                                <Skeleton variant="text" animation="wave" />
+                            </p>
+                        </div>
                     </div>) :
                     (<div className="m-10" key={i}>
                         <div className="large-card">
-                            <Skeleton variant="circle" height={200} animation="wave" />
+                            <Skeleton variant="circular" height={200} animation="wave" />
                             <div className="flex">
                                 <span className="mt-10 w-70"><Skeleton variant="text" animation="wave" /></span>
                                 <span className="w-40"><Skeleton variant="text" animation="wave" /></span>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Accordion, AccordionSummary } from '@material-ui/core'
+import { Button, Accordion, AccordionSummary } from '@mui/material'
 import { AboutOutline, PrivacyPolicy, ExpandMoreIcon, License } from '../lib/icons.component'
 import { version } from '../../package.json'
 

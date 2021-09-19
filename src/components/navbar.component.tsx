@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Tooltip, IconButton } from '@material-ui/core'
+import { Tooltip, IconButton } from '@mui/material'
 import { ChevronLeft, ChevronRight, GitHub } from '../lib/icons.component'
 
 const Navbar = ({ properties, handleChange }: any) => {
@@ -20,12 +20,12 @@ const Navbar = ({ properties, handleChange }: any) => {
 
     return (
         <div className="navbar">
-            <div className="mrl-10">
+            <div className="m-10-auto">
                 <Tooltip title="Go Back"><span>
                     <IconButton onClick={goBackward} disabled={property.disablePrevious}><ChevronLeft /></IconButton>
                 </span></Tooltip>
             </div>
-            <div className="mrl-10">
+            <div className="m-10-auto">
                 <Tooltip title="Go Forward"><span>
                     <IconButton onClick={goForward} disabled={property.disableForward}><ChevronRight /></IconButton>
                 </span></Tooltip>

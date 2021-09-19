@@ -1,6 +1,6 @@
 const electron = require("electron")
 const path = require("path")
-const isDev = require('electron-is-dev')
+const isDev = require("electron-is-dev")
 
 let mainWindow
 const app = electron.app

@@ -223,6 +223,7 @@ input:disabled { pointer-events: none !important }
 .mt-30 { margin-top: 30px !important }
 .ml-10 { margin-left: 10px !important }
 .m-auto { margin: auto !important }
+.m-10-auto { margin: auto 10px !important }
 svg {
 	margin: auto;
 	display: block;
