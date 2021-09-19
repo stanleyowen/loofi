@@ -2,8 +2,9 @@
 	--black: 0 0 0;
 	--white: 255 255 255;
 	--gray: 205 205 205;
-	--light-gray: 244 244 244;
 	--dark-gray: 56 56 56;
+	--light-gray: 244 244 244;
+	--blue: 25 118 210;
 }
 
 body {
@@ -98,7 +99,7 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 	display: flex;
 	flex-direction: column;
 }
-#tabs .active { background: rgb(var(--gray) / 60%) }
+#tabs .active { background: rgb(var(--blue) / 15%) }
 #tabs :nth-child(3) { margin-top: auto }
 .tab {
 	font-weight: 525;
