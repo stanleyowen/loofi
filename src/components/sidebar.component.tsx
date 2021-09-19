@@ -7,7 +7,7 @@ const SideBar = ({ handleChange, properties }: any) => {
 
     useEffect(() => {
         document.getElementById('tabs')?.childNodes.forEach(tab =>
-            (tab.childNodes[0] as HTMLElement).innerText.toLowerCase() === properties.activeTab ?
+            (tab.childNodes[1] as HTMLElement).innerText.toLowerCase() === properties.activeTab ?
                 (tab as HTMLElement).classList.add('active') :
                 (tab as HTMLElement).classList.remove('active')
         )
