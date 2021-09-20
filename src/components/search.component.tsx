@@ -65,11 +65,8 @@ const Search = ({ songData }: any) => {
     return (
         <div className="m-10">
             <div className="flex">
-                <TextField label="Search" variant="outlined" className="search" value={keyword} onChange={e => setKeyword(e.target.value)} id="search-query" autoFocus />
-                <IconButton
-                    className={(keyword ? null : 'none') + " p-10 close-btn"}
-                    onClick={ClearQuery}
-                    size="large">{Close()}</IconButton>
+                <TextField label="Search (Artists or Songs)" variant="outlined" className="search" value={keyword} onChange={e => setKeyword(e.target.value)} id="search-query" autoFocus autoComplete="off" />
+                <IconButton className={(keyword ? null : 'none') + " p-10 close-btn"} onClick={ClearQuery} size="large">{Close()}</IconButton>
             </div>
             <div className="mt-30 col-4" id="playlist">{items}</div>
         </div>

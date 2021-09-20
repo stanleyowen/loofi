@@ -2,8 +2,9 @@
 	--black: 0 0 0;
 	--white: 255 255 255;
 	--gray: 205 205 205;
-	--light-gray: 244 244 244;
 	--dark-gray: 56 56 56;
+	--light-gray: 244 244 244;
+	--blue: 25 118 210;
 }
 
 body {
@@ -13,7 +14,10 @@ body {
 	-webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
+h1, h2, h3, h4, h5, h6, p {
+	margin: 0;
+	padding: 0;
+}
 
 /* App Background */
 .backdrop {
@@ -98,7 +102,7 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 	display: flex;
 	flex-direction: column;
 }
-#tabs .active { background: rgb(var(--gray) / 60%) }
+#tabs .active { background: rgb(var(--blue) / 15%) }
 #tabs :nth-child(3) { margin-top: auto }
 .tab {
 	font-weight: 525;
@@ -109,7 +113,7 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 /* Navbar */
 .navbar {
 	z-index: 99;
-	height: 80px;
+	height: 75px;
 	padding: 15px;
 	display: flex;
 	overflow: auto;
@@ -129,8 +133,8 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 }
 .base {
 	overflow: auto;
-	margin-top: 80px;
-	height: calc(100% - 80px);
+	margin-top: 75px;
+	height: calc(100% - 75px);
 }
 .app-ui { height: calc(100% - 95px) }
 .card {
@@ -276,7 +280,7 @@ button {
 
 /* Controller */
 .footer {
-	padding: 10px 20px;
+	padding: 10px 15px;
 	overflow: auto;
 	background: rgb(var(--white) / 60%);
 	color: rgb(var(--black));
