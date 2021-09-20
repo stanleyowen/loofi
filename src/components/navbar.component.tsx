@@ -22,12 +22,12 @@ const Navbar = ({ properties, handleChange }: any) => {
         <div className="navbar">
             <div className="m-10-auto">
                 <Tooltip title="Go Back" enterDelay={500} enterNextDelay={500}><div>
-                    <IconButton onClick={() => triggerAction('previous')} disabled={property.disablePrevious}><ChevronLeft /></IconButton>
+                    <IconButton onClick={goBackward} disabled={property.disablePrevious}><ChevronLeft /></IconButton>
                 </div></Tooltip>
             </div>
             <div className="m-10-auto">
                 <Tooltip title="Go Forward" enterDelay={500} enterNextDelay={500}><div>
-                    <IconButton onClick={() => triggerAction('next')} disabled={property.disableForward}><ChevronRight /></IconButton>
+                    <IconButton onClick={goForward} disabled={property.disableForward}><ChevronRight /></IconButton>
                 </div></Tooltip>
             </div>
             <div className="mrl-10">
