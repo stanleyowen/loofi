@@ -1,3 +1,4 @@
+import { Slider, IconButton } from '@mui/material'
 import React, { useState, useEffect } from 'react'
 import { Audio, MutedAudio, SkipNext, SkipPrevious } from '../lib/icons.component'
 
@@ -53,14 +54,14 @@ const Controls = ({ song, handleSong }: any) => {
                 </div>
                 <div className="playback-bar">
                     <div className="progress-time center-align" id="current-duration">00:00</div>
-                    <input type="range" className="progress-bar rounded-corner" max="100" value={property.progress} readOnly />
+                    <Slider className="mrl-5" size="small" defaultValue={property.volume} value={property.progress} disableSwap={true} />
                     <div className="progress-time center-align">{parseTime(property.duration ? property.duration : 0)}</div>
                 </div>
             </div>
             <div className="w-30 flex center-flex">
                 <div className="w-50 audio">
                     <button onClick={() => handleChange('muted', !property.muted)}>{property.muted || property.volume === 0 ? MutedAudio() : Audio()}</button>
-                    <input type="range" className="progress-bar rounded-corner m-10" max="100" value={property.volume} onChange={e => handleChange('volume', Number(e.target.value))} />
+                    <Slider className="m-10" size="small" defaultValue={property.volume} value={property.volume} onChange={(_, value) => handleChange('volume', value)} />
                 </div>
             </div>
         </div>
