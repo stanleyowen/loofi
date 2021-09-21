@@ -10,7 +10,14 @@ Object.keys(data.devDependencies).map(dep => {
     }
 });
 
+data.dependencies = Object.keys(data.dependencies).sort().reduce(
+    (obj, key) => {
+        obj[key] = data.dependencies[key]
+        return obj
+    }, {}
+)
+
 fs.writeFile('package.json', JSON.stringify(data, null, 2), (err) => {
     if(err) console.log(err)
-    else console.log('Parsing Complete')
+    else console.log('Postbuild Process Completed')
 })
