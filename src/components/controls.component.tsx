@@ -38,6 +38,15 @@ const Controls = ({ song, songData, handleSong }: any) => {
 
     useEffect(() => { song.playing ? song.audio.play() : song.audio.pause() }, [song])
 
+    const skipAudio = (index: number, type: 'next' | 'previous') => {
+        handleQueue('currentIndex', type === 'next' ? index+1 : index-1)
+        const data: any[string] = queue.queue[type === 'next' ? index+1 : index-1]
+        if(song.playing){
+            handleSong({ id: 'playing', value: false })
+            setTimeout(() => handleSong(data), 10)
+        }else handleSong(data)
+    }
+
     const parseTime = (time: number) => {
         const minutes = Math.floor(time / 60)
         const second = Math.floor(time - (minutes * 60))
@@ -67,9 +76,13 @@ const Controls = ({ song, songData, handleSong }: any) => {
             </div>
             <div className="w-40 flex center-flex">
                 <div className="flex center-flex">
-                    <button>{SkipPrevious()}</button>
-                    <button className={(song.playing ? "pause" : "")+" play-btn mrl-10"} onClick={triggerAudio}></button>
-                    <button>{SkipNext()}</button>
+                    <button onClick={() => skipAudio(queue.currentIndex, 'previous')} className="p-10 font-black no-font">
+                        <div>{SkipPrevious()}</div>
+                    </button>
+                    <button onClick={triggerAudio} className={(song.playing ? "pause" : "")+" play-btn mrl-10"} />
+                    <button onClick={() => skipAudio(queue.currentIndex, 'next')} className="p-10 font-black no-font">
+                        <div>{SkipNext()}</div>
+                    </button>
                 </div>
                 <div className="playback-bar">
                     <div className="progress-time center-align" id="current-duration">00:00</div>
