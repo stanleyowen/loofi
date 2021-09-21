@@ -1,4 +1,4 @@
-import { Slider, IconButton } from '@mui/material'
+import { Slider } from '@mui/material'
 import React, { useState, useEffect } from 'react'
 import { Audio, MutedAudio, SkipNext, SkipPrevious } from '../lib/icons.component'
 
