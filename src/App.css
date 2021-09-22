@@ -194,11 +194,14 @@ h1, h2, h3, h4, h5, h6, p {
 
 /* Properties */
 .MuiAlert-root { width: 50vh !important }
+.no-font { font-size: 1em !important; }
+.font-15x { font-size: 1.5em !important; }
 .none { display: none !important }
 button:disabled,
 input:disabled { pointer-events: none !important }
 .flex-nowrap { display: flex; flex-wrap: nowrap; }
 .flex { display: flex; flex-wrap: wrap; }
+.mrl-5 { margin: 0 5px; padding: 0; }
 .mrl-10 { margin: 0 10px; padding: 0; }
 .rounded-corner { border-radius: 5px }
 .close-btn {
@@ -220,8 +223,10 @@ input:disabled { pointer-events: none !important }
 .w-70 { width: 70% !important }
 .w-80 { width: 80% !important }
 .w-100 { width: 100%; }
+.p-5 { padding: 5px !important }
 .p-10 { padding: 10px !important }
 .p-15 { padding: 15px !important }
+.m-5 { margin: 5px !important }
 .m-10 { margin: 10px !important }
 .mt-10 { margin-top: 10px !important }
 .mt-30 { margin-top: 30px !important }
@@ -291,19 +296,9 @@ button {
 }
 .author { color: rgb(var(--dark-gray)) }
 .footer .author { font-size: 13px }
-.progress-bar {
-	position: relative;
-	height: 6px;
-	width: 100%;
-	outline: none;
-	cursor: pointer;
-	-webkit-appearance: none;
-	background-color:rgb(var(--white))
-}
 .playback-bar {
 	width: 100%;
 	display: flex;
-	padding: 10px;
 	align-items: center;
 }
 .progress-time {
