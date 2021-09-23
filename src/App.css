@@ -2,8 +2,9 @@
 	--black: 0 0 0;
 	--white: 255 255 255;
 	--gray: 205 205 205;
-	--light-gray: 244 244 244;
 	--dark-gray: 56 56 56;
+	--light-gray: 244 244 244;
+	--blue: 25 118 210;
 }
 
 body {
@@ -13,7 +14,10 @@ body {
 	-webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
+h1, h2, h3, h4, h5, h6, p {
+	margin: 0;
+	padding: 0;
+}
 
 /* App Background */
 .backdrop {
@@ -89,7 +93,6 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 	padding: 10px;
 	position: fixed;
 	padding-top: 30px;
-	overflow-x: hidden;
 	box-sizing: border-box;
 	background: rgb(var(--white) / 40%);
 }
@@ -98,7 +101,7 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 	display: flex;
 	flex-direction: column;
 }
-#tabs .active { background: rgb(var(--gray) / 60%) }
+#tabs .active { background: rgb(var(--blue) / 15%) }
 #tabs :nth-child(3) { margin-top: auto }
 .tab {
 	font-weight: 525;
@@ -108,14 +111,11 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 
 /* Navbar */
 .navbar {
-	z-index: 99;
-	height: 80px;
+	width: 100%;
+	height: 75px;
 	padding: 15px;
 	display: flex;
-	overflow: auto;
-	position: fixed;
 	box-sizing: border-box;
-	width: calc(100% - 225px);
 	background-color: rgb(var(--white) / 50%);
 }
 .navbar div.mrl-10:last-child { margin-left: auto }
@@ -129,8 +129,7 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 }
 .base {
 	overflow: auto;
-	margin-top: 80px;
-	height: calc(100% - 80px);
+	height: calc(100% - 75px);
 }
 .app-ui { height: calc(100% - 95px) }
 .card {
@@ -190,11 +189,14 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 
 /* Properties */
 .MuiAlert-root { width: 50vh !important }
+.no-font { font-size: 1em !important; }
+.font-15x { font-size: 1.5em !important; }
 .none { display: none !important }
 button:disabled,
 input:disabled { pointer-events: none !important }
 .flex-nowrap { display: flex; flex-wrap: nowrap; }
 .flex { display: flex; flex-wrap: wrap; }
+.mrl-5 { margin: 0 5px; padding: 0; }
 .mrl-10 { margin: 0 10px; padding: 0; }
 .rounded-corner { border-radius: 5px }
 .close-btn {
@@ -216,13 +218,16 @@ input:disabled { pointer-events: none !important }
 .w-70 { width: 70% !important }
 .w-80 { width: 80% !important }
 .w-100 { width: 100%; }
+.p-5 { padding: 5px !important }
 .p-10 { padding: 10px !important }
 .p-15 { padding: 15px !important }
+.m-5 { margin: 5px !important }
 .m-10 { margin: 10px !important }
 .mt-10 { margin-top: 10px !important }
 .mt-30 { margin-top: 30px !important }
 .ml-10 { margin-left: 10px !important }
 .m-auto { margin: auto !important }
+.m-10-auto { margin: auto 10px !important }
 svg {
 	margin: auto;
 	display: block;
@@ -275,7 +280,7 @@ button {
 
 /* Controller */
 .footer {
-	padding: 10px 20px;
+	padding: 10px 15px;
 	overflow: auto;
 	background: rgb(var(--white) / 60%);
 	color: rgb(var(--black));
@@ -286,19 +291,9 @@ button {
 }
 .author { color: rgb(var(--dark-gray)) }
 .footer .author { font-size: 13px }
-.progress-bar {
-	position: relative;
-	height: 6px;
-	width: 100%;
-	outline: none;
-	cursor: pointer;
-	-webkit-appearance: none;
-	background-color:rgb(var(--white))
-}
 .playback-bar {
 	width: 100%;
 	display: flex;
-	padding: 10px;
 	align-items: center;
 }
 .progress-time {
