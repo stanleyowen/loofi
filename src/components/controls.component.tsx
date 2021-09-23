@@ -76,11 +76,11 @@ const Controls = ({ song, songData, handleSong }: any) => {
             </div>
             <div className="w-40 flex center-flex">
                 <div className="flex center-flex">
-                    <button onClick={() => skipAudio(queue.currentIndex, 'previous')} className="p-10 font-black no-font">
+                    <button onClick={() => skipAudio(queue.currentIndex, 'previous')} className="font-black no-font">
                         <div>{SkipPrevious()}</div>
                     </button>
                     <button onClick={triggerAudio} className={(song.playing ? "pause" : "")+" play-btn mrl-10"} />
-                    <button onClick={() => skipAudio(queue.currentIndex, 'next')} className="p-10 font-black no-font">
+                    <button onClick={() => skipAudio(queue.currentIndex, 'next')} className="font-black no-font">
                         <div>{SkipNext()}</div>
                     </button>
                 </div>
