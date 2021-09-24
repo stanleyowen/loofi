@@ -4,6 +4,18 @@ import { AboutOutline, PrivacyPolicy, ExpandMoreIcon, License } from '../lib/ico
 import { version } from '../../package.json'
 
 const About = ({ properties }: any) => {
+    const setTheme = (url: string | Boolean) => {
+        const background = document.getElementById('backdrop-image')
+        if(url)
+            import (`../../src/img/${url}`)
+            .then(image => {
+                if(background) background.style.background = `url(${image.default})`
+                // localStorage.setItem('theme-session', )
+            })
+            .catch(() => console.log('Error in Rendering Image'))
+        else background?.removeAttribute('style')
+    }
+    
     return (
         <div className="m-10" id="version">
             <div className="flex w-50 card p-15">
