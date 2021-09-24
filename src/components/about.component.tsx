@@ -28,12 +28,26 @@ const About = ({ properties }: any) => {
                 </div>
                 <Button variant="outlined" onClick={() => navigator.clipboard.writeText(`Version: ${version}`)}>Copy</Button>
             </div>
+
             <Accordion className="w-50 card mt-10">
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                <div className="flex w-80">
-                    <PrivacyPolicy />
-                    <p className="ml-10">Privacy Policy</p>
+                    <div className="flex w-80">
+                        <Themes />
+                        <p className="ml-10">Themes</p>
+                    </div>
+                </AccordionSummary>
+                <div className="p-10">
+                    <Button onClick={() => setTheme(false)}>Default</Button>
+                    <Button onClick={() => setTheme('a9d4d30d6b483ee638a0dddab5bb047e.webp')}>Nature</Button>
                 </div>
+            </Accordion>
+
+            <Accordion className="w-50 card mt-10">
+                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                    <div className="flex w-80">
+                        <PrivacyPolicy />
+                        <p className="ml-10">Privacy Policy</p>
+                    </div>
                 </AccordionSummary>
                 <div className="p-10">
                     <p><i>Personal Information Collection</i></p>
