@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Accordion, AccordionSummary } from '@mui/material'
 
 import { version } from '../../package.json'
-import { Themes, License, AboutOutline, PrivacyPolicy, Expand } from '../lib/icons.component'
+import { Themes, License, AboutOutline, PrivacyPolicy, ExpandMoreIcon } from '../lib/icons.component'
 
 const About = ({ properties }: any) => {
     const setTheme = (url: string | Boolean) => {
