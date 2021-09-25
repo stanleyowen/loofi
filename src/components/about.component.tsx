@@ -1,7 +1,8 @@
 import React from 'react'
 import { Button, Accordion, AccordionSummary } from '@mui/material'
-import { AboutOutline, PrivacyPolicy, ExpandMoreIcon, License } from '../lib/icons.component'
+
 import { version } from '../../package.json'
+import { Themes, License, AboutOutline, PrivacyPolicy, Expand } from '../lib/icons.component'
 
 const About = ({ properties }: any) => {
     const setTheme = (url: string | Boolean) => {
@@ -57,6 +58,7 @@ const About = ({ properties }: any) => {
                     <p>LoFi Player does not collect, store, share or publish any non-personal information.</p>
                 </div>
             </Accordion>
+            
             <Accordion className="w-50 card mt-10">
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                     <div className="flex w-80">
