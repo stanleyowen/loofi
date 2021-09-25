@@ -39,6 +39,7 @@ const About = ({ properties }: any) => {
                 <div className="p-10">
                     <Button onClick={() => setTheme(false)}>Default</Button>
                     <Button onClick={() => setTheme('a9d4d30d6b483ee638a0dddab5bb047e.webp')}>Nature</Button>
+                    <Button onClick={() => setTheme('d14c82db65be85a729c042492447dc5d.webp')}>Sunset</Button>
                 </div>
             </Accordion>
 
