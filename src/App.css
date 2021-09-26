@@ -103,6 +103,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 #tabs .active { background: rgb(var(--blue) / 15%) }
 #tabs :nth-child(3) { margin-top: auto }
+#tabs svg { font-size: 1.5em !important; }
 .tab {
 	font-weight: 525;
 	color: rgb(var(--black) / 70%) !important;
