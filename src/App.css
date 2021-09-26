@@ -314,6 +314,25 @@ button {
 /* Search */
 .search { width: 50% }
 
+/* Scroll Bar */
+::-webkit-scrollbar {
+	width: 14px;
+} 
+::-webkit-scrollbar-thumb {
+	border-radius: 7px;
+	box-shadow: inset 0 0 0 10px;
+	background-clip: content-box;
+	border: 4px solid transparent;
+}
+::-webkit-scrollbar-button {
+	width: 0;
+	height: 0;
+	display: none;
+}
+::-webkit-scrollbar-corner {
+	background-color: transparent;
+}
+
 @media only screen and (max-width: 1200px) {
 	.col-3 { grid-template-columns: 50% 50% }
 	#version .w-50 { width: 70% !important }
