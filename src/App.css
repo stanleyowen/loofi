@@ -261,6 +261,7 @@ button {
 	width: 75px;
     height: 75px;
 }
+#version .MuiPaper-root:before{ display: none !important; }
 
 /* PlayBack Button */
 .play-btn {
