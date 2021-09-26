@@ -49,7 +49,7 @@ export function Themes() {
 export function PrivacyPolicy() {
     return <svg width="1.5em" height="1.5em" viewBox="0 0 48 48"><path d="M6 8.256L24.009 3L42 8.256v10.778A26.316 26.316 0 0 1 24.003 44h0A26.32 26.32 0 0 1 6 19.029V8.256z" stroke="currentColor" strokeWidth="4" strokeLinejoin="round" fill="none" fillRule="evenodd"></path></svg>
 }
-export function ExpandMoreIcon() {
+export function Expand() {
     return <svg width="1em" height="1em" viewBox="0 0 24 24"><path d="M12 8l-6 6l1.41 1.41L12 10.83l4.59 4.58L18 14l-6-6z" fill="currentColor"></path></svg>
 }
 export function License() {

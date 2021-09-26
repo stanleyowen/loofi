@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Accordion, AccordionSummary } from '@mui/material'
 
 import { version } from '../../package.json'
-import { Themes, License, AboutOutline, PrivacyPolicy, ExpandMoreIcon } from '../lib/icons.component'
+import { Themes, License, AboutOutline, PrivacyPolicy, Expand } from '../lib/icons.component'
 
 const About = ({ properties }: any) => {
     const setTheme = (url: string | Boolean) => {
@@ -31,7 +31,7 @@ const About = ({ properties }: any) => {
             </div>
 
             <Accordion className="w-50 card mt-10">
-                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                <AccordionSummary expandIcon={<Expand />}>
                     <div className="flex w-80">
                         <Themes />
                         <p className="ml-10">Themes</p>
@@ -45,7 +45,7 @@ const About = ({ properties }: any) => {
             </Accordion>
 
             <Accordion className="w-50 card mt-10">
-                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                <AccordionSummary expandIcon={<Expand />}>
                     <div className="flex w-80">
                         <PrivacyPolicy />
                         <p className="ml-10">Privacy Policy</p>
@@ -60,7 +60,7 @@ const About = ({ properties }: any) => {
             </Accordion>
             
             <Accordion className="w-50 card mt-10">
-                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                <AccordionSummary expandIcon={<Expand />}>
                     <div className="flex w-80">
                         <License />
                         <p className="ml-10">License</p>

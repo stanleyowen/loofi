@@ -242,6 +242,9 @@ svg {
 	text-decoration: none;
 }
 #version a:hover { text-decoration: underline }
+#version svg { font-size: 1.2em !important }
+#version .MuiPaper-root:before{ display: none !important }
+
 .small { font-size: 12px; font-weight: normal !important; }
 button {
 	border: none;
@@ -261,7 +264,6 @@ button {
 	width: 75px;
     height: 75px;
 }
-#version .MuiPaper-root:before{ display: none !important; }
 
 /* PlayBack Button */
 .play-btn {
