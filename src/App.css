@@ -334,6 +334,7 @@ button {
 @media only screen and (max-width: 1200px) {
 	.col-3 { grid-template-columns: 50% 50% }
 	#version .w-50 { width: 70% !important }
+	.w-50.audio { width: 70% !important }
 	.col-4 { grid-template-columns: 33.3% 33.3% 33.3% }
 	.search { width: 60% }
 }
@@ -341,6 +342,7 @@ button {
 	.col-3 { grid-template-columns: 100% }
 	.col-4 { grid-template-columns: 50% 50% }
 	#version .w-50 { width: 90% !important }
+	.w-50.audio { width: 100% !important }
 }
 @media only screen and (max-width: 700px) {
 	.search { width: 100% }
