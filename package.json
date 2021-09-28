@@ -23,11 +23,13 @@
   "homepage": "./",
   "scripts": {
     "start": "react-scripts start",
-    "build": "cross-env GENERATE_SOURCEMAP=false react-scripts build",
+    "build": "GENERATE_SOURCEMAP=false react-scripts build",
+    "build:win": "cross-env GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "release": "yarn build && electron-builder --publish=always",
     "build:electron": "node ./scripts/prebuild.js && yarn build && electron-builder && node ./scripts/postbuild.js",
+    "build:win:electron": "node ./scripts/prebuild.js && yarn build:win && electron-builder && node ./scripts/postbuild.js",
     "start:electron": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\""
   },
   "build": {
