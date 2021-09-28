@@ -1,9 +1,22 @@
 import React from 'react'
 import { Button, Accordion, AccordionSummary } from '@mui/material'
-import { AboutOutline, PrivacyPolicy, ExpandMoreIcon, License } from '../lib/icons.component'
+
 import { version } from '../../package.json'
+import { Themes, License, AboutOutline, PrivacyPolicy, Expand } from '../lib/icons.component'
 
 const About = ({ properties }: any) => {
+    const setTheme = (url: string | Boolean) => {
+        const background = document.getElementById('backdrop-image')
+        if(url)
+            import (`../../src/img/${url}`)
+            .then(image => {
+                if(background) background.style.background = `url(${image.default})`
+                // localStorage.setItem('theme-session', )
+            })
+            .catch(() => console.log('Error in Rendering Image'))
+        else background?.removeAttribute('style')
+    }
+    
     return (
         <div className="m-10" id="version">
             <div className="flex w-50 card p-15">
@@ -16,12 +29,27 @@ const About = ({ properties }: any) => {
                 </div>
                 <Button variant="outlined" onClick={() => navigator.clipboard.writeText(`Version: ${version}`)}>Copy</Button>
             </div>
+
             <Accordion className="w-50 card mt-10">
-                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                <div className="flex w-80">
-                    <PrivacyPolicy />
-                    <p className="ml-10">Privacy Policy</p>
+                <AccordionSummary expandIcon={<Expand />}>
+                    <div className="flex w-80">
+                        <Themes />
+                        <p className="ml-10">Themes</p>
+                    </div>
+                </AccordionSummary>
+                <div className="p-10">
+                    <Button onClick={() => setTheme(false)}>Default</Button>
+                    <Button onClick={() => setTheme('a9d4d30d6b483ee638a0dddab5bb047e.webp')}>Nature</Button>
+                    <Button onClick={() => setTheme('d14c82db65be85a729c042492447dc5d.webp')}>Sunset</Button>
                 </div>
+            </Accordion>
+
+            <Accordion className="w-50 card mt-10">
+                <AccordionSummary expandIcon={<Expand />}>
+                    <div className="flex w-80">
+                        <PrivacyPolicy />
+                        <p className="ml-10">Privacy Policy</p>
+                    </div>
                 </AccordionSummary>
                 <div className="p-10">
                     <p><i>Personal Information Collection</i></p>
@@ -30,8 +58,9 @@ const About = ({ properties }: any) => {
                     <p>LoFi Player does not collect, store, share or publish any non-personal information.</p>
                 </div>
             </Accordion>
+            
             <Accordion className="w-50 card mt-10">
-                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                <AccordionSummary expandIcon={<Expand />}>
                     <div className="flex w-80">
                         <License />
                         <p className="ml-10">License</p>

@@ -59,7 +59,7 @@ const SideBar = ({ handleChange, properties }: any) => {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={() => setDialog(false)}>Cancel</Button>
-                    <Button color="secondary" onClick={() => window.location.href = String(process.env.REACT_APP_BETA)}>Continue</Button>
+                    <Button color="error" onClick={() => window.location.href = String(process.env.REACT_APP_BETA)}>Continue</Button>
                 </DialogActions>
             </Dialog>
         </div>
