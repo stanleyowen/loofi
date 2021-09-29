@@ -62,7 +62,7 @@ h1, h2, h3, h4, h5, h6, p {
 	border: 1px solid rgb(var(--black));
 }
 .backdrop-image {
-	background: url('./img/d229bbf31eaeebc7c88897732d8b932d.webp') center/cover no-repeat;
+	background: url('https://user-images.githubusercontent.com/69080584/135237771-30c727d6-e88f-48e1-a65c-4fcef9e91113.png') center/cover no-repeat;
     -webkit-filter: blur(25px);
             filter: blur(25px);
     -webkit-transform: scale(1.1);
@@ -81,9 +81,9 @@ h1, h2, h3, h4, h5, h6, p {
 	height: 100%;
 	position: absolute;
 	background-blend-mode: normal, color, luminosity;
-	background: linear-gradient(0deg, rgba(239, 239, 239, 0.3), rgba(239, 239, 239, 0.3)), rgba(239, 239, 239, 0.95) url('./img/aaddc3454ccbefbb2d8d8461f8f7f481.webp') center/196px repeat;
-	background: -o-linear-gradient(bottom, rgba(239, 239, 239, 0.3), rgba(239, 239, 239, 0.3)), rgba(239, 239, 239, 0.95) url('./img/aaddc3454ccbefbb2d8d8461f8f7f481.webp') center/196px repeat;
-	background: -webkit-gradient(linear, left bottom, left top, from(rgba(239, 239, 239, 0.3)), to(rgba(239, 239, 239, 0.3))), rgba(239, 239, 239, 0.95) url('./img/aaddc3454ccbefbb2d8d8461f8f7f481.webp') center/196px repeat;
+	background: linear-gradient(0deg, rgba(239, 239, 239, 0.3), rgba(239, 239, 239, 0.3)), rgba(239, 239, 239, 0.95) url('https://user-images.githubusercontent.com/69080584/135238252-5fd29825-32dc-4035-bd75-98eabc473ac4.png') center/196px repeat;
+	background: -o-linear-gradient(bottom, rgba(239, 239, 239, 0.3), rgba(239, 239, 239, 0.3)), rgba(239, 239, 239, 0.95) url('https://user-images.githubusercontent.com/69080584/135238252-5fd29825-32dc-4035-bd75-98eabc473ac4.png') center/196px repeat;
+	background: -webkit-gradient(linear, left bottom, left top, from(rgba(239, 239, 239, 0.3)), to(rgba(239, 239, 239, 0.3))), rgba(239, 239, 239, 0.95) url('https://user-images.githubusercontent.com/69080584/135238252-5fd29825-32dc-4035-bd75-98eabc473ac4.png') center/196px repeat;
 }
 
 /* Sidebar */
