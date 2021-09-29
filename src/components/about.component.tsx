@@ -8,13 +8,8 @@ import { Themes, License, AboutOutline, PrivacyPolicy, Expand } from '../lib/ico
 const About = ({ properties }: any) => {
     const setTheme = (url: string | Boolean) => {
         const background = document.getElementById('backdrop-image')
-        if(url)
-            import (`../../src/img/${url}`)
-            .then(image => {
-                if(background) background.style.background = `url(${image.default})`
-                // localStorage.setItem('theme-session', )
-            })
-            .catch(() => console.log('Error in Rendering Image'))
+        if(url && background)
+            background.style.background = `url(${url})`
         else background?.removeAttribute('style')
     }
     
