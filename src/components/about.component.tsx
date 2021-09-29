@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button, Accordion, AccordionSummary } from '@mui/material'
 
+import Theme from '../lib/theme.json'
 import { version } from '../../package.json'
 import { Themes, License, AboutOutline, PrivacyPolicy, Expand } from '../lib/icons.component'
 
@@ -38,9 +39,11 @@ const About = ({ properties }: any) => {
                     </div>
                 </AccordionSummary>
                 <div className="p-10">
-                    <Button onClick={() => setTheme(false)}>Default</Button>
-                    <Button onClick={() => setTheme('a9d4d30d6b483ee638a0dddab5bb047e.webp')}>Nature</Button>
-                    <Button onClick={() => setTheme('d14c82db65be85a729c042492447dc5d.webp')}>Sunset</Button>
+                    {
+                        Theme.map(theme => {
+                            return <Button onClick={() => setTheme(theme.image)}>{theme.type}</Button>
+                        })
+                    }
                 </div>
             </Accordion>
 
