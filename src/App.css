@@ -311,6 +311,10 @@ button {
 	align-items: center;
 }
 
+/* Settings */
+#settings .MuiBox-root { padding: 0px !important }
+#settings svg { font-size: 1.5em }
+
 /* Search */
 .search { width: 50% }
 
