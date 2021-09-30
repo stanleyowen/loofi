@@ -15,7 +15,7 @@ const About = () => {
                         <p className="small">Version: {version}</p>
                     </div>
                 </div>
-                <Button variant="outlined" onClick={() => navigator.clipboard.writeText(`Version: ${version}`)}>Copy</Button>
+                <Button variant="outlined" onClick={() => navigator.clipboard.writeText(`Version: ${version}`)} className="align-right">Copy</Button>
             </div>
 
             <Accordion className="w-100 card mt-10">

@@ -208,6 +208,10 @@ input:disabled { pointer-events: none !important }
 .center-align { text-align: center }
 .center-vert { margin: auto 0 !important; }
 .center-flex { align-items: center; justify-content: center; }
+.align-right {
+	margin-left: auto !important; 
+	margin-right: 0 !important;
+}
 .warning {
 	color: red;
 	font-weight: bold;
