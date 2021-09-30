@@ -1,18 +1,10 @@
 import React from 'react'
 import { Button, Accordion, AccordionSummary } from '@mui/material'
 
-import Theme from '../lib/theme.json'
 import { version } from '../../package.json'
-import { Themes, License, AboutOutline, PrivacyPolicy, Expand } from '../lib/icons.component'
+import { License, AboutOutline, PrivacyPolicy, Expand } from '../lib/icons.component'
 
-const About = ({ properties }: any) => {
-    const setTheme = (url: string | Boolean) => {
-        const background = document.getElementById('backdrop-image')
-        if(url && background)
-            background.style.background = `url(${url})`
-        else background?.removeAttribute('style')
-    }
-    
+const About = () => {
     return (
         <div className="m-10" id="version">
             <div className="flex w-100 card p-15">
@@ -26,23 +18,7 @@ const About = ({ properties }: any) => {
                 <Button variant="outlined" onClick={() => navigator.clipboard.writeText(`Version: ${version}`)}>Copy</Button>
             </div>
 
-            <Accordion className="w-50 card mt-10">
-                <AccordionSummary expandIcon={<Expand />}>
-                    <div className="flex w-80">
-                        <Themes />
-                        <p className="ml-10">Themes</p>
-                    </div>
-                </AccordionSummary>
-                <div className="p-10">
-                    {
-                        Theme.map(theme => {
-                            return <Button onClick={() => setTheme(theme.image)}>{theme.type}</Button>
-                        })
-                    }
-                </div>
-            </Accordion>
-
-            <Accordion className="w-50 card mt-10">
+            <Accordion className="w-100 card mt-10">
                 <AccordionSummary expandIcon={<Expand />}>
                     <div className="flex w-80">
                         <PrivacyPolicy />
