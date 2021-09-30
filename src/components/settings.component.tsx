@@ -3,6 +3,7 @@ import { Tab, Tabs } from '@mui/material'
 
 import About from './about.component'
 import Preferences from './preferences.component'
+import { About as AboutIcon, Preferences as PreferencesIcon } from '../lib/icons.component'
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -26,8 +27,8 @@ const Settings = () => {
     return (
         <div className="flex-nowrap w-100" id="settings">
             <Tabs orientation="vertical" value={tabIndex} onChange={(_, index: number) => setTabIndex(index)} className="w-20">
-                <Tab label="Preferences" />
-                <Tab label="About" />
+                <Tab icon={<PreferencesIcon />} label="Preferences" />
+                <Tab icon={<AboutIcon />} label="About" />
             </Tabs>
             <TabPanel value={tabIndex} index={0}><Preferences /></TabPanel>
             <TabPanel value={tabIndex} index={1}><About /></TabPanel>
