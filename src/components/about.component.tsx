@@ -15,7 +15,7 @@ const About = ({ properties }: any) => {
     
     return (
         <div className="m-10" id="version">
-            <div className="flex w-50 card p-15">
+            <div className="flex w-100 card p-15">
                 <div className="flex w-80">
                     <AboutOutline />
                     <div className="ml-10">
@@ -57,7 +57,7 @@ const About = ({ properties }: any) => {
                 </div>
             </Accordion>
             
-            <Accordion className="w-50 card mt-10">
+            <Accordion className="w-100 card mt-10">
                 <AccordionSummary expandIcon={<Expand />}>
                     <div className="flex w-80">
                         <License />
