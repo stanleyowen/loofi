@@ -2,14 +2,14 @@ import React from 'react'
 import { Button, Accordion, AccordionSummary } from '@mui/material'
 
 import { version } from '../../package.json'
-import { License, AboutOutline, PrivacyPolicy, Expand } from '../lib/icons.component'
+import { License, About as AboutIcon, PrivacyPolicy, Expand } from '../lib/icons.component'
 
 const About = () => {
     return (
         <div className="m-10" id="version">
             <div className="flex w-100 card p-15">
                 <div className="flex w-80">
-                    <AboutOutline />
+                    <AboutIcon />
                     <div className="ml-10">
                         <p>LoFi Player</p>
                         <p className="small">Version: {version}</p>
