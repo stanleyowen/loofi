@@ -1,0 +1,14 @@
+[
+    {
+        "type": "Default",
+        "image": false
+    },
+    { 
+        "type": "Nature",
+        "image": "https://user-images.githubusercontent.com/69080584/134890221-013b18f1-e051-4a69-9431-1d8259069ae7.png"
+    },
+    {
+        "type": "Sunset",
+        "image": "https://user-images.githubusercontent.com/69080584/134889846-88916431-6f24-4a2b-bde7-f42c5d3a82a6.png"
+    }
+]

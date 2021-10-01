@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Dialog, Tooltip, DialogActions, DialogContent, DialogContentText } from '@mui/material'
-import { Beta, HomeSolid, HomeOutline, AboutSolid, AboutOutline, SearchSolid, SearchOutline } from '../lib/icons.component'
+import { Beta, HomeSolid, HomeOutline, SettingsSolid, SettingsOutline, SearchSolid, SearchOutline } from '../lib/icons.component'
 
 const SideBar = ({ handleChange, properties }: any) => {
     const [isOpen, setDialog] = useState<boolean>(false)
@@ -21,8 +21,8 @@ const SideBar = ({ handleChange, properties }: any) => {
         <div className="sidebar">
             <div id="tabs">
                 {
-                    ['Home', 'Search', 'About'].map((tab, index) => {
-                        const components: { [key: string]: any } = { HomeSolid, HomeOutline, SearchSolid, SearchOutline, AboutSolid, AboutOutline }
+                    ['Home', 'Search', 'Settings'].map((tab, index) => {
+                        const components: { [key: string]: any } = { HomeSolid, HomeOutline, SearchSolid, SearchOutline, SettingsSolid, SettingsOutline }
                         const SolidIcon = components[`${tab}Solid`]
                         const OutlineIcon = components[`${tab}Outline`]
                         return (
