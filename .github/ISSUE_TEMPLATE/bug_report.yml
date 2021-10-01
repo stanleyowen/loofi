@@ -1,5 +1,5 @@
 name: Bug Report
-description: Create a bug report to help us improve LoFi Player
+description: Report an LoFi Player bug
 labels: [bug]
 body:
   - type: textarea
@@ -29,8 +29,8 @@ body:
     id: app-version
     attributes:
       label: LoFi Player Version
-      description: What version of Files are you using?
-      placeholder: v1.5
+      description: What version of LoFi Player are you using?
+      placeholder: v0.4.5
     validations:
       required: true
   - type: input
