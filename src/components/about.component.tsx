@@ -2,49 +2,23 @@ import React from 'react'
 import { Button, Accordion, AccordionSummary } from '@mui/material'
 
 import { version } from '../../package.json'
-import { Themes, License, AboutOutline, PrivacyPolicy, Expand } from '../lib/icons.component'
+import { License, About as AboutIcon, PrivacyPolicy, Expand } from '../lib/icons.component'
 
-const About = ({ properties }: any) => {
-    const setTheme = (url: string | Boolean) => {
-        const background = document.getElementById('backdrop-image')
-        if(url)
-            import (`../../src/img/${url}`)
-            .then(image => {
-                if(background) background.style.background = `url(${image.default})`
-                // localStorage.setItem('theme-session', )
-            })
-            .catch(() => console.log('Error in Rendering Image'))
-        else background?.removeAttribute('style')
-    }
-    
+const About = () => {
     return (
         <div className="m-10" id="version">
-            <div className="flex w-50 card p-15">
+            <div className="flex w-100 card p-15">
                 <div className="flex w-80">
-                    <AboutOutline />
+                    <AboutIcon />
                     <div className="ml-10">
                         <p>LoFi Player</p>
                         <p className="small">Version: {version}</p>
                     </div>
                 </div>
-                <Button variant="outlined" onClick={() => navigator.clipboard.writeText(`Version: ${version}`)}>Copy</Button>
+                <Button variant="outlined" onClick={() => navigator.clipboard.writeText(`Version: ${version}`)} className="align-right">Copy</Button>
             </div>
 
-            <Accordion className="w-50 card mt-10">
-                <AccordionSummary expandIcon={<Expand />}>
-                    <div className="flex w-80">
-                        <Themes />
-                        <p className="ml-10">Themes</p>
-                    </div>
-                </AccordionSummary>
-                <div className="p-10">
-                    <Button onClick={() => setTheme(false)}>Default</Button>
-                    <Button onClick={() => setTheme('a9d4d30d6b483ee638a0dddab5bb047e.webp')}>Nature</Button>
-                    <Button onClick={() => setTheme('d14c82db65be85a729c042492447dc5d.webp')}>Sunset</Button>
-                </div>
-            </Accordion>
-
-            <Accordion className="w-50 card mt-10">
+            <Accordion className="w-100 card mt-10">
                 <AccordionSummary expandIcon={<Expand />}>
                     <div className="flex w-80">
                         <PrivacyPolicy />
@@ -59,7 +33,7 @@ const About = ({ properties }: any) => {
                 </div>
             </Accordion>
             
-            <Accordion className="w-50 card mt-10">
+            <Accordion className="w-100 card mt-10">
                 <AccordionSummary expandIcon={<Expand />}>
                     <div className="flex w-80">
                         <License />
