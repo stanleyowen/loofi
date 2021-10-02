@@ -2,9 +2,18 @@ import React from 'react'
 import { Button, Accordion, AccordionSummary } from '@mui/material'
 
 import { version } from '../../package.json'
-import { License, About as AboutIcon, PrivacyPolicy, Expand, CopyToClipboard } from '../lib/icons.component'
+import { License, About as AboutIcon, PrivacyPolicy, Expand, CopyToClipboard as CopyToClipboardIcon, Checkmark } from '../lib/icons.component'
 
 const About = () => {
+    const [copiedToClipboard, setCopiedToClipboard] = useState<boolean>(false)
+
+    const CopyToClipboard = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault()
+        navigator.clipboard.writeText(`Version: ${version}`)
+        setCopiedToClipboard(true)
+        setTimeout(() => setCopiedToClipboard(false), 5000)
+    }
+
     return (
         <div className="m-10" id="version">
             <div className="flex w-100 card p-15">
@@ -16,11 +25,12 @@ const About = () => {
                     </div>
                 </div>
                 <Button
+                    color={copiedToClipboard ? "success" : "primary"}
                     variant="outlined"
                     className="align-right"
                     onClick={() => navigator.clipboard.writeText(`Version: ${version}`)}
                 >
-                    <CopyToClipboard />
+                    { copiedToClipboard ? <Checkmark /> : <CopyToClipboardIcon /> }
                 </Button>
             </div>
 
