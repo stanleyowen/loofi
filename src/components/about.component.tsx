@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Accordion, AccordionSummary } from '@mui/material'
 
 import { version } from '../../package.json'
-import { License, About as AboutIcon, PrivacyPolicy, Expand } from '../lib/icons.component'
+import { License, About as AboutIcon, PrivacyPolicy, Expand, CopyToClipboard } from '../lib/icons.component'
 
 const About = () => {
     return (
@@ -15,7 +15,13 @@ const About = () => {
                         <p className="small">Version: {version}</p>
                     </div>
                 </div>
-                <Button variant="outlined" onClick={() => navigator.clipboard.writeText(`Version: ${version}`)} className="align-right">Copy</Button>
+                <Button
+                    variant="outlined"
+                    className="align-right"
+                    onClick={() => navigator.clipboard.writeText(`Version: ${version}`)}
+                >
+                    <CopyToClipboard />
+                </Button>
             </div>
 
             <Accordion className="w-100 card mt-10">
