@@ -1,5 +1,5 @@
-import React from 'react'
-import { Button, Accordion, AccordionSummary } from '@mui/material'
+import React, { useState } from 'react'
+import { Button, Accordion, AccordionSummary, Tooltip } from '@mui/material'
 
 import { version } from '../../package.json'
 import { License, About as AboutIcon, PrivacyPolicy, Expand, CopyToClipboard as CopyToClipboardIcon, Checkmark } from '../lib/icons.component'
@@ -24,14 +24,16 @@ const About = () => {
                         <p className="small">Version: {version}</p>
                     </div>
                 </div>
-                <Button
-                    color={copiedToClipboard ? "success" : "primary"}
-                    variant="outlined"
-                    className="align-right"
-                    onClick={() => navigator.clipboard.writeText(`Version: ${version}`)}
-                >
-                    { copiedToClipboard ? <Checkmark /> : <CopyToClipboardIcon /> }
-                </Button>
+                <Tooltip title={copiedToClipboard ? "Copied" : "Copy to Clipboard"} enterDelay={500} enterNextDelay={500}>
+                    <Button
+                        color={copiedToClipboard ? "success" : "primary"}
+                        variant="outlined"
+                        className="align-right"
+                        onClick={(e) => CopyToClipboard(e)}
+                    >
+                        { copiedToClipboard ? <Checkmark /> : <CopyToClipboardIcon />}
+                    </Button>
+                </Tooltip>
             </div>
 
             <Accordion className="w-100 card mt-10">
