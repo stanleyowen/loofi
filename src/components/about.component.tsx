@@ -1,16 +1,24 @@
 import React, { useState } from 'react'
-import { Button, Accordion, AccordionSummary, Tooltip } from '@mui/material'
+import { Button, Tooltip, Accordion, AccordionSummary } from '@mui/material'
 
 import { version } from '../../package.json'
-import { License, About as AboutIcon, PrivacyPolicy, Expand, CopyToClipboard as CopyToClipboardIcon, Checkmark } from '../lib/icons.component'
+import { License, About as AboutIcon, PrivacyPolicy, Expand, CopyToClipboard as CopyToClipboardIcon, Checkmark, Warning } from '../lib/icons.component'
 
 const About = () => {
-    const [copiedToClipboard, setCopiedToClipboard] = useState<boolean>(false)
+    const [copiedToClipboard, setCopiedToClipboard] = useState<boolean | string>(false)
 
     const CopyToClipboard = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
         navigator.clipboard.writeText(`Version: ${version}`)
-        setCopiedToClipboard(true)
+        .then(() =>
+            // Set copiedToClipboard to true
+            // If Text is Copied to Clipboard Successfully
+            setCopiedToClipboard(true)
+        , () =>
+            // Set copiedToClipboard to error
+            // If Text isn't Copied to Clipboard Successfully
+            setCopiedToClipboard('error')
+        )
         setTimeout(() => setCopiedToClipboard(false), 5000)
     }
 
@@ -24,14 +32,29 @@ const About = () => {
                         <p className="small">Version: {version}</p>
                     </div>
                 </div>
-                <Tooltip title={copiedToClipboard ? "Copied" : "Copy to Clipboard"} enterDelay={500} enterNextDelay={500}>
+                <Tooltip
+                    enterDelay={500}
+                    enterNextDelay={500}
+                    title={
+                        copiedToClipboard === true ? "Copied" :
+                            copiedToClipboard === "error" ?
+                                "An error occured while copying the text. Please try again." :
+                                "Copy to Clipboard"
+                    }
+                >
                     <Button
-                        color={copiedToClipboard ? "success" : "primary"}
+                        color={
+                            copiedToClipboard === true ? "success" :
+                                copiedToClipboard === "error" ? "error" : "primary"
+                        }
                         variant="outlined"
                         className="align-right"
                         onClick={(e) => CopyToClipboard(e)}
                     >
-                        { copiedToClipboard ? <Checkmark /> : <CopyToClipboardIcon />}
+                        {
+                            copiedToClipboard === true ? <Checkmark /> :
+                                copiedToClipboard === "error" ? <Warning /> : <CopyToClipboardIcon />
+                        }
                     </Button>
                 </Tooltip>
             </div>
