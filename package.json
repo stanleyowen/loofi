@@ -1,6 +1,6 @@
 {
   "name": "lofi-player",
-  "version": "0.6.4-beta",
+  "version": "0.6.4",
   "private": true,
   "author": "Stanley Owen <stanleyowen06@gmail.com>",
   "dependencies": {
