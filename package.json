@@ -6,9 +6,9 @@
   "dependencies": {
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
-    "@mui/material": "^5.0.1",
-    "@types/node": "^16.10.1",
-    "@types/react": "^17.0.24",
+    "@mui/material": "^5.0.2",
+    "@types/node": "^16.10.2",
+    "@types/react": "^17.0.25",
     "@types/react-dom": "^17.0.9",
     "@types/react-router-dom": "^5.3.0",
     "electron-is-dev": "^2.0.0",
