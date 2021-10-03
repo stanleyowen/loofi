@@ -28,6 +28,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "release": "yarn build && electron-builder --publish=always",
+    "lint": "eslint -c .eslintrc.yml --ext .tsx ./src",
     "build:electron": "node ./scripts/prebuild.js && yarn build && electron-builder && node ./scripts/postbuild.js",
     "build:win:electron": "node ./scripts/prebuild.js && yarn build:win && electron-builder && node ./scripts/postbuild.js",
     "start:electron": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\""
@@ -73,11 +74,15 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.1.1",
     "@testing-library/user-event": "^13.2.1",
+    "@typescript-eslint/eslint-plugin": "^4.32.0",
+    "@typescript-eslint/parser": "^4.32.0",
     "concurrently": "^6.2.2",
     "cross-env": "^7.0.3",
     "dotenv": "^10.0.0",
     "electron": "^15.0.0",
     "electron-builder": "^22.11.7",
+    "eslint": "^7.32.0",
+    "eslint-plugin-react": "^7.26.1",
     "typescript": "^4.4.3",
     "wait-on": "^6.0.0"
   }
