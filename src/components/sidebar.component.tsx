@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Button, Dialog, Tooltip, DialogActions, DialogContent, DialogContentText } from '@mui/material'
 import { Beta, HomeSolid, HomeOutline, SettingsSolid, SettingsOutline, SearchSolid, SearchOutline } from '../lib/icons.component'
 
+// eslint-disable-next-line
 const SideBar = ({ handleChange, properties }: any) => {
     const [isOpen, setDialog] = useState<boolean>(false)
 
