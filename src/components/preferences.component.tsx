@@ -2,11 +2,11 @@ import React from 'react'
 import { Button, Accordion, AccordionSummary } from '@mui/material'
 
 import Theme from '../lib/theme.json'
-import { Themes, Expand } from '../lib/icons.component'
+import { Themes, Expand, ThemesApp } from '../lib/icons.component'
 
 // eslint-disable-next-line
 const About = () => {
-    const setTheme = (url: string | boolean) => {
+    const setTheme = (type: string, url: string | boolean) => {
         const background = document.getElementById('backdrop-image')
         if(url && background) background.style.background = `url(${url})`
         else background?.removeAttribute('style')
@@ -24,8 +24,11 @@ const About = () => {
                 <div className="p-10">
                     {
                         Theme.map((theme, index) => {
-                            return <Button onClick={() => setTheme(theme.image)} key={index}>
-                                {theme.type}
+                            return <Button onClick={() => setTheme(theme.type, theme.image)} key={index}>
+                                <div className="block">
+                                    <div><ThemesApp /></div>
+                                    {theme.type}
+                                </div>
                             </Button>
                         })
                     }
