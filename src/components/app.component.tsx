@@ -7,6 +7,7 @@ import Navbar from './navbar.component'
 import BaseLayout from './base.component'
 import Controls from './controls.component'
 
+// eslint-disable-next-line
 const App = ({ properties, handleChange }: any) => {
     const [data, setData] = useState<any>([])
     const [isOffline, setConnectionState] = useState<boolean>(false)
@@ -30,7 +31,7 @@ const App = ({ properties, handleChange }: any) => {
             measurementId: process.env.REACT_APP_MEASUREMENT_ID
         })
         onValue(ref(getDatabase(), 'data-dev/'), (snapshot) => {
-            var rawData = snapshot.val(), index = rawData.length, randIndex
+            let rawData = snapshot.val(), index = rawData.length, randIndex // eslint-disable-line
             while(index !== 0) {
                 randIndex = Math.floor(Math.random() * index)
                 index--

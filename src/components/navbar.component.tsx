@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Tooltip, IconButton } from '@mui/material'
 import { ChevronLeft, ChevronRight, GitHub } from '../lib/icons.component'
 
+// eslint-disable-next-line
 const Navbar = ({ properties, handleChange }: any) => {
     const [property, setProperty] = useState({
         disablePrevious: true,

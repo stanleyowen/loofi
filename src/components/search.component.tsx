@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Close } from '../lib/icons.component'
 import { Skeleton, TextField, IconButton } from '@mui/material'
 
+// eslint-disable-next-line
 const Search = ({ songData }: any) => {
     const items: any = []
     const [results, setResult] = useState<any>([])
@@ -11,7 +12,7 @@ const Search = ({ songData }: any) => {
     useEffect(() => {
         if(keyword) {
             setFetching(true)
-            var result: any = []
+            const result: any = []
             for (let i=0; i<songData.length; i++) {
                 if(String(songData[i].title).toLowerCase().includes(keyword) || String(songData[i].author).toLowerCase().includes(keyword)) result.push(songData[i])
             }

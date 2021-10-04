@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Skeleton } from '@mui/material'
 
+// eslint-disable-next-line
 const Home = ({ song, songData, handleSong }: any) => {
     const [greeting, setGreeting] = useState<string>()
 
@@ -9,7 +10,7 @@ const Home = ({ song, songData, handleSong }: any) => {
         if(song.playing) {
             handleSong({ id: 'playing', value: false })
             setTimeout(() => handleSong(data), 10)
-        } else handleSong(data)
+        } else handleSong(data);
         (e.target as Element).classList.toggle('pause')
     }
 
