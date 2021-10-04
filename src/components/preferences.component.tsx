@@ -23,13 +23,20 @@ const About = () => {
                 </AccordionSummary>
                 <div className="p-10">
                     {
-                        Theme.map((theme, index) => {
-                            return <Button onClick={() => setTheme(theme.type, theme.image)} key={index}>
-                                <div className="block">
-                                    <div><ThemesApp /></div>
-                                    {theme.type}
-                                </div>
-                            </Button>
+                        Theme.map(theme => {
+                            return (
+                                <Button
+                                    id={theme.type}
+                                    key={theme.type}
+                                    className="w-25"
+                                    onClick={() => setTheme(theme.type, theme.image)}
+                                >
+                                    <div>
+                                        <div className="m-auto"><ThemesApp /></div>
+                                        {theme.type}
+                                    </div>
+                                </Button>
+                            )
                         })
                     }
                 </div>
