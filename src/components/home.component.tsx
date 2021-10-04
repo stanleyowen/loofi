@@ -9,7 +9,7 @@ const Home = ({ song, songData, handleSong }: any) => {
         if(song.playing) {
             handleSong({ id: 'playing', value: false })
             setTimeout(() => handleSong(data), 10)
-        } else handleSong(data)
+        } else handleSong(data);
         (e.target as Element).classList.toggle('pause')
     }
 

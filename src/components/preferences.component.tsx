@@ -5,7 +5,7 @@ import Theme from '../lib/theme.json'
 import { Themes, Expand } from '../lib/icons.component'
 
 const About = () => {
-    const setTheme = (url: string | Boolean) => {
+    const setTheme = (url: string | boolean) => {
         const background = document.getElementById('backdrop-image')
         if(url && background) background.style.background = `url(${url})`
         else background?.removeAttribute('style')
@@ -22,8 +22,8 @@ const About = () => {
                 </AccordionSummary>
                 <div className="p-10">
                     {
-                        Theme.map(theme => {
-                            return <Button onClick={() => setTheme(theme.image)}>
+                        Theme.map((theme, index) => {
+                            return <Button onClick={() => setTheme(theme.image)} key={index}>
                                 {theme.type}
                             </Button>
                         })

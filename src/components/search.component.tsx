@@ -11,7 +11,7 @@ const Search = ({ songData }: any) => {
     useEffect(() => {
         if(keyword) {
             setFetching(true)
-            var result: any = []
+            const result: any = []
             for (let i=0; i<songData.length; i++) {
                 if(String(songData[i].title).toLowerCase().includes(keyword) || String(songData[i].author).toLowerCase().includes(keyword)) result.push(songData[i])
             }

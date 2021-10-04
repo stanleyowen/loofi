@@ -30,7 +30,7 @@ const App = ({ properties, handleChange }: any) => {
             measurementId: process.env.REACT_APP_MEASUREMENT_ID
         })
         onValue(ref(getDatabase(), 'data-dev/'), (snapshot) => {
-            var rawData = snapshot.val(), index = rawData.length, randIndex
+            let rawData = snapshot.val(), index = rawData.length, randIndex // eslint-disable-line
             while(index !== 0) {
                 randIndex = Math.floor(Math.random() * index)
                 index--
