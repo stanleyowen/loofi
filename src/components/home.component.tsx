@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Skeleton } from '@mui/material'
 
+// eslint-disable-next-line
 const Home = ({ song, songData, handleSong }: any) => {
     const [greeting, setGreeting] = useState<string>()
 

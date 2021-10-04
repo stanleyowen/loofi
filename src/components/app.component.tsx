@@ -7,6 +7,7 @@ import Navbar from './navbar.component'
 import BaseLayout from './base.component'
 import Controls from './controls.component'
 
+// eslint-disable-next-line
 const App = ({ properties, handleChange }: any) => {
     const [data, setData] = useState<any>([])
     const [isOffline, setConnectionState] = useState<boolean>(false)

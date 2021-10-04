@@ -2,6 +2,7 @@ import { Slider } from '@mui/material'
 import React, { useState, useEffect } from 'react'
 import { Audio, MutedAudio, SkipNext, SkipPrevious } from '../lib/icons.component'
 
+// eslint-disable-next-line
 const Controls = ({ song, songData, handleSong }: any) => {
     const [queue, setQueue] = useState({
         queue: [],

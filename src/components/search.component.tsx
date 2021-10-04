@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Close } from '../lib/icons.component'
 import { Skeleton, TextField, IconButton } from '@mui/material'
 
+// eslint-disable-next-line
 const Search = ({ songData }: any) => {
     const items: any = []
     const [results, setResult] = useState<any>([])

@@ -4,6 +4,7 @@ import { Button, Tooltip, Accordion, AccordionSummary } from '@mui/material'
 import { version } from '../../package.json'
 import { License, About as AboutIcon, PrivacyPolicy, Expand, CopyToClipboard as CopyToClipboardIcon, Checkmark, Warning } from '../lib/icons.component'
 
+// eslint-disable-next-line
 const About = () => {
     const [copiedToClipboard, setCopiedToClipboard] = useState<boolean | string>(false)
 

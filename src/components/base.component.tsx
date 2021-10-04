@@ -4,6 +4,7 @@ import Home from './home.component'
 import Search from './search.component'
 import Settings from './settings.component'
 
+// eslint-disable-next-line
 const BaseLayout = ({ song, config, properties, songData, handleSong }: any) => {
     return (
         <div className="base">

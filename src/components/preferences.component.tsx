@@ -4,6 +4,7 @@ import { Button, Accordion, AccordionSummary } from '@mui/material'
 import Theme from '../lib/theme.json'
 import { Themes, Expand } from '../lib/icons.component'
 
+// eslint-disable-next-line
 const About = () => {
     const setTheme = (url: string | boolean) => {
         const background = document.getElementById('backdrop-image')

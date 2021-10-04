@@ -5,7 +5,8 @@ import './App.css'
 import AppLayout from './components/app.component'
 import SideBar from './components/sidebar.component'
 
-export default function App() {
+// eslint-disable-next-line
+export default function App() { 
   const [properties, setProperties] = useState({
     activeTab: 'home',
     previousTab: '',
