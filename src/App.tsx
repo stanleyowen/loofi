@@ -6,9 +6,9 @@ import AppLayout from './components/app.component'
 import SideBar from './components/sidebar.component'
 
 // eslint-disable-next-line
-export default function App() { 
-  const [properties, setProperties] = useState({
-    activeTab: 'home',
+export default function App() {
+  const [properties, setProperties] = useState<any>({
+    activeTab: localStorage.getItem('tab-session') ? localStorage.getItem('tab-session') : 'home',
     previousTab: '',
     nextTab: ''
   })
@@ -21,14 +21,16 @@ export default function App() {
     }
   }, [])
 
-  const handleChange = useCallback(a =>
+  const handleChange = useCallback(a => {
     setProperties({
       ...properties,
       previousTab: a.goBackward ? '' : properties.activeTab,
       nextTab: a.goBackward ? properties.activeTab : '',
       [a.id]: a.value
     })
-  , [properties])
+
+    localStorage.setItem('tab-session', a.value)
+  }, [properties])
 
   return (
     <Router>
