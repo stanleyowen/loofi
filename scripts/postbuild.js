@@ -4,7 +4,7 @@ const package = require('../package.json')
 let data = package
 
 Object.keys(data.devDependencies).map(dep => {
-    if(dep.startsWith('@types/')) {
+    if(dep.startsWith('@types/') || dep.startsWith('@typescript-eslint/')) {
         data.dependencies = { ...data.dependencies, [dep]: data.devDependencies[dep] };
         delete data.devDependencies[dep]
     }
