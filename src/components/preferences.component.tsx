@@ -28,6 +28,12 @@ const About = () => {
         })
     }, [activeTab])
 
+    useEffect(() => {
+        const themeURL = JSON.parse(localStorage.getItem('theme-session') || `{}`).url
+        const backgroundElement = document.getElementById('backdrop-image')
+        if(backgroundElement) backgroundElement.style.background = `url(${themeURL})`
+    }, [])
+
     return (
         <div className="m-10" id="version">
             <Accordion className="w-100 card mt-10">
