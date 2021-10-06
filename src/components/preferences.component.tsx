@@ -14,6 +14,7 @@ const About = () => {
         const background = document.getElementById('backdrop-image')
         if(url && background) background.style.background = `url(${url})`
         else background?.removeAttribute('style')
+        localStorage.setItem('theme-session', JSON.stringify({ type, url }))
     }
 
     useEffect(() => {
