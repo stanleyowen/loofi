@@ -21,14 +21,16 @@ export default function App() {
     }
   }, [])
 
-  const handleChange = useCallback(a =>
+  const handleChange = useCallback(a => {
     setProperties({
       ...properties,
       previousTab: a.goBackward ? '' : properties.activeTab,
       nextTab: a.goBackward ? properties.activeTab : '',
       [a.id]: a.value
     })
-  , [properties])
+
+    localStorage.setItem('tab-session', a.value)
+  }, [properties])
 
   return (
     <Router>
