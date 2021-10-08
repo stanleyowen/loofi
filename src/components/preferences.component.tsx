@@ -11,6 +11,7 @@ const About = () => {
     )
 
     const setTheme = (type: string, url: string | boolean) => {
+        setActiveTab(type)
         const background = document.getElementById('backdrop-image')
         if(url && background) background.style.background = `url(${url})`
         else background?.removeAttribute('style')
@@ -28,11 +29,7 @@ const About = () => {
         })
     }, [activeTab])
 
-    useEffect(() => {
-        const themeURL = JSON.parse(localStorage.getItem('theme-session') || `{}`).url
-        const backgroundElement = document.getElementById('backdrop-image')
-        if(backgroundElement) backgroundElement.style.background = `url(${themeURL})`
-    }, [])
+
 
     return (
         <div className="m-10" id="version">

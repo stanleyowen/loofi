@@ -42,6 +42,10 @@ const App = ({ properties, handleChange }: any) => {
         setTimeout(() =>
             onValue(ref(getDatabase(), '.info/connected'), (snapshot) => snapshot.val() ? setConnectionState(false) : setConnectionState(true))
         , 5000)
+
+        const themeURL = JSON.parse(localStorage.getItem('theme-session') || `{}`).url
+        const backgroundElement = document.getElementById('backdrop-image')
+        if(backgroundElement) backgroundElement.style.background = `url(${themeURL})`
     }, []) // eslint-disable-line
     
     const handleSong = useCallback(a => {
