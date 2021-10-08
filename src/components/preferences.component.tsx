@@ -28,11 +28,7 @@ const About = () => {
         })
     }, [activeTab])
 
-    useEffect(() => {
-        const themeURL = JSON.parse(localStorage.getItem('theme-session') || `{}`).url
-        const backgroundElement = document.getElementById('backdrop-image')
-        if(backgroundElement && themeURL) backgroundElement.style.background = `url(${themeURL})`
-    }, [])
+
 
     return (
         <div className="m-10" id="version">
