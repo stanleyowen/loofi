@@ -74,3 +74,9 @@ export function Warning() {
 export function ThemesApp() {
     return <svg width="3em" height="3em" viewBox="0 0 256 256" className="m-auto"><path d="M216 44.006H40a12.014 12.014 0 0 0-12 12v144a12.014 12.014 0 0 0 12 12h176a12.014 12.014 0 0 0 12-12v-144a12.014 12.014 0 0 0-12-12zm4 156a4.005 4.005 0 0 1-4 4H40a4.005 4.005 0 0 1-4-4v-144a4.005 4.005 0 0 1 4-4h176a4.005 4.005 0 0 1 4 4zm-144-116a8 8 0 1 1-8-8a8 8 0 0 1 8 8zm40 0a8 8 0 1 1-8-8a8 8 0 0 1 8 8z" fill="currentColor"></path></svg>
 }
+export function Play() {
+    return <svg width="1.1em" height="1.1em" viewBox="0 0 256 256"><path d="M239.969 128a15.9 15.9 0 0 1-7.656 13.656l-143.97 87.985A15.998 15.998 0 0 1 64 215.992V40.008a15.998 15.998 0 0 1 24.344-13.649l143.969 87.985A15.9 15.9 0 0 1 239.969 128z" fill="currentColor"></path></svg>
+}
+export function Pause() {
+    return <svg width="1.1em" height="1.1em" viewBox="0 0 256 256"><path d="M216 48v160a16.018 16.018 0 0 1-16 16h-36a16.018 16.018 0 0 1-16-16V48a16.018 16.018 0 0 1 16-16h36a16.018 16.018 0 0 1 16 16zM92 32H56a16.018 16.018 0 0 0-16 16v160a16.018 16.018 0 0 0 16 16h36a16.018 16.018 0 0 0 16-16V48a16.018 16.018 0 0 0-16-16z" fill="currentColor"></path></svg>
+}
