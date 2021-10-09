@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Slider, IconButton } from '@mui/material'
-import { Audio, MutedAudio, SkipNext, SkipPrevious } from '../lib/icons.component'
+import { Play, Pause, Audio, MutedAudio, SkipNext, SkipPrevious } from '../lib/icons.component'
 
 // eslint-disable-next-line
 const Controls = ({ song, songData, handleSong }: any) => {
@@ -80,8 +80,8 @@ const Controls = ({ song, songData, handleSong }: any) => {
                     <IconButton onClick={() => skipAudio(queue.currentIndex, 'previous')} className="p-10 font-black no-font">
                         <div>{SkipPrevious()}</div>
                     </IconButton>
-                    <IconButton onClick={triggerAudio} className="p-10 font-black">
-                        <div className={(song.playing ? "pause" : "")+" play-btn"}></div>
+                    <IconButton onClick={triggerAudio} className="p-5 font-black">
+                        <div className="btn m-5">{song.playing ? <Pause /> : <Play />}</div>
                     </IconButton>
                     <IconButton onClick={() => skipAudio(queue.currentIndex, 'next')} className="p-10 font-black no-font">
                         <div>{SkipNext()}</div>
