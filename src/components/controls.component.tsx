@@ -1,6 +1,6 @@
-import { Slider } from '@mui/material'
 import React, { useState, useEffect } from 'react'
-import { Audio, MutedAudio, SkipNext, SkipPrevious } from '../lib/icons.component'
+import { Slider, IconButton } from '@mui/material'
+import { Play, Pause, Audio, MutedAudio, SkipNext, SkipPrevious } from '../lib/icons.component'
 
 // eslint-disable-next-line
 const Controls = ({ song, songData, handleSong }: any) => {
@@ -77,13 +77,15 @@ const Controls = ({ song, songData, handleSong }: any) => {
             </div>
             <div className="w-40 flex center-flex">
                 <div className="flex center-flex">
-                    <button onClick={() => skipAudio(queue.currentIndex, 'previous')} className="font-black no-font">
+                    <IconButton onClick={() => skipAudio(queue.currentIndex, 'previous')} className="p-10 font-black no-font">
                         <div>{SkipPrevious()}</div>
-                    </button>
-                    <button onClick={triggerAudio} className={(song.playing ? "pause" : "")+" play-btn mrl-10"} />
-                    <button onClick={() => skipAudio(queue.currentIndex, 'next')} className="font-black no-font">
+                    </IconButton>
+                    <IconButton onClick={triggerAudio} className="p-5 font-black">
+                        <div className="btn m-5">{song.playing ? <Pause /> : <Play />}</div>
+                    </IconButton>
+                    <IconButton onClick={() => skipAudio(queue.currentIndex, 'next')} className="p-10 font-black no-font">
                         <div>{SkipNext()}</div>
-                    </button>
+                    </IconButton>
                 </div>
                 <div className="playback-bar">
                     <div className="progress-time center-align" id="current-duration">00:00</div>

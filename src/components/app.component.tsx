@@ -45,7 +45,7 @@ const App = ({ properties, handleChange }: any) => {
 
         const themeURL = JSON.parse(localStorage.getItem('theme-session') || `{}`).url
         const backgroundElement = document.getElementById('backdrop-image')
-        if(backgroundElement) backgroundElement.style.background = `url(${themeURL})`
+        if(backgroundElement && themeURL) backgroundElement.style.background = `url(${themeURL})`
     }, []) // eslint-disable-line
     
     const handleSong = useCallback(a => {
