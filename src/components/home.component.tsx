@@ -64,7 +64,7 @@ const Home = ({ song, songData, handleSong }: any) => {
                         return (
                             <div className="m-10" key={index}>
                                 <a className="card flex" href={music.link}>
-                                    <img src={music.image} alt={music.title} />
+                                    <img src={music.image} alt={music.title} loading="lazy" />
                                     <p className="m-auto w-50">{music.title}</p>
                                     <button className="play-btn m-auto" onClick={e => triggerAudio(e, music)} id={(music.title+music.author).replace(/\s/g, "-")}></button>
                                 </a>
@@ -76,11 +76,11 @@ const Home = ({ song, songData, handleSong }: any) => {
             <div className="mt-30 col-4" id="playlist">
                 {
                     songData?.length !== 0 ? songData.map((music: any, index: number) => {
-                        if(index < 6 || index >= 14) return; // eslint-disable-line
+                        if(index < 6) return; // eslint-disable-line
                         return (
                             <div className="m-10" key={index}>
                                 <a className="large-card" href={music.link}>
-                                    <img src={music.image} alt={music.title} />
+                                    <img src={music.image} alt={music.title} loading="lazy" />
                                     <div className="flex">
                                         <div className="m-auto w-70">
                                             <h3 className="mt-10">{music.title}</h3>
