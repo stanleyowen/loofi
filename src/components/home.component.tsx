@@ -65,7 +65,7 @@ const Home = ({ song, songData, handleSong }: any) => {
                         return (
                             <div className="m-10" key={index}>
                                 <a className="card flex" href={music.link}>
-                                    <img src={music.image} alt={music.title} loading="lazy" />
+                                    <img src={HOST_DOMAIN + music.image} loading="lazy" />
                                     <p className="m-auto w-50">{music.title}</p>
                                     <button className="play-btn m-auto" onClick={e => triggerAudio(e, music)} id={(music.title+music.author).replace(/\s/g, "-")}></button>
                                 </a>
@@ -81,7 +81,7 @@ const Home = ({ song, songData, handleSong }: any) => {
                         return (
                             <div className="m-10" key={index}>
                                 <a className="large-card" href={music.link}>
-                                    <img src={music.image} alt={music.title} loading="lazy" />
+                                    <img src={HOST_DOMAIN + music.image} loading="lazy" />
                                     <div className="flex">
                                         <div className="m-auto w-70">
                                             <h3 className="mt-10">{music.title}</h3>
