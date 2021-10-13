@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { Skeleton } from '@mui/material'
 
-// eslint-disable-next-line
+interface Music {
+    title: string,
+    author: string,
+    image: string,
+    audio: HTMLAudioElement
+}
+
 const Home = ({ song, songData, handleSong }: any) => {
     const HOST_DOMAIN: string = process.env.REACT_APP_HOST_DOMAIN ?? window.location.origin
     const [greeting, setGreeting] = useState<string>()
@@ -25,7 +31,7 @@ const Home = ({ song, songData, handleSong }: any) => {
     useEffect(() => {
         const btn = document.getElementById((song.title+song.author).replace(/\s/g, "-"))
         song.playing ? btn?.classList.add('pause') : btn?.classList.remove('pause')
-    }, [song.playing]) // eslint-disable-line
+    }, [song])
 
     function SkeletonPreview(count: number, type: 'large' | 'small') {
         const skeleton = []
@@ -60,8 +66,8 @@ const Home = ({ song, songData, handleSong }: any) => {
             <h2 className="m-10">Good {greeting}</h2>
             <div className="col-3" id="recent-playlist">
                 {
-                    songData?.length !== 0 ? songData.map((music: any, index: number) => {
-                        if(index > 5) return; // eslint-disable-line
+                    songData?.length !== 0 ? songData.map((music: Music, index: number) => {
+                        if(index > 5) return;
                         return (
                             <div className="m-10" key={index}>
                                 <div className="card flex">
@@ -76,7 +82,7 @@ const Home = ({ song, songData, handleSong }: any) => {
             </div>
             <div className="mt-30 col-4" id="playlist">
                 {
-                    songData?.length !== 0 ? songData.map((music: any, index: number) => {
+                    songData?.length !== 0 ? songData.map((music: Music, index: number) => {
                         if(index < 6) return; // eslint-disable-line
                         return (
                             <div className="m-10" key={index}>
