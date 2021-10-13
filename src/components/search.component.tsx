@@ -40,7 +40,7 @@ const Search = ({ songData }: any) => {
             results.map((music: any, index: any) => {
                 return items.push(
                     <div className="m-10" key={index}>
-                        <a className="large-card" href={music.link}>
+                        <div className="large-card">
                             <img src={music.image} alt={music.title} />
                             <div className="flex">
                                 <div className="m-auto w-70">
@@ -49,7 +49,7 @@ const Search = ({ songData }: any) => {
                                 </div>
                                 <button className="play-btn m-auto" id={(music.title+music.author).replace(/\s/g, "-")}></button>
                             </div>
-                        </a>
+                        </div>
                     </div>
                 )
             })

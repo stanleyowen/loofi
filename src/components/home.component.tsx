@@ -64,11 +64,11 @@ const Home = ({ song, songData, handleSong }: any) => {
                         if(index > 5) return; // eslint-disable-line
                         return (
                             <div className="m-10" key={index}>
-                                <a className="card flex" href={music.link}>
+                                <div className="card flex">
                                     <img src={HOST_DOMAIN + music.image} loading="lazy" />
                                     <p className="m-auto w-50">{music.title}</p>
                                     <button className="play-btn m-auto" onClick={e => triggerAudio(e, music)} id={(music.title+music.author).replace(/\s/g, "-")}></button>
-                                </a>
+                                </div>
                             </div>
                         )
                     }) : SkeletonPreview(6, 'small')
@@ -80,7 +80,7 @@ const Home = ({ song, songData, handleSong }: any) => {
                         if(index < 6) return; // eslint-disable-line
                         return (
                             <div className="m-10" key={index}>
-                                <a className="large-card" href={music.link}>
+                                <div className="large-card">
                                     <img src={HOST_DOMAIN + music.image} loading="lazy" />
                                     <div className="flex">
                                         <div className="m-auto w-70">
@@ -89,7 +89,7 @@ const Home = ({ song, songData, handleSong }: any) => {
                                         </div>
                                         <button className="play-btn m-auto" onClick={e => triggerAudio(e, music)} id={(music.title+music.author).replace(/\s/g, "-")}></button>
                                     </div>
-                                </a>
+                                </div>
                             </div>
                         )
                     }) : SkeletonPreview(8, 'large')
