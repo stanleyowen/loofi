@@ -2,13 +2,25 @@ import React, { useState, useEffect } from 'react'
 import { Slider, IconButton } from '@mui/material'
 import { Play, Pause, Audio, MutedAudio, SkipNext, SkipPrevious } from '../lib/icons.component'
 
+interface Queue {
+    queue: [],
+    currentIndex: number
+}
+
+interface Property {
+    duration: number,
+    progress: number,
+    volume: number,
+    muted: boolean
+}
+
 // eslint-disable-next-line
 const Controls = ({ song, songData, handleSong }: any) => {
-    const [queue, setQueue] = useState({
+    const [queue, setQueue] = useState<Queue>({
         queue: [],
         currentIndex: 0
     })
-    const [property, setProperty] = useState({
+    const [property, setProperty] = useState<Property>({
         duration: 0,
         progress: 0,
         volume: localStorage.getItem('volume') ? Number(localStorage.getItem('volume')) : 50,
