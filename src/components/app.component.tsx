@@ -44,7 +44,15 @@ const App = ({ properties, handleChange }: any) => {
         })
         
         setTimeout(() =>
-            onValue(ref(getDatabase(), '.info/connected'), (snapshot) => snapshot.val() ? setConnectionState(false) : setConnectionState(true))
+            onValue(ref(getDatabase(), '.info/connected'), (snapshot) => {
+                function Transition(props: TransitionProps) {
+                    return <Slide {...props} direction="right" />
+                }
+                if(!snapshot.val()) {
+                    setTransition(() => Transition)
+                    setConnectionState(true)
+                }else setConnectionState(false)
+            })
         , 5000)
 
         const themeURL = JSON.parse(localStorage.getItem('theme-session') || `{}`).url
@@ -67,7 +75,7 @@ const App = ({ properties, handleChange }: any) => {
                 <BaseLayout properties={properties} song={song} songData={data} handleSong={handleSong} />
             </div>
             <Controls properties={properties} song={song} handleSong={handleSong} songData={data} />
-            <Snackbar anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }} open={isOffline} autoHideDuration={1000} TransitionComponent={transition}>
+            <Snackbar open={isOffline} TransitionComponent={transition}>
                 <Alert severity="error">You are offline. Some functionality may be unavailable.</Alert>
             </Snackbar>
         </div>
