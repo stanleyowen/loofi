@@ -26,8 +26,9 @@
   "homepage": "./",
   "scripts": {
     "start": "react-scripts start",
-    "build": "GENERATE_SOURCEMAP=false react-scripts build",
-    "build:win": "cross-env GENERATE_SOURCEMAP=false react-scripts build",
+    "build": "yarn css:minify && GENERATE_SOURCEMAP=false react-scripts build",
+    "build:win": "yarn css:minify && cross-env GENERATE_SOURCEMAP=false react-scripts build",
+    "css:minify": "cleancss -o ./src/App.min.css ./src/App.css",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "release": "yarn build && electron-builder --publish=always",
@@ -40,11 +41,7 @@
     "win": {
       "target": [
         {
-          "target": "nsis",
-          "arch": [
-            "ia32",
-            "x64"
-          ]
+          "target": "nsis"
         }
       ]
     },
