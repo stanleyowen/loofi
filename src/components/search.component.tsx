@@ -3,7 +3,7 @@ import { Close } from '../lib/icons.component'
 import { Skeleton, TextField, IconButton } from '@mui/material'
 
 // eslint-disable-next-line
-const Search = ({ songData }: any) => {
+const Search = ({ songData, HOST_DOMAIN }: any) => {
     const items: any = []
     const [results, setResult] = useState<any>([])
     const [keyword, setKeyword] = useState<string>('')
@@ -41,7 +41,7 @@ const Search = ({ songData }: any) => {
                 return items.push(
                     <div className="m-10" key={index}>
                         <div className="large-card">
-                            <img src={music.image} alt={music.title} />
+                            <img src={HOST_DOMAIN+music.image} />
                             <div className="flex">
                                 <div className="m-auto w-70">
                                     <h3 className="mt-10">{music.title}</h3>

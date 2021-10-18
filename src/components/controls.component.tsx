@@ -81,12 +81,13 @@ const Controls = ({ song, songData, handleSong }: any) => {
     return (
         <div className="footer flex" id="footer">
             <div className="w-30 flex">
-                <img src={song.image} alt={song.title} />
+                <img src={song.image} />
                 <div className="center-vert ml-10">
                     <div className="song-title">{song.title}</div>
                     <div className="author">{song.author}</div>
                 </div>
             </div>
+
             <div className="w-40 flex center-flex">
                 <div className="flex center-flex">
                     <IconButton onClick={() => skipAudio(queue.currentIndex, 'previous')} className="p-10 font-black no-font">
