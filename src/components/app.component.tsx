@@ -11,6 +11,7 @@ type TransitionProps = Omit<SlideProps, 'direction'>
 
 // eslint-disable-next-line
 const App = ({ properties, handleChange }: any) => {
+    const HOST_DOMAIN: string = process.env.REACT_APP_HOST_DOMAIN ?? window.location.origin
     const [data, setData] = useState<any>([])
     const [isOffline, setConnectionState] = useState<boolean>(false)
     const [transition, setTransition] = useState<React.ComponentType<TransitionProps> | undefined>(undefined)
@@ -64,7 +65,7 @@ const App = ({ properties, handleChange }: any) => {
         if(!a.id && !a.value)
             a.audio === song.audio.getAttribute('src') ?
                 setSong({...song, playing: !song.playing}) :
-                setSong({...a, audio: new Audio(a.audio), playing: true})
+                setSong({...a, audio: new Audio(a.audio), image: HOST_DOMAIN+a.image, playing: true})
         else setSong({ ...song, [a.id]: a.value })
     }, [song])
 
