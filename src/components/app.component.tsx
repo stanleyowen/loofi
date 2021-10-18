@@ -75,7 +75,7 @@ const App = ({ properties, handleChange }: any) => {
                 <Navbar properties={properties} handleChange={handleChange} />
                 <BaseLayout properties={properties} song={song} songData={data} handleSong={handleSong} HOST_DOMAIN={HOST_DOMAIN} />
             </div>
-            <Controls properties={properties} song={song} handleSong={handleSong} songData={data} HOST_DOMAIN={HOST_DOMAIN} />
+            <Controls properties={properties} song={song} handleSong={handleSong} songData={data} />
             <Snackbar open={isOffline} TransitionComponent={transition}>
                 <Alert severity="error">You are offline. Some functionality may be unavailable.</Alert>
             </Snackbar>

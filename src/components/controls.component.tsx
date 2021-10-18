@@ -15,7 +15,7 @@ interface Property {
 }
 
 // eslint-disable-next-line
-const Controls = ({ song, songData, handleSong, HOST_DOMAIN }: any) => {
+const Controls = ({ song, songData, handleSong }: any) => {
     const [queue, setQueue] = useState<Queue>({
         queue: [],
         currentIndex: 0
@@ -81,7 +81,7 @@ const Controls = ({ song, songData, handleSong, HOST_DOMAIN }: any) => {
     return (
         <div className="footer flex" id="footer">
             <div className="w-30 flex">
-                <img src={HOST_DOMAIN+song.image} />
+                <img src={song.image} />
                 <div className="center-vert ml-10">
                     <div className="song-title">{song.title}</div>
                     <div className="author">{song.author}</div>
