@@ -8,8 +8,7 @@ interface Music {
     audio: HTMLAudioElement
 }
 
-const Home = ({ song, songData, handleSong }: any) => {
-    const HOST_DOMAIN: string = process.env.REACT_APP_HOST_DOMAIN ?? window.location.origin
+const Home = ({ song, songData, handleSong, HOST_DOMAIN }: any) => {
     const [greeting, setGreeting] = useState<string>()
 
     const triggerAudio = (e: React.MouseEvent<HTMLButtonElement>, data: any) => {
