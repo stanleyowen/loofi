@@ -102,6 +102,7 @@ h1, h2, h3, h4, h5, h6, p {
 	flex-direction: column;
 }
 #tabs .active { background: rgb(var(--blue) / 15%) }
+#tabs .tab.active svg { animation: zoomIn .3s }
 #tabs :nth-child(3) { margin-top: auto }
 #tabs svg { font-size: 1.5em !important; }
 .tab {
@@ -350,6 +351,11 @@ button {
 ::-webkit-scrollbar-thumb:hover {
 	background: rgb(var(--black));
 	background-clip: content-box;
+}
+
+@keyframes zoomIn {
+	50% { transform: scale(1.15) }
+	100% { transform: scale(1.0) }
 }
 
 @media only screen and (max-width: 1200px) {
