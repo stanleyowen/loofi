@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { Skeleton } from '@mui/material'
 
+interface Music {
+    title: string,
+    author: string,
+    image: string,
+    audio: HTMLAudioElement
+}
+
 const Home = ({ song, songData, handleSong }: any) => {
+    const HOST_DOMAIN: string = process.env.REACT_APP_HOST_DOMAIN ?? window.location.origin
     const [greeting, setGreeting] = useState<string>()
 
     const triggerAudio = (e: React.MouseEvent<HTMLButtonElement>, data: any) => {
@@ -9,7 +17,7 @@ const Home = ({ song, songData, handleSong }: any) => {
         if(song.playing) {
             handleSong({ id: 'playing', value: false })
             setTimeout(() => handleSong(data), 10)
-        } else handleSong(data)
+        } else handleSong(data);
         (e.target as Element).classList.toggle('pause')
     }
 
@@ -23,7 +31,7 @@ const Home = ({ song, songData, handleSong }: any) => {
     useEffect(() => {
         const btn = document.getElementById((song.title+song.author).replace(/\s/g, "-"))
         song.playing ? btn?.classList.add('pause') : btn?.classList.remove('pause')
-    }, [song.playing]) // eslint-disable-line
+    }, [song])
 
     function SkeletonPreview(count: number, type: 'large' | 'small') {
         const skeleton = []
@@ -58,15 +66,15 @@ const Home = ({ song, songData, handleSong }: any) => {
             <h2 className="m-10">Good {greeting}</h2>
             <div className="col-3" id="recent-playlist">
                 {
-                    songData?.length !== 0 ? songData.map((music: any, index: number) => {
-                        if(index > 5) return; // eslint-disable-line
+                    songData?.length !== 0 ? songData.map((music: Music, index: number) => {
+                        if(index > 5) return;
                         return (
                             <div className="m-10" key={index}>
-                                <a className="card flex" href={music.link}>
-                                    <img src={music.image} alt={music.title} />
+                                <div className="card flex">
+                                    <img src={HOST_DOMAIN + music.image} loading="lazy" />
                                     <p className="m-auto w-50">{music.title}</p>
                                     <button className="play-btn m-auto" onClick={e => triggerAudio(e, music)} id={(music.title+music.author).replace(/\s/g, "-")}></button>
-                                </a>
+                                </div>
                             </div>
                         )
                     }) : SkeletonPreview(6, 'small')
@@ -74,12 +82,12 @@ const Home = ({ song, songData, handleSong }: any) => {
             </div>
             <div className="mt-30 col-4" id="playlist">
                 {
-                    songData?.length !== 0 ? songData.map((music: any, index: number) => {
-                        if(index < 6 || index >= 14) return; // eslint-disable-line
+                    songData?.length !== 0 ? songData.map((music: Music, index: number) => {
+                        if(index < 6) return; // eslint-disable-line
                         return (
                             <div className="m-10" key={index}>
-                                <a className="large-card" href={music.link}>
-                                    <img src={music.image} alt={music.title} />
+                                <div className="large-card">
+                                    <img src={HOST_DOMAIN + music.image} loading="lazy" />
                                     <div className="flex">
                                         <div className="m-auto w-70">
                                             <h3 className="mt-10">{music.title}</h3>
@@ -87,7 +95,7 @@ const Home = ({ song, songData, handleSong }: any) => {
                                         </div>
                                         <button className="play-btn m-auto" onClick={e => triggerAudio(e, music)} id={(music.title+music.author).replace(/\s/g, "-")}></button>
                                     </div>
-                                </a>
+                                </div>
                             </div>
                         )
                     }) : SkeletonPreview(8, 'large')

@@ -21,6 +21,7 @@ function TabPanel(props: TabPanelProps) {
     )
 }
 
+// eslint-disable-next-line
 const Settings = () => {
     const [tabIndex, setTabIndex] = useState<number>(0)
     

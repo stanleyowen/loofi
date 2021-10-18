@@ -1,10 +1,28 @@
-import React from 'react'
-import { Button, Accordion, AccordionSummary } from '@mui/material'
+import React, { useState } from 'react'
+import { Button, Tooltip, Accordion, AccordionSummary } from '@mui/material'
 
 import { version } from '../../package.json'
-import { License, About as AboutIcon, PrivacyPolicy, Expand } from '../lib/icons.component'
+import { License, About as AboutIcon, PrivacyPolicy, Expand, CopyToClipboard as CopyToClipboardIcon, Checkmark, Warning } from '../lib/icons.component'
 
+// eslint-disable-next-line
 const About = () => {
+    const [copiedToClipboard, setCopiedToClipboard] = useState<boolean | string>(false)
+
+    const CopyToClipboard = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault()
+        navigator.clipboard.writeText(`Version: ${version}`)
+        .then(() =>
+            // Set copiedToClipboard to true
+            // If Text is Copied to Clipboard Successfully
+            setCopiedToClipboard(true)
+        , () =>
+            // Set copiedToClipboard to error
+            // If Text isn't Copied to Clipboard Successfully
+            setCopiedToClipboard('error')
+        )
+        setTimeout(() => setCopiedToClipboard(false), 5000)
+    }
+
     return (
         <div className="m-10" id="version">
             <div className="flex w-100 card p-15">
@@ -15,7 +33,31 @@ const About = () => {
                         <p className="small">Version: {version}</p>
                     </div>
                 </div>
-                <Button variant="outlined" onClick={() => navigator.clipboard.writeText(`Version: ${version}`)} className="align-right">Copy</Button>
+                <Tooltip
+                    enterDelay={500}
+                    enterNextDelay={500}
+                    title={
+                        copiedToClipboard === true ? "Copied" :
+                            copiedToClipboard === "error" ?
+                                "An error occured while copying the text. Please try again." :
+                                "Copy to Clipboard"
+                    }
+                >
+                    <Button
+                        color={
+                            copiedToClipboard === true ? "success" :
+                                copiedToClipboard === "error" ? "error" : "primary"
+                        }
+                        variant="outlined"
+                        className="align-right"
+                        onClick={(e) => CopyToClipboard(e)}
+                    >
+                        {
+                            copiedToClipboard === true ? <Checkmark /> :
+                                copiedToClipboard === "error" ? <Warning /> : <CopyToClipboardIcon />
+                        }
+                    </Button>
+                </Tooltip>
             </div>
 
             <Accordion className="w-100 card mt-10">
@@ -45,14 +87,14 @@ const About = () => {
                     <code>
                         <p className="mt-10"><b>Copyright (c) 2021 LoFi Player</b></p>
                         <p className="mt-10">Permission is hereby granted, free of charge, to any person obtaining a copy
-                        of this software and associated documentation files (the "Software"), to deal
+                        of this software and associated documentation files (the &quot;Software&quot;), to deal
                         in the Software without restriction, including without limitation the rights
                         to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
                         copies of the Software, and to permit persons to whom the Software is
                         furnished to do so, subject to the following conditions:</p>
                         <p className="mt-10">The above copyright notice and this permission notice shall be included in all
                         copies or substantial portions of the Software.</p>
-                        <p className="mt-10">THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+                        <p className="mt-10">THE SOFTWARE IS PROVIDED &quot;AS IS&quot; WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
                         IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
                         FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
                         AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
@@ -66,14 +108,14 @@ const About = () => {
                         <p className="mt-10">MIT License</p>
                         <p className="mt-10"><b>Copyright (c) 2014 Call-Em-All</b></p>
                         <p className="mt-10">Permission is hereby granted, free of charge, to any person obtaining a copy
-                        of this software and associated documentation files (the "Software"), to deal
+                        of this software and associated documentation files (the &quot;Software&quot;), to deal
                         in the Software without restriction, including without limitation the rights
                         to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
                         copies of the Software, and to permit persons to whom the Software is
                         furnished to do so, subject to the following conditions:</p>
                         <p className="mt-10">The above copyright notice and this permission notice shall be included in all
                         copies or substantial portions of the Software.</p>
-                        <p className="mt-10">THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+                        <p className="mt-10">THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
                         IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
                         FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
                         AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER

@@ -2,7 +2,7 @@ name: Feature Request
 description: Suggest an idea for LoFi Player
 labels: [enhancement]
 body:
-  - type: input
+  - type: textarea
     attributes:
       label: Problem Description
       description: Please add a clear and concise description of the problem you are seeking to solve with this feature request.
@@ -48,7 +48,7 @@ body:
     attributes:
       label: LoFi Player Version
       description: What version of LoFi Player are you using?
-      placeholder: v0.4.5
+      placeholder: v1.0.0
     validations:
       required: true
   - type: input

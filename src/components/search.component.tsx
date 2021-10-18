@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Close } from '../lib/icons.component'
 import { Skeleton, TextField, IconButton } from '@mui/material'
 
+// eslint-disable-next-line
 const Search = ({ songData }: any) => {
     const items: any = []
     const [results, setResult] = useState<any>([])
@@ -11,7 +12,7 @@ const Search = ({ songData }: any) => {
     useEffect(() => {
         if(keyword) {
             setFetching(true)
-            var result: any = []
+            const result: any = []
             for (let i=0; i<songData.length; i++) {
                 if(String(songData[i].title).toLowerCase().includes(keyword) || String(songData[i].author).toLowerCase().includes(keyword)) result.push(songData[i])
             }
@@ -39,7 +40,7 @@ const Search = ({ songData }: any) => {
             results.map((music: any, index: any) => {
                 return items.push(
                     <div className="m-10" key={index}>
-                        <a className="large-card" href={music.link}>
+                        <div className="large-card">
                             <img src={music.image} alt={music.title} />
                             <div className="flex">
                                 <div className="m-auto w-70">
@@ -48,7 +49,7 @@ const Search = ({ songData }: any) => {
                                 </div>
                                 <button className="play-btn m-auto" id={(music.title+music.author).replace(/\s/g, "-")}></button>
                             </div>
-                        </a>
+                        </div>
                     </div>
                 )
             })

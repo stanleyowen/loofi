@@ -7,9 +7,13 @@ import Navbar from './navbar.component'
 import BaseLayout from './base.component'
 import Controls from './controls.component'
 
+type TransitionProps = Omit<SlideProps, 'direction'>
+
+// eslint-disable-next-line
 const App = ({ properties, handleChange }: any) => {
     const [data, setData] = useState<any>([])
     const [isOffline, setConnectionState] = useState<boolean>(false)
+    const [transition, setTransition] = useState<React.ComponentType<TransitionProps> | undefined>(undefined)
     const [song, setSong] = useState({
         playing: false,
         title: 'Underwater',
@@ -29,8 +33,8 @@ const App = ({ properties, handleChange }: any) => {
             appId: process.env.REACT_APP_ID,
             measurementId: process.env.REACT_APP_MEASUREMENT_ID
         })
-        onValue(ref(getDatabase(), 'data-dev/'), (snapshot) => {
-            var rawData = snapshot.val(), index = rawData.length, randIndex
+        onValue(ref(getDatabase(), 'data-dev-dev/'), (snapshot) => {
+            let rawData = snapshot.val(), index = rawData.length, randIndex // eslint-disable-line
             while(index !== 0) {
                 randIndex = Math.floor(Math.random() * index)
                 index--
@@ -38,9 +42,22 @@ const App = ({ properties, handleChange }: any) => {
             }
             setData(rawData)
         })
+        
         setTimeout(() =>
-            onValue(ref(getDatabase(), '.info/connected'), (snapshot) => snapshot.val() ? setConnectionState(false) : setConnectionState(true))
+            onValue(ref(getDatabase(), '.info/connected'), (snapshot) => {
+                function Transition(props: TransitionProps) {
+                    return <Slide {...props} direction="right" />
+                }
+                if(!snapshot.val()) {
+                    setTransition(() => Transition)
+                    setConnectionState(true)
+                }else setConnectionState(false)
+            })
         , 5000)
+
+        const themeURL = JSON.parse(localStorage.getItem('theme-session') || `{}`).url
+        const backgroundElement = document.getElementById('backdrop-image')
+        if(backgroundElement && themeURL) backgroundElement.style.background = `url(${themeURL})`
     }, []) // eslint-disable-line
     
     const handleSong = useCallback(a => {
@@ -58,7 +75,7 @@ const App = ({ properties, handleChange }: any) => {
                 <BaseLayout properties={properties} song={song} songData={data} handleSong={handleSong} />
             </div>
             <Controls properties={properties} song={song} handleSong={handleSong} songData={data} />
-            <Snackbar anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }} open={isOffline} autoHideDuration={1000} TransitionComponent={props => <Slide {...props} direction="right" />}>
+            <Snackbar open={isOffline} TransitionComponent={transition}>
                 <Alert severity="error">You are offline. Some functionality may be unavailable.</Alert>
             </Snackbar>
         </div>
