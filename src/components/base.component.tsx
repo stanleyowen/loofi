@@ -5,13 +5,13 @@ import Search from './search.component'
 import Settings from './settings.component'
 
 // eslint-disable-next-line
-const BaseLayout = ({ song, properties, songData, handleSong }: any) => {
+const BaseLayout = ({ song, properties, songData, handleSong, HOST_DOMAIN }: any) => {
     return (
         <div className="base">
             { properties.activeTab === 'home' ?
-                <Home properties={properties} handleSong={handleSong} song={song} songData={songData} /> :
+                <Home properties={properties} handleSong={handleSong} song={song} songData={songData} HOST_DOMAIN={HOST_DOMAIN} /> :
                 properties.activeTab === 'search' ?
-                    <Search properties={properties} handleSong={handleSong} songData={songData} /> : <Settings /> }
+                    <Search properties={properties} handleSong={handleSong} songData={songData} HOST_DOMAIN={HOST_DOMAIN} /> : <Settings /> }
         </div>
     )
 }
