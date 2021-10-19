@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 
-import './App.css'
 import AppLayout from './components/app.component'
 import SideBar from './components/sidebar.component'
+
+process.env.NODE_ENV === 'production' ? require ('./App.min.css') : require('./App.css')
 
 // eslint-disable-next-line
 export default function App() {
@@ -17,7 +18,7 @@ export default function App() {
     for (let i = 0; i < 79; i++) {
       const div = document.createElement('div')
       div.style.opacity = `${Math.random() * (0.075 - 0.025) + 0.025}`
-      document.querySelector('.backdrop-overlay')!.appendChild(div)
+      document.querySelector('.backdrop-overlay')?.appendChild(div)
     }
   }, [])
 
