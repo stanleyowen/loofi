@@ -1,0 +1,34 @@
+[
+    {
+        "type": "Default",
+        "image": false
+    },
+    { 
+        "type": "Nature",
+        "image": "https://user-images.githubusercontent.com/69080584/134890221-013b18f1-e051-4a69-9431-1d8259069ae7.png"
+    },
+    {
+        "type": "Sunset",
+        "image": "https://user-images.githubusercontent.com/69080584/134889846-88916431-6f24-4a2b-bde7-f42c5d3a82a6.png"
+    },
+    {
+        "type": "Green Grass",
+        "image": "https://user-images.githubusercontent.com/69080584/134890409-db19b5e3-8120-4a93-a82a-523af6824798.png"
+    },
+    {
+        "type": "Mountain",
+        "image": "https://user-images.githubusercontent.com/69080584/134889338-20a409b3-9a5a-4172-91b6-b1ade6436285.png"
+    },
+    {
+        "type": "River",
+        "image": "https://user-images.githubusercontent.com/69080584/134890896-1e4420ff-adbe-4f34-a1b4-19522e0ef460.jpg"
+    },
+    {
+        "type": "Dandelion",
+        "image": "https://user-images.githubusercontent.com/69080584/134891156-985e1185-0faa-4bda-a3e3-bd6d7548ee8d.png"
+    },
+    {
+        "type": "Forest",
+        "image": "https://user-images.githubusercontent.com/69080584/134891765-e06e90e8-c74b-4426-a65f-dffd6121f728.png"
+    }
+]
