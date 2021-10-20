@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { initializeApp } from 'firebase/app'
 import { GoogleAuthProvider, getAuth, signInWithRedirect, getRedirectResult } from 'firebase/auth'
+import { Button } from '@mui/material'
 
 const About = ({ config }: any) => {
     useEffect(() => {
@@ -23,7 +24,17 @@ const About = ({ config }: any) => {
     }, [])
 
     return (
-        <div>Auth</div>
+        <div className="bg-white container p-10 rounded-corner">
+            <h3>Loofi Dashboard</h3>
+            <Button
+                variant="outlined"
+                onClick={() => {
+                    signInWithRedirect(getAuth(), new GoogleAuthProvider())
+                }
+            }>
+                Sign in with Google
+            </Button>
+        </div>
     )
 }
 
