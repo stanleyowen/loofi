@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import { Properties } from './lib/interfaces.component'
+import Auth from './components/auth.component'
 import AppLayout from './components/app.component'
 import SideBar from './components/sidebar.component'
 
@@ -43,8 +44,11 @@ export default function App() {
 
   return (
     <Router>
-      <SideBar properties={properties} handleChange={handleChange}  />
-      <AppLayout properties={properties} handleChange={handleChange} />
+      <Route path='/app' exact>
+        <SideBar properties={properties} handleChange={handleChange}  />
+        <AppLayout properties={properties} handleChange={handleChange} />
+      </Route>
+      <Route path='/auth' component={Auth} />
     </Router>
   )
 }
