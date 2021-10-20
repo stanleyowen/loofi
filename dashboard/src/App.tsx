@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
+import { initializeApp } from 'firebase/app'
 import { Properties } from './lib/interfaces.component'
 import Auth from './components/auth.component'
 import AppLayout from './components/app.component'
@@ -10,6 +11,16 @@ process.env.NODE_ENV === 'production' ? require ('./App.min.css') : require('./A
 
 // eslint-disable-next-line
 export default function App() {
+  const config: any = {
+    apiKey: process.env.REACT_APP_API_KEY,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    databaseURL: process.env.REACT_APP_DB_URL,
+    projectId: process.env.REACT_APP_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_SENDER_ID,
+    appId: process.env.REACT_APP_ID,
+    measurementId: process.env.REACT_APP_MEASUREMENT_ID
+  }
   const [properties, setProperties] = useState<Properties>({
     action: 0,
     activeTab: window.localStorage.getItem('tab-session') ?? 'home',
@@ -45,10 +56,10 @@ export default function App() {
   return (
     <Router>
       <Route path='/app' exact>
-        <SideBar properties={properties} handleChange={handleChange}  />
-        <AppLayout properties={properties} handleChange={handleChange} />
+        <SideBar properties={properties} handleChange={handleChange} />
+        <AppLayout properties={properties} handleChange={handleChange} config={properties} />
       </Route>
-      <Route path='/auth' component={Auth} />
+      <Route path='/auth' component={() => <Auth config={config} />} />
     </Router>
   )
 }

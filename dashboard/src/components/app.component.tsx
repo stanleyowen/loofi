@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { initializeApp } from 'firebase/app'
 import { getDatabase, ref, onValue } from 'firebase/database'
 import { getFirestore, collection, addDoc } from 'firebase/firestore'
 import { Alert, Slide, Snackbar, LinearProgress, SlideProps } from '@mui/material'
@@ -12,7 +11,7 @@ import { AppInterface, Song } from '../lib/interfaces.component'
 type TransitionProps = Omit<SlideProps, 'direction'>
 
 // eslint-disable-next-line
-const App = ({ properties, handleChange }: AppInterface) => {
+const App = ({ properties, handleChange, config }: any) => {
     const HOST_DOMAIN: string = process.env.REACT_APP_HOST_DOMAIN ?? window.location.origin
     const musicSession = JSON.parse(localStorage.getItem('music-session') || '{}')
     const [data, setData] = useState<any>([])
@@ -27,16 +26,6 @@ const App = ({ properties, handleChange }: AppInterface) => {
     })
 
     useEffect(() => {
-        initializeApp({
-            apiKey: process.env.REACT_APP_API_KEY,
-            authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-            databaseURL: process.env.REACT_APP_DB_URL,
-            projectId: process.env.REACT_APP_PROJECT_ID,
-            storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-            messagingSenderId: process.env.REACT_APP_SENDER_ID,
-            appId: process.env.REACT_APP_ID,
-            measurementId: process.env.REACT_APP_MEASUREMENT_ID
-        })
         onValue(ref(getDatabase(), 'data-dev-dev/'), (snapshot) => {
             let rawData = snapshot.val(), index = rawData.length, randIndex // eslint-disable-line
             while(index !== 0) {
