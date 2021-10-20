@@ -11,6 +11,7 @@ process.env.NODE_ENV === 'production' ? require ('./App.min.css') : require('./A
 
 // eslint-disable-next-line
 export default function App() {
+  const [loggedIn, setStatus] = useState<boolean>(false)
   const config: any = {
     apiKey: process.env.REACT_APP_API_KEY,
     authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -34,6 +35,11 @@ export default function App() {
       document.querySelector('.backdrop-overlay')?.appendChild(div)
     }
   }, [])
+
+  useEffect(() => {
+    if(!loggedIn && !window.location.pathname.startsWith('/auth')) window.location.href = '/auth'
+    else if(loggedIn && window.location.pathname.startsWith('/auth')) window.location.href = '/app'
+  }, [loggedIn])
 
   const handleChange = useCallback(a => {
     if(a.goForward || a.goBackward)
