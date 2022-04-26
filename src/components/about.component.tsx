@@ -1,10 +1,20 @@
 import React, { useState } from 'react'
 import { Button, Tooltip, Accordion, AccordionSummary } from '@mui/material'
-
 import { version } from '../../package.json'
-import { License, About as AboutIcon, PrivacyPolicy, Expand, CopyToClipboard as CopyToClipboardIcon, Checkmark, Warning } from '../lib/icons.component'
+import {
+    Expand,
+    Warning,
+    License,
+    Feedback,
+    Resources,
+    Checkmark,
+    Changelog,
+    AboutOutline,
+    Contributors,
+    PrivacyPolicy,
+    CopyToClipboard as CopyToClipboardIcon
+} from '../lib/icons.component'
 
-// eslint-disable-next-line
 const About = () => {
     const [copiedToClipboard, setCopiedToClipboard] = useState<boolean | string>(false)
 
@@ -27,7 +37,7 @@ const About = () => {
         <div className="m-10" id="version">
             <div className="flex w-100 card p-15">
                 <div className="flex w-80">
-                    <AboutIcon />
+                    <AboutOutline />
                     <div className="ml-10">
                         <p>LoFi Player</p>
                         <p className="small">Version: {version}</p>
@@ -112,7 +122,7 @@ const About = () => {
                     <p><i>Personal Information Collection</i></p>
                     <p>LoFi Player does not collect, store, share or publish any personal information.</p>
                     <p className="mt-10"><i>Non-Personal Information Collection</i></p>
-                    <p>LoFi Player does not collect, store, share or publish any non-personal information.</p>
+                    <p>LoFi Player collects and stores data which are useful for logging, bugs, and fix crashes. All information sent is anonymous and free of any user or contextual data.</p>
                 </div>
             </Accordion>
             
@@ -126,7 +136,7 @@ const About = () => {
                 <div className="p-10">
                     <p>LoFi Player is an open source project published under the MIT License. You can view the source code and contribute to this project on <a href="https://github.com/stanleyowen/lofi-player" target="_blank" rel="noreferrer">GitHub</a>.</p>
                     <code>
-                        <p className="mt-10"><b>Copyright (c) 2021 LoFi Player</b></p>
+                        <p className="mt-10"><b>Copyright (c) 2022 LoFi Player</b></p>
                         <p className="mt-10">Permission is hereby granted, free of charge, to any person obtaining a copy
                         of this software and associated documentation files (the &quot;Software&quot;), to deal
                         in the Software without restriction, including without limitation the rights
