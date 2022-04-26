@@ -23,8 +23,8 @@ const Controls = ({ song, songData, handleSong }: any) => {
     const [property, setProperty] = useState<Property>({
         duration: 0,
         progress: 0,
-        volume: localStorage.getItem('volume') ? Number(localStorage.getItem('volume')) : 50,
-        muted: localStorage.getItem('muted') ? JSON.parse(String(localStorage.getItem('muted'))) : false
+        volume: Number(localStorage.getItem('volume')) ?? 50,
+        muted: JSON.parse(String(localStorage.getItem('muted')) ?? false)
     })
     const handleQueue = (a: string, b: any) => setQueue({...queue, [a]: b})
     const handleChange = (a: string, b: any) => setProperty({...property, [a]: b})
