@@ -106,11 +106,12 @@ const Controls = ({ song, songData, handleSong }: any) => {
                     <div className="progress-time center-align">{parseTime(property.duration ? property.duration : 0)}</div>
                 </div>
             </div>
+
             <div className="w-30 flex center-flex">
                 <div className="w-50 audio">
-                    <button onClick={() => handleChange('muted', !property.muted)}>
+                    <Button onClick={() => handleChange('muted', !property.muted)} size="small" variant='text' color="inherit" className="volume-btn">
                         {property.muted || property.volume === 0 ? MutedAudio() : Audio()}
-                    </button>
+                    </Button>
                     <Slider
                         size="small"
                         className="m-10"
