@@ -2,24 +2,31 @@ import React, { useState, useEffect } from 'react'
 import { Close } from '../lib/icons.component'
 import { Skeleton, TextField, IconButton } from '@mui/material'
 
-// eslint-disable-next-line
 const Search = ({ songData, HOST_DOMAIN }: any) => {
-    const items: any = []
-    const [results, setResult] = useState<any>([])
+    const items: any = {
+        music: [],
+        author: []
+    }
+    const [results, setResult] = useState<any>({
+        music: [],
+        author: []
+    })
     const [keyword, setKeyword] = useState<string>('')
     const [isFetching, setFetching] = useState<boolean>(false)
 
     useEffect(() => {
         if(keyword) {
             setFetching(true)
-            const result: any = []
+            const music: any = []
+            const author: any = []
             for (let i=0; i<songData.length; i++) {
-                if(String(songData[i].title).toLowerCase().includes(keyword) || String(songData[i].author).toLowerCase().includes(keyword)) result.push(songData[i])
+                if(String(songData[i].title).toLowerCase().includes(keyword)) music.push(songData[i])
+                if(String(songData[i].author).toLowerCase().includes(keyword)) author.push(songData[i])
             }
-            setResult(result)
+            setResult({ music, author })
             setFetching(false)
         }
-    }, [keyword]) // eslint-disable-line
+    }, [keyword, songData])
 
     if(keyword) {
         if(isFetching)
