@@ -62,6 +62,47 @@ const About = () => {
 
             <Accordion className="w-100 card mt-10">
                 <AccordionSummary expandIcon={<Expand />}>
+                    <div className="flex w-80 no-capitalization">
+                        <Resources />
+                        <p className="ml-10">Helpful Resources</p>
+                    </div>
+                </AccordionSummary>
+                <div className="flex w-100" id="resources">
+                    <div className="w-50 m-10">
+                        <Button
+                            className="p-15 w-100 no-capitalization"
+                            onClick={() => window.open('https://github.com/stanleyowen/lofi-player/issues/new/choose')}
+                        >
+                            <Feedback />
+                            <p className="ml-10">Submit Feedback</p>
+                            <span className="m-auto"></span>
+                        </Button>
+                    </div>
+                    <div className="w-50 m-10">
+                        <Button
+                            className="p-15 w-100 no-capitalization"
+                            onClick={() => window.open('https://github.com/stanleyowen/lofi-player/releases')}
+                        >
+                            <Changelog />
+                            <p className="ml-10">Change Log</p>
+                            <span className="m-auto"></span>
+                        </Button>
+                    </div>
+                    <div className="w-50 m-10">
+                        <Button
+                            className="p-15 w-100 no-capitalization"
+                            onClick={() => window.open('https://github.com/stanleyowen/lofi-player/graphs/contributors')}
+                        >
+                            <Contributors />
+                            <p className="ml-10">Contributors</p>
+                            <span className="m-auto"></span>
+                        </Button>
+                    </div>
+                </div>
+            </Accordion>
+
+            <Accordion className="w-100 card mt-10">
+                <AccordionSummary expandIcon={<Expand />}>
                     <div className="flex w-80">
                         <PrivacyPolicy />
                         <p className="ml-10">Privacy Policy</p>
