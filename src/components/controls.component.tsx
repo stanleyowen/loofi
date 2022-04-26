@@ -71,10 +71,10 @@ const Controls = ({ song, songData, handleSong }: any) => {
         handleChange('progress', (song.audio.currentTime / song.audio.duration) * 100)
         document.getElementById('current-duration')!.innerText = parseTime(song.audio.currentTime)
     }
-
+    
     const triggerAudio = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
-        handleSong({id: 'playing', value: !song.playing});
+        handleSong({ id: 'playing', value: !song.playing });
         (e.target as Element).classList.toggle('pause')
     }
 
@@ -108,8 +108,17 @@ const Controls = ({ song, songData, handleSong }: any) => {
             </div>
             <div className="w-30 flex center-flex">
                 <div className="w-50 audio">
-                    <button onClick={() => handleChange('muted', !property.muted)}>{property.muted || property.volume === 0 ? MutedAudio() : Audio()}</button>
-                    <Slider className="m-10" size="small" defaultValue={property.volume} value={property.volume} onChange={(_, value) => handleChange('volume', value)} />
+                    <button onClick={() => handleChange('muted', !property.muted)}>
+                        {property.muted || property.volume === 0 ? MutedAudio() : Audio()}
+                    </button>
+                    <Slider
+                        size="small"
+                        className="m-10"
+                        valueLabelDisplay="auto"
+                        value={property.volume}
+                        defaultValue={property.volume}
+                        onChange={(_, value) => handleChange('volume', value)}
+                    />
                 </div>
             </div>
         </div>
