@@ -331,11 +331,32 @@ button {
 	padding: 10px;
 	align-items: center;
 }
+.volume-btn {
+	min-width: 0px !important;
+}
 
 /* Settings */
 #settings .MuiBox-root { padding: 0px !important }
 #settings .active { background-color: rgb(var(--blue) / 35%) }
 #settings svg { font-size: 1.5em }
+#settings .flex .w-50.m-10 { width: calc(50% - 60px) !important }
+#settings .flex .w-50.m-10:nth-child(odd) { margin: 5px 10px 5px 50px !important }
+#settings .flex .w-50.m-10:nth-child(even) { margin: 5px 50px 5px 10px !important }
+#resources p { font-size: 14.5px }
+.copy-btn {
+	position: absolute !important;
+	right: 10px;
+	z-index: 100;
+}
+
+/* Download */
+#download .large-card svg {
+	display: block;
+	margin: 10px auto;
+	transition: 0.3s all;
+	color: rgb(var(--black) / 70%);
+}
+#download .large-card:hover svg { color: rgb(var(--black)); }
 
 /* Search */
 .search { width: 50% }
@@ -374,6 +395,9 @@ button {
 	.col-4 { grid-template-columns: 50% 50% }
 	#version .w-50 { width: 90% !important }
 	.w-50.audio { width: 100% !important }
+	#settings .flex .w-50.m-10 { width: 100% !important }
+	#settings .flex .w-50.m-10:nth-child(odd),
+	#settings .flex .w-50.m-10:nth-child(even) { margin: 5px 10px !important }
 }
 @media only screen and (max-width: 700px) {
 	.search { width: 100% }
