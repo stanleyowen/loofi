@@ -8,10 +8,10 @@ process.env.NODE_ENV === 'production' ? require ('./App.min.css') : require('./A
 
 // eslint-disable-next-line
 export default function App() {
-  const [properties, setProperties] = useState<any>({
-    activeTab: localStorage.getItem('tab-session') ? localStorage.getItem('tab-session') : 'home',
-    previousTab: '',
-    nextTab: ''
+  const [properties, setProperties] = useState<Properties>({
+    action: 0,
+    activeTab: window.localStorage.getItem('tab-session') ?? 'home',
+    history: [window.localStorage.getItem('tab-session') ?? 'home']
   })
 
   useEffect(() => {
@@ -23,14 +23,21 @@ export default function App() {
   }, [])
 
   const handleChange = useCallback(a => {
-    setProperties({
-      ...properties,
-      previousTab: a.goBackward ? '' : properties.activeTab,
-      nextTab: a.goBackward ? properties.activeTab : '',
-      [a.id]: a.value
-    })
-
-    localStorage.setItem('tab-session', a.value)
+    if(a.goForward || a.goBackward)
+      setProperties({
+        ...properties,
+        action: a.goBackward ? properties.action - 1 : properties.action + 1,
+        [a.id]: a.value
+      })
+    else {
+      properties.history.splice(properties.action+1, properties.history.length - (properties.action + 1) , a.value)
+      setProperties({
+        ...properties,
+        action: properties.action + 1,
+        [a.id]: a.value
+      })
+    }
+    window.localStorage.setItem('tab-session', a.value)
   }, [properties])
 
   return (
