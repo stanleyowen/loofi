@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Slider, IconButton } from '@mui/material'
+import { Slider, IconButton, Button } from '@mui/material'
 import { Play, Pause, Audio, MutedAudio, SkipNext, SkipPrevious } from '../lib/icons.component'
 
 interface Queue {
