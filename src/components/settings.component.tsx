@@ -3,7 +3,8 @@ import { Tab, Tabs } from '@mui/material'
 
 import About from './about.component'
 import Preferences from './preferences.component'
-import { AboutSolid, AboutOutline, PreferencesSolid, PreferencesOutline } from '../lib/icons.component'
+import Experimental from './experimental.component'
+import { AboutSolid, AboutOutline, PreferencesSolid, PreferencesOutline, ExperimentalSolid, ExperimentalOutline } from '../lib/icons.component'
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -29,8 +30,8 @@ const Settings = () => {
         <div className="flex-nowrap w-100" id="settings">
             <Tabs orientation="vertical" value={tabIndex} onChange={(_, index: number) => setTabIndex(index)} className="w-20 tab">
                 {
-                    ['Preferences', 'About'].map((tab, index) => {
-                        const component: { [key: string]: any } = { AboutSolid, AboutOutline, PreferencesSolid, PreferencesOutline }
+                    ['Preferences', 'Experimental', 'About'].map((tab, index) => {
+                        const component: { [key: string]: any } = { AboutSolid, AboutOutline, PreferencesSolid, PreferencesOutline, ExperimentalSolid, ExperimentalOutline }
                         const SolidIcon = component[`${tab}Solid`]
                         const OutlineIcon = component[`${tab}Outline`]
                         return <Tab icon={index === tabIndex ? <SolidIcon /> : <OutlineIcon />} key={index} label={tab} />
@@ -38,7 +39,8 @@ const Settings = () => {
                 }
             </Tabs>
             <TabPanel value={tabIndex} index={0}><Preferences /></TabPanel>
-            <TabPanel value={tabIndex} index={1}><About /></TabPanel>
+            <TabPanel value={tabIndex} index={1}><Experimental /></TabPanel>
+            <TabPanel value={tabIndex} index={2}><About /></TabPanel>
         </div>
     )
 }
