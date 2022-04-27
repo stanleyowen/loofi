@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Switch, Accordion, AccordionSummary } from '@mui/material'
+import { Button, Accordion, AccordionSummary } from '@mui/material'
 
 import Theme from '../lib/theme.json'
 import { Themes, Expand, ThemesApp } from '../lib/icons.component'
@@ -28,8 +28,6 @@ const About = () => {
             }
         })
     }, [activeTab])
-
-
 
     return (
         <div className="m-10" id="version">

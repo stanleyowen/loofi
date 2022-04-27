@@ -15,7 +15,7 @@ const Home = ({ song, songData, handleSong, HOST_DOMAIN }: any) => {
         e.preventDefault()
         if(song.playing) {
             handleSong({ id: 'playing', value: false })
-            setTimeout(() => handleSong(data), 10)
+            setTimeout(() => handleSong(data), 1)
         } else handleSong(data);
         (e.target as Element).classList.toggle('pause')
     }
