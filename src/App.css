@@ -102,8 +102,9 @@ h1, h2, h3, h4, h5, h6, p {
 	flex-direction: column;
 }
 #tabs .active { background: rgb(var(--blue) / 15%) }
-#tabs .tab:not(#settings).active svg { animation: zoomIn .3s }
-#tabs #settings.active svg {
+.tab:not(#settings).active svg,
+.tab:not(#settings) .Mui-selected svg { animation: zoomIn .3s !important }
+#settings.active svg {
 	transition: all .5s !important;
 	transform: rotate(360deg);
 }
@@ -126,6 +127,9 @@ h1, h2, h3, h4, h5, h6, p {
 	background-color: rgb(var(--white) / 50%);
 }
 .navbar div.mrl-10:last-child { margin-left: auto }
+.navbar .MuiIconButton-root:active svg {
+	animation: zoomIn .3s !important
+}
 
 /* Base Layout */
 .app {
