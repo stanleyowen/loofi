@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Dialog, Tooltip, DialogActions, DialogContent, DialogContentText } from '@mui/material'
-import { Beta, Download, HomeSolid, HomeOutline, SettingsSolid, SettingsOutline, SearchSolid, SearchOutline } from '../lib/icons.component'
+import { ExperimentalOutline, Download, HomeSolid, HomeOutline, SettingsSolid, SettingsOutline, SearchSolid, SearchOutline } from '../lib/icons.component'
 
 // eslint-disable-next-line
 const SideBar = ({ handleChange, properties }: any) => {
@@ -40,11 +40,11 @@ const SideBar = ({ handleChange, properties }: any) => {
                     process.env.REACT_APP_ALLOW_BETA === 'true' ?
                         process.env.REACT_APP_CONTEXT === 'production' ?
                             (<Button className="w-100 rounded-corner p-10 tab" id="beta" onClick={() => setDialog(true)}>
-                                <div className="w-30"><Beta /></div>
+                                <div className="w-30"><ExperimentalOutline /></div>
                                 <div className="w-70 left-align">Beta</div>
                             </Button>) :
                             (<Button className="w-100 rounded-corner p-10 tab" id="beta" onClick={() => window.location.href = String(process.env.REACT_APP_STABLE)}>
-                                <div className="w-30"><Beta /></div>
+                                <div className="w-30"><ExperimentalOutline /></div>
                                 <div className="w-70 left-align">Stable</div>
                             </Button>)
                         : null
