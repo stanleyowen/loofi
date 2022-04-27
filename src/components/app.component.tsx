@@ -66,15 +66,18 @@ const App = ({ properties, handleChange }: any) => {
     }, [song])
 
     return (
-        <div className="app">
-            <div className="app-ui">
-                <Navbar properties={properties} handleChange={handleChange} />
-                <BaseLayout properties={properties} song={song} songData={data} handleSong={handleSong} HOST_DOMAIN={HOST_DOMAIN} />
+        <div>
+            { data.length === 0 ? <LinearProgress /> : null }
+            <div className="app" style={ data.length === 0 ? { height: '99.3vh' } : {}}>
+                <div className="app-ui">
+                    <Navbar properties={properties} handleChange={handleChange} />
+                    <BaseLayout properties={properties} song={song} songData={data} handleSong={handleSong} HOST_DOMAIN={HOST_DOMAIN} />
+                </div>
+                <Controls properties={properties} song={song} handleSong={handleSong} songData={data} HOST_DOMAIN={HOST_DOMAIN} />
+                <Snackbar open={isOffline} TransitionComponent={transition}>
+                    <Alert severity="error">You are offline. Some functionality may be unavailable.</Alert>
+                </Snackbar>
             </div>
-            <Controls properties={properties} song={song} handleSong={handleSong} songData={data} />
-            <Snackbar open={isOffline} TransitionComponent={transition}>
-                <Alert severity="error">You are offline. Some functionality may be unavailable.</Alert>
-            </Snackbar>
         </div>
     )
 }
