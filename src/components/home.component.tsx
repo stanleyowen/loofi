@@ -81,23 +81,63 @@ const Home = ({ song, songData, handleSong, HOST_DOMAIN }: any) => {
             </div>
             <div className="mt-30 col-4" id="playlist">
                 {
-                    songData?.length !== 0 ? songData.map((music: Music, index: number) => {
-                        if(index < 6) return; // eslint-disable-line
-                        return (
-                            <div className="m-10" key={index}>
-                                <div className="large-card">
-                                    <img src={HOST_DOMAIN + music.image} loading="lazy" />
-                                    <div className="flex">
-                                        <div className="m-auto w-70">
-                                            <h3 className="mt-10">{music.title}</h3>
-                                            <p className="author">{music.author}</p>
+                    songData?.length !== 0 && songData?.length >= 7 ?
+                        songData.map((music: Music, index: number) => {
+                            if(index < 6 || index > 17) return; // eslint-disable-line
+                            return (
+                                <div className="m-10" key={index}>
+                                    <div className="large-card">
+                                        <img src={HOST_DOMAIN + music.image} loading="lazy" />
+                                        <div className="flex">
+                                            <div className="m-auto w-70">
+                                                <h3 className="mt-10">{music.title}</h3>
+                                                <p className="author">{music.author}</p>
+                                            </div>
+                                            <button className="play-btn m-auto" onClick={e => triggerAudio(e, music)} id={(music.title+music.author).replace(/\s/g, "-")}></button>
                                         </div>
+                                    </div>
+                                </div>
+                            )
+                        }) : SkeletonPreview(8, 'large')
+                }
+            </div>
+            <div className="mt-30 col-3" id="recent-playlist">
+                {
+                    songData?.length !== 0 && songData?.length >= 19 ?
+                        songData.map((music: Music, index: number) => {
+                            if(index < 17 || index > 22) return; // eslint-disable-line
+                            return (
+                                <div className="m-10" key={index}>
+                                    <div className="card flex">
+                                        <img src={HOST_DOMAIN + music.image} loading="lazy" />
+                                        <p className="m-auto w-50">{music.title}</p>
                                         <button className="play-btn m-auto" onClick={e => triggerAudio(e, music)} id={(music.title+music.author).replace(/\s/g, "-")}></button>
                                     </div>
                                 </div>
-                            </div>
-                        )
-                    }) : SkeletonPreview(8, 'large')
+                            )
+                        }) : null
+                }
+            </div>
+            <div className="mt-30 col-4" id="playlist">
+                {
+                    songData?.length !== 0 && songData?.length >= 7 ?
+                        songData.map((music: Music, index: number) => {
+                            if(index < 22) return; // eslint-disable-line
+                            return (
+                                <div className="m-10" key={index}>
+                                    <div className="large-card">
+                                        <img src={HOST_DOMAIN + music.image} loading="lazy" />
+                                        <div className="flex">
+                                            <div className="m-auto w-70">
+                                                <h3 className="mt-10">{music.title}</h3>
+                                                <p className="author">{music.author}</p>
+                                            </div>
+                                            <button className="play-btn m-auto" onClick={e => triggerAudio(e, music)} id={(music.title+music.author).replace(/\s/g, "-")}></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        }) : null
                 }
             </div>
         </div>
