@@ -66,6 +66,14 @@ const Controls = ({ song, songData, handleSong }: any) => {
         return `${(minutes < 10 ? `0${minutes}` : minutes)}:${(second < 10 ? `0${second}` : second)}`
     }
 
+    const triggerDuration = (time: number | number[]) => {
+        handleSong({ id: 'playing', value: false })
+        song.audio.currentTime = Number(time)/100 * property.duration
+        handleChange('progress', Number(time)/100 * property.duration)
+        document.getElementById('current-duration')!.innerText = parseTime(song.audio.currentTime)
+        handleSong({ id: 'playing', value: true })
+    }
+
     song.audio.onloadeddata = () => handleChange('duration', song.audio.duration)
     song.audio.ontimeupdate = () => {
         handleChange('progress', (song.audio.currentTime / song.audio.duration) * 100)
@@ -102,7 +110,7 @@ const Controls = ({ song, songData, handleSong }: any) => {
                 </div>
                 <div className="playback-bar">
                     <div className="progress-time center-align" id="current-duration">00:00</div>
-                    <Slider className="mrl-5" size="small" defaultValue={property.volume} value={property.progress} disableSwap={true} />
+                    <Slider className="mrl-5" size="small" defaultValue={property.volume} value={property.progress} onChange={(_, value) => triggerDuration(value)} />
                     <div className="progress-time center-align">{parseTime(property.duration ? property.duration : 0)}</div>
                 </div>
             </div>
