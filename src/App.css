@@ -61,6 +61,9 @@ h1, h2, h3, h4, h5, h6, p {
 	border-radius: 1.5vh;
 	border: 1px solid rgb(var(--black));
 }
+.border-box {
+	box-sizing: border-box !important;
+}
 .backdrop-image {
 	background: url('https://user-images.githubusercontent.com/69080584/135237771-30c727d6-e88f-48e1-a65c-4fcef9e91113.png') center/cover no-repeat;
     -webkit-filter: blur(25px);
@@ -238,7 +241,10 @@ input:disabled { pointer-events: none !important }
 .w-50 { width: 50% !important }
 .w-70 { width: 70% !important }
 .w-80 { width: 80% !important }
-.w-100 { width: 100%; }
+.w-100 { width: 100% !important; }
+.experimental-warning {
+	background-color: rgb(255 244 229 / 60%);
+}
 .p-0 { padding: 0px !important }
 .p-5 { padding: 5px !important }
 .p-10 { padding: 10px !important }
