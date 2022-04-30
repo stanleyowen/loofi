@@ -15,6 +15,7 @@ debug.log
 .env.production
 .env.production.local
 
+App.min.css
 **/img/*[.png][.jpg]
 dist
 docs

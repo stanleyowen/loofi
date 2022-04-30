@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 
+import { Properties } from './lib/interfaces.component'
 import AppLayout from './components/app.component'
 import SideBar from './components/sidebar.component'
 
