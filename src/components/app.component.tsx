@@ -12,15 +12,16 @@ type TransitionProps = Omit<SlideProps, 'direction'>
 // eslint-disable-next-line
 const App = ({ properties, handleChange }: any) => {
     const HOST_DOMAIN: string = process.env.REACT_APP_HOST_DOMAIN ?? window.location.origin
+    const musicSession = JSON.parse(localStorage.getItem('music-session') || '{}')
     const [data, setData] = useState<any>([])
     const [isOffline, setConnectionState] = useState<boolean>(false)
     const [transition, setTransition] = useState<React.ComponentType<TransitionProps> | undefined>(undefined)
     const [song, setSong] = useState({
         playing: false,
-        title: 'Underwater',
-        author: 'LiQWYD',
-        image: 'https://user-images.githubusercontent.com/69080584/129511233-dd5a0eac-2675-415e-ae4c-6cc530a23629.png',
-        audio: new Audio('https://user-images.githubusercontent.com/69080584/129511300-e88655e9-687f-4d0b-acb4-b32c0fa988cf.mp4')
+        title: musicSession.title ? musicSession.title : 'Underwater',
+        author: musicSession.author ? musicSession.author : 'LiQWYD',
+        image: musicSession.image ? HOST_DOMAIN+musicSession.image : 'https://user-images.githubusercontent.com/69080584/129511233-dd5a0eac-2675-415e-ae4c-6cc530a23629.png',
+        audio: musicSession.audio ? new Audio(musicSession.audio) : new Audio('https://user-images.githubusercontent.com/69080584/129511300-e88655e9-687f-4d0b-acb4-b32c0fa988cf.mp4')
     })
 
     useEffect(() => {
