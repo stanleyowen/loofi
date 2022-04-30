@@ -40,8 +40,7 @@ const App = ({ properties, handleChange }: any) => {
             }
             setData(rawData)
         })
-        
-        setTimeout(() =>
+        if(document.readyState === 'complete') {
             onValue(ref(getDatabase(), '.info/connected'), (snapshot) => {
                 function Transition(props: TransitionProps) {
                     return <Slide {...props} direction="right" />
@@ -51,7 +50,7 @@ const App = ({ properties, handleChange }: any) => {
                     setConnectionState(true)
                 }else setConnectionState(false)
             })
-        , 5000)
+        }
 
         const themeURL = JSON.parse(localStorage.getItem('theme-session') || `{}`).url
         const backgroundElement = document.getElementById('backdrop-image')
