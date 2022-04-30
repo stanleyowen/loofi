@@ -1,16 +1,18 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { initializeApp } from 'firebase/app'
 import { getDatabase, ref, onValue } from 'firebase/database'
+import { getFirestore, collection, addDoc, getDocs, doc } from 'firebase/firestore'
 import { Alert, Slide, Snackbar, LinearProgress, SlideProps } from '@mui/material'
 
 import Navbar from './navbar.component'
 import BaseLayout from './base.component'
 import Controls from './controls.component'
+import { AppInterface, Song } from '../lib/interfaces.component'
 
 type TransitionProps = Omit<SlideProps, 'direction'>
 
 // eslint-disable-next-line
-const App = ({ properties, handleChange }: any) => {
+const App = ({ properties, handleChange }: AppInterface) => {
     const HOST_DOMAIN: string = process.env.REACT_APP_HOST_DOMAIN ?? window.location.origin
     const musicSession = JSON.parse(localStorage.getItem('music-session') || '{}')
     const [data, setData] = useState<any>([])
@@ -52,6 +54,18 @@ const App = ({ properties, handleChange }: any) => {
             })
         }
 
+        window.onerror = (msg, url, lineNo, columnNo, error) => {
+            async function sendData() {
+                await addDoc(collection(getFirestore(), "logs"), {
+                    message: String(msg),
+                    url: String(url),
+                    location: String(lineNo) + ' ' + String(columnNo),
+                    error: String(error)
+                });
+            }
+            sendData()
+            return false
+        }
         const themeURL = JSON.parse(localStorage.getItem('theme-session') || `{}`).url
         const backgroundElement = document.getElementById('backdrop-image')
         if(backgroundElement && themeURL) backgroundElement.style.background = `url(${themeURL})`
