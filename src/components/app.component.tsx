@@ -71,7 +71,7 @@ const App = ({ properties, handleChange }: AppInterface) => {
         if(backgroundElement && themeURL) backgroundElement.style.background = `url(${themeURL})`
     }, []) // eslint-disable-line
     
-    const handleSong = useCallback(a => {
+    const handleSong = useCallback((a: any) => {
         if(!a.id && !a.value){
             localStorage.setItem('music-session', JSON.stringify(a))
             a.audio === song.audio.getAttribute('src') ?

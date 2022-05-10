@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Tooltip, Accordion, AccordionSummary } from '@mui/material'
-import { version } from '../../package.json'
+import packageInfo from '../../package.json';
 import {
     Expand,
     Warning,
@@ -20,7 +20,7 @@ const About = () => {
 
     const CopyToClipboard = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
-        navigator.clipboard.writeText(`Version: ${version}`)
+        navigator.clipboard.writeText(`Version: ${packageInfo.version}`)
         .then(() =>
             // Set copiedToClipboard to true
             // If Text is Copied to Clipboard Successfully
@@ -40,7 +40,7 @@ const About = () => {
                     <AboutOutline />
                     <div className="ml-10">
                         <p>LoFi Player</p>
-                        <p className="small">Version: {version}</p>
+                        <p className="small">Version: {packageInfo.version}</p>
                     </div>
                 </div>
                 <Tooltip

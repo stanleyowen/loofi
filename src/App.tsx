@@ -23,7 +23,7 @@ export default function App() {
     }
   }, [])
 
-  const handleChange = useCallback(a => {
+  const handleChange = useCallback((a: any) => {
     if(a.goForward || a.goBackward)
       setProperties({
         ...properties,
