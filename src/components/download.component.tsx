@@ -1,8 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Tooltip } from '@mui/material'
 import { Windows, MacOS, Linux } from '../lib/icons.component'
+import axios from 'axios'
 
 const About = () => {
+    const [properties, setProperties] = useState<any>({
+        isLoading: true,
+        downloadURL: null,
+    })
+
+    useEffect(() => {
+        axios.get('https://api.github.com/repos/stanleyowen/lofi-player/releases').then(res => {
+            axios.get(res.data[0].assets_url).then(res => {
+                setProperties({ downloadURL: res.data[0].browser_download_url, isLoading: false })
+            });
+        })
+    }, [])
+    
     return (
         <div>
             <div className="mt-30 col-3" id="download">
@@ -14,7 +28,7 @@ const About = () => {
                             <Tooltip className="w-50 mr-10" title="We're currently not supporting this OS" enterDelay={500} enterNextDelay={500}><div>
                                 <Button className="w-100" variant="outlined" disabled>32-bit</Button>
                             </div></Tooltip>
-                            <Button variant="outlined" className="w-50 ml-10">64-bit</Button>
+                            <Button variant="outlined" className="w-50 ml-10" href={properties.downloadURL ?? '#'}>64-bit</Button>
                         </div>
                     </div>
                 </div>
