@@ -26,7 +26,7 @@
   "scripts": {
     "tauri": "tauri",
     "start": "react-scripts start",
-    "build": "yarn GENERATE_SOURCEMAP=false react-scripts build",
+    "build": "GENERATE_SOURCEMAP=false yarn react-scripts build",
     "build:win": "yarn cross-env GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
