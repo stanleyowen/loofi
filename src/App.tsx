@@ -4,8 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { Properties } from './lib/interfaces.component'
 import AppLayout from './components/app.component'
 import SideBar from './components/sidebar.component'
-
-process.env.NODE_ENV === 'production' ? require ('./App.min.css') : require('./App.css')
+import './App.css'
 
 // eslint-disable-next-line
 export default function App() {
