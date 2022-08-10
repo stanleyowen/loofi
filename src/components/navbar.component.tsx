@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Tooltip, IconButton } from '@mui/material'
 import { ChevronLeft, ChevronRight, GitHub } from '../lib/icons.component'
 
+// eslint-disable-next-line
 const Navbar = ({ properties, handleChange }: any) => {
     const [property, setProperty] = useState({
         disablePrevious: true,
@@ -10,14 +11,14 @@ const Navbar = ({ properties, handleChange }: any) => {
 
     useEffect(() => {
         setProperty({
-            disablePrevious: properties.previousTab ? false : true,
-            disableForward: properties.nextTab ? false : true
+            disablePrevious: properties.history?.length > 1 && properties.action > 0 ? false : true,
+            disableForward: properties.action+1 < properties.history?.length ? false : true
         })
     }, [properties])
 
     const triggerAction = (type: 'next' | 'previous') => {
-        if(type === 'previous') handleChange({ id: 'activeTab', value: properties.previousTab, goBackward: true })
-        else handleChange({ id: 'activeTab', value: properties.nextTab, goForward: true })
+        if(type === 'previous') handleChange({ id: 'activeTab', value: properties.history[properties.action-1], goBackward: true })
+        else handleChange({ id: 'activeTab', value: properties.history[properties.action+1], goForward: true })
     }
 
     return (

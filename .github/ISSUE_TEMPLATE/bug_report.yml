@@ -1,5 +1,5 @@
 name: Bug Report
-description: Report an LoFi Player bug
+description: Report an issue to help us improve
 labels: [bug]
 body:
   - type: textarea
@@ -30,7 +30,7 @@ body:
     attributes:
       label: LoFi Player Version
       description: What version of LoFi Player are you using?
-      placeholder: v0.4.5
+      placeholder: v1.0.0
     validations:
       required: true
   - type: input

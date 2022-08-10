@@ -11,10 +11,36 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>LoFi Player</title>
   </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+  <body style="-webkit-app-region: drag">
+    <noscript>
+      <style>
+        .content {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+        }
+        .align-center { text-align: center }
+        .warning-icon svg path { fill: rgb(255, 0, 0) }
+      </style>
+
+      <div class="content">
+        <div class="align-center warning-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--fluent" width="80" height="80" preserveAspectRatio="xMidYMid meet" viewBox="0 0 12 12"><g fill="none"><path d="M5.25 8.25a.75.75 0 1 1 1.5 0a.75.75 0 0 1-1.5 0z" fill="currentColor"></path><path d="M5.508 3.41a.5.5 0 0 1 .984 0l.008.09V6l-.008.09a.5.5 0 0 1-.984 0L5.5 6V3.5l.008-.09z" fill="currentColor"></path><path d="M11 6A5 5 0 1 1 1 6a5 5 0 0 1 10 0zm-1 0a4 4 0 1 0-8 0a4 4 0 0 0 8 0z" fill="currentColor"></path></g></svg>
+        </div>
+        <h3>JavaScript Required</h3>
+        <hr>
+        <p>We're sorry, but LoFi Player doesn't work appropriately without JavaScript enabled.</p>
+      </div>
+    </noscript>
+
     <div class="backdrop-overlay"></div>
-    <div class="backdrop"><div class="acrylic-material"></div><div class="backdrop-image" id="backdrop-image"></div></div>
+    <div class="backdrop">
+      <div class="acrylic-material"></div>
+      <div class="backdrop-image" id="backdrop-image"></div>
+    </div>
+    
     <div id="root"></div>
   </body>
 </html>
