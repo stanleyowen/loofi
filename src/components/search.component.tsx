@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Close } from '../lib/icons.component'
 import { Skeleton, TextField, IconButton } from '@mui/material'
 
-const Search = ({ songData, HOST_DOMAIN }: any) => {
+const Search = ({ song, songData, handleSong, HOST_DOMAIN }: any) => {
     const items: any = {
         music: [],
         author: []
@@ -13,6 +13,21 @@ const Search = ({ songData, HOST_DOMAIN }: any) => {
     })
     const [keyword, setKeyword] = useState<string>('')
     const [isFetching, setFetching] = useState<boolean>(false)
+
+    const triggerAudio = (e: React.MouseEvent<HTMLButtonElement>, data: any) => {
+        e.preventDefault()
+        if(song.playing) {
+            handleSong({ id: 'playing', value: false })
+            setTimeout(() => handleSong(data), 1)
+        } else handleSong(data);
+        (e.target as Element).classList.toggle('pause')
+    }
+
+    useEffect(() => {
+        const btn = document.getElementById((song.title+song.author).replace(/\s/g, "-"))
+        song.playing ? btn?.classList.add('pause') : btn?.classList.remove('pause')
+    }, [song])
+
 
     useEffect(() => {
         if(keyword) {
@@ -54,7 +69,7 @@ const Search = ({ songData, HOST_DOMAIN }: any) => {
                                     <h3 className="mt-10">{music.title}</h3>
                                     <p className="author">{music.author}</p>
                                 </div>
-                                <button className="play-btn m-auto" id={(music.title+music.author).replace(/\s/g, "-")}></button>
+                                <button className="play-btn m-auto" onClick={e => triggerAudio(e, music)} id={(music.title+music.author).replace(/\s/g, "-")}></button>
                             </div>
                         </div>
                     </div>

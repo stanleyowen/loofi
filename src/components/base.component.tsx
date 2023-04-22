@@ -12,7 +12,7 @@ const BaseLayout = ({ song, properties, songData, handleSong, HOST_DOMAIN }: any
             { properties.activeTab === 'home' ?
                 <Home properties={properties} handleSong={handleSong} song={song} songData={songData} HOST_DOMAIN={HOST_DOMAIN} /> :
                 properties.activeTab === 'search' ?
-                    <Search properties={properties} handleSong={handleSong} songData={songData} HOST_DOMAIN={HOST_DOMAIN} /> :
+                    <Search properties={properties} handleSong={handleSong} song={song} songData={songData} HOST_DOMAIN={HOST_DOMAIN} /> :
                     properties.activeTab === 'download' ? <Download /> : <Settings /> }
         </div>
     )
