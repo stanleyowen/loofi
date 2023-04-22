@@ -28,8 +28,8 @@ body:
   - type: input
     id: app-version
     attributes:
-      label: LoFi Player Version
-      description: What version of LoFi Player are you using?
+      label: Loofi Version
+      description: What version of Loofi are you using?
       placeholder: v1.0.0
     validations:
       required: true

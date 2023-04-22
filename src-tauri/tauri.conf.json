@@ -1,6 +1,6 @@
 {
   "package": {
-    "productName": "lofi-player",
+    "productName": "loofi",
     "version": "1.0.0"
   },
   "build": {
@@ -51,7 +51,7 @@
     },
     "windows": [
       {
-        "title": "LoFi Player",
+        "title": "Loofi | LoFi Streaming",
         "width": 800,
         "height": 600,
         "resizable": true,

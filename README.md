@@ -1,26 +1,26 @@
-# 🎶 LoFi Player
-![LoFi Player](https://user-images.githubusercontent.com/69080584/132951327-a22710aa-106a-4699-ab5d-940fbe4b0a3c.png)
+# 🎶 Loofi
+![Loofi](https://user-images.githubusercontent.com/69080584/233798174-acdad5e8-fe93-414d-95a1-db321ab5323c.png)
 
 <div align="center">
 
-  [![Version](https://img.shields.io/github/package-json/v/stanleyowen/lofi-player/master?color=61dafb&label=version)](https://github.com/stanleyowen/lofi-player/releases)
-  [![GitHub Forks](https://img.shields.io/github/forks/stanleyowen/lofi-player?color=61dafb)](https://github.com/stanleyowen/lofi-player/network)
-  [![Github Stars](https://img.shields.io/github/stars/stanleyowen/lofi-player?color=61dafb)](https://github.com/stanleyowen/lofi-player/stargazers)
-  [![MIT License](https://img.shields.io/github/license/stanleyowen/lofi-player?color=61dafb)](https://github.com/stanleyowen/lofi-player/blob/master/LICENSE)
+  [![Version](https://img.shields.io/github/package-json/v/stanleyowen/loofi/master?color=61dafb&label=version)](https://github.com/stanleyowen/loofi/releases)
+  [![GitHub Forks](https://img.shields.io/github/forks/stanleyowen/loofi?color=61dafb)](https://github.com/stanleyowen/loofi/network)
+  [![Github Stars](https://img.shields.io/github/stars/stanleyowen/loofi?color=61dafb)](https://github.com/stanleyowen/loofi/stargazers)
+  [![MIT License](https://img.shields.io/github/license/stanleyowen/loofi?color=61dafb)](https://github.com/stanleyowen/loofi/blob/master/LICENSE)
 
-  [![CodeQL](https://github.com/stanleyowen/lofi-player/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/stanleyowen/lofi-player/actions/workflows/codeql-analysis.yml)
-  [![Semgrep](https://github.com/stanleyowen/lofi-player/actions/workflows/semgrep.yml/badge.svg)](https://github.com/stanleyowen/lofi-player/actions/workflows/semgrep.yml)
-  [![Netlify Status](https://api.netlify.com/api/v1/badges/c98ea39b-1a9f-4a9a-ac68-f6b9a162422f/deploy-status)](https://app.netlify.com/sites/lofi-players/deploys)
+  [![CodeQL](https://github.com/stanleyowen/loofi/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/stanleyowen/loofi/actions/workflows/codeql-analysis.yml)
+  [![Semgrep](https://github.com/stanleyowen/loofi/actions/workflows/semgrep.yml/badge.svg)](https://github.com/stanleyowen/loofi/actions/workflows/semgrep.yml)
+  [![Netlify Status](https://api.netlify.com/api/v1/badges/4ce8d1c2-6e6d-482f-93e3-b1c824c14944/deploy-status)](https://app.netlify.com/sites/loofi/deploys)
 </div>
 <hr />
 
-Lofi Player is an **open source** LoFi Streaming of application built with **Typescript, Electron, React, Firebase**. Lofi Player is currently in **development progress**.
+Loofi is an **open source** LoFi Streaming of application built with **Typescript, Electron, React, Firebase**.
 
 If you find this project useful, leave a 🌟 to keep a beginner motivated 😊.
 
 ## Stargazers and Contributors
-[![Stargazers for @stanleyowen/lofi-player](https://reporoster.com/stars/dark/stanleyowen/lofi-player)](https://github.com/stanleyowen/lofi-player/stargazers)
-[![Forkers for @stanleyowen/lofi-player](https://reporoster.com/forks/dark/stanleyowen/lofi-player)](https://github.com/stanleyowen/lofi-player/network/members)
+[![Stargazers for @stanleyowen/loofi](https://reporoster.com/stars/dark/stanleyowen/loofi)](https://github.com/stanleyowen/loofi/stargazers)
+[![Forkers for @stanleyowen/loofi](https://reporoster.com/forks/dark/stanleyowen/loofi)](https://github.com/stanleyowen/loofi/network/members)
 
 ## LICENSE
 [MIT](LICENSE)

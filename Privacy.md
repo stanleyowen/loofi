@@ -2,8 +2,8 @@
 
 *Personal Information Collection*
 
-LoFi Player does not collect, store, share or publish any personal information.
+Loofi does not collect, store, share or publish any personal information.
 
 *Non-Personal Information Collection*
 
-LoFi Player does not collect, store, share or publish any non-personal information.
+Loofi does not collect, store, share or publish any non-personal information.

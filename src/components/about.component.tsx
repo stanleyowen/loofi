@@ -39,7 +39,7 @@ const About = () => {
                 <div className="flex w-80">
                     <AboutOutline />
                     <div className="ml-10">
-                        <p>LoFi Player</p>
+                        <p>Loofi</p>
                         <p className="small">Version: {packageInfo.version}</p>
                     </div>
                 </div>
@@ -120,9 +120,9 @@ const About = () => {
                 </AccordionSummary>
                 <div className="p-10">
                     <p><i>Personal Information Collection</i></p>
-                    <p>LoFi Player does not collect, store, share or publish any personal information.</p>
+                    <p>Loofi does not collect, store, share or publish any personal information.</p>
                     <p className="mt-10"><i>Non-Personal Information Collection</i></p>
-                    <p>LoFi Player collects and stores data which are useful for logging, bugs, and fix crashes. All information sent is anonymous and free of any user or contextual data.</p>
+                    <p>Loofi collects and stores data which are useful for logging, bugs, and fix crashes. All information sent is anonymous and free of any user or contextual data.</p>
                 </div>
             </Accordion>
             
@@ -134,9 +134,9 @@ const About = () => {
                     </div>
                 </AccordionSummary>
                 <div className="p-10">
-                    <p>LoFi Player is an open source project published under the MIT License. You can view the source code and contribute to this project on <a href="https://github.com/stanleyowen/lofi-player" target="_blank" rel="noreferrer">GitHub</a>.</p>
+                    <p>Loofi is an open source project published under the MIT License. You can view the source code and contribute to this project on <a href="https://github.com/stanleyowen/lofi-player" target="_blank" rel="noreferrer">GitHub</a>.</p>
                     <code>
-                        <p className="mt-10"><b>Copyright (c) 2022 LoFi Player</b></p>
+                        <p className="mt-10"><b>Copyright (c) 2023 Loofi</b></p>
                         <p className="mt-10">Permission is hereby granted, free of charge, to any person obtaining a copy
                         of this software and associated documentation files (the &quot;Software&quot;), to deal
                         in the Software without restriction, including without limitation the rights
