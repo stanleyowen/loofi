@@ -86,7 +86,7 @@ const Search = ({ song, songData, handleSong, HOST_DOMAIN }: any) => {
                                     <h3 className="mt-10">{music.title}</h3>
                                     <p className="author">{music.author}</p>
                                 </div>
-                                <button className="play-btn m-auto" id={(music.title+music.author).replace(/\s/g, "-")}></button>
+                                <button className="play-btn m-auto" onClick={e => triggerAudio(e, music)} id={(music.title+music.author).replace(/\s/g, "-")}></button>
                             </div>
                         </div>
                     </div>
