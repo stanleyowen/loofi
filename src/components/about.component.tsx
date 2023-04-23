@@ -89,12 +89,9 @@ const About = () => {
                 <div className="flex w-100" id="resources">
                     <div className="w-50 m-10">
                         <Button
-                            className="p-15 w-100 no-capitalization"
-                            onClick={() =>
-                                window.open(
-                                    'https://github.com/stanleyowen/loofi/issues/new/choose'
-                                )
-                            }
+                            className="p-15 w-100 no-capitalization no-underlines"
+                            target="_blank"
+                            href="https://github.com/stanleyowen/loofi/issues/new/choose"
                         >
                             <Feedback />
                             <p className="ml-10">Submit Feedback</p>
@@ -103,12 +100,9 @@ const About = () => {
                     </div>
                     <div className="w-50 m-10">
                         <Button
-                            className="p-15 w-100 no-capitalization"
-                            onClick={() =>
-                                window.open(
-                                    'https://github.com/stanleyowen/loofi/releases'
-                                )
-                            }
+                            className="p-15 w-100 no-capitalization no-underlines"
+                            target="_blank"
+                            href="https://github.com/stanleyowen/loofi/releases"
                         >
                             <Changelog />
                             <p className="ml-10">Change Log</p>
@@ -117,12 +111,9 @@ const About = () => {
                     </div>
                     <div className="w-50 m-10">
                         <Button
-                            className="p-15 w-100 no-capitalization"
-                            onClick={() =>
-                                window.open(
-                                    'https://github.com/stanleyowen/loofi/graphs/contributors'
-                                )
-                            }
+                            className="p-15 w-100 no-capitalization no-underlines"
+                            target="_blank"
+                            href="https://github.com/stanleyowen/loofi/graphs/contributors"
                         >
                             <Contributors />
                             <p className="ml-10">Contributors</p>
