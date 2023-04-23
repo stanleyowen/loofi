@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Accordion, AccordionSummary } from '@mui/material'
+import { Switch, Button, Accordion, AccordionSummary } from '@mui/material'
 
 import Theme from '../lib/theme.json'
-import { Themes, Expand, ThemesApp } from '../lib/icons.component'
+import { Themes, Expand, ThemesApp, SaveLocation } from '../lib/icons.component'
 
 // eslint-disable-next-line
 const About = () => {
     const [activeTab, setActiveTab] = useState<string>(
         JSON.parse(localStorage.getItem('theme-session') || `{}`).type
     )
+    const [continuePreviousSession, setContinuePreviousSession] = React.useState<boolean>(localStorage.getItem('continue-previous-session') === 'true' ? true : false)
+    function setContinuePreviousState(e: boolean) {
+        setContinuePreviousSession(e)
+        localStorage.setItem('continue-previous-session', e.toString())
+    }
 
     const setTheme = (type: string, url: string | boolean) => {
         setActiveTab(type)
@@ -58,6 +63,15 @@ const About = () => {
                     }
                 </div>
             </Accordion>
+            <div className="flex w-100 card p-15 mt-10">
+                <div className="flex">
+                    <SaveLocation />
+                    <div className="m-auto"><p className="ml-10">Continue where you left off</p></div>
+                </div>
+                <Switch checked={continuePreviousSession} className="align-right" onChange={
+                    (e) => setContinuePreviousState(e.target.checked)
+                }/>
+            </div>
         </div>
     )
 }
