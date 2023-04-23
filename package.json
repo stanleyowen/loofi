@@ -2,7 +2,7 @@
   "name": "loofi",
   "version": "1.0.0",
   "private": true,
-  "author": "Stanley Owen <stanleyowen06@gmail.com>",
+  "author": "Stanley Owens <stanleyowen06@gmail.com>",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
