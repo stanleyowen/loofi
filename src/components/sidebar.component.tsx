@@ -21,6 +21,10 @@ import {
 // eslint-disable-next-line
 const SideBar = ({ handleChange, properties }: any) => {
     const [isOpen, setDialog] = useState<boolean>(false);
+    const list = ['Home', 'Search', 'Settings'];
+
+    if (process.env.REACT_APP_ENV !== 'tauri')
+        list.splice(list.length - 1, 0, 'Download');
 
     useEffect(() => {
         document
@@ -41,50 +45,49 @@ const SideBar = ({ handleChange, properties }: any) => {
     return (
         <div className="sidebar">
             <div id="tabs">
-                {['Home', 'Search', 'Download', 'Settings'].map(
-                    (tab, index) => {
-                        const components: { [key: string]: any } = {
-                            Download,
-                            HomeSolid,
-                            HomeOutline,
-                            SearchSolid,
-                            SearchOutline,
-                            SettingsSolid,
-                            SettingsOutline,
-                        };
-                        const SolidIcon = components[`${tab}Solid`];
-                        const OutlineIcon = components[`${tab}Outline`];
-                        return (
-                            <Tooltip
-                                title={tab}
-                                enterDelay={500}
-                                enterNextDelay={500}
-                                key={index}
-                                onClick={() => switchTab(tab.toLowerCase())}
+                {list.map((tab, index) => {
+                    const components: { [key: string]: any } = {
+                        Download,
+                        HomeSolid,
+                        HomeOutline,
+                        SearchSolid,
+                        SearchOutline,
+                        SettingsSolid,
+                        SettingsOutline,
+                    };
+                    const SolidIcon = components[`${tab}Solid`];
+                    const OutlineIcon = components[`${tab}Outline`];
+                    return (
+                        <Tooltip
+                            title={tab}
+                            enterDelay={500}
+                            enterNextDelay={500}
+                            key={index}
+                            onClick={() => switchTab(tab.toLowerCase())}
+                        >
+                            <Button
+                                className="w-100 rounded-corner p-10 tab"
+                                id={tab.toLowerCase()}
                             >
-                                <Button
-                                    className="w-100 rounded-corner p-10 tab"
-                                    id={tab.toLowerCase()}
-                                >
-                                    <div className="w-30">
-                                        {tab.toLowerCase() === 'download' ? (
-                                            <Download />
-                                        ) : properties.activeTab ===
-                                          tab.toLowerCase() ? (
-                                            <SolidIcon />
-                                        ) : (
-                                            <OutlineIcon />
-                                        )}
-                                    </div>
-                                    <div className="w-70 left-align">
-                                        {tab.toLowerCase()}
-                                    </div>
-                                </Button>
-                            </Tooltip>
-                        );
-                    }
-                )}
-                {process.env.REACT_APP_ALLOW_BETA === 'true' ? (
+                                <div className="w-30">
+                                    {tab.toLowerCase() === 'download' ? (
+                                        <Download />
+                                    ) : properties.activeTab ===
+                                      tab.toLowerCase() ? (
+                                        <SolidIcon />
+                                    ) : (
+                                        <OutlineIcon />
+                                    )}
+                                </div>
+                                <div className="w-70 left-align">
+                                    {tab.toLowerCase()}
+                                </div>
+                            </Button>
+                        </Tooltip>
+                    );
+                })}
+                {process.env.REACT_APP_ALLOW_BETA === 'true' &&
+                process.env.REACT_APP_ENV !== 'tauri' ? (
                     process.env.REACT_APP_CONTEXT === 'production' ? (
                         <Button
                             className="w-100 rounded-corner p-10 tab"
