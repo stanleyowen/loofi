@@ -31,8 +31,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "release": "yarn build && electron-builder --publish=always",
-    "tauri build": "node ./scripts/prebuild.js && yarn build && tauri build && node ./scripts/postbuild.js",
-    "tauri build:win": "node ./scripts/prebuild.js && yarn build:win && tauri build && node ./scripts/postbuild.js",
     "dev": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && tauri dev\"",
     "lint": "eslint -c .eslintrc.yml --ext .tsx ./src"
   },
