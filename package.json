@@ -26,8 +26,8 @@
   "scripts": {
     "tauri": "tauri",
     "start": "react-scripts start",
-    "build": "GENERATE_SOURCEMAP=false yarn react-scripts build",
-    "build:win": "yarn cross-env GENERATE_SOURCEMAP=false react-scripts build",
+    "build": "GENERATE_SOURCEMAP=false CI='' yarn react-scripts build",
+    "build:win": "yarn cross-env GENERATE_SOURCEMAP=false CI='' react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "release": "yarn build && electron-builder --publish=always",
