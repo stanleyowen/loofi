@@ -26,13 +26,13 @@
   "scripts": {
     "tauri": "tauri",
     "start": "react-scripts start",
-    "build": "GENERATE_SOURCEMAP=false yarn react-scripts build",
-    "build:win": "yarn cross-env GENERATE_SOURCEMAP=false react-scripts build",
+    "build": "node ./scripts/prebuild.js && GENERATE_SOURCEMAP=false CI='' yarn react-scripts build && node ./scripts/postbuild.js",
+    "build:win": "node ./scripts/prebuild.js && yarn cross-env GENERATE_SOURCEMAP=false CI='' react-scripts build && node ./scripts/postbuild.js",
+    "build:web": "GENERATE_SOURCEMAP=false CI='' yarn react-scripts build",
+    "build:web:win": "yarn cross-env GENERATE_SOURCEMAP=false CI='' react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "release": "yarn build && electron-builder --publish=always",
-    "tauri build": "node ./scripts/prebuild.js && yarn build && tauri build && node ./scripts/postbuild.js",
-    "tauri build:win": "node ./scripts/prebuild.js && yarn build:win && tauri build && node ./scripts/postbuild.js",
     "dev": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && tauri dev\"",
     "lint": "eslint -c .eslintrc.yml --ext .tsx ./src"
   },
