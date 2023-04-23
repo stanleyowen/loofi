@@ -58,8 +58,8 @@ const App = ({ properties, handleChange }: AppInterface) => {
             projectId: process.env.REACT_APP_PROJECT_ID,
         });
         onValue(ref(getDatabase(), 'data-dev-dev/'), (snapshot) => {
-            let rawData = snapshot.val(),
-                index = rawData.length,
+            const rawData = snapshot.val();
+            let index = rawData.length,
                 randIndex; // eslint-disable-line
             while (index !== 0) {
                 randIndex = Math.floor(Math.random() * index);
