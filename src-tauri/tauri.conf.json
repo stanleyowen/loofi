@@ -23,7 +23,7 @@
       ],
       "resources": [],
       "externalBin": [],
-      "copyright": "",
+      "copyright": "MIT",
       "category": "DeveloperTool",
       "shortDescription": "",
       "longDescription": "",
@@ -35,7 +35,8 @@
         "minimumSystemVersion": "",
         "exceptionDomain": "",
         "signingIdentity": null,
-        "entitlements": null
+        "entitlements": null,
+        "license": "../LICENSE"
       },
       "windows": {
         "certificateThumbprint": null,
@@ -44,7 +45,12 @@
       }
     },
     "updater": {
-      "active": false
+      "active": true,
+      "endpoints": [
+        "https://updater-2-z5186372.deta.app/updater/{{target}}/{{current_version}}"
+      ],
+      "dialog": true,
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEZBQTc1M0JBRDk2MzcwNjUKUldSbGNHUFp1bE9uK2o4U3Z4Y0pkais4OUtIZ2ZjTVVDZXpvMm9Vc2FuTysvdTJvSmRPV3daeTMK"
     },
     "allowlist": {
       "all": true
