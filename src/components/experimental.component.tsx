@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, Switch } from '@mui/material';
+import { Alert, AlertTitle, Switch } from '@mui/material';
 
 import { SaveLocation, AutoPlay } from '../lib/icons.component';
 
@@ -9,9 +9,10 @@ const Experimental = () => {
         <div className="p-10" id="version">
             <Alert
                 severity="warning"
-                className="w-100 border-box experimental-warning"
+                className="w-100 border-box alert-transparent"
             >
-                WARNING: These experimental features are all still under active
+                <AlertTitle>Experimental Features</AlertTitle>
+                These experimental features are all still under active
                 development and subject to non-backward compatible changes or
                 removal in any future version. Use of these features are not
                 recommended in production environments.

@@ -358,8 +358,8 @@ input:disabled {
 .w-100 {
     width: 100% !important;
 }
-.experimental-warning {
-    background-color: rgb(255 244 229 / 60%);
+.alert-transparent {
+    background-color: rgb(255 244 229 / 70%);
 }
 .p-0 {
     padding: 0px !important;
