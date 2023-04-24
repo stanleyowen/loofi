@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Tooltip } from '@mui/material';
-import { Windows, MacOS, Linux } from '../lib/icons.component';
+import { Alert, AlertTitle, Button, Tooltip } from '@mui/material';
+import { Windows, MacOS, Linux, ExternalLink } from '../lib/icons.component';
 import axios from 'axios';
 
 const About = () => {
@@ -20,7 +20,18 @@ const About = () => {
 
     return (
         <div>
-            <div className="mt-30 col-3" id="download">
+            <Alert
+                severity="info"
+                className="m-10 w-100 border-box alert-transparent"
+            >
+                <AlertTitle>INFO</AlertTitle>
+                Currently, Loofi doesn&#39;t support <code>32-bit</code>{' '}
+                systems. If you are running a <code>32-bit</code> system, you
+                can still use it Loofi via Web. By default, Loofi installation
+                are on Intel <code>x86_64</code> architecture. To install Loofi
+                on ARM architecture, please refer to source code.
+            </Alert>
+            <div className="col-3" id="download">
                 <div className="m-10">
                     <div className="large-card">
                         <Windows />
@@ -33,6 +44,7 @@ const About = () => {
                         <Button
                             variant="outlined"
                             className="w-100"
+                            disabled={properties.isLoading}
                             href={
                                 (!properties.isLoading &&
                                     properties.downloadURL['windows-x86_64']
@@ -56,6 +68,7 @@ const About = () => {
                         <Button
                             variant="outlined"
                             className="w-100"
+                            disabled={properties.isLoading}
                             href={
                                 (!properties.isLoading &&
                                     properties.downloadURL['darwin-x86_64']
@@ -79,6 +92,7 @@ const About = () => {
                         <Button
                             className="w-100"
                             variant="outlined"
+                            disabled={properties.isLoading}
                             href={
                                 (!properties.isLoading &&
                                     properties.downloadURL['linux-x86_64']
@@ -89,6 +103,22 @@ const About = () => {
                             Download
                         </Button>
                     </div>
+                </div>
+                <div className="m-10">
+                    <a
+                        target="_blank noreferrer"
+                        className="link block mb-10"
+                        href="https://github.com/stanleyowen/loofi/releases/latest"
+                    >
+                        Source Code <ExternalLink />
+                    </a>
+                    <a
+                        target="_blank noreferrer"
+                        className="link block"
+                        href="https://github.com/stanleyowen/loofi/tags"
+                    >
+                        Previous Releases <ExternalLink />
+                    </a>
                 </div>
             </div>
         </div>

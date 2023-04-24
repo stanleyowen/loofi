@@ -422,12 +422,14 @@ svg {
 #version .MuiIconButton-root {
     padding: 10px !important;
 }
-#version a {
+#version a,
+.link {
     cursor: pointer;
     color: #3090ff;
     text-decoration: none;
 }
-#version a:hover {
+#version a:hover,
+.link:hover {
     text-decoration: underline;
 }
 #version svg {

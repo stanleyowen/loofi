@@ -8,7 +8,7 @@ const Experimental = () => {
     return (
         <div className="p-10" id="version">
             <Alert
-                severity="warning"
+                severity="error"
                 className="w-100 border-box alert-transparent"
             >
                 <AlertTitle>Experimental Features</AlertTitle>
