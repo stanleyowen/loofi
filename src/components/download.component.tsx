@@ -6,20 +6,16 @@ import axios from 'axios';
 const About = () => {
     const [properties, setProperties] = useState<any>({
         isLoading: true,
-        downloadURL: null,
+        downloadURL: {},
     });
 
     useEffect(() => {
-        axios
-            .get('https://api.github.com/repos/stanleyowen/loofi/releases')
-            .then((res) => {
-                axios.get(res.data[0].assets_url).then((res) => {
-                    setProperties({
-                        downloadURL: res.data[0].browser_download_url,
-                        isLoading: false,
-                    });
-                });
+        axios.get('https://updater-2-z5186372.deta.app/latest').then((res) => {
+            setProperties({
+                isLoading: false,
+                downloadURL: res.data,
             });
+        });
     }, []);
 
     return (
@@ -28,74 +24,70 @@ const About = () => {
                 <div className="m-10">
                     <div className="large-card">
                         <Windows />
-                        <h3 className="mb-10 center-align">Windows</h3>
-                        <div className="m-auto w-100 flex-nowrap">
-                            <Tooltip
-                                className="w-50 mr-10"
-                                title="We're currently not supporting this OS"
-                                enterDelay={500}
-                                enterNextDelay={500}
-                            >
-                                <div>
-                                    <Button
-                                        className="w-100"
-                                        variant="outlined"
-                                        disabled
-                                    >
-                                        32-bit
-                                    </Button>
-                                </div>
-                            </Tooltip>
-                            <Button
-                                variant="outlined"
-                                className="w-50 ml-10"
-                                href={properties.downloadURL ?? '#'}
-                            >
-                                64-bit
-                            </Button>
-                        </div>
+                        <h3 className="center-align">Windows</h3>
+                        <p className="mb-10 center-align small">
+                            {properties?.downloadURL['windows-x86_64']?.msi
+                                ?.split('/')
+                                ?.pop()}
+                        </p>
+                        <Button
+                            variant="outlined"
+                            className="w-100"
+                            href={
+                                (!properties.isLoading &&
+                                    properties.downloadURL['windows-x86_64']
+                                        .msi) ??
+                                '#'
+                            }
+                        >
+                            Download
+                        </Button>
                     </div>
                 </div>
                 <div className="m-10">
                     <div className="large-card">
                         <MacOS />
-                        <h3 className="mb-10 center-align">macOS</h3>
-                        <Tooltip
-                            title="We're currently not supporting this OS"
-                            enterDelay={500}
-                            enterNextDelay={500}
+                        <h3 className="center-align">macOS</h3>
+                        <p className="mb-10 center-align small">
+                            {properties?.downloadURL['darwin-x86_64']?.dmg
+                                ?.split('/')
+                                ?.pop()}
+                        </p>
+                        <Button
+                            variant="outlined"
+                            className="w-100"
+                            href={
+                                (!properties.isLoading &&
+                                    properties.downloadURL['darwin-x86_64']
+                                        .dmg) ??
+                                '#'
+                            }
                         >
-                            <div>
-                                <Button
-                                    variant="outlined"
-                                    className="w-100"
-                                    disabled
-                                >
-                                    Unavailable
-                                </Button>
-                            </div>
-                        </Tooltip>
+                            Download
+                        </Button>
                     </div>
                 </div>
                 <div className="m-10">
                     <div className="large-card">
                         <Linux />
-                        <h3 className="mb-10 center-align">Linux</h3>
-                        <Tooltip
-                            title="We're currently not supporting this OS"
-                            enterDelay={500}
-                            enterNextDelay={500}
+                        <h3 className="center-align">Linux</h3>
+                        <p className="mb-10 center-align small">
+                            {properties?.downloadURL['linux-x86_64']?.appImage
+                                ?.split('/')
+                                ?.pop()}
+                        </p>
+                        <Button
+                            className="w-100"
+                            variant="outlined"
+                            href={
+                                (!properties.isLoading &&
+                                    properties.downloadURL['linux-x86_64']
+                                        .appImage) ??
+                                '#'
+                            }
                         >
-                            <div>
-                                <Button
-                                    variant="outlined"
-                                    className="w-100"
-                                    disabled
-                                >
-                                    Unavailable
-                                </Button>
-                            </div>
-                        </Tooltip>
+                            Download
+                        </Button>
                     </div>
                 </div>
             </div>
