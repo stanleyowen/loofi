@@ -1,7 +1,7 @@
 {
   "package": {
-    "productName": "lofi-player",
-    "version": "1.0.0"
+    "productName": "Loofi",
+    "version": "1.1.0"
   },
   "build": {
     "distDir": "../build",
@@ -57,7 +57,7 @@
     },
     "windows": [
       {
-        "title": "LoFi Player",
+        "title": "Loofi | LoFi Streaming",
         "width": 800,
         "height": 600,
         "resizable": true,
