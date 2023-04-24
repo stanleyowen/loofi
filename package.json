@@ -33,7 +33,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "release": "yarn build && electron-builder --publish=always",
-    "dev": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && tauri dev\"",
+    "dev": "concurrently \"cross-env BROWSER=none yarn start\" \"yarn tauri dev\"",
     "lint": "eslint -c .eslintrc.yml --ext .tsx ./src"
   },
   "build": {
@@ -79,7 +79,6 @@
     "dotenv": "^16.0.3",
     "eslint": "^8.39.0",
     "eslint-plugin-react": "^7.32.2",
-    "typescript": "^5.0.4",
-    "wait-on": "^7.0.1"
+    "typescript": "^5.0.4"
   }
 }
