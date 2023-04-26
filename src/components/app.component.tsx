@@ -21,7 +21,9 @@ import { relaunch } from '@tauri-apps/api/process';
 import Navbar from './navbar.component';
 import BaseLayout from './base.component';
 import Controls from './controls.component';
+import packageInfo from '../../package.json';
 import { AppInterface } from '../lib/interfaces.component';
+import { ExternalLink } from '../lib/icons.component';
 
 type TransitionProps = Omit<SlideProps, 'direction'>;
 
@@ -45,7 +47,7 @@ const App = ({ properties, handleChange }: AppInterface) => {
     const [transition, setTransition] = useState<
         React.ComponentType<TransitionProps> | undefined
     >(undefined);
-    const [updateDialog, setUpdateDialog] = useState<boolean>(false);
+    const [updateDialog, setUpdateDialog] = useState<boolean | any>(false);
     const [song, setSong] = useState({
         playing: false,
         title: musicSession.title ? musicSession.title : 'Underwater',
@@ -69,7 +71,7 @@ const App = ({ properties, handleChange }: AppInterface) => {
             const { shouldUpdate, manifest } = await checkUpdate();
             if (shouldUpdate) {
                 setTransition(() => Transition);
-                setUpdateDialog(true);
+                setUpdateDialog(manifest);
             }
         } catch (error) {
             console.error(error);
@@ -186,31 +188,44 @@ const App = ({ properties, handleChange }: AppInterface) => {
                     </Alert>
                 </Snackbar>
 
-                <Snackbar open={updateDialog} TransitionComponent={transition}>
+                <Snackbar
+                    open={updateDialog !== false && !isOffline}
+                    TransitionComponent={transition}
+                >
                     <Alert severity="info" className="pb-0">
                         <AlertTitle className="m">
-                            <strong>Update Available</strong>
+                            <b>Update Available</b>
                         </AlertTitle>
-                        <p>
-                            Newer version of Loofi Desktop App is available.
-                            Please restart the app to update.
-                        </p>
-                        <div className="">
-                            <Button
-                                onClick={async () => {
-                                    await installUpdate();
-                                    await relaunch();
-                                }}
-                            >
-                                Update Now
-                            </Button>
-                            <Button
+                        <p className="mb-10">
+                            A new version of Loofi Desktop is available! Version{' '}
+                            {updateDialog.version} is now available—you have{' '}
+                            {packageInfo.version}.<br />
+                            <a
                                 target="_blank"
+                                rel="noreferrer"
+                                className="link"
                                 href="https://github.com/stanleyowen/loofi/releases/latest"
                             >
-                                What&#39;s New
-                            </Button>
-                        </div>
+                                View the release notes <ExternalLink />
+                            </a>
+                            <br />
+                            <br />
+                            Would you like to update now?
+                        </p>
+                        <Button
+                            onClick={async () => {
+                                await installUpdate();
+                                await relaunch();
+                            }}
+                        >
+                            Update Now
+                        </Button>
+                        <Button
+                            color="error"
+                            onClick={() => setUpdateDialog(false)}
+                        >
+                            Later
+                        </Button>
                     </Alert>
                 </Snackbar>
             </div>
