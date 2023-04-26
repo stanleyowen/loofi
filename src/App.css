@@ -262,6 +262,9 @@ p {
 }
 
 /* Properties */
+.pb-0 {
+    padding-bottom: 0 !important;
+}
 .no-capitalization {
     text-transform: none !important;
 }

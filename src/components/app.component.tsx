@@ -11,6 +11,7 @@ import {
     AlertTitle,
     Button,
 } from '@mui/material';
+import {
     checkUpdate,
     installUpdate,
     onUpdaterEvent,
@@ -44,6 +45,7 @@ const App = ({ properties, handleChange }: AppInterface) => {
     const [transition, setTransition] = useState<
         React.ComponentType<TransitionProps> | undefined
     >(undefined);
+    const [updateDialog, setUpdateDialog] = useState<boolean>(false);
     const [song, setSong] = useState({
         playing: false,
         title: musicSession.title ? musicSession.title : 'Underwater',
@@ -83,6 +85,7 @@ const App = ({ properties, handleChange }: AppInterface) => {
             databaseURL: process.env.REACT_APP_DB_URL,
             projectId: process.env.REACT_APP_PROJECT_ID,
         });
+
         onValue(ref(getDatabase(), 'data-dev-dev/'), (snapshot) => {
             const rawData = snapshot.val();
             let index = rawData.length,
@@ -97,11 +100,9 @@ const App = ({ properties, handleChange }: AppInterface) => {
             }
             setData(rawData);
         });
+
         if (document.readyState === 'complete') {
             onValue(ref(getDatabase(), '.info/connected'), (snapshot) => {
-                function Transition(props: TransitionProps) {
-                    return <Slide {...props} direction="right" />;
-                }
                 if (!snapshot.val()) {
                     setTransition(() => Transition);
                     setConnectionState(true);
@@ -121,12 +122,16 @@ const App = ({ properties, handleChange }: AppInterface) => {
             sendData();
             return false;
         };
+
         const themeURL = JSON.parse(
             localStorage.getItem('theme-session') || `{}`
         ).url;
         const backgroundElement = document.getElementById('backdrop-image');
+
         if (backgroundElement && themeURL)
             backgroundElement.style.background = `url(${themeURL})`;
+
+        updateAppToLatestVersion();
     }, []); // eslint-disable-line
 
     const handleSong = useCallback(
@@ -166,6 +171,7 @@ const App = ({ properties, handleChange }: AppInterface) => {
                         HOST_DOMAIN={HOST_DOMAIN}
                     />
                 </div>
+
                 <Controls
                     properties={properties}
                     song={song}
@@ -173,9 +179,38 @@ const App = ({ properties, handleChange }: AppInterface) => {
                     songData={data}
                     HOST_DOMAIN={HOST_DOMAIN}
                 />
+
                 <Snackbar open={isOffline} TransitionComponent={transition}>
                     <Alert severity="error">
                         You are offline. Some functionality may be unavailable.
+                    </Alert>
+                </Snackbar>
+
+                <Snackbar open={updateDialog} TransitionComponent={transition}>
+                    <Alert severity="info" className="pb-0">
+                        <AlertTitle className="m">
+                            <strong>Update Available</strong>
+                        </AlertTitle>
+                        <p>
+                            Newer version of Loofi Desktop App is available.
+                            Please restart the app to update.
+                        </p>
+                        <div className="">
+                            <Button
+                                onClick={async () => {
+                                    await installUpdate();
+                                    await relaunch();
+                                }}
+                            >
+                                Update Now
+                            </Button>
+                            <Button
+                                target="_blank"
+                                href="https://github.com/stanleyowen/loofi/releases/latest"
+                            >
+                                What&#39;s New
+                            </Button>
+                        </div>
                     </Alert>
                 </Snackbar>
             </div>
