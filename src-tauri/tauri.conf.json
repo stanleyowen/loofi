@@ -1,7 +1,7 @@
 {
   "package": {
     "productName": "Loofi",
-    "version": "1.1.0"
+    "version": "1.1.1"
   },
   "build": {
     "distDir": "../build",
@@ -68,7 +68,7 @@
       }
     ],
     "security": {
-      "csp": "default-src blob: data: filesystem: ws: wss: http: https: tauri: 'unsafe-eval' 'unsafe-inline' 'self' img-src: 'self'"
+      "csp": "default-src blob: data: filesystem: ws: wss: http: https: tauri: 'unsafe-eval' 'unsafe-inline' 'self' img-src: 'self'; script-src *"
     }
   }
 }
