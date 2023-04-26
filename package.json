@@ -6,6 +6,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@mui/lab": "^5.0.0-alpha.128",
     "@mui/material": "^5.12.2",
     "@types/node": "^18.16.1",
     "@types/react": "^18.2.0",
