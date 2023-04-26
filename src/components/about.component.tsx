@@ -15,11 +15,13 @@ import {
     CopyToClipboard as CopyToClipboardIcon,
     CheckUpdate,
 } from '../lib/icons.component';
+import { LoadingButton } from '@mui/lab';
 
 const About = ({ updateAppToLatestVersion }: any) => {
     const [copiedToClipboard, setCopiedToClipboard] = useState<
         boolean | string
     >(false);
+    const [isFetching, setIsFetching] = useState<boolean>(false);
     const [isUpToDate, setIsUpToDate] = useState<boolean>(false);
 
     const CopyToClipboard = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -79,30 +81,37 @@ const About = ({ updateAppToLatestVersion }: any) => {
                         )}
                     </Button>
                 </Tooltip>
-                <Button
-                    color={
-                        isUpToDate === true
-                            ? 'success'
-                            : copiedToClipboard === 'error'
-                            ? 'error'
-                            : 'primary'
-                    }
-                    variant="outlined"
-                    className="align-right ml-10"
-                    onClick={() =>
-                        updateAppToLatestVersion('button').then(
-                            (res: boolean) => setIsUpToDate(res)
-                        )
+                <Tooltip
+                    enterDelay={500}
+                    enterNextDelay={500}
+                    title={
+                        isUpToDate === true ? 'Up to Date' : 'Check for Updates'
                     }
                 >
-                    {copiedToClipboard === true ? (
-                        <Checkmark />
-                    ) : copiedToClipboard === 'error' ? (
-                        <Warning />
-                    ) : (
+                    <LoadingButton
+                        color={
+                            isUpToDate === true
+                                ? 'success'
+                                : copiedToClipboard === 'error'
+                                ? 'error'
+                                : 'primary'
+                        }
+                        variant="outlined"
+                        className="align-right ml-10"
+                        loading={isFetching}
+                        onClick={() => {
+                            setIsFetching(true);
+                            updateAppToLatestVersion('button').then(
+                                (res: boolean) => {
+                                    setIsUpToDate(res);
+                                    setIsFetching(false);
+                                }
+                            );
+                        }}
+                    >
                         <CheckUpdate />
-                    )}
-                </Button>
+                    </LoadingButton>
+                </Tooltip>
             </div>
 
             <Accordion className="w-100 card mt-10">
