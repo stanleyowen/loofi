@@ -1,27 +1,35 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, onValue } from 'firebase/database';
-import {
-    getFirestore,
-    collection,
-    addDoc,
-    getDocs,
-    doc,
-} from 'firebase/firestore';
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import {
     Alert,
     Slide,
     Snackbar,
     LinearProgress,
     SlideProps,
+    AlertTitle,
+    Button,
 } from '@mui/material';
+    checkUpdate,
+    installUpdate,
+    onUpdaterEvent,
+} from '@tauri-apps/api/updater';
+import { relaunch } from '@tauri-apps/api/process';
 
 import Navbar from './navbar.component';
 import BaseLayout from './base.component';
 import Controls from './controls.component';
-import { AppInterface, Song } from '../lib/interfaces.component';
+import { AppInterface } from '../lib/interfaces.component';
 
 type TransitionProps = Omit<SlideProps, 'direction'>;
+
+async function unlistenUpdaterEvent() {
+    await onUpdaterEvent(({ error, status }) => {
+        // This will log all updater events, including status updates and errors.
+        console.log('Updater event', error, status);
+    });
+}
 
 // eslint-disable-next-line
 const App = ({ properties, handleChange }: AppInterface) => {
@@ -49,6 +57,24 @@ const App = ({ properties, handleChange }: AppInterface) => {
                   'https://user-images.githubusercontent.com/69080584/129511300-e88655e9-687f-4d0b-acb4-b32c0fa988cf.mp4'
               ),
     });
+
+    function Transition(props: TransitionProps) {
+        return <Slide {...props} direction="right" />;
+    }
+
+    async function updateAppToLatestVersion() {
+        try {
+            const { shouldUpdate, manifest } = await checkUpdate();
+            if (shouldUpdate) {
+                setTransition(() => Transition);
+                setUpdateDialog(true);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+
+        unlistenUpdaterEvent();
+    }
 
     useEffect(() => {
         initializeApp({
