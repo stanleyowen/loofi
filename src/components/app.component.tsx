@@ -75,7 +75,7 @@ const App = ({ properties, handleChange }: AppInterface) => {
                 setUpdateDialog(manifest);
             } else if (via === 'button') {
                 setUpToDate(true);
-                cb('Up to Date');
+                cb(true);
             }
         } catch (error) {
             console.error(error);
@@ -175,6 +175,7 @@ const App = ({ properties, handleChange }: AppInterface) => {
                         songData={data}
                         handleSong={handleSong}
                         HOST_DOMAIN={HOST_DOMAIN}
+                        updateAppToLatestVersion={updateAppToLatestVersion}
                     />
                 </div>
 

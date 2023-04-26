@@ -13,12 +13,14 @@ import {
     Contributors,
     PrivacyPolicy,
     CopyToClipboard as CopyToClipboardIcon,
+    CheckUpdate,
 } from '../lib/icons.component';
 
-const About = () => {
+const About = ({ updateAppToLatestVersion }: any) => {
     const [copiedToClipboard, setCopiedToClipboard] = useState<
         boolean | string
     >(false);
+    const [isUpToDate, setIsUpToDate] = useState<boolean>(false);
 
     const CopyToClipboard = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
@@ -77,6 +79,30 @@ const About = () => {
                         )}
                     </Button>
                 </Tooltip>
+                <Button
+                    color={
+                        isUpToDate === true
+                            ? 'success'
+                            : copiedToClipboard === 'error'
+                            ? 'error'
+                            : 'primary'
+                    }
+                    variant="outlined"
+                    className="align-right ml-10"
+                    onClick={() =>
+                        updateAppToLatestVersion('button').then(
+                            (res: boolean) => setIsUpToDate(res)
+                        )
+                    }
+                >
+                    {copiedToClipboard === true ? (
+                        <Checkmark />
+                    ) : copiedToClipboard === 'error' ? (
+                        <Warning />
+                    ) : (
+                        <CheckUpdate />
+                    )}
+                </Button>
             </div>
 
             <Accordion className="w-100 card mt-10">
