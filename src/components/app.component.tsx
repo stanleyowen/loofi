@@ -44,6 +44,7 @@ const App = ({ properties, handleChange }: AppInterface) => {
             : {};
     const [data, setData] = useState<any>([]);
     const [isOffline, setConnectionState] = useState<boolean>(false);
+    const [isUpToDate, setUpToDate] = useState<boolean>(false);
     const [transition, setTransition] = useState<
         React.ComponentType<TransitionProps> | undefined
     >(undefined);
@@ -66,12 +67,15 @@ const App = ({ properties, handleChange }: AppInterface) => {
         return <Slide {...props} direction="right" />;
     }
 
-    async function updateAppToLatestVersion() {
+    async function updateAppToLatestVersion(via: 'button' | 'auto', cb?: any) {
         try {
             const { shouldUpdate, manifest } = await checkUpdate();
             if (shouldUpdate) {
                 setTransition(() => Transition);
                 setUpdateDialog(manifest);
+            } else if (via === 'button') {
+                setUpToDate(true);
+                cb('Up to Date');
             }
         } catch (error) {
             console.error(error);
@@ -133,7 +137,7 @@ const App = ({ properties, handleChange }: AppInterface) => {
         if (backgroundElement && themeURL)
             backgroundElement.style.background = `url(${themeURL})`;
 
-        updateAppToLatestVersion();
+        updateAppToLatestVersion('auto');
     }, []); // eslint-disable-line
 
     const handleSong = useCallback(
@@ -185,6 +189,12 @@ const App = ({ properties, handleChange }: AppInterface) => {
                 <Snackbar open={isOffline} TransitionComponent={transition}>
                     <Alert severity="error">
                         You are offline. Some functionality may be unavailable.
+                    </Alert>
+                </Snackbar>
+
+                <Snackbar open={isUpToDate} TransitionComponent={transition}>
+                    <Alert severity="success">
+                        Loofi Desktop is up to date.
                     </Alert>
                 </Snackbar>
 
