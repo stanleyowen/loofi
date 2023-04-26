@@ -6,8 +6,9 @@
   "build": {
     "distDir": "../build",
     "devPath": "http://localhost:3000",
-    "beforeDevCommand": "",
-    "beforeBuildCommand": ""
+    "beforeDevCommand": "cross-env BROWSER=none && yarn start",
+    "beforeBuildCommand": "",
+    "withGlobalTauri": true
   },
   "tauri": {
     "bundle": {
