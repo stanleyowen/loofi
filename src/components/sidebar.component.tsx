@@ -78,7 +78,7 @@ const SideBar = ({ handleChange, properties }: any) => {
                                         <OutlineIcon />
                                     )}
                                 </div>
-                                <div className="w-70 left-align">
+                                <div className="w-70 left-align sidebar-text">
                                     {tab.toLowerCase()}
                                 </div>
                             </Button>

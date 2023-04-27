@@ -130,6 +130,10 @@ p {
     padding-top: 30px;
     box-sizing: border-box;
     background: rgb(var(--white) / 40%);
+    -webkit-transition: width 0.4s ease-in-out;
+    -moz-transition: width 0.4s ease-in-out;
+    -o-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
 }
 #tabs {
     height: 100%;
@@ -184,6 +188,10 @@ p {
     height: 100vh;
     margin-left: 225px;
     flex-direction: column;
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
 }
 .base {
     overflow: auto;
@@ -642,5 +650,24 @@ button {
     }
     .MuiAlert-root {
         width: 100vh !important;
+    }
+    #tabs {
+        .MuiButtonBase-root {
+            min-width: auto;
+            justify-content: left;
+        }
+        .w-30 {
+            width: 10% !important;
+        }
+    }
+    .sidebar-text {
+        display: none;
+        visibility: hidden;
+    }
+    .sidebar {
+        width: 60px;
+    }
+    .app {
+        margin-left: 60px;
     }
 }
