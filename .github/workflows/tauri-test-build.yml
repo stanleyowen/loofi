@@ -36,39 +36,86 @@ jobs:
       - name: Install frontend dependencies
         run: yarn install
 
-      - name: Build frontend (windows)
-        env:
-          REACT_APP_ALLOW_BETA: false
-          REACT_APP_HOST_DOMAIN: https://user-images.githubusercontent.com
-          REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
-          REACT_APP_AUTH_DOMAIN: ${{ secrets.REACT_APP_AUTH_DOMAIN }}
-          REACT_APP_DB_URL: ${{ secrets.REACT_APP_DB_URL }}
-          REACT_APP_PROJECT_ID: ${{ secrets.REACT_APP_PROJECT_ID }}
-          REACT_APP_STORAGE_BUCKET: ${{ secrets.REACT_APP_STORAGE_BUCKET }}
-          REACT_APP_SENDER_ID: ${{ secrets.REACT_APP_SENDER_ID }}
-          REACT_APP_ID: ${{ secrets.REACT_APP_ID }}
-          REACT_APP_MEASUREMENT_ID: ${{ secrets.REACT_APP_MEASUREMENT_ID }}
-        if: matrix.platform == 'windows-latest'
-        run: yarn build:win
-
-      - name: Build frontend (macos, ubuntu)
-        env:
-          REACT_APP_ALLOW_BETA: false
-          REACT_APP_HOST_DOMAIN: https://user-images.githubusercontent.com
-          REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
-          REACT_APP_AUTH_DOMAIN: ${{ secrets.REACT_APP_AUTH_DOMAIN }}
-          REACT_APP_DB_URL: ${{ secrets.REACT_APP_DB_URL }}
-          REACT_APP_PROJECT_ID: ${{ secrets.REACT_APP_PROJECT_ID }}
-          REACT_APP_STORAGE_BUCKET: ${{ secrets.REACT_APP_STORAGE_BUCKET }}
-          REACT_APP_SENDER_ID: ${{ secrets.REACT_APP_SENDER_ID }}
-          REACT_APP_ID: ${{ secrets.REACT_APP_ID }}
-          REACT_APP_MEASUREMENT_ID: ${{ secrets.REACT_APP_MEASUREMENT_ID }}
-        if: matrix.platform != 'windows-latest'
-        run: yarn build
-
       - name: Building tauri app
         uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
           TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
+          TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
+          REACT_APP_ALLOW_BETA: false
+          REACT_APP_HOST_DOMAIN: https://user-images.githubusercontent.com
+          REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
+          REACT_APP_AUTH_DOMAIN: ${{ secrets.REACT_APP_AUTH_DOMAIN }}
+          REACT_APP_DB_URL: ${{ secrets.REACT_APP_DB_URL }}
+          REACT_APP_PROJECT_ID: ${{ secrets.REACT_APP_PROJECT_ID }}
+          REACT_APP_STORAGE_BUCKET: ${{ secrets.REACT_APP_STORAGE_BUCKET }}
+          REACT_APP_SENDER_ID: ${{ secrets.REACT_APP_SENDER_ID }}
+          REACT_APP_ID: ${{ secrets.REACT_APP_ID }}
+          REACT_APP_MEASUREMENT_ID: ${{ secrets.REACT_APP_MEASUREMENT_ID }}
+        with:
+        # output the artifact link
+          tagName: v__VERSION__
+          # output the artifact link
+          artifactName: tauri-test-build
+          # output the artifact link
+          artifactPath: tauri-test-build
+          # output the artifact link
+          artifactType: link
+          # output the artifact link
+          artifactArgs: --name tauri-test-build
+          # output the artifact link
+          artifactOutput: tauri-test-build
+          # output the artifact link
+          artifactFormat: zip
+          # output the artifact link
+          artifactPlatform: ${{ matrix.platform }}
+          # output the artifact link
+          artifactPublish: true
+          # output the artifact link
+          artifactPublishOwner: ${{ github.repository_owner }}
+          # output the artifact link
+          artifactPublishRepo: ${{ github.repository }}
+          # output the artifact link
+          artifactPublishToken: ${{ secrets.GITHUB_TOKEN }}
+          # output the artifact link
+          artifactPublishRelease: true
+          # output the artifact link
+          artifactPublishDraft: false
+          # output the artifact link
+          artifactPublishPrerelease: false
+          # output the artifact link
+          artifactPublishTag: v__VERSION__
+          # output the artifact link
+          artifactPublishName: tauri-test-build
+          # output the artifact link
+          artifactPublishBody: tauri-test-build
+          # output the artifact link
+          artifactPublishTarget: ${{ matrix.platform }}
+          # output the artifact link
+          artifactPublishCommitish: ${{ github.sha }}
+          # output the artifact link
+          artifactPublishTagPrefix: v
+          # output the artifact link
+          artifactPublishFiles: tauri-test-build
+          # output the artifact link
+          artifactPublishOverwrite: true
+          # output the artifact link
+          artifactPublishSkipCleanup: true
+          # output the artifact link
+          artifactPublishSkipUpload: false
+          # output the artifact link
+          artifactPublishSkipUploadCleanup: true
+          # output the artifact link
+          artifactPublishSkipUploadMetadata: true
+          # output the artifact link
+          artifactPublishSkipUploadFiles: true
+          # output the artifact link
+          artifactPublishSkipUploadArtifacts: true
+          # output the artifact link
+          artifactPublishSkipUploadArtifactsCleanup: true
+          # output the artifact link
+          artifactPublishSkipUploadArtifactsMetadata: true
+          #
