@@ -34,7 +34,7 @@ function TabPanel(props: TabPanelProps) {
 }
 
 // eslint-disable-next-line
-const Settings = () => {
+const Settings = ({ updateAppToLatestVersion }: any) => {
     const [tabIndex, setTabIndex] = useState<number>(0);
 
     return (
@@ -78,7 +78,7 @@ const Settings = () => {
                 <Experimental />
             </TabPanel>
             <TabPanel value={tabIndex} index={2}>
-                <About />
+                <About updateAppToLatestVersion={updateAppToLatestVersion} />
             </TabPanel>
         </div>
     );

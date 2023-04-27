@@ -50,7 +50,7 @@
       "endpoints": [
         "https://updater-2-z5186372.deta.app/updater/{{target}}/{{arch}}/{{current_version}}"
       ],
-      "dialog": true,
+      "dialog": false,
       "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEZBQTc1M0JBRDk2MzcwNjUKUldSbGNHUFp1bE9uK2o4U3Z4Y0pkais4OUtIZ2ZjTVVDZXpvMm9Vc2FuTysvdTJvSmRPV3daeTMK",
       "windows": {
         "installMode": "passive"
