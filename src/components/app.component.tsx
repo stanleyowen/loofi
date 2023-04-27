@@ -68,21 +68,27 @@ const App = ({ properties, handleChange }: AppInterface) => {
     }
 
     async function updateAppToLatestVersion(via: 'button' | 'auto', cb?: any) {
-        try {
-            const { shouldUpdate, manifest } = await checkUpdate();
-            if (shouldUpdate) {
-                setTransition(() => Transition);
-                setUpdateDialog(manifest);
-            } else if (via === 'button') {
-                setUpToDate(true);
-                setTimeout(() => setUpToDate(false), 5000);
-                cb(true);
+        // Only run this function if the app is running in Tauri production environment
+        if (
+            window.__TAURI_METADATA__ &&
+            process.env.NODE_ENV === 'production'
+        ) {
+            try {
+                const { shouldUpdate, manifest } = await checkUpdate();
+                if (shouldUpdate) {
+                    setTransition(() => Transition);
+                    setUpdateDialog(manifest);
+                } else if (via === 'button') {
+                    setUpToDate(true);
+                    setTimeout(() => setUpToDate(false), 5000);
+                    cb(true);
+                }
+            } catch (error) {
+                console.error(error);
             }
-        } catch (error) {
-            console.error(error);
-        }
 
-        unlistenUpdaterEvent();
+            unlistenUpdaterEvent();
+        }
     }
 
     useEffect(() => {

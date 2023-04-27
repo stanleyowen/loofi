@@ -645,11 +645,6 @@ button {
     .search {
         width: 100%;
     }
-    /* // set display none after the svg */
-    /* .MuiTab-root 
-    {
-        display: none;
-    } */
 }
 @media only screen and (max-width: 600px) {
     .search {
