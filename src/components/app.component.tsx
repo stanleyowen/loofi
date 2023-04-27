@@ -75,6 +75,7 @@ const App = ({ properties, handleChange }: AppInterface) => {
                 setUpdateDialog(manifest);
             } else if (via === 'button') {
                 setUpToDate(true);
+                setTimeout(() => setUpToDate(false), 5000);
                 cb(true);
             }
         } catch (error) {

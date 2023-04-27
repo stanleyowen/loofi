@@ -81,37 +81,41 @@ const About = ({ updateAppToLatestVersion }: any) => {
                         )}
                     </Button>
                 </Tooltip>
-                <Tooltip
-                    enterDelay={500}
-                    enterNextDelay={500}
-                    title={
-                        isUpToDate === true ? 'Up to Date' : 'Check for Updates'
-                    }
-                >
-                    <LoadingButton
-                        color={
+                {window.__TAURI_METADATA__ ? (
+                    <Tooltip
+                        enterDelay={500}
+                        enterNextDelay={500}
+                        title={
                             isUpToDate === true
-                                ? 'success'
-                                : copiedToClipboard === 'error'
-                                ? 'error'
-                                : 'primary'
+                                ? 'Up to Date'
+                                : 'Check for Updates'
                         }
-                        variant="outlined"
-                        className="align-right ml-10"
-                        loading={isFetching}
-                        onClick={() => {
-                            setIsFetching(true);
-                            updateAppToLatestVersion('button').then(
-                                (res: boolean) => {
-                                    setIsUpToDate(res);
-                                    setIsFetching(false);
-                                }
-                            );
-                        }}
                     >
-                        <CheckUpdate />
-                    </LoadingButton>
-                </Tooltip>
+                        <LoadingButton
+                            color={
+                                isUpToDate === true
+                                    ? 'success'
+                                    : copiedToClipboard === 'error'
+                                    ? 'error'
+                                    : 'primary'
+                            }
+                            variant="outlined"
+                            className="align-right ml-10"
+                            loading={isFetching}
+                            onClick={() => {
+                                setIsFetching(true);
+                                updateAppToLatestVersion('button').then(
+                                    (res: boolean) => {
+                                        setIsUpToDate(res);
+                                        setIsFetching(false);
+                                    }
+                                );
+                            }}
+                        >
+                            <CheckUpdate />
+                        </LoadingButton>
+                    </Tooltip>
+                ) : null}
             </div>
 
             <Accordion className="w-100 card mt-10">
