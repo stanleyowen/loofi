@@ -52,12 +52,3 @@ jobs:
           REACT_APP_SENDER_ID: ${{ secrets.REACT_APP_SENDER_ID }}
           REACT_APP_ID: ${{ secrets.REACT_APP_ID }}
           REACT_APP_MEASUREMENT_ID: ${{ secrets.REACT_APP_MEASUREMENT_ID }}
-        if: matrix.platform != 'windows-latest'
-        run: yarn build
-
-      - name: Building tauri app
-        uses: tauri-apps/tauri-action@v0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
-          TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
