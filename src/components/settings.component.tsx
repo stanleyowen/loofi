@@ -66,7 +66,8 @@ const Settings = ({ updateAppToLatestVersion }: any) => {
                                 )
                             }
                             key={index}
-                            label={tab}
+                            label={window.innerWidth > 850 ? tab : ''}
+                            iconPosition="start"
                         />
                     );
                 })}

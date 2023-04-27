@@ -130,6 +130,16 @@ const Search = ({ song, songData, handleSong, HOST_DOMAIN }: any) => {
         document.getElementById('search-query')?.focus();
     };
 
+    const CloseButton = () => (
+        <IconButton
+            size="large"
+            onClick={ClearQuery}
+            className={keyword ? '' : 'none'}
+        >
+            <Close />
+        </IconButton>
+    );
+
     return (
         <div className="m-10">
             <div className="flex">
@@ -142,14 +152,10 @@ const Search = ({ song, songData, handleSong, HOST_DOMAIN }: any) => {
                     id="search-query"
                     autoFocus
                     autoComplete="off"
+                    InputProps={{
+                        endAdornment: <CloseButton />,
+                    }}
                 />
-                <IconButton
-                    className={(keyword ? null : 'none') + ' p-10 close-btn'}
-                    onClick={ClearQuery}
-                    size="large"
-                >
-                    {Close()}
-                </IconButton>
             </div>
             {items.music.length !== 0 ? (
                 <div>

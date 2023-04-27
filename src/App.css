@@ -553,7 +553,12 @@ button {
     right: 10px;
     z-index: 100;
 }
-
+.MuiTab-root {
+    min-height: 55px;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    gap: 10px;
+}
 /* Download */
 #download .large-card svg {
     display: block;
@@ -612,6 +617,10 @@ button {
     .search {
         width: 60%;
     }
+    .MuiTab-root {
+        grid-template-columns: auto;
+        gap: 10px;
+    }
 }
 @media only screen and (max-width: 800px) {
     .col-3 {
@@ -633,8 +642,16 @@ button {
     #settings .flex .w-50.m-10:nth-child(even) {
         margin: 5px 10px !important;
     }
+    .search {
+        width: 100%;
+    }
+    /* // set display none after the svg */
+    /* .MuiTab-root 
+    {
+        display: none;
+    } */
 }
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 600px) {
     .search {
         width: 100%;
     }
@@ -649,7 +666,7 @@ button {
         width: 100% !important;
     }
     .MuiAlert-root {
-        width: 100vh !important;
+        width: 100% !important;
     }
     #tabs {
         .MuiButtonBase-root {
