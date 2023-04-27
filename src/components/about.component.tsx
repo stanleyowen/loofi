@@ -13,12 +13,16 @@ import {
     Contributors,
     PrivacyPolicy,
     CopyToClipboard as CopyToClipboardIcon,
+    CheckUpdate,
 } from '../lib/icons.component';
+import { LoadingButton } from '@mui/lab';
 
-const About = () => {
+const About = ({ updateAppToLatestVersion }: any) => {
     const [copiedToClipboard, setCopiedToClipboard] = useState<
         boolean | string
     >(false);
+    const [isFetching, setIsFetching] = useState<boolean>(false);
+    const [isUpToDate, setIsUpToDate] = useState<boolean>(false);
 
     const CopyToClipboard = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
@@ -77,6 +81,41 @@ const About = () => {
                         )}
                     </Button>
                 </Tooltip>
+                {window.__TAURI_METADATA__ ? (
+                    <Tooltip
+                        enterDelay={500}
+                        enterNextDelay={500}
+                        title={
+                            isUpToDate === true
+                                ? 'Up to Date'
+                                : 'Check for Updates'
+                        }
+                    >
+                        <LoadingButton
+                            color={
+                                isUpToDate === true
+                                    ? 'success'
+                                    : copiedToClipboard === 'error'
+                                    ? 'error'
+                                    : 'primary'
+                            }
+                            variant="outlined"
+                            className="align-right ml-10"
+                            loading={isFetching}
+                            onClick={() => {
+                                setIsFetching(true);
+                                updateAppToLatestVersion('button').then(
+                                    (res: boolean) => {
+                                        setIsUpToDate(res);
+                                        setIsFetching(false);
+                                    }
+                                );
+                            }}
+                        >
+                            <CheckUpdate />
+                        </LoadingButton>
+                    </Tooltip>
+                ) : null}
             </div>
 
             <Accordion className="w-100 card mt-10">

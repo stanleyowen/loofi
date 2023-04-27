@@ -62,9 +62,17 @@ const Controls = ({ song, songData, handleSong }: any) => {
     }, [song]);
 
     const skipAudio = (index: number, type: 'next' | 'previous') => {
-        handleQueue('currentIndex', type === 'next' ? index + 1 : index - 1);
-        const data: any[string] =
-            queue.queue[type === 'next' ? index + 1 : index - 1];
+        const nextIndex =
+            type === 'next'
+                ? index + 1 >= queue.queue.length
+                    ? 0
+                    : index + 1
+                : index - 1 === -1
+                ? 0
+                : index - 1;
+
+        handleQueue('currentIndex', nextIndex);
+        const data: any[string] = queue.queue[nextIndex];
         if (song.playing) {
             handleSong({ id: 'playing', value: false });
             setTimeout(() => handleSong(data), 10);
@@ -120,24 +128,25 @@ const Controls = ({ song, songData, handleSong }: any) => {
             <div className="w-40 flex center-flex">
                 <div className="flex center-flex">
                     <IconButton
+                        disabled={queue.currentIndex === 0}
                         onClick={() =>
                             skipAudio(queue.currentIndex, 'previous')
                         }
-                        className="p-10 font-black no-font"
+                        className={
+                            `p-10 no-font ` +
+                            (queue.currentIndex === 0 ? '' : ' font-black')
+                        }
                     >
                         <div>{SkipPrevious()}</div>
                     </IconButton>
-                    <IconButton
-                        onClick={triggerAudio}
-                        className="p-5 font-black"
-                    >
-                        <div className="btn m-5">
+                    <IconButton className="p-5" onClick={triggerAudio}>
+                        <div className="btn m-5 no-font font-black">
                             {song.playing ? <Pause /> : <Play />}
                         </div>
                     </IconButton>
                     <IconButton
                         onClick={() => skipAudio(queue.currentIndex, 'next')}
-                        className="p-10 font-black no-font"
+                        className="p-10 no-font font-black"
                     >
                         <div>{SkipNext()}</div>
                     </IconButton>

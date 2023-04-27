@@ -12,6 +12,7 @@ const BaseLayout = ({
     songData,
     handleSong,
     HOST_DOMAIN,
+    updateAppToLatestVersion,
 }: any) => {
     return (
         <div className="base">
@@ -34,7 +35,7 @@ const BaseLayout = ({
             ) : properties.activeTab === 'download' ? (
                 <Download />
             ) : (
-                <Settings />
+                <Settings updateAppToLatestVersion={updateAppToLatestVersion} />
             )}
         </div>
     );

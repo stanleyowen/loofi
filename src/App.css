@@ -130,6 +130,10 @@ p {
     padding-top: 30px;
     box-sizing: border-box;
     background: rgb(var(--white) / 40%);
+    -webkit-transition: width 0.4s ease-in-out;
+    -moz-transition: width 0.4s ease-in-out;
+    -o-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
 }
 #tabs {
     height: 100%;
@@ -184,6 +188,10 @@ p {
     height: 100vh;
     margin-left: 225px;
     flex-direction: column;
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
 }
 .base {
     overflow: auto;
@@ -262,6 +270,9 @@ p {
 }
 
 /* Properties */
+.pb-0 {
+    padding-bottom: 0 !important;
+}
 .no-capitalization {
     text-transform: none !important;
 }
@@ -542,7 +553,12 @@ button {
     right: 10px;
     z-index: 100;
 }
-
+.MuiTab-root {
+    min-height: 55px;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    gap: 10px;
+}
 /* Download */
 #download .large-card svg {
     display: block;
@@ -601,6 +617,10 @@ button {
     .search {
         width: 60%;
     }
+    .MuiTab-root {
+        grid-template-columns: auto;
+        gap: 10px;
+    }
 }
 @media only screen and (max-width: 800px) {
     .col-3 {
@@ -622,8 +642,11 @@ button {
     #settings .flex .w-50.m-10:nth-child(even) {
         margin: 5px 10px !important;
     }
+    .search {
+        width: 100%;
+    }
 }
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 600px) {
     .search {
         width: 100%;
     }
@@ -638,6 +661,25 @@ button {
         width: 100% !important;
     }
     .MuiAlert-root {
-        width: 100vh !important;
+        width: 100% !important;
+    }
+    #tabs {
+        .MuiButtonBase-root {
+            min-width: auto;
+            justify-content: left;
+        }
+        .w-30 {
+            width: 10% !important;
+        }
+    }
+    .sidebar-text {
+        display: none;
+        visibility: hidden;
+    }
+    .sidebar {
+        width: 60px;
+    }
+    .app {
+        margin-left: 60px;
     }
 }
