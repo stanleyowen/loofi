@@ -23,8 +23,7 @@ const SideBar = ({ handleChange, properties }: any) => {
     const [isOpen, setDialog] = useState<boolean>(false);
     const list = ['Home', 'Search', 'Settings'];
 
-    if (process.env.REACT_APP_ENV !== 'tauri')
-        list.splice(list.length - 1, 0, 'Download');
+    if (!window.__TAURI_METADATA__) list.splice(list.length - 1, 0, 'Download');
 
     useEffect(() => {
         document
@@ -87,7 +86,7 @@ const SideBar = ({ handleChange, properties }: any) => {
                     );
                 })}
                 {process.env.REACT_APP_ALLOW_BETA === 'true' &&
-                process.env.REACT_APP_ENV !== 'tauri' ? (
+                !window.__TAURI_METADATA__ ? (
                     process.env.REACT_APP_CONTEXT === 'production' ? (
                         <Button
                             className="w-100 rounded-corner p-10 tab"

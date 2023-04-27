@@ -27,10 +27,7 @@
   "scripts": {
     "tauri": "tauri",
     "start": "react-scripts start",
-    "build": "node ./scripts/prebuild.js && GENERATE_SOURCEMAP=false CI='' REACT_APP_ENV='tauri' yarn react-scripts build && node ./scripts/postbuild.js",
-    "build:win": "node ./scripts/prebuild.js && yarn cross-env GENERATE_SOURCEMAP=false CI='' REACT_APP_ENV='tauri' react-scripts build && node ./scripts/postbuild.js",
-    "build:web": "GENERATE_SOURCEMAP=false CI='' yarn react-scripts build",
-    "build:web:win": "yarn cross-env GENERATE_SOURCEMAP=false CI='' react-scripts build",
+    "build": "yarn cross-env GENERATE_SOURCEMAP=false CI='' react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "release": "yarn build && electron-builder --publish=always",

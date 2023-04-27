@@ -36,23 +36,12 @@ jobs:
       - name: Install frontend dependencies
         run: yarn install
 
-      - name: Build frontend (windows)
+      - name: Building tauri app
+        uses: tauri-apps/tauri-action@v0
         env:
-          REACT_APP_ALLOW_BETA: false
-          REACT_APP_HOST_DOMAIN: https://user-images.githubusercontent.com
-          REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
-          REACT_APP_AUTH_DOMAIN: ${{ secrets.REACT_APP_AUTH_DOMAIN }}
-          REACT_APP_DB_URL: ${{ secrets.REACT_APP_DB_URL }}
-          REACT_APP_PROJECT_ID: ${{ secrets.REACT_APP_PROJECT_ID }}
-          REACT_APP_STORAGE_BUCKET: ${{ secrets.REACT_APP_STORAGE_BUCKET }}
-          REACT_APP_SENDER_ID: ${{ secrets.REACT_APP_SENDER_ID }}
-          REACT_APP_ID: ${{ secrets.REACT_APP_ID }}
-          REACT_APP_MEASUREMENT_ID: ${{ secrets.REACT_APP_MEASUREMENT_ID }}
-        if: matrix.platform == 'windows-latest'
-        run: yarn build:win
-
-      - name: Build frontend (macos, ubuntu)
-        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
+          TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
           REACT_APP_ALLOW_BETA: false
           REACT_APP_HOST_DOMAIN: https://user-images.githubusercontent.com
           REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
