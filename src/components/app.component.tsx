@@ -99,7 +99,7 @@ const App = ({ properties, handleChange }: AppInterface) => {
             projectId: process.env.REACT_APP_PROJECT_ID,
         });
 
-        onValue(ref(getDatabase(), 'data-dev-dev/'), (snapshot) => {
+        onValue(ref(getDatabase(), 'loofi-music/'), (snapshot) => {
             const rawData = snapshot.val();
             let index = rawData.length,
                 randIndex; // eslint-disable-line
