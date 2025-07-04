@@ -11,7 +11,6 @@ const BaseLayout = ({
     properties,
     songData,
     handleSong,
-    HOST_DOMAIN,
     updateAppToLatestVersion,
 }: any) => {
     return (
@@ -22,7 +21,6 @@ const BaseLayout = ({
                     songData={songData}
                     properties={properties}
                     handleSong={handleSong}
-                    HOST_DOMAIN={HOST_DOMAIN}
                 />
             ) : properties.activeTab === 'search' ? (
                 <Search
@@ -30,7 +28,6 @@ const BaseLayout = ({
                     songData={songData}
                     properties={properties}
                     handleSong={handleSong}
-                    HOST_DOMAIN={HOST_DOMAIN}
                 />
             ) : properties.activeTab === 'download' ? (
                 <Download />

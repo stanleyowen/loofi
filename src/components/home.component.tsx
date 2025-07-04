@@ -8,7 +8,7 @@ interface Music {
     audio: HTMLAudioElement;
 }
 
-const Home = ({ song, songData, handleSong, HOST_DOMAIN }: any) => {
+const Home = ({ song, songData, handleSong }: any) => {
     const [greeting, setGreeting] = useState<string>();
 
     const triggerAudio = (
@@ -96,10 +96,7 @@ const Home = ({ song, songData, handleSong, HOST_DOMAIN }: any) => {
                           return (
                               <div className="m-10" key={index}>
                                   <div className="card flex">
-                                      <img
-                                          src={HOST_DOMAIN + music.image}
-                                          loading="lazy"
-                                      />
+                                      <img src={music.image} loading="lazy" />
                                       <p className="m-auto w-50">
                                           {music.title}
                                       </p>
@@ -125,10 +122,7 @@ const Home = ({ song, songData, handleSong, HOST_DOMAIN }: any) => {
                           return (
                               <div className="m-10" key={index}>
                                   <div className="large-card">
-                                      <img
-                                          src={HOST_DOMAIN + music.image}
-                                          loading="lazy"
-                                      />
+                                      <img src={music.image} loading="lazy" />
                                       <div className="flex">
                                           <div className="m-auto w-70">
                                               <h3 className="mt-10">
@@ -161,10 +155,7 @@ const Home = ({ song, songData, handleSong, HOST_DOMAIN }: any) => {
                           return (
                               <div className="m-10" key={index}>
                                   <div className="card flex">
-                                      <img
-                                          src={HOST_DOMAIN + music.image}
-                                          loading="lazy"
-                                      />
+                                      <img src={music.image} loading="lazy" />
                                       <p className="m-auto w-50">
                                           {music.title}
                                       </p>
@@ -190,10 +181,7 @@ const Home = ({ song, songData, handleSong, HOST_DOMAIN }: any) => {
                           return (
                               <div className="m-10" key={index}>
                                   <div className="large-card">
-                                      <img
-                                          src={HOST_DOMAIN + music.image}
-                                          loading="lazy"
-                                      />
+                                      <img src={music.image} loading="lazy" />
                                       <div className="flex">
                                           <div className="m-auto w-70">
                                               <h3 className="mt-10">

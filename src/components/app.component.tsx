@@ -36,8 +36,6 @@ async function unlistenUpdaterEvent() {
 
 // eslint-disable-next-line
 const App = ({ properties, handleChange }: AppInterface) => {
-    const HOST_DOMAIN: string =
-        process.env.REACT_APP_HOST_DOMAIN ?? window.location.origin;
     const musicSession =
         localStorage.getItem('continue-previous-session') === 'true'
             ? JSON.parse(localStorage.getItem('music-session') || '{}')
@@ -54,7 +52,7 @@ const App = ({ properties, handleChange }: AppInterface) => {
         title: musicSession.title ? musicSession.title : 'Underwater',
         author: musicSession.author ? musicSession.author : 'LiQWYD',
         image: musicSession.image
-            ? HOST_DOMAIN + musicSession.image
+            ? musicSession.image
             : 'https://user-images.githubusercontent.com/69080584/129511233-dd5a0eac-2675-415e-ae4c-6cc530a23629.png',
         audio: musicSession.audio
             ? new Audio(musicSession.audio)
@@ -156,7 +154,7 @@ const App = ({ properties, handleChange }: AppInterface) => {
                     : setSong({
                           ...a,
                           audio: new Audio(a.audio),
-                          image: HOST_DOMAIN + a.image,
+                          image: a.image,
                           playing: true,
                       });
             } else setSong({ ...song, [a.id]: a.value });
@@ -181,7 +179,6 @@ const App = ({ properties, handleChange }: AppInterface) => {
                         song={song}
                         songData={data}
                         handleSong={handleSong}
-                        HOST_DOMAIN={HOST_DOMAIN}
                         updateAppToLatestVersion={updateAppToLatestVersion}
                     />
                 </div>
@@ -191,7 +188,6 @@ const App = ({ properties, handleChange }: AppInterface) => {
                     song={song}
                     handleSong={handleSong}
                     songData={data}
-                    HOST_DOMAIN={HOST_DOMAIN}
                 />
 
                 <Snackbar open={isOffline} TransitionComponent={transition}>

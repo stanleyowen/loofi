@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Close } from '../lib/icons.component';
 import { Skeleton, TextField, IconButton } from '@mui/material';
 
-const Search = ({ song, songData, handleSong, HOST_DOMAIN }: any) => {
+const Search = ({ song, songData, handleSong }: any) => {
     const items: any = {
         music: [],
         author: [],
@@ -79,7 +79,7 @@ const Search = ({ song, songData, handleSong, HOST_DOMAIN }: any) => {
                 return items.music.push(
                     <div className="m-10" key={index}>
                         <div className="large-card">
-                            <img src={HOST_DOMAIN + music.image} />
+                            <img src={music.image} />
                             <div className="flex">
                                 <div className="m-auto w-70">
                                     <h3 className="mt-10">{music.title}</h3>
@@ -103,7 +103,7 @@ const Search = ({ song, songData, handleSong, HOST_DOMAIN }: any) => {
                 return items.author.push(
                     <div className="m-10" key={index}>
                         <div className="large-card">
-                            <img src={HOST_DOMAIN + music.image} />
+                            <img src={music.image} />
                             <div className="flex">
                                 <div className="m-auto w-70">
                                     <h3 className="mt-10">{music.title}</h3>
