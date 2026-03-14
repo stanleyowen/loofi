@@ -10,7 +10,7 @@ const About = () => {
     });
 
     useEffect(() => {
-        axios.get('https://loofi-updater.onrender.com/latest').then((res) => {
+        axios.get('https://loofi.stanleyowen.com/latest').then((res) => {
             setProperties({
                 isLoading: false,
                 downloadURL: res.data,
